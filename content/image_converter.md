@@ -4,10 +4,10 @@ title = 'Image Converter'
 
 {{<rawhtml>}}
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src='http://localhost:1313/toolkist.js'></script>
-<script src='http://localhost:1313/toolkist_color.js'></script>
-<script src='http://localhost:1313/toolkist_image_converter.js'></script>
-<script src='http://localhost:1313/toolkist_fs.js'></script>
+<script src='/toolkist.js'></script>
+<script src='/toolkist_color.js'></script>
+<script src='/toolkist_image_converter.js'></script>
+<script src='/toolkist_fs.js'></script>
 
 <div id='image_input_container'></div>
 <input style='color:black' type='button' id='copy_to_clipboard' onclick='copyToClipboard()' value='Copy To Clipboard' hidden></input>

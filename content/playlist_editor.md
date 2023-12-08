@@ -5,8 +5,8 @@ title = 'Playlist Editor'
 {{<rawhtml>}}
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
-<script src='http://localhost:1313/toolkist_playlist.js'></script>
-<script src='http://localhost:1313/toolkist_fs.js'></script>
+<script src='/toolkist_playlist.js'></script>
+<script src='/toolkist_fs.js'></script>
 
 <div id='playlist_input_container'></div>
 <label for='playlist_name'>Name</label><input style='color:black' type='text' id='playlist_name' value='Toolkist Playlist'></input>
