@@ -62,10 +62,10 @@
     # Customized info shown in header of the page
     [params.header]
         # Website title for header banner.
-        title = "My New Hugo Site"
+        title = "Toolkist"
 
         # Subtitle for this site, used in homepage only
-        subtitle = "A Site Built by Hugo"
+        subtitle = "Tools for Zeepkist"
 
         # Config about your's site logo, remove this item to hide the logo
         [params.header.logo]
@@ -79,26 +79,26 @@
     # Customized info shown in footer of the page
     [params.footer]
         # CopyRight string shown in the footer. Keep it an empty string or remove this item will hide it from the page.
-        copyrightStr = "All Rights Reserved ®."
+        copyrightStr = ""
 
         # Should show the counter in the footer or not
         # In the home page, it will show the numbers of all pages
         # In the sections pages, it will show the numbers of pages within the section
         # In the taxonomy pages, it will show the numbers of pages belong to the taxonomy.
         # In the regular content pages, it will show the word count.
-        counter = true
+        counter = false
 
         # Should show the language of the page or not
-        language = true
+        language = false
 
         # Should show the hugo version or not
-        hugoVersion = true
+        hugoVersion = false
 
         # Should show the theme info or not
-        theme = true
+        theme = false
 
         # Should show the edited time of the page or not
-        modifiedTime = true
+        modifiedTime = false
 
         # The format of the `modifiedTime`.
         # Refer to page https://gohugo.io/functions/format/ for more detail.
@@ -131,40 +131,40 @@
         # 1. the footer of all page
         # 2. the author filed in the single page. (this could be overwritten by the frontmatter of the single page.)
         # Keep it an empty string or remove this item will hide it from the page
-        author = "Jing Wang"
+        author = "Metalted"
         
         # Website description for RSS and SEO. Theme will generate a <meta> tag for this item
-        description = "This is my new hugo site"
+        description = "A site with different tools made for the game Zeepkist"
 
         # Website keywords. Theme will generate a <meta> tag for this item.
-        keywords = "hugo,site,new"
+        keywords = "Zeepkist,Toolkist"
 
     # Parameters applied in the homepage only
     [params.homePage]
         # Long Descripition shown in home page "Start Block". Is is recommended to have the paragraph shorter than 100 words.        
-        siteLongDescription = "Hugo is a fast and easy-to-use static website generator written in Go. It renders a complete HTML website from content and templates in a directory, utilizing Markdown files for metadata. It's optimized for speed and suitable for various website types."
+        siteLongDescription = "This website is a collection of tools available for Zeepkist."
 
         # If you don't like the title of "siteLongDescription" be "Start" (default), 
         # you may change the value of this item to "Description" or something you like.
-        siteLongDescriptionTitle = "Start"
+        siteLongDescriptionTitle = "Description"
 
         # Param to decide whether to show the most recent blog posts or not. (Default: true)
-        showRecentPostsBlock = true
+        showRecentPostsBlock = false
 
         # Param to decide how many recent posts to show in the home page. (Default: 5)
-        numOfRecentPosts = 5
+        numOfRecentPosts = 0
 
         # Parameter to decide whether to show the URL behind the title.
         # It will be more like an editor if it is shown. However, in general, it can be messy if it is displayed.        
         # (Default: true)
-        recentPostShowUrl = true
+        recentPostShowUrl = false
     
     
     # Paramater applied in the single page
     # These values could be overwritten by the frontmatter in the single page.
     [params.page]
         # Should include Table of Content in front of the page or not.
-        includeToc = true
+        includeToc = false
 
         # Should show the author of the page or not.
         # The author name will be shown in the single page if and only if 
@@ -172,10 +172,10 @@
         #   2. "aurthor" filed been provided in the 
         #       A. single page frontmatter or
         #       B. "author" filed in above "globalFrontmatter" block
-        showAuthor = true
+        showAuthor = false
 
         # Should show the date of the page or not
-        showDate = true
+        showDate = false
 
         # The format of the date.
         # Refer to page https://gohugo.io/functions/format/ for more detail.
@@ -183,7 +183,7 @@
         dateFormat = "2006.01.02"
 
         # Should show the estimate reading time in front of the page or not.
-        showTimeToRead = true
+        showTimeToRead = false
 
         # Should show the breadcrumb in front of the page or not.
         showBreadcrumb = true
