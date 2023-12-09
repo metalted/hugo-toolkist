@@ -18,7 +18,7 @@ var toolkist = (function($) {
             this.silverTime = 0;
             this.bronzeTime = 0;
             this.skybox = 0;
-            this.ground = 0;
+            this.ground = 3;
         }
 
         toCSV() {
@@ -74,7 +74,7 @@ var toolkist = (function($) {
             this.silverTime = 0;
             this.bronzeTime = 0;
             this.skybox = 0;
-            this.ground = -1;
+            this.ground = 3;
 
             return this;
         }

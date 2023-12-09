@@ -3538,5 +3538,100 @@ var toolkist_color = (function($) {
         return new toolkist_color.Color().fromHex(toolkist_color.paints[id].swatch[0]);
     }
 
+    toolkist_color.paintSelection = function($container, callback, theClass)
+    {
+        var selectionBox = $('<div>').addClass('selection-box').css({
+            'width': '250px',
+            'height': '30px',
+            'position': 'relative'
+        });
+        $container.append(selectionBox);
+
+        var selectionBoxPreview = $('<div>').addClass('selection-box-preview').css({
+                "background-color": '#000000',
+                "width": '30px',
+                "height": '30px',
+                'top': 0,
+                'left': 0,
+                'position': 'absolute'
+        });
+        selectionBox.append(selectionBoxPreview);
+
+        var selectionBoxText = $('<div>').addClass('selection-box-text').css({
+            'top': 0,
+            'left': 40,
+            'position': 'absolute'
+        });
+        selectionBox.append(selectionBoxText);
+
+        var selectionWindow = $('<div>').addClass('selection-window').css({
+            'width': '250px',
+            'height': '400px',
+            'overflow-y': 'scroll',
+            'position': 'absolute',
+            'top': '30px'
+        });
+        selectionBox.append(selectionWindow);
+
+        var scrollableList = $('<div>').addClass('scrollable-list');
+        selectionWindow.append(scrollableList);
+
+        for(const id in toolkist_color.paints)
+        {
+            var listItem = $('<div>').addClass('list-item').css({
+                'width': '250px',
+                'height': '30px',
+                'position': 'relative'
+            });
+            listItem.data({"id" : id});
+            
+            var colorBox = $('<div>').addClass('color-box').css({
+                "background-color": toolkist_color.paints[id].swatch[0],
+                "width": '30px',
+                "height": '30px',
+                'top': 0,
+                'left': 0,
+                'position': 'absolute'
+            });
+            listItem.append(colorBox);
+            
+            var itemText = $("<span>").addClass("item-text").text(toolkist_color.paints[id].name).css({
+                'top': 0,
+                'left': 40,
+                'position': 'absolute'
+            });
+            listItem.append(itemText);
+
+            scrollableList.append(listItem);
+
+            listItem.click(function () {
+                $(".list-item").removeClass("selected");
+                $(this).addClass("selected");
+    
+                // Get the selected color and text
+                var selectedColor = $(this).find(".color-box").css("background-color");
+                var selectedItemText = $(this).find(".item-text").text();
+    
+                // Update the button text and close the window
+                selectionBoxPreview.css("background-color", selectedColor);
+                selectionBoxText.text(selectedItemText);
+                selectionBox.data('id', $(this).data('id'));
+                $('.selectionWindow').hide();
+                callback(selectionBox.data('id'), selectedColor, theClass);
+            });
+
+            // Toggle the selection window on button click
+            selectionBox.click(function () {
+                selectionWindow.toggle();
+            });
+
+            if(id == 0){
+                listItem.click();
+            }
+        }
+
+        selectionWindow.hide();
+    }
+
     return toolkist_color;
 })(jQuery)

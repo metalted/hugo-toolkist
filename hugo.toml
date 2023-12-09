@@ -1,4 +1,4 @@
 baseURL = 'https://tool-kist.netlify.app/'
 languageCode = 'en-us'
 title = 'Toolkist'
-theme = 'dark-theme-editor'
+theme = 'toolkist-theme'
