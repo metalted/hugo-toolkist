@@ -38,3 +38,11 @@ title = 'Graphics Editor'
 |Pick|When an object is selected, this will set the color of that object as the selected color|
 |Paint|Paints the selected objects with the selected color|
 |Shape buttons|Add shape to the worksheet|
+
+|Keys|Description|
+|-|-|
+|CTRL+Z|Undo|
+|CTRL+Y|Redo|
+|Alt+LMB Drag|Drag Screen|
+|LMB Drag|Select|
+|Delete|Delete Object|
