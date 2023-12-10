@@ -23,3 +23,18 @@ title = 'Graphics Editor'
 
 </script>
 {{</rawhtml>}}
+
+|Buttons|Description|
+|-|-|
+|Open|Open a graphics editor worksheet|
+|Save|Save the current worksheet to a file|
+|Add|Import objects of worksheet into the current worksheet|
+|Export|Export the worksheet to a .zeeplevel|
+|Image|Open an image to set as background image|
+|Undo|Undo action|
+|Redo|Redo action|
+|Backward|Move an object or group back|
+|Forward|Move an object or group forward|
+|Pick|When an object is selected, this will set the color of that object as the selected color|
+|Paint|Paints the selected objects with the selected color|
+|Shape buttons|Add shape to the worksheet|

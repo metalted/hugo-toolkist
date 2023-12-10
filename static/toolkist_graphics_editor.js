@@ -196,6 +196,60 @@ var toolkist_graphics_editor = (function($) {
                     },
                     tooltipText: 'Save'
                 },
+                add: {
+                    icon: '<i style="width: 40px; height: 40px; margin: 5px; font-size: 32px; line-height: 40px; text-align:center" class="fa fa-plus" aria-hidden="true"></i>',
+                    action: () => {
+                        var input = $('<input type="file">');
+                        input.click();
+                        input.on('change', () => {
+                            var file = input[0].files[0];
+                            var reader = new FileReader();
+                            reader.onload = (e) => {
+                                // Parse the file content as JSON
+                                try {
+                                    this.fabric.discardActiveObject();
+                                    var jsonData = JSON.parse(e.target.result);
+                                    var selection = [];
+                                    fabric.util.enlivenObjects(jsonData.objects, (objects) => {
+                                        objects.forEach((o)=> {
+                                          this.fabric.add(o);
+                                          selection.push(o);
+                                        });
+                                    });
+
+                                    console.log(selection);
+
+                                    if(selection.length == 0)
+                                    {
+                                        return;
+                                    }
+                                    else if(selection.length == 1)
+                                    {
+                                        this.fabric.setActiveObject(selection[0]);
+                                    }
+                                    else
+                                    {
+                                        const group = new fabric.Group();
+                                        group.canvas = this.fabric;
+                                        selection.forEach((object) => {
+                                            group.addWithUpdate(object);
+                                        });
+                                        this.fabric.setActiveObject(group.setCoords()).renderAll();
+                                    }
+                                } catch (error) {
+                                    console.error('Error parsing JSON:', error);
+                                    // Handle any errors during JSON parsing
+                                }
+                                finally{                                    
+                                    input.remove();
+                                }
+                            };
+                            reader.readAsText(file);
+                        });
+                        input.appendTo('body');
+                    },
+                    tooltipText: 'Add'
+                },
                 undo : {
                     icon: '<i style="width: 40px; height: 40px; margin: 5px; font-size: 40px; line-height: 40px; text-align:center" class="fa fa-rotate-left" aria-hidden="true"></i>',
                     action: () => {
@@ -296,6 +350,40 @@ var toolkist_graphics_editor = (function($) {
                         this.paint();
                     },
                     tooltipText: 'Paint'
+                },
+                image : {
+                    icon: '<i style="width: 40px; height: 40px; margin: 5px; font-size: 40px; line-height: 40px; text-align:center" class="fa fa-image" aria-hidden="true"></i>',
+                    action: () => {
+                        var input = $('<input type="file">');
+                        input.click();
+                        input.on('change', () => {
+                            var file = input[0].files[0];
+                            var reader = new FileReader();
+                            reader.onload = (e) => {
+                                // Parse the file content as JSON
+                                try {
+                                    var data = e.target.result;
+                                    fabric.Image.fromURL(data, (img)=>
+                                    {
+                                        var s = this.fabric.width / img.width;
+                                        this.fabric.setBackgroundImage(img, this.fabric.renderAll.bind(this.fabric), {
+                                            scaleX: s,
+                                            scaleY: s
+                                        })
+                                    })
+                                } catch (error) {
+                                    console.error('Error parsing JSON:', error);
+                                    // Handle any errors during JSON parsing
+                                }
+                                finally{                                    
+                                    input.remove();
+                                }
+                            };
+                            reader.readAsDataURL(file);
+                        });
+                        input.appendTo('body');
+                    },
+                    tooltipText: 'Image'
                 }
             }
 
@@ -422,7 +510,9 @@ var toolkist_graphics_editor = (function($) {
 
             this.addMenubarButton(this.buttons.save);
             this.addMenubarButton(this.buttons.open);
+            this.addMenubarButton(this.buttons.add);
             this.addMenubarButton(this.buttons.export);
+            this.addMenubarButton(this.buttons.image);
             this.addMenubarButton(this.buttons.undo);
             this.addMenubarButton(this.buttons.redo);
             this.addMenubarButton(this.buttons.backward);
@@ -495,6 +585,7 @@ var toolkist_graphics_editor = (function($) {
             shape.top = center.y;
             shape.fill = toolkist_graphics_editor.selectedColor;
             shape.paintID = toolkist_graphics_editor.selectedId;
+            shape.opacity = 0.8;
             this.fabric.add(shape);
             this.change('create');
         } 
