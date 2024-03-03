@@ -199,7 +199,7 @@ function NextPage()
 
 function RetreiveAndSetData(url)
 {
-    //Make request
+    // Make request
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function()
     {
@@ -208,12 +208,14 @@ function RetreiveAndSetData(url)
             var responseJSON = JSON.parse(xhttp.responseText);      
             CreateLevelsTable(responseJSON.data);      
             currentData = responseJSON; 
-            //console.log(currentData);
+            // console.log(currentData);
             var currentPage = extractPageNumber(currentData.links.self);       
             var lastPage = extractPageNumber(currentData.links.last);       
             $('#pageNumber').text(currentPage + "/" + lastPage);
         }
     }
+    // Modify the URL to use HTTPS
+    url = url.replace(/^http:/, 'https:');
     xhttp.open("GET", url, true);
     xhttp.send();  
 }
