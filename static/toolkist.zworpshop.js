@@ -212,13 +212,18 @@ var toolkist_zs = (function($) {
         }
 
         let url = `https://jsonapi.zworpshop.com/levels?`;
-        const searchString = $('#searchQuery').val(); 
+        let filter = "";
+        let searchString = $('#searchQuery').val(); 
         if(searchString != "")
         {
-            url += `filter=or(contains(name,'${searchString}'),contains(fileAuthor,'${searchString}'))`; 
+            searchString = `or(contains(name,'${searchString}'),contains(fileAuthor,'${searchString}'))`;
+            //console.log(searchString);
         }
+
         let authorMin = "";
         let authorMax = "";
+        let authorString = "";
+
         if($('#enableAuthorMin').is(':checked'))
         {
             const authorMinInput = $('#authorMinInput').val();
@@ -239,20 +244,39 @@ var toolkist_zs = (function($) {
 
         if(authorMin != "" && authorMax != "")
         {
-            url += `&filter=and(greaterOrEqual(validation,'${parseFloat(authorMin)}'),lessOrEqual(validation,'${parseFloat(authorMax)}'))`;
+            authorString = `and(greaterOrEqual(validation,'${parseFloat(authorMin)}'),lessOrEqual(validation,'${parseFloat(authorMax)}'))`;
         }
         else if(authorMin != "")
         {
-            url += `&filter=greaterOrEqual(validation,'${parseFloat(authorMin)}')`;
+            authorString = `greaterOrEqual(validation,'${parseFloat(authorMin)}')`;
         }
         else if(authorMax != "")
         {
-            url += `&filter=lessOrEqual(validation,'${parseFloat(authorMax)}')`;
+            authorString += `lessOrEqual(validation,'${parseFloat(authorMax)}')`;
         }
 
-        url += `&page[size]=24`;
+        if(searchString != "" && authorString != "")
+        {
+            filter = `filter=and(${searchString},${authorString})`;
+        }
+        else if(searchString != "")
+        {
+            filter = `filter=${searchString}`;
+        }
+        else if(authorString != "")
+        {
+            filter = `filter=${authorString}`;
+            
+        }
 
-        console.log(url);
+        if(filter == "")
+        {
+            url += `page[size]=24`;
+        }
+        else
+        {
+            url += `${filter}&page[size]=24`;
+        }       
 
         toolkist_zs.GetDataFromUrl(url, function()
         {
