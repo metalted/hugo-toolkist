@@ -92,13 +92,8 @@ var toolkist_zs = (function($) {
         {
             if(this.readyState == 4 && this.status == 200)
             {
-                var responseJSON = JSON.parse(xhttp.responseText);  
-                
-                toolkist_zs.currentPageData = responseJSON;
-                toolkist_zs.currentPage = toolkist_zs.ExtractPageNumberFromUrl(toolkist_zs.currentPageData.links.self);
-                toolkist_zs.pageCount = toolkist_zs.ExtractPageNumberFromUrl(toolkist_zs.currentPageData.links.last);
-
-                callback();
+                var responseJSON = JSON.parse(xhttp.responseText); 
+                callback(responseJSON);
             }
         }
         // Modify the URL to use HTTPS
@@ -107,8 +102,42 @@ var toolkist_zs = (function($) {
         xhttp.send();  
     };
 
-    toolkist_zs.ConstructPage = function()
+    toolkist_zs.GetDataFromUrl2 = function(url, callback)
     {
+        // Make request
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function()
+        {
+            if(this.readyState == 4 && this.status == 200)
+            {
+                var responseJSON = JSON.parse(xhttp.responseText);  
+                callback(responseJSON);
+            }
+        }
+        // Modify the URL to use HTTPS
+        url = url.replace(/^http:/, 'https:');
+        xhttp.open("GET", url, true);
+        xhttp.send();  
+    };
+
+    toolkist_zs.GetPlayers = function()
+    {
+        var players = [];
+        toolkist_zs.GetDataFromUrl2('https://jsonapi.zeepkist-gtr.com/users?page[size]=100&fields[users]=id,steamName', function(response){
+            forEach(user in response.data)
+            {
+                players.push({id: user.id, name: user.attributes.steamName});
+            }
+            console.log(players);
+        });        
+    };
+
+    toolkist_zs.ConstructPage = function(data)
+    {
+        toolkist_zs.currentPageData = data;
+        toolkist_zs.currentPage = toolkist_zs.ExtractPageNumberFromUrl(toolkist_zs.currentPageData.links.self);
+        toolkist_zs.pageCount = toolkist_zs.currentPageData.links.hasOwnProperty('last') ? toolkist_zs.ExtractPageNumberFromUrl(toolkist_zs.currentPageData.links.last) : 1;
+
         // Select the container div where the table/list will be contained
         var $containerDiv = $("#levelsContainer");    
         // Create an empty jQuery object to store the level cards
@@ -125,11 +154,11 @@ var toolkist_zs = (function($) {
             $levelCardTimes.append(`<img class='medal' src='/medal_author.png'/>`);
             $levelCardTimes.append(`<div class='levelTime'>${toolkist_zs.ConvertSecondsToTime(level.attributes.validation)}</div>`);
             $levelCardTimes.append(`<img class='medal' src='/medal_gold.png'/>`);
-            $levelCardTimes.append(`<div class='levelTime'>${toolkist_zs.ConvertSecondsToTime(level.attributes.validation)}</div>`);
+            $levelCardTimes.append(`<div class='levelTime'>${toolkist_zs.ConvertSecondsToTime(level.attributes.gold)}</div>`);
             $levelCardTimes.append(`<img class='medal' src='/medal_silver.png'/>`);
-            $levelCardTimes.append(`<div class='levelTime'>${toolkist_zs.ConvertSecondsToTime(level.attributes.validation)}</div>`);
+            $levelCardTimes.append(`<div class='levelTime'>${toolkist_zs.ConvertSecondsToTime(level.attributes.silver)}</div>`);
             $levelCardTimes.append(`<img class='medal' src='/medal_bronze.png'/>`); 
-            $levelCardTimes.append(`<div class='levelTime'>${toolkist_zs.ConvertSecondsToTime(level.attributes.validation)}</div>`);                  
+            $levelCardTimes.append(`<div class='levelTime'>${toolkist_zs.ConvertSecondsToTime(level.attributes.bronze)}</div>`);                  
             // Append level card info and level times to the level card
             $levelCard.append($levelCardInfo, $levelCardTimes);        
             // Attach level parameters JSON data to the level card using jQuery .data()
@@ -151,9 +180,9 @@ var toolkist_zs = (function($) {
     {
         if(toolkist_zs.currentPageData != null)
         {
-            toolkist_zs.GetDataFromUrl(toolkist_zs.currentPageData.links.first, function()
+            toolkist_zs.GetDataFromUrl(toolkist_zs.currentPageData.links.first, function(data)
             {                
-                toolkist_zs.ConstructPage();
+                toolkist_zs.ConstructPage(data);
             });
         }
     };
@@ -163,9 +192,9 @@ var toolkist_zs = (function($) {
         if(toolkist_zs.currentPageData != null)
         {
             if(toolkist_zs.currentPageData.links.hasOwnProperty('prev')){
-                toolkist_zs.GetDataFromUrl(toolkist_zs.currentPageData.links.prev, function()
+                toolkist_zs.GetDataFromUrl(toolkist_zs.currentPageData.links.prev, function(data)
                 {                
-                    toolkist_zs.ConstructPage();
+                    toolkist_zs.ConstructPage(data);
                 });
             }
         }
@@ -176,9 +205,9 @@ var toolkist_zs = (function($) {
         if(toolkist_zs.currentPageData != null)
         {
             if(toolkist_zs.currentPageData.links.hasOwnProperty('next')){
-                toolkist_zs.GetDataFromUrl(toolkist_zs.currentPageData.links.next, function()
+                toolkist_zs.GetDataFromUrl(toolkist_zs.currentPageData.links.next, function(data)
                 {                
-                    toolkist_zs.ConstructPage();
+                    toolkist_zs.ConstructPage(data);
                 });
             }
         }
@@ -188,9 +217,9 @@ var toolkist_zs = (function($) {
     {
         if(toolkist_zs.currentPageData != null)
         {
-            toolkist_zs.GetDataFromUrl(toolkist_zs.currentPageData.links.last, function()
+            toolkist_zs.GetDataFromUrl(toolkist_zs.currentPageData.links.last, function(data)
             {                
-                toolkist_zs.ConstructPage();
+                toolkist_zs.ConstructPage(data);
             });
         }
     };    
@@ -278,9 +307,9 @@ var toolkist_zs = (function($) {
             url += `${filter}&page[size]=24`;
         }       
 
-        toolkist_zs.GetDataFromUrl(url, function()
+        toolkist_zs.GetDataFromUrl(url, function(data)
         {
-            toolkist_zs.ConstructPage();
+            toolkist_zs.ConstructPage(data);
         }); 
     }
     

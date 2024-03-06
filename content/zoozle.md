@@ -11,6 +11,7 @@ title = 'Zoozle'
 <script src='/toolkist_fs.js'></script>
 <script src='/toolkist_playlist.js'></script>
 <script src='/toolkist.zworpshop.js'></script>
+<script src='/toolkist.zoozle.js'></script>
 
 <style>
 #container{
@@ -153,14 +154,43 @@ input{
     color:black !important;
 }
 
+#filterContainer{
+    display: flex;
+    flex-direction: row;
+}
+
+#nonActiveFilters,#activeFilters{
+    flex: 1;
+    border: 1px solid black;
+}
+
+.filterDiv{
+    width: 100%;
+    position: relative;
+    border: 1px solid black;
+}
+
+.filterDiv button
+{
+    color: black !important;
+}
+
 </style>
+
+<input style='color:black' type='button' id='run' onclick='Go()' value='Go'></input>
+
+<div id='filterContainer'>
+<div id="nonActiveFilters"></div>
+<div id="activeFilters"></div>
+</div>
+
 <div id='container'>
-    <div id="headerContainer">
+    <!--<div id="headerContainer">
         <label for='searchQuery'>Search:</label><input style='color:black' type='text' id='searchQuery'></input>
         <input style='color:black' type='button' id='searchQueryButton' onclick='toolkist_zs.SearchQuery()' value='Search'></input>
         <label for='enableAuthorMin'>Author Min:</label><input id='enableAuthorMin' type='checkbox'/><input id='authorMinInput' type='number'/>     
         <label for='enableAuthorMax'>Author Max:</label><input id='enableAuthorMax' type='checkbox'/><input id='authorMaxInput' type='number'/>        
-    </div>
+    </div>-->
     <div id='pageContainer'>        
         <div id="resultsContainer">
             <div id="paginationContainer">
@@ -180,4 +210,13 @@ input{
         </div>
     </div>
 </div>
+<script>
+    toolkist_zoozle.RenderFilters();
+    function Go(){
+        toolkist_zoozle.Run(function(data){
+            console.log(data);
+            toolkist_zs.ConstructPage(data);
+        })
+    }
+</script>
 {{</rawhtml>}}
