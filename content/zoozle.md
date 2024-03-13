@@ -44,13 +44,22 @@ title = 'Zoozle'
         var resultsDiv = $('#results');
         resultsDiv.empty();
 
-        console.log(toolkist_apimanager.levelsBuffer);
-
         if (toolkist_apimanager.pageData.levels.length > 0) {
             resultsDiv.append('<h2>Levels:</h2>');
             var grid = $('<div style="display: flex; flex-wrap: wrap; gap: 20px;"></div>'); // Create a grid layout
             toolkist_apimanager.pageData.levels.forEach(function(level) {
+
+                var extraGTRData = toolkist_apimanager.GetAdditionalGTRData(level);
+                // Check if extraGTRData contains the property 'points'
+                var points = extraGTRData.points !== undefined ? extraGTRData.points : null;
+
                 var card = $('<div style="position: relative; border: 1px solid #ccc; border-radius: 8px; overflow: hidden; width: 360px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"></div>');
+
+                // Add the points box only if points exist
+                if (points !== null) {
+                    var pointsBox = $('<div style="position: absolute; top: 10px; left: 10px; padding: 5px; background-color: #007bff; color: white; border-radius: 5px; z-index: 10;">Points: ' + points + '</div>');
+                    card.append(pointsBox);
+                }
 
                 var steamButton = $('<button onclick="window.open(\'https://steamcommunity.com/sharedfiles/filedetails/?id=' + level.attributes.workshopId + '\', \'_blank\')" style="position: absolute; top: 10px; right: 10px; padding: 5px 10px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; z-index: 10;">Steam</button>');
 
@@ -72,7 +81,6 @@ title = 'Zoozle'
 
         $('#pageNumber').html(toolkist_apimanager.pageData.pageNumber + "/" + (Math.ceil(toolkist_apimanager.levelsBuffer.length / toolkist_apimanager.pageData.pageSize)));
     }
-
 
     $(document).ready(function() {
         toolkist_apimanager.GetPlayerData(function(){

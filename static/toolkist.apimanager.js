@@ -12,7 +12,8 @@ var toolkist_apimanager = (function($)
         pageSize: 100,
         endpoint: 'records',
         filters: [],
-        response: null
+        response: null,
+        data: []
     };
 
     toolkist_apimanager.zworpParams = {
@@ -37,6 +38,29 @@ var toolkist_apimanager = (function($)
 			console.log(msg);
 		}
 	}
+
+    toolkist_apimanager.GetAdditionalGTRData = function(level)
+    {
+        var data = {};
+        if(this.gtrParams.response == null)
+        {
+            return data;
+        }
+
+        var level = this.gtrParams.data.find(l => l.attributes.level === level.attributes.fileHash);
+
+        if(level == undefined)
+        {
+            return data;
+        }
+
+        if(level.attributes.hasOwnProperty('points'))
+        {
+            data.points = level.attributes.points;
+        }
+
+        return data;
+    };
 	
 	toolkist_apimanager.ConvertSecondsToTime = function(seconds)
 	{
@@ -285,6 +309,10 @@ var toolkist_apimanager = (function($)
         {
             data.filter = self.gtrParams.filters[0];
         }	
+
+        if(self.gtrParams.endpoint == 'levelpoints'){
+            data.sort = '-points';
+        }
 		
 		self.LogMessage('[GTR Request] Get GTR data.');
 		
@@ -296,6 +324,7 @@ var toolkist_apimanager = (function($)
 			{
 				var levelHashes = response.data.map(record => record.attributes.level);                
                 self.gtrParams.response = response;
+                self.gtrParams.data = self.gtrParams.data.concat(response.data);
 				
 				self.LogMessage(`[GTR Response] Retreived ${levelHashes.length} levels.`);
 				
@@ -457,6 +486,7 @@ var toolkist_apimanager = (function($)
         this.gtrParams.endpoint = 'records';
         this.gtrParams.filters = [];
         this.gtrParams.response = null;
+        this.gtrParams.data = [];
 		
         this.zworpParams.filters = [];
 		this.zworpParams.response = null;
@@ -512,6 +542,7 @@ var toolkist_apimanager = (function($)
 				else
 				{
 					//Theres no more results to load.
+                    this.pageData.pageNumber++;
 					self.Loaded();
 				}
 			}					
@@ -542,6 +573,7 @@ var toolkist_apimanager = (function($)
 				else
 				{
 					//Theres no more results to load.
+                    this.pageData.pageNumber++;
 					this.Loaded();
 				}
 			}	
