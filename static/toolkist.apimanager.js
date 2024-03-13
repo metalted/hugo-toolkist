@@ -1,19 +1,25 @@
 var toolkist_apimanager = (function($) 
 {
     var toolkist_apimanager = {};
+	toolkist_apimanager.loggingEnabled = true;
     toolkist_apimanager.levelsBuffer = [];
+	toolkist_apimanager.zworpOnly = false;
     toolkist_apimanager.userList = [];
+	toolkist_apimanager.nextButtonAvailable = true;
 	
     toolkist_apimanager.gtrParams = {
         pageNumber: 1,
         pageSize: 100,
         endpoint: 'records',
         filters: [],
-        total: 0
+        response: null
     };
 
     toolkist_apimanager.zworpParams = {
-        filters: []
+        filters: [],
+		pageSize: 100,
+		pageNumber: 1,
+		response: null
     };    
 
     toolkist_apimanager.pageData = {
@@ -24,7 +30,31 @@ var toolkist_apimanager = (function($)
         end: 0
     };
 	
-	toolkist_apimanager.ConvertSecondsToTime = function(seconds) {
+	toolkist_apimanager.LogMessage = function(msg)
+	{
+		if(this.loggingEnabled)
+		{
+			console.log(msg);
+		}
+	}
+	
+	toolkist_apimanager.ConvertSecondsToTime = function(seconds)
+	{
+		// Calculate hours, minutes, and remaining seconds
+        const hours = Math.floor(seconds / 3600);
+        const minutes = Math.floor((seconds % 3600) / 60);
+        const remainingSeconds = seconds % 60;
+    
+        // Format the time components to have leading zeros if necessary
+        const formattedHours = hours < 10 ? '0' + hours : hours;
+        const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
+        const formattedSeconds = remainingSeconds < 10 ? '0' + remainingSeconds : remainingSeconds;
+    
+        // Concatenate the formatted time components with colons
+        return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+	};	
+	
+	toolkist_apimanager.ConvertSecondsToDisplayTime = function(seconds) {
         // Calculate hours, minutes, and whole seconds
         const hours = Math.floor(seconds / 3600);
         const minutes = Math.floor((seconds % 3600) / 60);
@@ -78,7 +108,7 @@ var toolkist_apimanager = (function($)
                 case 'text':
                     return `<input type='text' id='${context}filter_${elementId}' value='${this.values[0]}' onChange='toolkist_apimanager.FilterUpdated("${context}","${elementId}","${this.type}",0)'/>`;
                 case 'time':
-                    return `<input type='time' id='${context}filter_${elementId}_start' value='${toolkist_apimanager.ConvertSecondsToTime(this.values[0])}' onChange='toolkist_apimanager.FilterUpdated("${context}","${elementId}", "${this.type}", 0)'/><input type='time' id='${context}filter_${elementId}_end' value='${toolkist_apimanager.ConvertSecondsToTime(this.values[1])}' onChange='toolkist_apimanager.FilterUpdated("${context}","${elementId}", "${this.type}", 1)' />`;
+                    return `<input type='number' id='${context}filter_${elementId}_start' value='${this.values[0]}' onChange='toolkist_apimanager.FilterUpdated("${context}","${elementId}", "${this.type}", 0)'/><input type='number' id='${context}filter_${elementId}_end' value='${this.values[1]}' onChange='toolkist_apimanager.FilterUpdated("${context}","${elementId}", "${this.type}", 1)' />`;
                 case 'date':
                     return `<input type='date' id='${context}filter_${elementId}_start' value='${toolkist_apimanager.ConvertISODateToDate(this.values[0])}' onChange='toolkist_apimanager.FilterUpdated("${context}","${elementId}", "${this.type}", 0)'/><input type='date' id='${context}filter_${elementId}_end' value='${toolkist_apimanager.ConvertISODateToDate(this.values[1])}' onChange='toolkist_apimanager.FilterUpdated("${context}","${elementId}", "${this.type}", 1)' />`;
                 case 'user':
@@ -187,25 +217,25 @@ var toolkist_apimanager = (function($)
 			//id: toolkist_apimanager.CreateZworpFilter("id", "ID", "text", "equals"),
 			//workshopId: toolkist_apimanager.CreateZworpFilter("workshopId", "Workshop ID", "text"),
 			//authorId: toolkist_apimanager.CreateZworpFilter("authorId", "Author ID", "text"),
-			name: toolkist_apimanager.CreateFilter("zworp", "name", "name", "Name", "text", "contains"),
+			name: toolkist_apimanager.CreateFilter("zworp", "name", "name", "Track Name", "text", "contains"),
 			createdAt: toolkist_apimanager.CreateFilter("zworp", "createdAt", "createdAt", "Created At", "date"),
 			updatedAt: toolkist_apimanager.CreateFilter("zworp", "updatedAt", "updatedAt", "Updated At", "date"),
 			//fileUid: toolkist_apimanager.CreateZworpFilter("fileUid", "File UID", "text"),
-			fileAuthor: toolkist_apimanager.CreateFilter("zworp", "fileAuthor", "fileAuthor", "Creator", "text", "contains"),
-			//validation: toolkist_apimanager.CreateFilter("zworp", "validation", "validation", "Author Time", "time"),
+			fileAuthor: toolkist_apimanager.CreateFilter("zworp", "fileAuthor", "fileAuthor", "Creator Name", "text", "contains"),
+			validation: toolkist_apimanager.CreateFilter("zworp", "validation", "validation", "Author Time (s)", "time"),
 			//gold: toolkist_apimanager.CreateZworpFilter("gold", "Gold Time", "time"),
 			//silver: toolkist_apimanager.CreateZworpFilter("silver", "Silver Time", "time"),
 			//bronze: toolkist_apimanager.CreateZworpFilter("bronze", "Bronze Time", "time")
 		},
         gtr: {
 			userId: toolkist_apimanager.CreateFilter("gtr", "userId", "userId", "WR By User", "user", "equals", "worldrecords"),
-            favorites: toolkist_apimanager.CreateFilter("gtr", "favorites", "userId", "Favorites Of User", "user", "equals", "favorites")
+            favorites: toolkist_apimanager.CreateFilter("gtr", "favorites", "userId", "Favorites Of User", "user", "equals", "favorites"),
+			levelpoints: toolkist_apimanager.CreateFilter("gtr", "levelpoints", "points", "Min Level Points", "text", "greaterOrEqual", "levelpoints")
 		}
     };
 
     toolkist_apimanager.FilterUpdated = function(context, elementId, type, index)
     {
-        //console.log(context);
         var filter = this.filters[context][elementId];
         switch(type)
         {
@@ -244,7 +274,6 @@ var toolkist_apimanager = (function($)
     toolkist_apimanager.GTRRequest = function()
     {
         var self = this;
-		var filters = [];
 		var data = 
 		{
 			'page[size]': self.gtrParams.pageSize,
@@ -254,29 +283,22 @@ var toolkist_apimanager = (function($)
 		//Any filters applied?
         if(self.gtrParams.filters.length > 0)
         {
-            filters = filters.concat(self.gtrParams.filters);
-        }
-		
-		//Create the filter data for the request.
-        if(filters.length == 1)
-        {
-            data.filter = filters[0];
-        }
-        else if(filters.length > 1)
-        {
-            data.filter = `and(${filters.join()})`;
+            data.filter = self.gtrParams.filters[0];
         }	
-
-		//console.log(`https://jsonapi.zeepkist-gtr.com/${self.gtrParams.endpoint}`);		
-        //console.log(data);
+		
+		self.LogMessage('[GTR Request] Get GTR data.');
+		
         $.ajax({
             url: `https://jsonapi.zeepkist-gtr.com/${self.gtrParams.endpoint}`,
             method: 'GET',
             data: data,
-            success: function(response) {
-				//console.log(response);
-                var levelHashes = response.data.map(record => record.attributes.level);
-                self.gtrParams.total = response.meta.total;
+            success: function(response) 
+			{
+				var levelHashes = response.data.map(record => record.attributes.level);                
+                self.gtrParams.response = response;
+				
+				self.LogMessage(`[GTR Response] Retreived ${levelHashes.length} levels.`);
+				
                 self.ZworpRequest(levelHashes);
             },
             error: function(xhr, status, error) {
@@ -285,61 +307,127 @@ var toolkist_apimanager = (function($)
         });
     };
 
-    toolkist_apimanager.ZworpRequest = function(levelHashes) {
+    toolkist_apimanager.ZworpRequest = function(levelHashes)
+	{
         var self = this;
         var filters = [];
-        var data = {'page[size]': self.gtrParams.pageSize};
-        var zworpOnly = false;
+        var data = {};
     
         // Check if any levels were provided
         if (Array.isArray(levelHashes)) {
-            if (levelHashes.length > 0) {
+			
+            if (levelHashes.length > 0) 
+			{
+				//A filled array means result from GTR.
+				data['page[size]'] = self.zworpParams.pageSize;
                 filters.push("any(fileHash,'" + levelHashes.join("','") + "')");
-            } else {
+				self.LogMessage('[Zworp] Creating fileHash filter from array.');
+            } 
+			else 
+			{
                 // An empty array means no results
+				self.LogMessage('[Zworp] FileHash array is empty. Skipping search.');
                 self.Loaded();
                 return;
             }
-        } else {
-            zworpOnly = true;
-            data['page[number]'] = self.gtrParams.pageNumber;
+        } 
+		else 
+		{
+			//When no array is defined, its a zworpshop only request.
+            self.zworpOnly = true;			
+            data['page[size]'] = self.zworpParams.pageSize;
+            data['page[number]'] = self.zworpParams.pageNumber;
+			self.LogMessage('[Zworp] Zworpshop only request.');
         }
-    
+		
         // Check if any filters were applied
-        if (self.zworpParams.filters.length > 0) {
+        if (self.zworpParams.filters.length > 0) 
+		{			
+			self.LogMessage(`[Zworp] Applying ${self.zworpParams.filters.length} filters.`);
             filters = filters.concat(self.zworpParams.filters);
-        }
+		}
+
+		// Create the filter data for the request
+		if(filters.length == 0)
+		{
+			
+		}
+		else if (filters.length == 1) {
+			data.filter = filters[0];
+		} 
+		else
+		{
+			data.filter = `and(${filters.join()})`;
+		}			
     
-        // Create the filter data for the request
-        if (filters.length === 1) {
-            data.filter = filters[0];
-        } else if (filters.length > 1) {
-            data.filter = `and(${filters.join()})`;
-        }
-    
+		self.LogMessage('[Zworp Request] Get Zworpshop data.');
+		
         $.ajax({
             url: 'https://jsonapi.zworpshop.com/levels',
             method: 'GET',
             data: data,
-            success: function(response) {
-                //console.log(zworpOnly);
+            success: function(response) 
+			{
+				self.zworpParams.response = response;
+				self.LogMessage(`[Zworp Response] Retreived ${response.data.length} levels.`);
                 self.levelsBuffer = self.levelsBuffer.concat(response.data);
-                //console.log(self.levelsBuffer);
-    
-                // Update logic to properly handle the display of results regardless of page size
-                if (response.data.length < self.gtrParams.pageSize || self.levelsBuffer.length >= response.meta.total) {
-                    // No more pages to load or all results have been loaded
-                    self.Loaded();
-                } else {
-                    // There are more pages or items to load
-                    self.gtrParams.pageNumber++;
-                    if (zworpOnly) {
-                        self.ZworpRequest();
-                    } else {
-                        // If you have a different method for non-zworp requests
-                        self.GTRRequest();
-                    }
-                }
+				self.LogMessage(`[Search] Levelbuffer now contains ${self.levelsBuffer.length} levels.`);
+				
+				if(self.zworpOnly)
+				{
+					//Does the buffer contain enough entries to fill the page?
+					let currentStartingIndex = (self.zworpParams.pageNumber - 1) * self.pageData.pageSize;
+					let potentialEndingIndex = (self.zworpParams.pageNumber * self.pageData.pageSize);
+					
+					//Theres enough levels to fill the page.
+					if(self.levelsBuffer.length >= potentialEndingIndex)
+					{
+						//Display the current result.
+						self.Loaded();
+					}
+					else
+					{
+						//Levels buffer is smaller than the potential last index.
+						//Does zworpshop have another page available?
+						if(response.links.hasOwnProperty('next'))
+						{
+							self.zworpParams.pageNumber++;
+							self.ZworpRequest();
+						}
+						else
+						{
+							//Theres no more results to load.
+							self.Loaded();
+						}
+					}					
+				}
+				else
+				{
+					//Does the buffer contain enough entries to fill the page?
+					let currentStartingIndex = (self.gtrParams.pageNumber - 1) * self.pageData.pageSize;
+					let potentialEndingIndex = (self.gtrParams.pageNumber * self.pageData.pageSize);
+					
+					//Theres enough levels to fill the page.
+					if(self.levelsBuffer.length >= potentialEndingIndex)
+					{
+						self.Loaded();
+					}
+					else
+					{
+						//Levels buffer is smaller than the potential last index.
+						//Does gtr have another page available? 
+						if(self.gtrParams.response.links.hasOwnProperty('next'))
+						{
+							self.gtrParams.pageNumber++;
+							self.GTRRequest();
+						}
+						else
+						{
+							//Theres no more results to load.
+							self.Loaded();
+						}
+					}
+				}
             },
             error: function(xhr, status, error) {
                 console.error(status, error);
@@ -357,18 +445,22 @@ var toolkist_apimanager = (function($)
         this.pageData.start = (this.pageData.pageNumber - 1) * this.pageData.pageSize;
         this.pageData.end = this.pageData.start + this.pageData.pageSize;
         this.pageData.levels = this.levelsBuffer.slice(this.pageData.start, this.pageData.end);
+		this.nextButtonAvailable = true;
         this.OnLoadedCallback();
     };
 
     toolkist_apimanager.Reset = function(){
         this.levelsBuffer = [];
+		this.zworpOnly = false;
 		
         this.gtrParams.pageNumber = 1;
-        this.gtrParams.endpoint= 'records';
+        this.gtrParams.endpoint = 'records';
         this.gtrParams.filters = [];
-        this.gtrParams.total = 0;
+        this.gtrParams.response = null;
 		
         this.zworpParams.filters = [];
+		this.zworpParams.response = null;
+		this.zworpParams.pageNumber = 1;
 		
         this.pageData.pageNumber = 1;
         this.pageData.levels = [];
@@ -385,37 +477,94 @@ var toolkist_apimanager = (function($)
         }
     }
 
-    toolkist_apimanager.NextPage = function() {
-        // Check if there are more items in the buffer than have been displayed
-        var itemsDisplayed = this.pageData.pageNumber * this.pageData.pageSize;
-        var remainingItems = this.levelsBuffer.length - itemsDisplayed;
-    
-        // If there are remaining items in the buffer, simply increment the page number and call Loaded
-        if (remainingItems > 0) {
-            this.pageData.pageNumber++;
-            this.Loaded();
-        } else {
-            // Check if there are potentially more items to load from the server
-            if (itemsDisplayed < this.gtrParams.total) {
-                this.pageData.pageNumber++;
-                this.gtrParams.pageNumber++;
-                this.GTRRequest();
-            }
-        }
+    toolkist_apimanager.NextPage = function() 
+	{
+		if(!this.nextButtonAvailable)
+		{
+			return;
+		}
+		
+		this.nextButtonAvailable = false;
+		
+		if(this.zworpOnly)
+		{
+			//Does the buffer contain enough entries to fill the page?
+			let currentStartingIndex = (this.pageData.pageNumber) * this.pageData.pageSize;
+			let potentialEndingIndex = (this.pageData.pageNumber + 1) * this.pageData.pageSize;
+			
+			//Theres enough levels to fill the page.
+			if(this.levelsBuffer.length >= potentialEndingIndex)
+			{
+				//Display the current result.
+				this.pageData.pageNumber++;
+				this.Loaded();
+			}
+			else
+			{
+				//Levels buffer is smaller than the potential last index.
+				//Does zworpshop have another page available?
+				if(this.zworpParams.response.links.hasOwnProperty('next'))
+				{
+					this.zworpParams.pageNumber++;
+					this.pageData.pageNumber++;
+					this.ZworpRequest();
+				}
+				else
+				{
+					//Theres no more results to load.
+					self.Loaded();
+				}
+			}					
+		}
+		else
+		{
+			//Does the buffer contain enough entries to fill the page?
+			let currentStartingIndex = (this.pageData.pageNumber) * this.pageData.pageSize;
+			let potentialEndingIndex = (this.pageData.pageNumber + 1) * this.pageData.pageSize;
+			
+			//Theres enough levels to fill the page.
+			if(this.levelsBuffer.length >= potentialEndingIndex)
+			{
+				//Display the current result.
+				this.pageData.pageNumber++;
+				this.Loaded();
+			}
+			else
+			{
+				//Levels buffer is smaller than the potential last index.
+				//Does gtr have another page available?
+				if(this.gtrParams.response.links.hasOwnProperty('next'))
+				{
+					this.gtrParams.pageNumber++;
+					this.pageData.pageNumber++;
+					this.GTRRequest();
+				}
+				else
+				{
+					//Theres no more results to load.
+					this.Loaded();
+				}
+			}	
+		}				
     };
     
-
 	toolkist_apimanager.Search = function()
-	{
-		this.Reset();		
+	{		
+		this.Reset();	
+		this.LogMessage("[Search] Reset filters.");
 		
         var activeGTRFilters = this.GetFiltersFromPage('gtr');
         this.GetFiltersFromPage('zworp');
 		
         if(activeGTRFilters.length > 0)
 		{
+			this.LogMessage(`[GTR Filters] Count: ${activeGTRFilters.length}`);
             this.gtrParams.filters = [this.gtrParams.filters[0]];
 			this.gtrParams.endpoint = activeGTRFilters[0].endpoint;
+			
+			this.LogMessage(`[GTR Filters] Filter: ${this.gtrParams.filters}`);
+			this.LogMessage(`[GTR Filters] Endpoint: ${this.gtrParams.endpoint}`);
+			
             this.GTRRequest();
 		}
         else
@@ -442,10 +591,12 @@ var toolkist_apimanager = (function($)
         xhttp.send(); 
     }
 
+	//Get all players (id and name) from GTR.
     toolkist_apimanager.GetPlayerData = function(callback) {
         
         var self = this;
         var allUsers = [];
+		self.LogMessage("[GTR Request] Get user data.");
         
         // Define a recursive function to fetch data from all pages
         function fetchData(url) {
@@ -463,6 +614,8 @@ var toolkist_apimanager = (function($)
                             name: user.attributes.steamName
                         };
                     });
+					
+					self.LogMessage(`[GTR Response] Retreived ${self.userList.length} users.`);
                     callback();
                 }
             });
