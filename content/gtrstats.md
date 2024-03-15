@@ -6,29 +6,49 @@ title = 'GTR Stats'
 <script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.159.0/three.min.js" integrity="sha512-OviGQIoFPxWNbGybQNprasilCxjtXNGCjnaZQvDeCT0lSPwJXd5TC3usI/jsWepKW9lZLZ1ob1q/Vy4MnlTt7g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-<style>
-    button{
-        color: black !important;
-        width: 10%;
-    }
-</style>
 <script src='/toolkist_stats.js'></script>
 
-<h3>Leaderboard</h3>
-<div id='button_leaderboard'></div>
-<h3>User</h3>
-<div id='selection_user'></div>
-<h3>Crashes</h3>
-<div id='buttons_crash'></div>
-<h3>Distances</h3>
-<div id='buttons_distance'></div>
-<h3>Time</h3>
-<div id='buttons_time'></div>
-<h3>Others</h3>
-<div id='buttons_others'></div>
-<h3>Results</h3>
-<div id='results'></div>
+<style>
+    #stat_selection button{
+        color: black !important;
+        width: 100%;
+    }
+
+    #stat_selection
+    {
+        width: 200px;
+    }
+
+    #results
+    {
+        flex: 1;
+        margin-left: 50px;
+    }
+
+    #selection_user select
+    {
+        max-width: 100%;
+    }
+
+</style>
+
+<div class='fullPageContainer'>
+    <div id='stat_selection'>
+        <h3>Leaderboard</h3>
+        <div id='button_leaderboard'></div>
+        <h3>User</h3>
+        <div id='selection_user'></div>
+        <h3>Crashes</h3>
+        <div id='buttons_crash'></div>
+        <h3>Distances</h3>
+        <div id='buttons_distance'></div>
+        <h3>Time</h3>
+        <div id='buttons_time'></div>
+        <h3>Others</h3>
+        <div id='buttons_others'></div>
+    </div>
+    <div id='results'></div>
+</div>
 
 <script>
     function DataLoaded()

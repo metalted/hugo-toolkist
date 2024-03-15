@@ -1,0 +1,131 @@
+body{
+  font-family: 'Righteous';
+  background-color: rgb(17,17,17);
+  color: white;
+}
+
+/*PAGE NAVIGATION*/
+.topnav
+{
+    background-color: rgb(251, 199, 25);
+    position:absolute;
+    top: 0;
+    left: 0;
+    height: 50px;
+    width: 100%;
+    color: rgb(17,17,17);
+    position: fixed;
+    z-index: 998;
+}
+
+.topnav h1
+{
+    position: absolute;
+    top: 0;
+    left: 30px;
+    font-size: 32px;
+    line-height: 50px;
+    height: 100%;
+    padding:0;
+    margin:0;
+    width: 150px;
+    color: rgb(17,17,17);
+    text-shadow: -2px 2px 1px rgb(239, 107, 35);
+    font-weight: bold;
+}
+
+.topnav .pageTitle
+{
+    position: absolute;
+    display: inline-block;
+    height: 50px;
+    top:0;
+    left: 400px;
+    line-height: 50px;
+    font-size: 24px;
+    width: 200px;
+    box-sizing: border-box;
+    text-shadow: -2px 2px 1px rgb(239, 107, 35);
+    text-align: left;
+}
+
+.topnav .dropdown {
+    position: absolute;
+    display: inline-block;
+    height: 50px;
+    top:0;
+    left:175px;
+    line-height: 50px;
+    font-size: 24px;
+    width: 200px;
+    text-align: center;
+    box-sizing: border-box;
+    border-left: 1px solid rgb(17,17,17);
+    border-right: 1px solid rgb(17,17,17);
+    text-shadow: -2px 2px 1px rgb(239, 107, 35);
+}
+
+.topnav .dropdown:hover
+{  
+  background-color:  rgb(239, 107, 35);
+  cursor:pointer;
+}
+
+.topnav .dropdown-content 
+{
+  font-size: 18px;
+  display: none;
+  position: absolute;
+  left: 0;
+  background-color: rgb(251, 199, 25);
+  width: 200px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 999;
+  box-sizing: border-box;
+  border: 1px solid rgb(17,17,17);
+}
+
+.topnav .dropdown-content ul
+{
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.topnav .dropdown-content ul li
+{
+  border-bottom: 1px solid rgb(17,17,17);
+  box-sizing: border-box;
+}
+
+.topnav .dropdown-content ul li:hover
+{
+  background-color:  rgb(239, 107, 35);
+}
+
+.topnav .dropdown:hover .dropdown-content 
+{
+  display: block;
+}
+
+.topnav .dropdown-content ul li a
+{
+  text-decoration: none; /* Removes the underline from links */
+  color: rgb(17,17,17); /* Sets the link color to black */
+}
+
+.topnav .dropdown-content ul li a:visited {
+  color: rgb(17,17,17); /* Keeps the link color black even after being clicked */
+}
+
+/*MAIN PAGE*/
+.main
+{
+  margin-top: 50px;  
+}
+
+.control_table{
+  position:absolute;
+  top: 100%;
+}

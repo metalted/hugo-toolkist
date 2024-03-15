@@ -10,10 +10,10 @@ var toolkist_graphics_editor = (function($) {
             // Initialize the container
             this.container = $('#' + containerID);
             this.container.width("100%");
-            this.container.height("800px");
+            //this.container.height("800px");
             this.container.css({
                 backgroundColor: 'black',
-                position: 'relative',
+                position: 'absolute',
             });
 
             //Create the menu bar
@@ -25,7 +25,8 @@ var toolkist_graphics_editor = (function($) {
                 position: 'absolute',
                 top: 0,
                 left: 0,
-                width: '100%'
+                width: '100%',
+                zIndex : 990
             });
 
             //Create the side bar
@@ -33,11 +34,11 @@ var toolkist_graphics_editor = (function($) {
             this.container.append(this.sidebar);
             this.sidebar.css({
                 backgroundColor: '#555555',
-                height: '740px',
                 width: '250px',
                 position: 'absolute',
                 bottom: 0,
-                left: 0
+                left: 0,
+                top:60
             })
 
             //Add the paint selection

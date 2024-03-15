@@ -8,11 +8,14 @@ title = 'Image Converter'
 <script src='/toolkist_color.js'></script>
 <script src='/toolkist_image_converter.js'></script>
 <script src='/toolkist_fs.js'></script>
-
+<br>
+<h2>Select your image using the button below. After uploading it will automatically be converted.
+<br>
 <div id='image_input_container'></div>
+<hr>
 <input style='color:black' type='button' id='copy_to_clipboard' onclick='copyToClipboard()' value='Copy To Clipboard' hidden></input>
 <input style='color:black' type='button' id='download_to_file' onclick='downloadToFile()' value='Download .zeeplevel' hidden></input>
-<hr>
+<br>
 <canvas id='image_out_preview'></canvas>
 
 <script>

@@ -6,6 +6,8 @@
   </url><url>
     <loc>http://localhost:1313/graphics_editor/</loc>
   </url><url>
+    <loc>http://localhost:1313/gtrstats/</loc>
+  </url><url>
     <loc>http://localhost:1313/image_converter/</loc>
   </url><url>
     <loc>http://localhost:1313/playlist_editor/</loc>

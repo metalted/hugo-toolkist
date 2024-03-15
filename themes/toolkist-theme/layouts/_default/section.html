@@ -1,13 +1,10 @@
 {{ define "main_article" }}
     <article class="main">
-        {{ partial "module/sidebar_btn" . }}
-
-
-        <div class="title">
+        <!--<div class="title">
             <h1 class="title-header">{{ .Title }}</h1>
-        </div>
+        </div>-->
 
-        <div class="article-meta">
+        <!--<div class="article-meta">
             <div class="breadcumb">
                 <i class="bi bi-folder"></i>
                 {{ partial "module/breadcrumb" . }}
@@ -18,6 +15,6 @@
 
         <div class="list-files">
             {{ partial "module/section_tree" ( dict "context" . "currentPage" . ) }}
-        </div>
+        </div>-->
     </article>
 {{ end }}

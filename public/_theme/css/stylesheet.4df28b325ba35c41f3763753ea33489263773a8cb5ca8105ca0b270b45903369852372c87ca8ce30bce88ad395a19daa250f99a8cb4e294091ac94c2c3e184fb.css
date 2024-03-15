@@ -1,0 +1,70 @@
+/* Style for the top navigation bar */
+.topnav {
+    background-color: #333; /* Background color for the navigation bar */
+    overflow: hidden; /* Ensure content doesn't overflow */
+  }
+  
+  /* Style for the logo */
+  .topnav h1 {
+    float: left; /* Float the logo to the left */
+    font-size: 24px; /* Set font size */
+    color: white; /* Text color */
+    padding: 14px 16px; /* Padding around the logo */
+    margin: 0; /* Remove default margin */
+  }
+  
+  /* Style for the list */
+  .section-tree {
+    list-style-type: none; /* Remove default list styles */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+  }
+  
+  /* Style for list items */
+  .section-tree li {
+    float: left; /* Float list items to the left */
+    position: relative; /* Positioning for dropdown */
+  }
+  
+  /* Style for links */
+  .section-tree li a {
+    display: block; /* Make links block level */
+    color: white; /* Text color */
+    text-align: center; /* Center text */
+    padding: 14px 16px; /* Padding around links */
+    text-decoration: none; /* Remove underline */
+  }
+  
+  /* Hover effect for links */
+  .section-tree li:hover a {
+    background-color: #111; /* Darken background color on hover */
+  }
+  
+  /* Dropdown content (hidden by default) */
+  .section-tree .dropdown-content {
+    display: none; /* Hide dropdown content by default */
+    position: absolute; /* Position dropdown content */
+    background-color: #333; /* Background color for dropdown */
+    min-width: 160px; /* Set minimum width */
+    z-index: 1; /* Ensure dropdown is above other content */
+  }
+  
+  /* Show dropdown content on hover */
+  .section-tree li:hover .dropdown-content {
+    display: block; /* Show dropdown content */
+  }
+  
+  /* Style for dropdown links */
+  .section-tree .dropdown-content a {
+    float: none; /* Remove float */
+    color: white; /* Text color */
+    padding: 12px 16px; /* Padding around links */
+    text-decoration: none; /* Remove underline */
+    display: block; /* Make links block level */
+    text-align: left; /* Align text to the left */
+  }
+  
+  /* Hover effect for dropdown links */
+  .section-tree .dropdown-content a:hover {
+    background-color: #111; /* Darken background color on hover */
+  }

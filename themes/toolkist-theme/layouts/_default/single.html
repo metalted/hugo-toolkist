@@ -1,14 +1,13 @@
 {{ define "main_article" }}
     <article class="main">
-        {{ partial "module/sidebar_btn" . }}
 
-
+        <!--
         <div class="title">
             <h1 class="title-header">
                 {{ .Title }}
-            </h1>
+            </h1>-->
 
-            <div class="author-date-readtime">
+            <!--<div class="author-date-readtime">
                 {{ if isset $.Params "author" }}
 
                     {{ if or ( and ( not (isset $.Params "showAuthor") ) $.Site.Params.page.showAuthor ) $.Params "showAuthor" }}
@@ -55,7 +54,7 @@
                         {{ i18n "min_to_read" $.Page.ReadingTime }}
                     </div>
                 {{ end }}
-            </div>
+            </div>-->
         </div>
 
         <div class="article-meta">
@@ -90,10 +89,10 @@
             {{ end }}
 
             {{ with  $.Site.Params.page.showBreadcrumb }}
-                <div class="breadcumb">
+                <!--<div class="breadcumb">
                     <i class="bi bi-folder"></i>
                     {{ partial "module/breadcrumb" $ }}
-                </div>
+                </div>-->
             {{ end }}
 
             {{ if .IsTranslated }}
