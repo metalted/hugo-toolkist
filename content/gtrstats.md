@@ -431,7 +431,7 @@ title = 'GTR Stats'
             if (index >= 0) {
                 var userData = allSortedData[property][index];
                 var userStat = userData[property];
-                var position = index + 1;
+                var position = index;
 
                 console.log(`${selectedUser} is number ${position} in ${property} with value: ${userStat}`);
 
