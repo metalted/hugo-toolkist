@@ -122,6 +122,12 @@ var toolkist_stats = (function($) {
         });
     }    
 
+    toolkist_stats.GetSortedData = function(property) 
+    {
+        const sortedData = toolkist_stats.SortData(toolkist_stats.processedData, property);
+        return sortedData;
+    };
+
     /**
      * Displays sorted data in a table format based on the specified property.
      * @param {string} property - The property to sort by and display.
@@ -151,6 +157,8 @@ var toolkist_stats = (function($) {
         table += `</tbody></table>`;
         $('#results').html(`<h2>${property}</h2>${table}`);
     };
+
+    
 
     /**
      * Displays highest scores for each stat in a table format.
@@ -200,7 +208,7 @@ var toolkist_stats = (function($) {
         $('#results').html('<h2>Highest Scores for Each Stat</h2>' + table);
     };
 
-    toolkist_stats.createPlayerSelectionList = function(elementId) {
+    toolkist_stats.createPlayerSelectionList = function(elementId, callback) {
         // Find the container and clear it
         const $container = $('#' + elementId).empty();
     
@@ -221,6 +229,9 @@ var toolkist_stats = (function($) {
         // Set up an event listener to log the change and display user stats
         $select.on('change', function() {
             const selectedName = $(this).find('option:selected').text();
+
+            callback(selectedName);
+            /*
             console.log(selectedName);
             var selectedUserStats = toolkist_stats.processedData.find(u => u.playerName === selectedName);
             
@@ -267,7 +278,7 @@ var toolkist_stats = (function($) {
                     $table.append($tbody);
                     $results.append($table); // Append the table to the results container
                 }
-            }
+            }*/
         });
     }
 

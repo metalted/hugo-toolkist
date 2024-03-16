@@ -8,20 +8,96 @@ title = 'Playlist Editor'
 <script src='/toolkist_playlist.js'></script>
 <script src='/toolkist_fs.js'></script>
 
-<div id='playlist_input_container'></div>
-<label for='playlist_name'>Name</label><input style='color:black' type='text' id='playlist_name' value='Toolkist Playlist'></input>
-<br>
-<label for='playlist_shuffle'>Shuffle</label><input style='color:black' type='checkbox' id='playlist_shuffle'></input>
-<br>
-<label for='playlist_roundtime'>Roundtime</label><input id='playlist_roundtime' style='color:black' type='number' value='360' min='120' max='3600'></input>
-<br>
-<input style='color:black' type='button' id='download_to_file' onclick='copyToClipboard()' value='Copy to Clipboard'></input>
-<input style='color:black' type='button' id='download_to_file' onclick='downloadToFile()' value='Download .zeeplist'></input>
-<hr>
-<div id='playlist_editor'>
-    <table id='playlistTable' style='width: 100%'>
-        <tbody></tbody>
-    </table>
+<style>
+    h2{
+        font-size: 24px;
+        color: rgb(239, 107, 35);
+    }
+
+    td{
+        font-size: 18px;
+        padding: 5px;
+        padding-right: 10px;
+        
+    }
+
+    .ui-sortable td
+    {
+        cursor: grab;
+    }
+
+    .ui-sortable td:active
+    {
+        cursor: grabbing;
+    }
+
+    .ui-sortable button
+    {
+        display: inline-block;
+        padding: 4px 4px;
+        background-color: rgb(251, 59, 25);
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: background-color 0.1s ease-in-out;
+        font-family: 'Righteous';
+        font-weight: 300;
+        font-size: 18px;
+    }
+
+    .ui-sortable button:hover
+    {
+        background-color: rgb(239, 107, 35);
+    }
+
+    #tracks
+    {
+        margin-top: 50px;
+    }
+
+    #playlistTable th
+    {
+        text-align: left;
+        padding: 5px;
+        border-bottom: 1px solid rgb(239, 107, 35);
+        color: rgb(239, 107, 35);
+    }
+    #playlistTable td:nth-child(2)
+    {
+        border-left: 1px solid rgb(239, 107, 35);
+        border-right: 1px solid rgb(239, 107, 35);
+    }
+    #playlistTable tr:nth-child(even)
+    {
+        background-color: rgb(34,34,34);
+    }
+</style>
+
+<div id='content'>
+    <div id='properties'>
+        <h2>Playlist</h2>
+        <table>
+            <tr><td>Name</td><td><input style='color:black' type='text' id='playlist_name' value='Toolkist Playlist'/></td></tr>
+            <tr><td>Shuffle</td><td><input style='color:black' type='checkbox' id='playlist_shuffle'/></td></tr>
+            <tr><td>Round Length</td><td><input id='playlist_roundtime' style='color:black' type='number' value='360' min='120' max='3600'/></td></tr>
+            <tr><td><input class='standardButton'type='button' id='download_to_file' onclick='copyToClipboard()' value='Copy to Clipboard'></input></td><td><input class='standardButton' type='button' id='download_to_file' onclick='downloadToFile()' value='Download .zeeplist'></input></td></tr>
+        </table>
+    </div>
+    <div id='tracks'>
+        <h2 style='float:left; padding-right: 50px; line-height: 40px'>Tracks</h2>
+        <div class='fileInputButton' id='playlist_input_container'>
+            <label class='standardButton' for='toolkist_fs_text_input'>Add Playlist</label>       
+        </div>
+        <hr>
+        <div id='playlist_editor'>
+            <table id='playlistTable' style='width: 100%'>
+                <thead><th>Track Name</th><th>Creator</th><th></th></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        <hr>
+    </div>    
 </div>
 
 <script>
@@ -50,7 +126,7 @@ title = 'Playlist Editor'
             row.data("level", level);
             row.append($("<td>").text(level.Name));
             row.append($("<td>").text(level.Author));
-            const removeButton = $("<button>").text("Remove").css({color: 'black'}).click(() => removeEntry(index));
+            const removeButton = $("<button>").text("Remove").click(() => removeEntry(index));
             row.append($("<td>").append(removeButton));
             tbody.append(row);
         });

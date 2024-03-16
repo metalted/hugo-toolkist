@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    {{ partial "html_head.html" . }}
+    <body>
+        <div id="pageWrapper">
+            <div id="headerWrapper">
+                {{ partial "header.html" . }}
+            </div>
+            <div id="contentWrapper">
+                {{ block "content" . }}{{ end }}
+            </div>
+        </div>
+    </body>
+</html>

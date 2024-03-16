@@ -1,0 +1,17 @@
+name = "Toolkist Theme"
+license = "Apache-2.0"
+licenselink = ""
+demosite = ""
+description = ""
+homepage = ""
+tags = [""]
+features = [""]
+
+[author]
+    name = "Metalted"
+    homepage = ""
+
+[origin]
+    name = ""
+    homepage = ""
+    repo = ""

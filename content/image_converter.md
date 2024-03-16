@@ -3,20 +3,43 @@ title = 'Image Converter'
 +++
 
 {{<rawhtml>}}
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src='/toolkist.js'></script>
 <script src='/toolkist_color.js'></script>
 <script src='/toolkist_image_converter.js'></script>
 <script src='/toolkist_fs.js'></script>
-<br>
-<h2>Select your image using the button below. After uploading it will automatically be converted.
-<br>
-<div id='image_input_container'></div>
-<hr>
-<input style='color:black' type='button' id='copy_to_clipboard' onclick='copyToClipboard()' value='Copy To Clipboard' hidden></input>
-<input style='color:black' type='button' id='download_to_file' onclick='downloadToFile()' value='Download .zeeplevel' hidden></input>
-<br>
-<canvas id='image_out_preview'></canvas>
+<style>
+    #result{
+        margin-top: 20px;
+        border: 1px solid rgb(251, 199, 25);
+        padding: 25px;
+    }
+    h2{
+        font-size: 24px;    
+        color: rgb(239, 107, 35);
+    }
+    h3{
+        font-size: 18px;
+    }
+    canvas
+    {
+        margin-top:25px;
+        margin-bottom: 25px;
+        display: block;
+    }
+</style>
+
+<div id='content'>
+    <div class='fileInputButton' id='image_input_container'>
+        <label class='standardButton' for='toolkist_fs_image_input'>Upload Image</label>
+    </div>
+    <div id='result' hidden>
+        <h2>Result:</h2>
+        <h3 id='blockCount'></h3>
+        <canvas id='image_out_preview'></canvas>
+        <input class='standardButton' type='button' id='copy_to_clipboard' onclick='copyToClipboard()' value='Copy To Clipboard'></input>
+        <input class='standardButton' type='button' id='download_to_file' onclick='downloadToFile()' value='Download .zeeplevel'></input>
+    </div>
+</div>
 
 <script>
     var zeeplevel = null;
@@ -31,8 +54,8 @@ title = 'Image Converter'
         zeeplevel = new toolkist.Zeeplevel('ImageTest').setHeader(header).setBlocks(blocks);
         toolkist_image_converter.drawOnCanvas('image_out_preview', img.quantized, function()
         {
-            $('#copy_to_clipboard').show();
-            $('#download_to_file').show();
+            $('#blockCount').html("Block count: " + blocks.length);
+            $('#result').slideDown(500, "swing");
         });
     });
 
