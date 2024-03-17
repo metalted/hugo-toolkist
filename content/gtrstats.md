@@ -433,7 +433,7 @@ title = 'GTR Stats'
                 var userStat = userData[property];
                 var position = index;
 
-                console.log(`${selectedUser} is number ${position} in ${property} with value: ${userStat}`);
+                //console.log(`${selectedUser} is number ${position} in ${property} with value: ${userStat}`);
 
                 var $row = $('<tr>');
 
@@ -512,7 +512,7 @@ title = 'GTR Stats'
 
     function DataLoaded()
     {
-        console.log(toolkist_stats.processedData);
+        //console.log(toolkist_stats.processedData);
         
         //Fill Pages
         Object.keys(toolkist_stats.processedData[0]).forEach(function(property) 
@@ -523,7 +523,7 @@ title = 'GTR Stats'
             var table = CreateLeaderboardTable(data, property);
             $('#' + property).html(table);
 
-            console.log(allSortedData);
+            //console.log(allSortedData);
         });
 
         toolkist_stats.createPlayerSelectionList('selection_user', UserSelected);
