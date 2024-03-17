@@ -98,6 +98,11 @@ title = 'GTR Stats'
     background-color: rgb(34,34,34);
     width: 100%;
 }
+.leaderboardTable tr:nth-child(odd)
+{
+    background-color: rgb(17,17,17);
+    width: 100%;
+}
 
 .leaderboardTable td{
     padding: 5px;

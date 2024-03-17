@@ -72,6 +72,13 @@ title = 'Playlist Editor'
     {
         background-color: rgb(34,34,34);
     }
+    #playlistTable tbody tr:nth-child(odd){
+        background-color: rgb(17,17,17);
+    }
+
+    #playlistTable tbody{
+        border: 1px solid rgb(239, 107, 35);
+    }
 </style>
 
 <div id='content'>
