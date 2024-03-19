@@ -544,6 +544,7 @@ var toolkist_apimanager = (function($)
 				}
 				else
 				{
+                    console.log("Got here");
 					//Theres no more results to load.
                     this.pageData.pageNumber++;
 					self.Loaded();

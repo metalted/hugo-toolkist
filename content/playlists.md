@@ -5,16 +5,7 @@ title = 'Playlists'
 {{<rawhtml>}}
 <script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.159.0/three.min.js" integrity="sha512-OviGQIoFPxWNbGybQNprasilCxjtXNGCjnaZQvDeCT0lSPwJXd5TC3usI/jsWepKW9lZLZ1ob1q/Vy4MnlTt7g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>-->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<script src='/toolkist.js'></script>
-<script src='/toolkist_color.js'></script>
-<script src='/toolkist_fs.js'></script>
-<script src='/toolkist_playlist.js'></script>
-<script src='/toolkist.zworpshop.js'></script>
-<script src='/toolkist.zoozle.js'></script>
-<script src='/toolkist.apisearch.js'></script>
-<script src='/toolkist.apimanager.js'></script>
 
 <style>
     #content{
@@ -297,6 +288,78 @@ title = 'Playlists'
     }
     </style>
 
+
+<script type="module">
+    import {toolkist} from '/toolkist/toolkist.js';
+
+    var playlist = new toolkist.game.Playlist();
+    var gistPlaylists;
+    var zworpData = {};
+
+    function PlaylistSelected(index)
+    {
+        if(index === '-1'){return;}
+        var plName = gistPlaylists[index].name;
+
+        if(zworpData.hasOwnProperty(plName))
+        {
+            toolkist.html.RenderLevelList(zworpData[plName].data, 'results_container', AddLevelButtonPressed);
+        }
+        else
+        {
+            toolkist.api.ZworpPlaylistRequest(gistPlaylists[index], function(data){
+                zworpData[plName] = data;
+                console.log(data);
+                toolkist.html.RenderLevelList(data.data, 'results_container', AddLevelButtonPressed);
+            })
+        }        
+    }
+
+    function AddLevelButtonPressed(levelHash)
+    {
+        for(let list in zworpData)
+        {
+            let level = zworpData[list].data.find(l => l.attributes.fileHash == levelHash);
+            if(level != undefined)
+            {
+                playlist.AddLevel(level.attributes.fileUid, level.attributes.workshopId, level.attributes.name, level.attributes.fileAuthor);
+                toolkist.html.RenderPlaylist(playlist, 'playlist_editor');
+                return;
+            }
+        }
+    }
+
+    function PlaylistUploaded(fileName, contents)
+    {
+        var pl = new toolkist.game.Playlist();
+        pl.FromJSON(contents);
+        playlist.Merge(pl);
+
+        toolkist.html.RenderPlaylist(playlist, 'playlist_editor');
+    }
+
+    $(document).ready(function() 
+    {
+        toolkist.api.GetGistPlaylists(function(data)
+        {
+            gistPlaylists = data;
+            toolkist.html.RenderIndexedSelect('playlistSelect', gistPlaylists.map(pl => pl.name), PlaylistSelected);
+        });
+
+        toolkist.html.RenderPlaylistProperties('playlist-properties', PlaylistUploaded);
+        
+        $('#copyToClipboardButton').on('click', function()
+        {
+            playlist.SetProperties(toolkist.html.GetPlaylistProperties());
+            toolkist.fs.CopyToClipboard(playlist.ToJSON()); 
+        });
+        $('#downloadToZeeplistButton').on('click', function(){
+            playlist.SetProperties(toolkist.html.GetPlaylistProperties());
+            toolkist.fs.DirectDownload(playlist.name + ".zeeplist", playlist.ToJSON()); 
+        });
+    });  
+</script>
+
 <div id='content'>
     <div id='left_container'>
         <div class='filtersHeader'>
@@ -314,247 +377,12 @@ title = 'Playlists'
     </div>
     <div id='playlist_container'>
         <div class='filtersHeader'>
-            <h2>Playlist</h2>
+            <h2>Playlist Properties</h2>
         </div>
-        <div class='playlistFilters'>
-            <table>
-                <tr><td>Name</td><td><input style='color:black' type='text' id='playlist_name' value='Toolkist Playlist'/></td></tr>
-                <tr><td>Shuffle</td><td><input style='color:black' type='checkbox' id='playlist_shuffle'/></td></tr>
-                <tr><td>Round Length</td><td><input id='playlist_roundtime' style='color:black' type='number' value='360' min='120' max='3600'/></td></tr>
-                <tr><td><input class='standardButton'type='button' id='download_to_file' onclick='copyToClipboard()' value='Copy to Clipboard'></input></td><td><input class='standardButton' type='button' id='download_to_file' onclick='downloadToFile()' value='Download .zeeplist'></input></td></tr>
-            </table>
-        </div>
+        <div id='playlist-properties'></div>
         <hr>
-        <div id='playlist_editor'>
-            <table id='playlistTable' style='width: 100%'>
-                <thead><th>Track Name</th><th>Creator</th><th></th></thead>
-                <tbody></tbody>
-            </table>
+        <div id='playlist_editor'>            
         </div>        
     </div>
 </div>
-<script>    
-
-    var linkGist = '5edf3fe1fffc25eeaa4b878b4ea2850f';
-    var linkGistData;
-    var playlists_list = {};
-    var playlistZworpData = {};
-
-    $(document).ready(function() 
-    {
-        createSelect();
-
-        $.ajax({
-            url: `https://api.github.com/gists/${linkGist}`,
-            type: 'GET',
-            dataType: 'json',
-            success: function(data2) 
-            {
-                const fileContent = data2.files['zeepkistGistLinks.json'].content;
-                linkGistData = JSON.parse(fileContent);
-                for(let link in linkGistData)
-                {
-                    $.ajax({
-                        url: `https://api.github.com/gists/${linkGistData[link]}`,
-                        type: 'GET',
-                        dataType: 'json',
-                        success: function(data) 
-                        {
-                            let options = {};
-
-                            for(let file in data.files)
-                            {
-                                const fileContent = data.files[file].content;
-                                const jsonData = JSON.parse(fileContent);
-                                playlists_list[jsonData.name] = jsonData;
-                                options[jsonData.name] = jsonData.name;
-                            };
-
-                            appendOptions(options);
-                        },
-                        error: function(jqXHR, textStatus, errorThrown) {
-                            console.error('Error fetching Gist:', textStatus, errorThrown);
-                        }
-                    });
-                };
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-                console.error('Error fetching Gist:', textStatus, errorThrown);
-            }
-        });        
-    });
-
-    function createSelect() 
-    {
-        $select = $('<select></select>');
-
-        // Add an empty option at the top
-        $select.append($('<option></option>').val("").text("Select a playlist..."));
-        
-        // Optionally, add a change event listener here
-        $select.on('change', function() {
-            PlaylistSelected($(this).val());
-        });
-
-        $('#playlistSelect').empty().append($select);
-    }
-
-    function appendOptions(options) 
-    {
-        const $select = $(`#playlistSelect select`);
-
-        $.each(options, (value, text) => {
-            $select.append($('<option></option>').val(value).text(text));
-        });
-    }
-
-    function PlaylistSelected(value)
-    {
-        if(playlists_list.hasOwnProperty(value))
-        {
-            let levelUids = playlists_list[value].levels.map(l => l.UID);
-
-            if(playlistZworpData.hasOwnProperty(value))
-            {
-                ShowPlaylist(value, playlistZworpData[value]);
-                return;
-            }
-
-            var data = 
-            {
-                'page[size]': 100,
-                'page[number]': 1,
-                'filter' : "any(fileUid,'" + levelUids.join("','") + "')"
-            };
-
-            $.ajax({
-            url: 'https://jsonapi.zworpshop.com/levels',
-            method: 'GET',
-            data: data,
-            success: function(response) 
-			{
-				playlistZworpData[value] = response;
-                ShowPlaylist(value, playlistZworpData[value]);
-                
-            },
-            error: function(xhr, status, error) {
-                console.error(status, error);
-            }
-        });
-        }
-    }
-
-    function ShowPlaylist(playlistName, zworpResponse)
-    {
-        console.log(zworpResponse);
-
-        var resultsDiv = $('#results');
-        resultsDiv.empty(); // Clear the results div
-
-            var addedLevels = [];
-            zworpResponse.data.forEach(function(level) 
-            {
-                if(addedLevels.includes(level.attributes.fileUid))
-                {
-
-                }
-                else
-                {
-                    addedLevels.push(level.attributes.fileUid);
-                    var row = $('<div>').addClass('level-row');
-                    var image = $('<img>').addClass('level-image').attr('src', level.attributes.imageUrl).css('cursor', 'pointer');                
-                    
-                    // Add click event to show the image in a larger preview
-                    image.click(function() {
-                        $('#largeImagePreview').attr('src', $(this).attr('src'));
-                        $('#imagePreviewOverlay').css('display', 'flex').fadeIn();
-                    });
-
-                    var content = $('<div>').addClass('level-content');
-                    var other = $('<div>').addClass('level-other');
-                    var addButton = $('<div>').addClass('addLevelButton').text("+").attr('onclick', "AddLevelToPlaylist('" + playlistName + "','" + level.attributes.fileUid + "')");
-                    
-                    other.append(addButton);
-                    var name = $('<h3>').addClass('level-name').text(level.attributes.name);
-                    var author = $('<div>').addClass('level-author').append($('<span>').addClass('byPrefix').text('By: ')).append($('<span>').text(level.attributes.fileAuthor));
-                    var validationTime = $('<div>').addClass('level-validation-time').append($('<img>').attr('src', '/medal_author.png')).append($('<span>').text(level.attributes.validation));                
-                    var steamButton = $('<img>').addClass('steam-button').attr('src', '/steamIcon.png').attr('onclick', "window.open('https://steamcommunity.com/sharedfiles/filedetails/?id=" + level.attributes.workshopId + "', '_blank')");
-                    content.append(name, author, validationTime);
-                    other.append(steamButton);
-                    row.append(image, content, other);
-                    resultsDiv.append(row);
-                }
-        });        
-    }
-
-    var mainPlaylist = new toolkist_playlist.Playlist();
-
-    function AddLevelToPlaylist(playlistName, levelUid)
-    {
-        //Find the level in the levels buffer.
-        var level = playlistZworpData[playlistName].data.find(l => l.attributes.fileUid == levelUid);
-        console.log(level);
-        var psLevel = new toolkist_playlist.PlaylistLevel();        
-        psLevel.fromZworpData(level.attributes);
-        //console.log(psLevel);
-        mainPlaylist.addLevel(psLevel);
-        populateTable();
-    }
-
-    function populateTable() {
-        const tbody = $("#playlistTable tbody");
-        tbody.empty(); // Clear existing table rows
-
-        // Iterate through the levels in mainPlaylist and add rows to the table
-        mainPlaylist.levels.forEach((level, index) => {
-            const row = $("<tr>");
-            row.data("level", level);
-            row.append($("<td>").text(level.Name));
-            row.append($("<td>").text(level.Author));
-            const removeButton = $("<button>").html('<i class="fa fa-trash" aria-hidden="true"></i>').click(() => removeEntry(index));
-            row.append($("<td>").append(removeButton));
-            tbody.append(row);
-        });
-    }
-
-    // Function to remove an entry from mainPlaylist
-    function removeEntry(index) {
-        mainPlaylist.levels.splice(index, 1);
-        populateTable();
-    }
-
-    function copyToClipboard()
-    {
-        mainPlaylist.name = $('#playlist_name').val();
-        mainPlaylist.shuffle = $('#playlist_shuffle').is(':checked')
-        mainPlaylist.roundLength = Number($('#playlist_roundtime').val());
-        toolkist_fs.copyToClipboard(mainPlaylist.toJSON()); 
-    }
-
-    function downloadToFile()
-    {
-        mainPlaylist.name = $('#playlist_name').val();
-        mainPlaylist.shuffle = $('#playlist_shuffle').is(':checked')
-        mainPlaylist.roundLength = Number($('#playlist_roundtime').val());
-        toolkist_fs.directDownload(mainPlaylist.name + ".zeeplist", mainPlaylist.toJSON()); 
-    }
-
-    // Make the table sortable
-    $("#playlistTable tbody").sortable({
-        update: function(event, ui) {
-            const reorderedLevels = [];
-
-            $(this).find("tr").each(function() {
-                const levelData = $(this).data("level");
-                reorderedLevels.push(levelData);
-            });
-
-            mainPlaylist.levels = reorderedLevels;
-            //console.log(mainPlaylist);
-        }
-    });
-
-    $("#playlistTable tbody").disableSelection();
-</script>
-
 {{</rawhtml>}}
