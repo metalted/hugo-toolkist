@@ -147,6 +147,6 @@ var toolkist_image_converter = (function($) {
 
         callback();
     }
-    
+
     return toolkist_image_converter;
 })(jQuery);

@@ -219,8 +219,7 @@ hr{
 /*#region Playlist*/
 #playlist-properties{
   height: 250px;
-  background-color: rgb(34,34,34);
-  color:rgb(251, 199, 25);}
+  background-color: rgb(34,34,34);}
 #playlist-properties table{
   width: 100%;}
 #playlist-properties td{

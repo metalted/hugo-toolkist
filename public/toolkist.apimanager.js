@@ -185,37 +185,40 @@ var toolkist_apimanager = (function($)
       return newFilter;
     };    
 
-    toolkist_apimanager.RenderFilters = function(context, activeContainerID, nonActiveContainerID)
+    toolkist_apimanager.RenderFilters = function(context, containerID)
     {
 		var self = this;
-		
-        const nonActiveDiv = $('#' + nonActiveContainerID).html("");
-        const activeDiv = $('#' + activeContainerID).html("");
+
+        const filterDiv = $('#' + context + containerID);
+        filterDiv.empty();
+        console.log('#' + context + containerID);
 
         Object.entries(this.filters[context]).forEach(([key, filter]) => 
         {
-            var filterRow = $('<div>').addClass(`${context}FilterRow`);
-            var moveButton = $('<button>').text(filter.active ? 'Deactivate' : 'Activate');
+            var filterRow = $('<div>').addClass(`filterRow`);
+            var activationButton = $('<button>').addClass('standardButton').addClass('filterEnableButton');
             var title = $('<span>').text(filter.displayName);
 
-            moveButton.on('click', function()
+            activationButton.on('click', function()
             {
                 filter.active = !filter.active;
-                self.RenderFilters(context, activeContainerID, nonActiveContainerID);
+                self.RenderFilters(context, containerID);
             });
 
-            filterRow.append(moveButton);
+            filterRow.append(activationButton);
             filterRow.append(title);
 
             if(filter.active)
             {
                 filterRow.append($('<span>').addClass('filterInput').html(filter.GetHTML()));
-                activeDiv.append(filterRow);
+                activationButton.html('<i class="fa fa-check" aria-hidden="true"></i>').css({color:'green'});
             }
             else
             {
-                nonActiveDiv.append(filterRow);
+                activationButton.html('<i class="fa fa-times" aria-hidden="true"></i>').css({color:'red'});
             }
+
+            filterDiv.append(filterRow);
         });
     };
 	
@@ -541,6 +544,7 @@ var toolkist_apimanager = (function($)
 				}
 				else
 				{
+                    console.log("Got here");
 					//Theres no more results to load.
                     this.pageData.pageNumber++;
 					self.Loaded();

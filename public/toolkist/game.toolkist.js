@@ -189,15 +189,15 @@ export var game = (function($) {
     {
         constructor() 
         {
+            this.ClearHeader();
             this.ClearBlocks();
-            this.ClearHeader();            
         }
 
         ClearHeader()
         {
             this.sceneName = "LevelEditor2";
             this.playerName = "Toolkist";
-            this.uniqueID = this.GenerateUniqueID("Toolkist", this.blocks.length);
+            this.uniqueID = this.GenerateUniqueID("Toolkist", 0);
             this.cameraXPos = 0;
             this.cameraYPos = 0;
             this.cameraZPos = 0;
@@ -265,24 +265,14 @@ export var game = (function($) {
         }
 
         ToCSV() {
-            this.ClearHeader();
             const headerCSV = `${this.sceneName},${this.playerName},${this.uniqueID}\n${this.cameraXPos},${this.cameraYPos},${this.cameraZPos},${this.cameraXEuler},${this.cameraYEuler},${this.cameraZEuler},${this.cameraXRot},${this.cameraYRot}\n${this.validationTime},${this.goldTime},${this.silverTime},${this.bronzeTime},${this.skybox},${this.ground}`;
-            const blocksCSV = this.blocks.map((block) => block.ToCSV()).join('\n');
+            const blocksCSV = this.blocks.map((block) => block.toCSV()).join('\n');
             return `${headerCSV}\n${blocksCSV}`;
         }
 
         AddBlock(block)
         {
             this.blocks.push(block);
-        }
-
-        AddBlocks(blocks)
-        {
-            blocks.forEach(b => {
-                this.blocks.push(b);
-            });
-
-            return this;
         }
 
         RemoveBlock(index)

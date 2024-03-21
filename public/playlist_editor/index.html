@@ -1,16 +1,20 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html>
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-     
-     <link rel="preconnect" href="https://fonts.googleapis.com">
-     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-     <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
-     <link href="https://fonts.googleapis.com/css2?family=Chivo+Mono:wght@300&family=Righteous&display=swap" rel="stylesheet">
-
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Chivo+Mono:wght@300&family=Righteous&display=swap" rel="stylesheet">
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <meta name="generator" content="Hugo 0.123.8">
 
     
@@ -87,8 +91,8 @@
             
             <link
                 rel="stylesheet"
-                href="/_theme/css/stylesheet.7f054fd18e403d5d6fabbd549c4673ea8d08660f275f41fbf3cbc528a32c259a9d02ada3337a7102998b7f09d08267bddec3bd88dd20fc689c822f84d4f6fcc7.css"
-                integrity="sha512-fwVP0Y5APV1vq71UnEZz6o0IZg8nX0H788vFKKMsJZqdAq2jM3pxApmLfwnQgme93sO9iN0g/Gicgi&#43;E1Pb8xw==" />
+                href="/_theme/css/stylesheet.e0c1f4cd3c9cc9c2a18ea3774668ee13dc02b39ba25a3876097e46e18618617502be733f05ec2932554067ca7072dea3c16746ea0a09f6dfcf09c89485d12ca7.css"
+                integrity="sha512-4MH0zTycycKhjqN3RmjuE9wCs5uiWjh2CX5G4YYYYXUCvnM/BewpMlVAZ8pwct6jwWdG6goJ9t/PCciUhdEspw==" />
         
 
     
@@ -107,11 +111,12 @@
 </head>
 
     <body>
-        
-
-        <main>
-            <aside class="topnav">
-    <a href="http://localhost:1313/"><h1>Toolkist</h1></a>
+        <div id="pageWrapper">
+            <div id="headerWrapper">
+                <div id="headerNavigation">
+    <a id='logo' href="http://localhost:1313/">
+        <h1>Toolkist</h1>
+    </a>
     <div class="dropdown">
         <span>Tools</span>
         <div class="dropdown-content">
@@ -162,6 +167,14 @@
         
             
                 <li class="file">
+                    <a href="http://localhost:1313/playlists/" title="./playlists/">
+                        Playlists
+                    </a>
+                </li>
+            
+        
+            
+                <li class="file">
                     <a href="http://localhost:1313/zoozle/" title="./zoozle/">
                         Zoozle
                     </a>
@@ -173,183 +186,27 @@
 
         </div>
     </div>
-    <span class="pageTitle">Playlist Editor</span>
-</aside>
-
-
-            
-    <article class="main">
-
-        
-
-            
-        </div>
-
-        <div class="article-meta">
-            
-
-            
-
-            
+    <div class="pageTitle">
+        <span>Playlist Editor</span>
+    </div>    
+</div>
+            </div>
+            <div id="contentWrapper">
                 
-            
+    
 
-            
-        </div>
+<script src="/toolkist/playlisteditor.pages.toolkist.js" type="module"></script>
 
-        
-
-
-        <div class="content">
-            
-                
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
-<script src='/toolkist_playlist.js'></script>
-<script src='/toolkist_fs.js'></script>
-
-<div id='playlist_input_container'></div>
-<label for='playlist_name'>Name</label><input style='color:black' type='text' id='playlist_name' value='Toolkist Playlist'></input>
-<br>
-<label for='playlist_shuffle'>Shuffle</label><input style='color:black' type='checkbox' id='playlist_shuffle'></input>
-<br>
-<label for='playlist_roundtime'>Roundtime</label><input id='playlist_roundtime' style='color:black' type='number' value='360' min='120' max='3600'></input>
-<br>
-<input style='color:black' type='button' id='download_to_file' onclick='copyToClipboard()' value='Copy to Clipboard'></input>
-<input style='color:black' type='button' id='download_to_file' onclick='downloadToFile()' value='Download .zeeplist'></input>
-<hr>
-<div id='playlist_editor'>
-    <table id='playlistTable' style='width: 100%'>
-        <tbody></tbody>
-    </table>
+<div id='content' class='flex_content'>
+    <div class='standardPagePanel'>
+        <div id='playlist-properties'></div>   
+        <div id='playlist_editor'></div>
+    </div>    
 </div>
 
-<script>
-    var mainPlaylist = new toolkist_playlist.Playlist();
-    toolkist_fs.textFileInput('playlist_input_container', function(filename, content)
-    {
-        var ps = new toolkist_playlist.Playlist().fromJSON(content);
-
-        if(ps != undefined)
-        {
-            for (const level of ps.levels) {
-                mainPlaylist.addLevel(level);
-            }
-
-            populateTable();
-        }
-    });
-
-    function populateTable() {
-        const tbody = $("#playlistTable tbody");
-        tbody.empty(); // Clear existing table rows
-
-        // Iterate through the levels in mainPlaylist and add rows to the table
-        mainPlaylist.levels.forEach((level, index) => {
-            const row = $("<tr>");
-            row.data("level", level);
-            row.append($("<td>").text(level.Name));
-            row.append($("<td>").text(level.Author));
-            const removeButton = $("<button>").text("Remove").css({color: 'black'}).click(() => removeEntry(index));
-            row.append($("<td>").append(removeButton));
-            tbody.append(row);
-        });
-    }
-
-    // Function to remove an entry from mainPlaylist
-    function removeEntry(index) {
-        mainPlaylist.levels.splice(index, 1);
-        populateTable();
-    }
-
-    function copyToClipboard()
-    {
-        mainPlaylist.name = $('#playlist_name').val();
-        mainPlaylist.shuffle = $('#playlist_shuffle').is(':checked')
-        mainPlaylist.roundLength = Number($('#playlist_roundtime').val());
-        toolkist_fs.copyToClipboard(mainPlaylist.toJSON()); 
-    }
-
-    function downloadToFile()
-    {
-        mainPlaylist.name = $('#playlist_name').val();
-        mainPlaylist.shuffle = $('#playlist_shuffle').is(':checked')
-        mainPlaylist.roundLength = Number($('#playlist_roundtime').val());
-        toolkist_fs.directDownload(mainPlaylist.name + ".zeeplist", mainPlaylist.toJSON()); 
-    }
-
-    // Make the table sortable
-    $("#playlistTable tbody").sortable({
-        update: function(event, ui) {
-            const reorderedLevels = [];
-
-            $(this).find("tr").each(function() {
-                const levelData = $(this).data("level");
-                reorderedLevels.push(levelData);
-            });
-
-            mainPlaylist.levels = reorderedLevels;
-            console.log(mainPlaylist);
-        }
-    });
-
-    $("#playlistTable tbody").disableSelection();
-</script>
 
 
-            
+            </div>
         </div>
-    </article>
-
-        </main>
-
-        
     </body>
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
-
-
-
-
 </html>

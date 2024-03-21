@@ -3,7 +3,8 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow: hidden;}
+  overflow: hidden;
+}
 body {
   font-family: 'Righteous';
   margin: 0;
@@ -14,20 +15,24 @@ body {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/toolkistbackground1080.png');
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;}
+  background-repeat: no-repeat;
+}
 #pageWrapper {
   width: 100%;
   height: 100%;
   display: flex;
-  flex-direction: column;}
+  flex-direction: column;
+}
 #headerWrapper {
   width: 100%;
-  height: 50px;}
+  height: 50px;
+}
 #contentWrapper {
   width: 100%;
   flex: 1;
   overflow-y: hidden;
-  overflow-x: hidden;}
+  overflow-x: hidden;
+}
 /*#endregion */
 
 /*#region Header Navigation*/
@@ -39,11 +44,13 @@ body {
   background-color: rgb(251, 199, 25); 
 
   display:flex;
-  flex-direction: row;}
+  flex-direction: row;
+}
 #headerNavigation #logo{  
   width: 210px;
   height: 100%;
-  position: relative;}
+  position: relative;
+}
 #headerNavigation #logo h1{
     position: absolute;
     top: 50%;
@@ -55,14 +62,17 @@ body {
     color: rgb(17,17,17);
     text-shadow: -2px 2px 1px rgb(239, 107, 35);
     font-weight: bold;
-    transition: font-size 0.1s ease-in-out;}
+    transition: font-size 0.1s ease-in-out;
+}
 #headerNavigation #logo h1:hover{
   cursor: pointer;
-  font-size: 36px;}
+  font-size: 36px;
+}
 #headerNavigation .pageTitle{
   flex: 1;
   height: 100%;
-  position: relative;}
+  position: relative;
+}
 #headerNavigation .pageTitle span{
   position: absolute;
     top: 50%;
@@ -73,7 +83,8 @@ body {
     font-size: 26px;
     color: rgb(17,17,17);
     text-shadow: -2px 2px 1px rgb(239, 107, 35);
-    font-weight: bold;}
+    font-weight: bold;
+}
 #headerNavigation .dropdown {  
   width: 200px;
   height: 100%;  
@@ -88,18 +99,22 @@ body {
   text-shadow: -2px 2px 1px rgb(239, 107, 35);
   font-weight: bold;
 
-  transition: font-size 0.05s linear;}
+  transition: font-size 0.05s linear;
+}
 #headerNavigation .dropdown span{
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  margin: 0;  }
+  margin: 0;  
+}
 #headerNavigation .dropdown:hover{
   cursor: pointer;
-  font-size: 30px;}
+  font-size: 30px;
+}
 #headerNavigation .dropdown:hover .dropdown-content {
-  display: block;}
+  display: block;
+}
 #headerNavigation .dropdown-content {
   position: absolute;
   top: 50px;
@@ -114,13 +129,16 @@ body {
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 999;
   box-sizing: border-box;
-  border: 1px solid rgb(251, 199, 25);}
+  border: 1px solid rgb(251, 199, 25);
+}
 #headerNavigation .dropdown-content ul{
   list-style-type: none;
-  width: 100%;}
+  width: 100%;
+}
 #headerNavigation .dropdown-content li{
   width: 100%;
-  background-color: rgb(17,17,17);}
+  background-color: rgb(17,17,17);
+}
 #headerNavigation .dropdown-content a{
   width: 100%;
   height: 100%;
@@ -130,10 +148,12 @@ body {
   text-shadow: none;
   display: block;
   padding:5px;
-  transition: padding-left 0.05s linear;}
+  transition: padding-left 0.05s linear;
+}
 #headerNavigation .dropdown-content a:hover{
   padding-left: 10px;
-  color:rgb(239, 107, 35);}
+  color:rgb(239, 107, 35);
+}
 /*#endregion*/
 
 /*#region Content*/
@@ -144,17 +164,20 @@ body {
   height: 100%;  
 
   display: flex;
-  flex-direction: row;  }
+  flex-direction: row;  
+}
 .standardLeftPanel{
   width: 200px;
   background-color: rgb(34,34,34);
   margin: 10px;
-  color:rgb(251, 199, 25);}
+  color:rgb(251, 199, 25);
+}
 .standardPagePanel{
   background-color: rgba(34, 34, 34, 0.18);
   flex: 1;
   margin: 10px;
-  overflow-y: auto;}
+  overflow-y: auto;
+}
 .standardPlaylistPanel{
   width: 400px;
 
@@ -163,9 +186,11 @@ body {
   background-color: rgb(34,34,34);
 
   display: flex;
-  flex-direction:column;  }
+  flex-direction:column;  
+}
 .fileInputButton input{
-   display: none;}
+   display: none;
+}
 .standardButton{
   display: inline-block;
   padding: 8px 12px;
@@ -177,9 +202,11 @@ body {
   transition: background-color 0.1s ease-in-out;
   font-family: 'Righteous';
   font-weight: 300;
-  font-size: 18px;}
+  font-size: 18px;
+}
 .standardButton:hover{
-   background-color:rgb(239, 107, 35);}
+   background-color:rgb(239, 107, 35);
+}
 .standardCheckbox{
   display: inline-block;
   width: 30px;
@@ -193,84 +220,32 @@ body {
   transition: background-color 0.1s ease-in-out;
   font-family: 'Righteous';
   font-weight: 300;
-  font-size: 18px;}
+  font-size: 18px;
+}
 .standardCheckbox:hover{
-   background-color:rgb(239, 107, 35);}
-hr{
-  border: 1px solid rgb(251, 199, 25);}
-.headerBlock{
-  width: 100%;
-  height: 50px;
-  position: relative;
-  background-color: rgb(251, 199, 25); }
-.headerBlock h2{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  margin: 0;
-  white-space:nowrap;
-  font-size: 24px;
-  color: rgb(17,17,17);
-  text-shadow: -2px 2px 1px rgb(239, 107, 35);
-  font-weight: bold;}
+   background-color:rgb(239, 107, 35);
+}
 /*#endregion*/
 
-/*#region Playlist*/
+/*#region Playlist Properties*/
 #playlist-properties{
   height: 250px;
-  background-color: rgb(34,34,34);
-  color:rgb(251, 199, 25);}
+}
 #playlist-properties table{
-  width: 100%;}
+  width: 100%;
+}
 #playlist-properties td{
     padding: 5px;
     text-align: left;
-    vertical-align: center;}
+    vertical-align: center;
+}
+/*#endregion*/
+
+/*#region Playlist Editor*/
 #playlist_editor{
   overflow-y: auto;
   flex: 1;
-  color:rgb(251, 199, 25);}
-.playlistTable{
-  width: 100%;
-  margin-top: 25px;}
-.playlistTable th{
-  text-align: left;
-  padding: 5px;
-  border-bottom: 1px solid rgb(239, 107, 35);
-  color: rgb(239, 107, 35);}
-.playlistTable td{
-  text-align: left;
-  padding: 5px;}
-.playlistTable td:nth-child(2){
-    border-left: 1px solid rgb(239, 107, 35);
-    border-right: 1px solid rgb(239, 107, 35);}
-.playlistTable tr:nth-child(even){
-    background-color: rgb(34,34,34);}
-.playlistTable tbody tr:nth-child(odd){
-    background-color: rgb(17,17,17);}
-.playlistTable tbody{
-    border: 1px solid rgb(239, 107, 35);}
-.remove-button{
-    display: inline-block;
-    padding: 4px 4px;
-    background-color: rgb(251, 59, 25);
-    color: white !important;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.1s ease-in-out;
-    font-family: 'Righteous';
-    font-weight: 300;
-    font-size: 18px;
-    width: 30px;
-    height: 30px;}
-.remove-button:hover{
-    background-color: rgb(239, 107, 35);}
-.ui-sortable td{
-    cursor: grab;}
-.ui-sortable td:active{
-    cursor: grabbing;}
+}
 /*#endregion*/
 
 /*#region Level List*/
@@ -280,17 +255,20 @@ hr{
   border-radius: 8px;
   overflow: hidden;
   background-color: rgb(34,34,34);
-  margin:3px;}
+  margin:3px;
+}
 .level-image {
   flex-shrink: 0;
   width: 120px;
   height: 100%;
-  object-fit: cover;}
+  object-fit: cover;
+}
 .level-content {
   padding: 2px;
   padding-left: 10px;
   flex-grow: 1;
-  color: rgb(251, 199, 25);}
+  color: rgb(251, 199, 25);
+}
 .points-box {
   margin: 5px 10px;
   background-color: rgb(251, 199, 25);
@@ -302,7 +280,8 @@ hr{
   line-height: 40px;
   color: rgb(17,17,17);
   width: 100px;
-  text-align: center;}
+  text-align: center;
+}
 .addLevelButton{
   margin: 5px 10px;
   background-color: rgb(251, 199, 25);
@@ -316,22 +295,29 @@ hr{
   line-height: 40px;
   color: rgb(17,17,17);
   text-align:center;    
-  user-select: none;   }
+  user-select: none;    
+}
 .addLevelButton:hover{
   background-color: rgb(239, 107, 35);
-  cursor:pointer;}
+  cursor:pointer;
+}
 .level-name {
-  margin-top: 0;}
+  margin-top: 0;
+}
 .level-author, .level-validation-time {
-  height: 20px;  }
+  height: 20px;     
+}
 .level-validation-time span{
   line-height: 20px;
   padding-bottom: 3px;
-  height: 100%;}
+  height: 100%;
+}
 .level-validation-time img{
-  height: 100%;}
+  height: 100%;
+}
 .byPrefix{
-  color:rgb(239, 107, 35);}
+  color:rgb(239, 107, 35);
+}
 .steam-button {
   padding: 5px 10px;
   color: white;
@@ -339,28 +325,145 @@ hr{
   border-radius: 5px;
   cursor: pointer;
   width: 40px;
-  height: 40px;}
+  height: 40px;
+}
 .level-other{
   display: flex;
-  flex-direction:row;}
+  flex-direction:row;
+}
 /*#endregion*/
 
-/*#region Pagination*/
+
+
+
+
+
+
+
+
+hr{
+  border: 1px solid rgb(251, 199, 25);
+}
+
+
+
+.playlistTable
+{
+  width: 100%;
+  margin-top: 25px;
+}
+
+.playlistTable th
+{
+  text-align: left;
+  padding: 5px;
+  border-bottom: 1px solid rgb(239, 107, 35);
+  color: rgb(239, 107, 35);
+}
+
+.playlistTable td
+{
+  text-align: left;
+  padding: 5px;
+}
+
+.playlistTable td:nth-child(2)
+{
+    border-left: 1px solid rgb(239, 107, 35);
+    border-right: 1px solid rgb(239, 107, 35);
+}
+
+.playlistTable tr:nth-child(even)
+{
+    background-color: rgb(34,34,34);
+}
+
+.playlistTable tbody tr:nth-child(odd){
+    background-color: rgb(17,17,17);
+}
+
+.playlistTable tbody{
+    border: 1px solid rgb(239, 107, 35);
+}
+
+.remove-button
+{
+    display: inline-block;
+    padding: 4px 4px;
+    background-color: rgb(251, 59, 25);
+    color: white !important;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.1s ease-in-out;
+    font-family: 'Righteous';
+    font-weight: 300;
+    font-size: 18px;
+    width: 30px;
+    height: 30px;
+}
+
+.remove-button:hover
+{
+    background-color: rgb(239, 107, 35);
+}
+
+.ui-sortable td
+{
+    cursor: grab;
+}
+
+.ui-sortable td:active
+{
+    cursor: grabbing;
+}
+
+
+
+/*Header Block*/
+.headerBlock
+{
+  width: 100%;
+  height: 50px;
+  position: relative;
+  background-color: rgb(251, 199, 25); 
+}
+
+.headerBlock h2
+{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  white-space:nowrap;
+  font-size: 24px;
+  color: rgb(17,17,17);
+  text-shadow: -2px 2px 1px rgb(239, 107, 35);
+  font-weight: bold;
+}
+
+/*Pagination*/
 .pagination{
   display: flex;
   flex-direction: row;
   height: 35px;
-  margin: 10px;}
+  margin: 10px;
+}
 .pagination input{
   margin-left: 10px;
-  margin-right: 10px;}
-.pagination span{
+  margin-right: 10px;
+}
+.pagination span
+{
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);}
-.pagination #pageNumberHolder{
+  transform: translate(-50%, -50%);
+}
+.pagination #pageNumberHolder
+{
   position:relative;
   flex: 1;
-  height: 100%;}
-/*#endregion*/
+  height: 100%;
+}

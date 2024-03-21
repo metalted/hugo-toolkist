@@ -122,6 +122,12 @@ var toolkist_stats = (function($) {
         });
     }    
 
+    toolkist_stats.GetSortedData = function(property) 
+    {
+        const sortedData = toolkist_stats.SortData(toolkist_stats.processedData, property);
+        return sortedData;
+    };
+
     /**
      * Displays sorted data in a table format based on the specified property.
      * @param {string} property - The property to sort by and display.
@@ -151,6 +157,8 @@ var toolkist_stats = (function($) {
         table += `</tbody></table>`;
         $('#results').html(`<h2>${property}</h2>${table}`);
     };
+
+    
 
     /**
      * Displays highest scores for each stat in a table format.
@@ -200,7 +208,37 @@ var toolkist_stats = (function($) {
         $('#results').html('<h2>Highest Scores for Each Stat</h2>' + table);
     };
 
-    toolkist_stats.createPlayerSelectionList = function(elementId) {
+    toolkist_stats.createPlayerSelectionList = function(elementId, callback) {
+        // Find the container and clear it
+        const $container = $('#' + elementId).empty();
+        
+        // Create the input element linked to a datalist
+        const $input = $(`<input type="text" list="userList_${elementId}" style="color: black !important"/>`);
+        const $datalist = $(`<datalist id="userList_${elementId}"></datalist>`);
+        
+        // Populate the datalist with options
+        this.userData.forEach(player => {
+            $('<option></option>', {
+                value: player.name
+                // 'text' property is not necessary for option in a datalist
+            }).appendTo($datalist);
+        });
+        
+        // Append the input and datalist elements to the container
+        $input.appendTo($container);
+        $datalist.appendTo($container);
+        
+        // Set up an event listener on the input to handle changes and call the callback
+        $input.on('input', function() {
+            const selectedName = $(this).val();
+    
+            callback(selectedName);           
+        });
+    };
+
+    /*
+
+    toolkist_stats.createPlayerSelectionList = function(elementId, callback) {
         // Find the container and clear it
         const $container = $('#' + elementId).empty();
     
@@ -221,57 +259,10 @@ var toolkist_stats = (function($) {
         // Set up an event listener to log the change and display user stats
         $select.on('change', function() {
             const selectedName = $(this).find('option:selected').text();
-            console.log(selectedName);
-            var selectedUserStats = toolkist_stats.processedData.find(u => u.playerName === selectedName);
-            
-            // Log the selected user's stats to the console
-            if(selectedUserStats == undefined)
-            {
-                $('#results').empty();
-                $('#results').html('<h3>No stats available for ' + selectedName +'</h3>');
-                
-            }
-            else
-            {
 
-                // Display the selected user's stats in the #results div as a table
-                const $results = $('#results').empty(); // Clear previous results
-                if (selectedUserStats) {
-                    $('#results').append('<h3>Stats for ' + selectedName + '</h3>');
-
-                    // Create the table and the header
-                    const $table = $('<table>').addClass('table table-bordered');
-                    $table.append('<thead><tr><th>Property</th><th>Value</th></tr></thead>');
-                    const $tbody = $('<tbody>');
-
-                    // Fill the table body with the stats
-                    Object.entries(selectedUserStats).forEach(([key, value]) => 
-                    {
-                        var formattedValue = value;
-                        if (key.includes('distance')) {
-                            // Convert meters to kilometers
-                            formattedValue = (formattedValue / 1000).toFixed(2) + ' km';
-                        } else if ((key).includes('time') && !key.includes('times')) {
-                            // Convert seconds to days:hours:minutes:seconds
-                            var days = Math.floor(formattedValue / (3600 * 24));
-                            var hours = Math.floor((formattedValue % (3600 * 24)) / 3600);
-                            var minutes = Math.floor((formattedValue % 3600) / 60);
-                            var seconds = Math.round(formattedValue % 60); // Round seconds to the nearest whole number
-                            formattedValue = days + ' days, ' + hours + ' hours, ' + minutes + ' minutes, ' + seconds + ' seconds';
-                        }
-
-                        const $row = $('<tr>').append($('<td>').text(key), $('<td>').text(formattedValue));
-                        $tbody.append($row);
-                    });
-
-                    $table.append($tbody);
-                    $results.append($table); // Append the table to the results container
-                }
-            }
+            callback(selectedName);           
         });
     }
-
-    
-
+    */
     return toolkist_stats;
 })(jQuery);

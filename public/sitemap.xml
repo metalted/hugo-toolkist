@@ -12,6 +12,8 @@
   </url><url>
     <loc>http://localhost:1313/playlist_editor/</loc>
   </url><url>
+    <loc>http://localhost:1313/playlists/</loc>
+  </url><url>
     <loc>http://localhost:1313/tags/</loc>
   </url><url>
     <loc>http://localhost:1313/</loc>

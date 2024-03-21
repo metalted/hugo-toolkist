@@ -293,6 +293,7 @@ export var html = (function($) {
         });
 
         container.append(fileInput, label);
+        console.log('hallo?');
         return container;        
     }
 
@@ -371,41 +372,6 @@ export var html = (function($) {
         $pageControls.append($prevPageButton, $pageNumberHolder, $nextPageButton);
 
         $(containerID).append($pageControls);
-    }
-
-    html.CreateCanvas = function(elementId) {
-
-        var canvas = $('<canvas></canvas>');
-        canvas.attr('id', elementId);
-        return canvas;
-    };
-
-    html.RenderQuantizedImage = function(quantized, imageId)
-    {
-        // Create a canvas dynamically
-        var canvas = $('<canvas></canvas>')[0];
-        var ctx = canvas.getContext('2d');
-
-        // Set canvas dimensions based on the size of the 2D array
-        canvas.width = quantized[0].length;
-        canvas.height = quantized.length;
-
-        // Draw pixels on the canvas
-        quantized.forEach((row, y) => {
-            row.forEach((q, x) => {
-                ctx.fillStyle = `rgba(${q.color.red}, ${q.color.green}, ${q.color.blue}, ${q.color.alpha})`;
-                ctx.fillRect(x, y, 1, 1);
-            });
-        });
-
-        // Convert canvas content to base64 image
-        var base64Image = canvas.toDataURL();
-
-        // Set the base64 image as the source of the provided image tag
-        $('#' + imageId).attr('src', base64Image);
-
-        // Remove the canvas from the DOM to destroy it
-        $(canvas).remove();
     }
 
     return html;

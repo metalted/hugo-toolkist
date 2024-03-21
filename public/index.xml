@@ -19,28 +19,35 @@
       <link>http://localhost:1313/gtrstats/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/gtrstats/</guid>
-      <description>&#xD;Leaderboard&#xD;User&#xD;Crashes&#xD;Distances&#xD;Time&#xD;Others&#xD;</description>
+      <description>&#xD;Leaderboard&#xD;User&#xD;General&#xD;Crashes&#xD;Controls&#xD;State&#xD;Surface&#xD;No Wheels&#xD;One Wheel&#xD;Two Wheels&#xD;Three Wheels&#xD;Four Wheels&#xD;Loading...&#xD;Times Started&#xD;Times Finished&#xD;Checkpoints Crossed&#xD;Wheels Broken&#xD;Content for Times Started tab&#xD;Content for Times Finished tab&#xD;Content for Checkpoints Crossed tab&#xD;Content for Wheels Broken tab&#xD;Total&#xD;Regular&#xD;Eye&#xD;Ghost&#xD;Sticky&#xD;Content for Total tab&#xD;Content for Regular tab&#xD;Content for Eye tab&#xD;Content for Ghost tab&#xD;Content for Sticky tab&#xD;Distance Arms Up&#xD;Time Arms Up&#xD;Distance Braking&#xD;Time Braking&#xD;Content for Distance Arms Up tab&#xD;Content for Time Arms Up tab&#xD;Content for Distance Braking tab&#xD;Content for Time Braking tab&#xD;Distance Grounded&#xD;Time Grounded&#xD;Distance In Air&#xD;Time In Air&#xD;Distance Ragdoll&#xD;Time Ragdoll&#xD;Content for Distance Grounded tab&#xD;Content for Time Grounded tab&#xD;Content for Distance In Air tab&#xD;Content for Time In Air tab&#xD;Content for Distance Ragdoll tab&#xD;Content for Time Ragdoll tab&#xD;Distance On Regular&#xD;Time On Regular&#xD;Distance On Grass&#xD;Time On Grass&#xD;Distance On Ice&#xD;Time On Ice&#xD;Content for Distance On Regular tab&#xD;Content for Time On Regular tab&#xD;Content for Distance On Grass tab&#xD;Content for Time On Grass tab&#xD;Content for Distance On Ice tab&#xD;Content for Time On Ice tab&#xD;Distance On No Wheels&#xD;Time On No Wheels&#xD;Distance With No Wheels&#xD;Time With No Wheels&#xD;Content for Distance On No Wheels tab&#xD;Content for Time On No Wheels tab&#xD;Content for Distance With No Wheels tab&#xD;Content for Time With No Wheels tab&#xD;Distance On One Wheel&#xD;Time On One Wheel&#xD;Distance With One Wheel&#xD;Time With One Wheel&#xD;Content for Distance On One Wheel tab&#xD;Content for Time On One Wheel tab&#xD;Content for Distance With One Wheel tab&#xD;Content for Time With One Wheel tab&#xD;Distance On Two Wheels&#xD;Time On Two Wheels&#xD;Distance With Two Wheels&#xD;Time With Two Wheels&#xD;Content for Distance On Two Wheels tab&#xD;Content for Time On Two Wheels tab&#xD;Content for Distance With Two Wheels tab&#xD;Content for Time With Two Wheels tab&#xD;Distance On Three Wheels&#xD;Time On Three Wheels&#xD;Distance With Three Wheels&#xD;Time With Three Wheels&#xD;Content for Distance On Three Wheels tab&#xD;Content for Time On Three Wheels tab&#xD;Content for Distance With Three Wheels tab&#xD;Content for Time With Three Wheels tab&#xD;Distance On Four Wheels&#xD;Time On Four Wheels&#xD;Distance With Four Wheels&#xD;Time With Four Wheels&#xD;Content for Distance On Four Wheels tab&#xD;Content for Time On Four Wheels tab&#xD;Content for Distance With Four Wheels tab&#xD;Content for Time With Four Wheels tab&#xD;</description>
     </item>
     <item>
       <title>Image Converter</title>
       <link>http://localhost:1313/image_converter/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/image_converter/</guid>
-      <description>&#xD;Select your image using the button below. After uploading it will automatically be converted.&#xD;</description>
+      <description>&#xD;</description>
     </item>
     <item>
       <title>Playlist Editor</title>
       <link>http://localhost:1313/playlist_editor/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/playlist_editor/</guid>
-      <description>&#xD;Name&#xD;Shuffle&#xD;Roundtime&#xD;</description>
+      <description>&#xD;</description>
+    </item>
+    <item>
+      <title>Playlists</title>
+      <link>http://localhost:1313/playlists/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/playlists/</guid>
+      <description>&#xD;</description>
     </item>
     <item>
       <title>Zoozle</title>
       <link>http://localhost:1313/zoozle/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/zoozle/</guid>
-      <description>&#xD;GTR Filters (Only top active filter applies)&#xD;Available&#xD;Active&#xD;Zworp Filters&#xD;Available&#xD;Active&#xD;1/1&#xD;</description>
+      <description>&#xD;</description>
     </item>
   </channel>
 </rss>

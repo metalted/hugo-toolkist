@@ -8,6 +8,14 @@ var toolkist_playlist = (function($) {
             this.Name = "";
             this.Author = "";
         }
+
+        fromZworpData(data)
+        {
+            this.UID = data.fileUid;
+            this.WorkshopID = data.workshopId;
+            this.Name = data.name;
+            this.Author = data.fileAuthor;
+        }
     }
 
     toolkist_playlist.Playlist = class {
