@@ -5,6 +5,7 @@ export var html = (function($) {
     html.greenCheckmark = '<i class="fa fa-check" aria-hidden="true" style="color: green"></i>';
     html.redCross = '<i class="fa fa-times" aria-hidden="true" style="color: red"></i>';
     html.trashCan = '<i class="fa fa-trash" aria-hidden="true"></i>';
+    html.trophy = '<i class="fa fa-trophy" aria-hidden="true"></i>';
 
     html.RenderFilters = function(filters, containerID, onChangeCallback)
     {
@@ -406,6 +407,156 @@ export var html = (function($) {
 
         // Remove the canvas from the DOM to destroy it
         $(canvas).remove();
+    }
+
+    html.RenderTabStructure = function(tabData, containerID)
+    {
+        // Create the main tab container
+        var tabContainer = $("<div>").addClass("tab-container");
+
+        // Create top-level tabs
+        var tabButtons = $("<div>").addClass("tab-buttons");
+        $.each(tabData, function(tabId, tabContent) {
+            var button = $("<button>").addClass("tab-button-top").attr("data-tab", tabId).text(tabContent.label);
+            tabButtons.append(button);
+        });
+        tabContainer.append(tabButtons);
+
+        // Create tab content sections
+        $.each(tabData, function(tabId, tabContent) {
+            var tabContentDiv = $("<div>").addClass("tab-content").attr("id", tabId);
+            if (tabContent.children) {
+                // If the tab has children, create nested tabs
+                var nestedTabContainer = $("<div>").addClass("tab-container");
+                var nestedTabButtons = $("<div>").addClass("tab-buttons");
+                $.each(tabContent.children, function(childId, childContent) {
+                    var button = $("<button>").addClass("tab-button").attr("data-tab", childId).text(childContent);
+                    nestedTabButtons.append(button);
+                });
+                nestedTabContainer.append(nestedTabButtons);
+                $.each(tabContent.children, function(childId, childContent) {
+                    var tabPane = $("<div>").addClass("tab-pane").attr("id", childId);
+                    nestedTabContainer.append(tabPane);
+                });
+                tabContentDiv.append(nestedTabContainer);
+            } else {
+                // If the tab has no children, create a single content section
+                var tabPane = $("<div>").addClass("tab-pane");
+                tabContentDiv.append(tabPane);
+            }
+            tabContainer.append(tabContentDiv);
+        });
+
+        // Click event for top-level tabs
+        tabContainer.on('click', '.tab-button-top', function() {
+            var tabId = $(this).attr('data-tab');
+            // Remove 'active' class from all top-level tabs and hide all content
+            $('.tab-button-top').removeClass('active');
+            $('.tab-content').removeClass('active').hide();
+
+            // Add 'active' class to clicked top-level tab and show its content
+            $(this).addClass('active');
+            $('#' + tabId).addClass('active').show();
+
+            // Hide all secondary tab contents and remove 'active' class
+            $('#' + tabId).find('.tab-content').removeClass('active').hide();
+            $('#' + tabId).find('.tab-button').removeClass('active');
+
+            // Automatically click the first secondary tab if it exists
+            var firstSecondaryTab = $('#' + tabId).find('.tab-button').first();
+            if(firstSecondaryTab.length) {
+                firstSecondaryTab.trigger('click');
+            }
+            else
+            {
+                $('#' + tabId + " > .tab-pane").show();
+            }
+        });
+
+        // Click event for secondary tabs within a tab-content
+        tabContainer.on('click', '.tab-content .tab-button', function() {
+            // Get the container of this secondary tab
+            var container = $(this).closest('.tab-content');
+
+            // Remove 'active' class from all secondary tabs in this container and hide their contents
+            container.find('.tab-button').removeClass('active');
+            container.find('.tab-pane').removeClass('active').hide();
+
+            // Add 'active' class to clicked secondary tab and show its content
+            $(this).addClass('active');
+            var tabId = $(this).attr('data-tab');
+            $('#' + tabId).addClass('active').show();
+        });        
+
+        $(containerID).append(tabContainer);
+
+        // Automatically click the first top-level tab on page load
+        tabContainer.find('.tab-button-top').first().trigger('click');
+    };
+
+    html.RenderLeaderboard = function(data, headers, containerID)
+    {
+        const container = $(containerID);
+
+        var table = $('<table>').addClass('leaderboardTable');
+        var tBody = $('<tbody>');
+
+        data.forEach(d => {
+            var row = $('<tr>');
+
+            headers.forEach(h => {
+
+                if(h == 'position')
+                {
+                    if(d.position <= 4)
+                    {
+                        row.append($('<td>').html(html.trophy));
+                    }
+                    else
+                    {
+                        row.append($('<td>').text(d.position));
+                    }
+                }
+                else
+                {
+                    row.append($('<td>').text(d[h]));
+                }
+            });
+
+            if(d.position <= 4)
+            {
+                row.addClass('position' + d.position);
+            }           
+
+            tBody.append(row);
+        });
+
+        table.append(tBody);
+        container.html(table);
+    };
+
+    html.RenderUserSelection = function(containerID, userList, onSelectCallback)
+    {
+        var container = $(containerID);
+
+        // Create the input element linked to a datalist
+        const $input = $(`<input type="text" list="userListData" style="color: black !important"/>`);
+        const $datalist = $(`<datalist id="userListData"></datalist>`);
+
+        // Populate the datalist with options
+        userList.forEach(player => {
+            $('<option></option>', {
+                value: player.name
+            }).appendTo($datalist);
+        });
+
+        // Set up an event listener on the input to handle changes and call the callback
+        $input.on('input', function() {
+            const selectedName = $(this).val();    
+            onSelectCallback(selectedName);           
+        });
+
+        container.append($input, $datalist);
     }
 
     return html;

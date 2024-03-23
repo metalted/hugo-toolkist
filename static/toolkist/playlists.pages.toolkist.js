@@ -9,7 +9,7 @@ function PlaylistSelected(index)
 {
     if(index === '-1'){return;}
     var plName = gistPlaylists[index].name;
-
+    
     if(zworpData.hasOwnProperty(plName))
     {
         toolkist.html.RenderLevelList(zworpData[plName].data, '.standardPagePanel', AddLevelButtonPressed);

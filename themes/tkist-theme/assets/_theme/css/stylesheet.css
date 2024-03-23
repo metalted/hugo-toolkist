@@ -364,3 +364,115 @@ hr{
   flex: 1;
   height: 100%;}
 /*#endregion*/
+
+/*#region Tab Structure*/
+.tab-container
+{
+    display: flex;
+    flex-direction: row;  
+    color: rgb(251, 199, 25);
+    width: 100%;
+    height: 100%;
+}
+
+.tab-buttons {
+    height: 100%;
+    width: 200px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.tab-button-top, .tab-button {
+    background-color: rgb(251, 199, 25);
+    font-family: 'Righteous';
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    text-align: left;
+    transition: background-color 0.1s;
+    border-right: 1px solid rgb(17,17,17);
+    border-bottom: 1px solid rgb(17,17,17);
+    font-size: 18px;
+    white-space: nowrap;
+}
+
+.tab-button-top:hover, .tab-button:hover {
+    background-color: rgb(253, 221, 114) !important;
+}
+
+.tab-button-top.active {
+    background-color:  rgb(239, 107, 35);
+}
+
+
+.tab-content .tab-buttons .tab-button.active {
+    background-color: rgb(239, 107, 35);
+}
+
+.tab-content{
+  flex: 1;
+}
+
+.tab-pane 
+{
+  display: none;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.leaderboardTable
+{
+    width: calc(100% - 40px);
+    border: 1px solid rgb(239, 107, 35);
+    margin-left: 20px;
+    margin-right: 20px;
+    box-sizing: border-box;
+}
+
+.leaderboardTable tr
+{
+    font-size: 18px;
+}
+
+.leaderboardTable tr:nth-child(even)
+{
+    background-color: rgb(34,34,34);
+    width: 100%;
+}
+
+.leaderboardTable tr:nth-child(odd)
+{
+    background-color: rgb(17,17,17);
+    width: 100%;
+}
+
+.leaderboardTable td{
+    padding: 5px;
+}
+
+.position1
+{
+  color: rgb(133, 31, 217);
+}
+
+.position2
+{
+  color: rgb(207, 167, 35);
+}
+
+.position3
+{
+  color: rgb(112, 112, 112);
+}
+
+.position4
+{
+  color: rgb(148, 72, 13);
+}
+
+.tab-content input
+{
+  margin-left: 20px;
+}
+/*#endregion*/

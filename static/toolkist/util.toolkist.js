@@ -52,5 +52,30 @@ export var util = (function($)
         return dateString;
     };
 
+    util.ConvertMetersToKilometers = function(meters)
+    {
+        const kilometers = meters / 1000;
+        
+        // Determine the number of decimal places needed to keep three significant figures
+        const decimalPlaces = kilometers < 1 ? 2 : kilometers < 10 ? 1 : 0;
+        return kilometers.toFixed(decimalPlaces);
+    };
+
+    util.ConvertSecondsToDHMS = function(seconds) {
+        const days = Math.floor(seconds / (3600*24));
+        seconds -= days * 3600 * 24;
+        const hours = Math.floor(seconds / 3600);
+        seconds -= hours * 3600;
+        const minutes = Math.floor(seconds / 60);
+        seconds = Math.floor(seconds % 60);
+        
+        return [days,hours,minutes,seconds];
+    };
+
+    util.SortObjectArray = function(data, property) 
+    {
+        return [...data].sort((a, b) => b[property] - a[property]);
+    };
+
     return util;
 })(jQuery);
