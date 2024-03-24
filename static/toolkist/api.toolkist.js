@@ -455,6 +455,7 @@ export var api = (function($) {
                     this.elementIds.push(`${context}filter_${elementId}`);
                     break;
                 case 'time':
+                case 'number':
                     this.values = [0,84600];
                     this.elementIds.push(`${context}filter_${elementId}_start`);
                     this.elementIds.push(`${context}filter_${elementId}_end`);
@@ -480,6 +481,7 @@ export var api = (function($) {
                     return `${this.filter}(${this.field},'${this.values[0]}')`;
                 case 'time':
                 case 'date':
+                case 'number':
                     return `and(greaterOrEqual(${this.field},'${this.values[0]}'),lessOrEqual(${this.field},'${this.values[1]}'))`;
             }
         }
@@ -492,6 +494,7 @@ export var api = (function($) {
                     this.values[0] = $(`#${this.elementIds[0]}`).val();
                     break;
                 case 'time':
+                case 'number':
                     this.values[0] = $(`#${this.elementIds[0]}`).val();
                     this.values[1] = $(`#${this.elementIds[1]}`).val();
                     break;
@@ -558,6 +561,8 @@ export var api = (function($) {
                     updatedAt: new api.Filter().Set("zworp", "updatedAt", "updatedAt", "Updated At", "date"),
                     fileAuthor: new api.Filter().Set("zworp", "fileAuthor", "fileAuthor", "Creator Name", "text", "contains"),
                     validation: new api.Filter().Set("zworp", "validation", "validation", "Author Time (s)", "time"),
+                    checkpoints: new api.Filter().Set("zworp", "checkpoints", "metadata.checkpoints", "Checkpoints", "number"),
+                    skybox: new api.Filter().Set("zworp", "skybox", "metadata.skybox", "Skybox", "text")
                 },
                 gtr: {
                     userId: new api.Filter().Set("gtr", "userId", "userId", "WR By User", "user", "equals", "worldrecords"),
@@ -690,6 +695,7 @@ export var api = (function($) {
                 this.zworpParams.only = true;
                 data['page[size]'] = this.zworpParams.pageSize;
                 data['page[number]'] = this.zworpParams.pageNumber;
+                data['include'] = 'metadata'
             }
 
             filters = filters.concat(this.zworpParams.filters.map(f => f.GetFilterParameter()));
@@ -710,7 +716,21 @@ export var api = (function($) {
                 success: function(response) 
                 {
                     self.zworpParams.response = response;
-                    self.levelsBuffer = self.levelsBuffer.concat(response.data);     
+
+                    response.data.forEach(d => 
+                    {
+                        var levelData = d;
+                        var metadataId = d.attributes.metadataId;
+                        var metadata = response.included.find(md => md.type == 'metadata' && md.id == metadataId);
+                        for(let att in metadata.attributes)
+                        {
+                            levelData.attributes[att] = metadata.attributes[att];
+                        }
+                        self.levelsBuffer.push(levelData);
+                    });
+
+                    console.log(response);
+
                     if(self.zworpParams.only)
                     {
                         //Are there more pages available and is there more room on the page?
