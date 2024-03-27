@@ -1,7 +1,9 @@
+import {util} from '/toolkist/util.toolkist.js';
+
 export var api = (function($) {
     var api = {};   
     api.userList = [];
-    api.userStats = {};
+    api.userStats = null;
     api.statsLeaderboard = {};
 
     api.GetPlayerData = function(callback)
@@ -16,16 +18,317 @@ export var api = (function($) {
         {
             callback(api.userList);
         }
-    }
+    };
+
+    api.StatsManager = class
+    {
+        constructor(callback) {
+            this.playerStats = null;
+            this.sortedStats = null;
+            this.leaderboard = null;
+            this.players = null;
+    
+            var self = this;
+    
+            // Get player stats and data
+            api.GetPlayerStats(function(stats) {
+                self.playerStats = stats;
+    
+                api.GetPlayerData(function(players) {
+                    // Create sorted stats and leaderboard
+                    self.players = players;
+                    self.CreateSortedStats();
+                    self.CreateLeaderboard();
+    
+                    // Callback after data is loaded and processed
+                    if (typeof callback === 'function') {
+                        callback();
+                    }
+                });
+            });
+
+            this.tabs = {
+                "leaderboard": { 
+                    label: "Leaderboard" 
+                },
+                "user": { 
+                    label: "User" 
+                },
+                "general": { 
+                    label: "General", 
+                    children: {
+                        "timesStarted": "Times Started",
+                        "timesFinished": "Times Finished",
+                        "checkpointsCrossed": "Checkpoints Crossed",
+                        "wheelsBroken": "Wheels Broken"
+                    }
+                },
+                "crashes": { 
+                    label: "Crashes", 
+                    children: {
+                        "crashTotal": "Total",
+                        "crashRegular": "Regular",
+                        "crashEye": "Eye",
+                        "crashGhost": "Ghost",
+                        "crashSticky": "Sticky"
+                    }
+                },
+                "controls": { 
+                    label: "Controls", 
+                    children: {
+                        "distanceArmsUp": "Distance Arms Up",
+                        "timeArmsUp": "Time Arms Up",
+                        "distanceBraking": "Distance Braking",
+                        "timeBraking": "Time Braking"
+                    }
+                },
+                "state": { 
+                    label: "State", 
+                    children: {
+                        "distanceGrounded": "Distance Grounded",
+                        "timeGrounded": "Time Grounded",
+                        "distanceInAir": "Distance In Air",
+                        "timeInAir": "Time In Air",
+                        "distanceRagdoll": "Distance Ragdoll",
+                        "timeRagdoll": "Time Ragdoll"
+                    }
+                },
+                "surface": { 
+                    label: "Surface", 
+                    children: {
+                        "distanceOnRegular": "Distance On Regular",
+                        "timeOnRegular": "Time On Regular",
+                        "distanceOnGrass": "Distance On Grass",
+                        "timeOnGrass": "Time On Grass",
+                        "distanceOnIce": "Distance On Ice",
+                        "timeOnIce": "Time On Ice"
+                    }
+                },
+                "noWheels": { 
+                    label: "No Wheels", 
+                    children: {
+                        "distanceOnNoWheels": "Distance On No Wheels",
+                        "timeOnNoWheels": "Time On No Wheels",
+                        "distanceWithNoWheels": "Distance With No Wheels",
+                        "timeWithNoWheels": "Time With No Wheels"
+                    }
+                },
+                "oneWheel": { 
+                    label: "One Wheel", 
+                    children: {
+                        "distanceOnOneWheel": "Distance On One Wheel",
+                        "timeOnOneWheel": "Time On One Wheel",
+                        "distanceWithOneWheel": "Distance With One Wheel",
+                        "timeWithOneWheel": "Time With One Wheel"
+                    }
+                },
+                "twoWheels": { 
+                    label: "Two Wheels", 
+                    children: {
+                        "distanceOnTwoWheels": "Distance On Two Wheels",
+                        "timeOnTwoWheels": "Time On Two Wheels",
+                        "distanceWithTwoWheels": "Distance With Two Wheels",
+                        "timeWithTwoWheels": "Time With Two Wheels"
+                    }
+                },
+                "threeWheels": { 
+                    label: "Three Wheels", 
+                    children: {
+                        "distanceOnThreeWheels": "Distance On Three Wheels",
+                        "timeOnThreeWheels": "Time On Three Wheels",
+                        "distanceWithThreeWheels": "Distance With Three Wheels",
+                        "timeWithThreeWheels": "Time With Three Wheels"
+                    }
+                },
+                "fourWheels": { 
+                    label: "Four Wheels", 
+                    children: {
+                        "distanceOnFourWheels": "Distance On Four Wheels",
+                        "timeOnFourWheels": "Time On Four Wheels",
+                        "distanceWithFourWheels": "Distance With Four Wheels",
+                        "timeWithFourWheels": "Time With Four Wheels"
+                    }
+                }
+            };
+        }
+
+        GetPlayerName(userId)
+        {
+            let user = this.players.find(p => p.id == userId);
+            if(user == undefined)
+            {
+                return 'user ' + userId;
+            }
+            return user.name;
+        }
+    
+        CreateSortedStats() {
+            this.sortedStats = {};
+    
+            // Loop through each player's stats
+            for (let userId in this.playerStats) {
+                let playerStats = this.playerStats[userId];
+    
+                // Update sortedStats with each stat
+                for (let stat in playerStats) {
+                    if (!["userId", "month", "year", "dateCreated", "dateUpdated"].includes(stat)) 
+                    {                    
+                        if (!this.sortedStats[stat]) {
+                            this.sortedStats[stat] = [];
+                        }
+
+                        this.sortedStats[stat].push({ userId: userId, value: playerStats[stat], stat: stat, userName: this.GetPlayerName(userId), displayValue: this.GetStatDisplayValue(stat, playerStats[stat]), displayName: this.GetStatDisplayName(stat) });
+                    }   
+                }
+            }
+    
+            // Sort each stat array in sortedStats
+            for (let stat in this.sortedStats) {
+                this.sortedStats[stat].sort((a, b) => b.value - a.value);
+
+                for(var i = 0; i < this.sortedStats[stat].length; i++)
+                {
+                    this.sortedStats[stat][i].position = i + 1;
+                }
+            }
+        }
+    
+        CreateLeaderboard() {
+            this.leaderboard = [];
+    
+            // Loop through sortedStats to get top entry for each stat
+            for (let stat in this.sortedStats) {
+                let topEntry = this.sortedStats[stat][0];
+                this.leaderboard.push(topEntry);
+            }
+        }
+    
+        GetUserStats(userName) {
+            var userStats = [];
+    
+            // Get stats for the given user
+            for (let stat in this.sortedStats) 
+            {
+                let userStat = this.sortedStats[stat].find(entry => entry.userName === userName);
+                if(userStat != undefined)
+                {
+                    userStats.push(userStat);
+                }
+            }
+    
+            return userStats;
+        }
+    
+        GetStatList(stat, userId = 0) {
+            switch (stat) {
+                case 'leaderboard':
+                    return this.leaderboard;
+                case 'user':
+                    return this.GetUserStats(userId);
+                default:
+                    return this.sortedStats[stat] || [];
+            }
+        }
+
+        GetStatDisplayName(stat)
+        {
+            const names = {
+                "leaderboard": "Leaderboard",
+                "user": "User",
+                "general": "General Stats",
+                "crashes": "Crash Stats",
+                "controls": "Control Stats",
+                "state": "State Stats",
+                "surface": "Surface Stats",
+                "noWheels": "No Wheels Stats",
+                "oneWheel": "One Wheel Stats",
+                "twoWheels": "Two Wheels Stats",
+                "threeWheels": "Three Wheels Stats",
+                "fourWheels": "Four Wheels Stats",
+                "timesStarted": "Times Started",
+                "timesFinished": "Times Finished",
+                "checkpointsCrossed": "Checkpoints Crossed",
+                "wheelsBroken": "Wheels Broken",
+                "crashTotal": "Total Crashes",
+                "crashRegular": "Regular Crashes",
+                "crashEye": "Eye Crashes",
+                "crashGhost": "Ghost Crashes",
+                "crashSticky": "Sticky Crashes",
+                "distanceArmsUp": "Distance Arms Up",
+                "timeArmsUp": "Time Arms Up",
+                "distanceBraking": "Distance Braking",
+                "timeBraking": "Time Braking",
+                "distanceGrounded": "Distance Grounded",
+                "timeGrounded": "Time Grounded",
+                "distanceInAir": "Distance In Air",
+                "timeInAir": "Time In Air",
+                "distanceRagdoll": "Distance Ragdoll",
+                "timeRagdoll": "Time Ragdoll",
+                "distanceOnRegular": "Distance On Regular Surface",
+                "timeOnRegular": "Time On Regular Surface",
+                "distanceOnGrass": "Distance On Grass Surface",
+                "timeOnGrass": "Time On Grass Surface",
+                "distanceOnIce": "Distance On Ice Surface",
+                "timeOnIce": "Time On Ice Surface",
+                "distanceOnNoWheels": "Distance Without Wheels",
+                "timeOnNoWheels": "Time Without Wheels",
+                "distanceWithNoWheels": "Distance With No Wheels",
+                "timeWithNoWheels": "Time With No Wheels",
+                "distanceOnOneWheel": "Distance On One Wheel",
+                "timeOnOneWheel": "Time On One Wheel",
+                "distanceWithOneWheel": "Distance With One Wheel",
+                "timeWithOneWheel": "Time With One Wheel",
+                "distanceOnTwoWheels": "Distance On Two Wheels",
+                "timeOnTwoWheels": "Time On Two Wheels",
+                "distanceWithTwoWheels": "Distance With Two Wheels",
+                "timeWithTwoWheels": "Time With Two Wheels",
+                "distanceOnThreeWheels": "Distance On Three Wheels",
+                "timeOnThreeWheels": "Time On Three Wheels",
+                "distanceWithThreeWheels": "Distance With Three Wheels",
+                "timeWithThreeWheels": "Time With Three Wheels",
+                "distanceOnFourWheels": "Distance On Four Wheels",
+                "timeOnFourWheels": "Time On Four Wheels",
+                "distanceWithFourWheels": "Distance With Four Wheels",
+                "timeWithFourWheels": "Time With Four Wheels"
+            };
+        
+            return names[stat] || 'unknown';
+        }
+
+        GetStatDisplayValue(stat, value)
+        {
+            if (stat.includes('distance')) 
+            {
+                return util.ConvertMetersToKilometers(value) + ' km';
+            } else if (stat.includes('time') && !stat.includes('times')) {
+                var dhms = util.ConvertSecondsToDHMS(value);
+                return `${dhms[0]}d ${dhms[1]}h ${dhms[2]}m ${dhms[3]}s`;
+            }
+            else
+            {
+                return value + ' x';
+            }
+        }
+    };
 
     api.GetPlayerStats = function(callback)
     {
-
-    }
+        if(api.userStats == null)
+        {
+            api.RetreivePlayerStats(function(){
+                callback(api.userStats);
+            })
+        }
+        else
+        {
+            callback(api.userStats);
+        }
+    };
 
     api.RetreivePlayerStats = function(callback)
     {
         var allStats = [];
+        this.userStats = {};
         var self = this;
 
         function fetchData(url)
@@ -42,35 +345,30 @@ export var api = (function($) {
                     //Sum all user stats in the this.userStats object.
                     allStats.forEach((stat) => {
                         const userId = stat.attributes.userId;
+                        
+                        //Add the user if not present.
                         if(!self.userStats.hasOwnProperty(userId))
                         {
-                            self.userStats[userId] = stat;
+                            self.userStats[userId] = stat.attributes;
                         }
                         else
                         {
                             //Sum
-                            for (const key in stat) 
+                            for (const key in stat.attributes) 
                             {
                                 if (!["userId", "month", "year", "dateCreated", "dateUpdated"].includes(key)) {
-                                    self.userStats[userId][key] = (self.userStats[userId][key] || 0) + stat[key];
+                                    self.userStats[userId][key] = (self.userStats[userId][key] || 0) + stat.attributes[key];
                                 }
                             }
                         }
                     });
-
-
-
-
-
-
-
 
                     callback();
                 }
             });
         }
 
-        fetchData('https://jsonapi.zeepkist-gtr.com/users?fields[users]=id,steamName&page[size]=100');
+        fetchData('https://jsonapi.zeepkist-gtr.com/stats?page[size]=100');
     }
 
     api.RetreivePlayerData = function(callback)
@@ -157,6 +455,7 @@ export var api = (function($) {
                     this.elementIds.push(`${context}filter_${elementId}`);
                     break;
                 case 'time':
+                case 'number':
                     this.values = [0,84600];
                     this.elementIds.push(`${context}filter_${elementId}_start`);
                     this.elementIds.push(`${context}filter_${elementId}_end`);
@@ -182,6 +481,7 @@ export var api = (function($) {
                     return `${this.filter}(${this.field},'${this.values[0]}')`;
                 case 'time':
                 case 'date':
+                case 'number':
                     return `and(greaterOrEqual(${this.field},'${this.values[0]}'),lessOrEqual(${this.field},'${this.values[1]}'))`;
             }
         }
@@ -194,6 +494,7 @@ export var api = (function($) {
                     this.values[0] = $(`#${this.elementIds[0]}`).val();
                     break;
                 case 'time':
+                case 'number':
                     this.values[0] = $(`#${this.elementIds[0]}`).val();
                     this.values[1] = $(`#${this.elementIds[1]}`).val();
                     break;
@@ -260,6 +561,8 @@ export var api = (function($) {
                     updatedAt: new api.Filter().Set("zworp", "updatedAt", "updatedAt", "Updated At", "date"),
                     fileAuthor: new api.Filter().Set("zworp", "fileAuthor", "fileAuthor", "Creator Name", "text", "contains"),
                     validation: new api.Filter().Set("zworp", "validation", "validation", "Author Time (s)", "time"),
+                    checkpoints: new api.Filter().Set("zworp", "checkpoints", "metadata.checkpoints", "Checkpoints", "number"),
+                    skybox: new api.Filter().Set("zworp", "skybox", "metadata.skybox", "Skybox", "text")
                 },
                 gtr: {
                     userId: new api.Filter().Set("gtr", "userId", "userId", "WR By User", "user", "equals", "worldrecords"),
@@ -392,6 +695,7 @@ export var api = (function($) {
                 this.zworpParams.only = true;
                 data['page[size]'] = this.zworpParams.pageSize;
                 data['page[number]'] = this.zworpParams.pageNumber;
+                data['include'] = 'metadata'
             }
 
             filters = filters.concat(this.zworpParams.filters.map(f => f.GetFilterParameter()));
@@ -412,7 +716,21 @@ export var api = (function($) {
                 success: function(response) 
                 {
                     self.zworpParams.response = response;
-                    self.levelsBuffer = self.levelsBuffer.concat(response.data);     
+
+                    response.data.forEach(d => 
+                    {
+                        var levelData = d;
+                        var metadataId = d.attributes.metadataId;
+                        var metadata = response.included.find(md => md.type == 'metadata' && md.id == metadataId);
+                        for(let att in metadata.attributes)
+                        {
+                            levelData.attributes[att] = metadata.attributes[att];
+                        }
+                        self.levelsBuffer.push(levelData);
+                    });
+
+                    console.log(response);
+
                     if(self.zworpParams.only)
                     {
                         //Are there more pages available and is there more room on the page?
