@@ -1,5 +1,6 @@
 +++
 title = 'GTR Record Finder'
+draft = true
 +++
 
 {{<rawhtml>}}
@@ -7,7 +8,7 @@ title = 'GTR Record Finder'
 <div id="content" class='flex_content'>
     <div class='standardLeftPanel'></div>
     <div class='standardPagePanel'>
-        <div id='result'>
+        <div id='results'>
             <h3>This page is not finished yet!</h3>
         </div>
     </div>
