@@ -1,6 +1,5 @@
 +++
-title = 'GTR Record Finder'
-draft = true
+title = 'GTR Record Search'
 +++
 
 {{<rawhtml>}}
@@ -9,7 +8,6 @@ draft = true
     <div class='standardLeftPanel'></div>
     <div class='standardPagePanel'>
         <div id='results'>
-            <h3>This page is not finished yet!</h3>
         </div>
     </div>
 </div>

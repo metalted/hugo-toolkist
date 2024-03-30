@@ -476,3 +476,38 @@ hr{
   margin-left: 20px;
 }
 /*#endregion*/
+
+.pb-row
+{
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: rgb(34,34,34);
+  margin:3px;
+  flex-direction: row;
+  color: rgb(251, 199, 25);
+}
+.pb-row img 
+{
+  flex-shrink: 0;
+  width: 250px;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pb-row-info table tr th
+{
+  color: rgb(239, 107, 35) !important;
+  padding-left: 10px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.pb-row-info table tr td
+{
+  padding-left: 10px;
+  overflow:hidden;
+  white-space: nowrap;
+  text-align: left;
+}
