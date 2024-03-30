@@ -682,6 +682,7 @@ export var api = (function($) {
                 {
                     //A filled array means result from GTR.
 				    data['page[size]'] = this.zworpParams.pageSize;
+                    data['include'] = 'metadata';
                     filters.push("any(fileHash,'" + levelHashes.join("','") + "')");
                 }
                 else 
