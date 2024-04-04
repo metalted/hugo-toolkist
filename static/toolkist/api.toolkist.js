@@ -419,6 +419,30 @@ export var api = (function($) {
         xhttp.send(); 
     };
 
+    api.JSONAPIRequestAll = function(url, callback)
+    {
+        var allResponses = [];
+
+        function fetchData(url)
+        {
+            api.JSONAPIRequest(url, "", function(data)
+            {
+                allResponses = allResponses.concat(data);
+
+                // Check if there's a next page
+                if (data.links && data.links.next) {
+                    // If there's a next page, recursively call fetchData with the next URL
+                    fetchData(data.links.next);
+                } else 
+                {                    
+                    callback(allResponses);
+                }
+            });
+        }
+
+        fetchData(url);        
+    };
+
     api.Filter = class
     {
         constructor()

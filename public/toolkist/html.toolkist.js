@@ -676,5 +676,35 @@ export var html = (function($) {
         selectionWindow.hide();
     }
 
+    html.RenderPersonalBests = function(containerID, pbs) {
+        var container = $(containerID);
+        container.empty();
+    
+        pbs.forEach(pb => {
+            var row = $("<tr>").addClass("pb-row");
+    
+            var image = $("<img>").attr('src', pb.image);
+            var imageCell = $("<td>").append(image);
+            row.append(imageCell);
+    
+            var infoCell = $("<td>").addClass("pb-row-info");
+            var table = $("<table>");
+    
+            // Append each piece of information with its corresponding formatting
+            table.append($("<tr>").html(`<th class="label">Level:</th><td>${pb.name}</td>`));
+            table.append($("<tr>").html(`<th class="label">Creator:</th><td>${pb.creator}</td>`));
+            table.append($("<tr>").html(`<td colspan="2"><br></td>`));
+            table.append($("<tr>").html(`<th class="label">Player:</th><td>${pb.player}</td>`));
+            table.append($("<tr>").html(`<th class="label">Time:</th><td>${util.ConvertSecondsToDisplayTime(pb.time)}</td>`));
+            table.append($("<tr>").html(`<th class="label">Splits:</th><td>${pb.splits}</td>`));
+            table.append($("<tr>").html(`<th class="label">Record ID:</th><td>${pb.recordId}</td>`));
+            table.append($("<tr>").html(`<th class="label">Date:</th><td>${util.ConvertISODateToDate(pb.date)}</td>`));
+    
+            infoCell.append(table);
+            row.append(infoCell);
+            container.append(row);
+        });
+    };
+
     return html;
 })(jQuery);

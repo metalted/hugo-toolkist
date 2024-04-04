@@ -8,11 +8,11 @@
     <language>en-us</language>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>GTR Record Finder</title>
-      <link>http://localhost:1313/gtrrecordfinder/</link>
+      <title>GTR Record Search</title>
+      <link>http://localhost:1313/gtrrecordsearch/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/gtrrecordfinder/</guid>
-      <description>&#xD;This page is not finished yet!&#xD;</description>
+      <guid>http://localhost:1313/gtrrecordsearch/</guid>
+      <description>&#xD;</description>
     </item>
     <item>
       <title>GTR Stats</title>
@@ -41,6 +41,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/playlists/</guid>
       <description>&#xD;</description>
+    </item>
+    <item>
+      <title>ZDL</title>
+      <link>http://localhost:1313/zdl/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/zdl/</guid>
+      <description>&#xD;Data Loading...&#xD;</description>
     </item>
     <item>
       <title>Zoozle</title>

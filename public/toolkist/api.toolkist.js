@@ -419,6 +419,30 @@ export var api = (function($) {
         xhttp.send(); 
     };
 
+    api.JSONAPIRequestAll = function(url, callback)
+    {
+        var allResponses = [];
+
+        function fetchData(url)
+        {
+            api.JSONAPIRequest(url, "", function(data)
+            {
+                allResponses = allResponses.concat(data);
+
+                // Check if there's a next page
+                if (data.links && data.links.next) {
+                    // If there's a next page, recursively call fetchData with the next URL
+                    fetchData(data.links.next);
+                } else 
+                {                    
+                    callback(allResponses);
+                }
+            });
+        }
+
+        fetchData(url);        
+    };
+
     api.Filter = class
     {
         constructor()
@@ -682,6 +706,7 @@ export var api = (function($) {
                 {
                     //A filled array means result from GTR.
 				    data['page[size]'] = this.zworpParams.pageSize;
+                    data['include'] = 'metadata';
                     filters.push("any(fileHash,'" + levelHashes.join("','") + "')");
                 }
                 else 
@@ -856,6 +881,88 @@ export var api = (function($) {
             }
         }
     }
+
+    api.GetPlayerPBForLevel = function(user, levelInput, onLoadedCallback)
+    {
+        if(user == undefined || levelInput == undefined || levelInput == "")
+        {
+            onLoadedCallback([]);
+            return;
+        }
+
+        $.ajax({
+            url: 'https://jsonapi.zworpshop.com/levels',
+            method: 'GET',
+            data: {
+                'page[size]' : 100,
+                'page[number]' : 1,
+                'filter' : `contains(name,'${levelInput}')`
+            },
+            success: function(zworpResponse) 
+            {
+               //Get all the hashes of the levels
+                var levelHashes = zworpResponse.data.map(zr => zr.attributes.fileHash);
+
+                if(levelHashes.length == 0)
+                {
+                    onLoadedCallback([]);
+                }
+                else
+                {
+                    $.ajax({
+                        url: 'https://jsonapi.zeepkist-gtr.com/personalbests',
+                        method: 'GET',
+                        data: {
+                            'page[size]' : 100,
+                            'include' : 'record',
+                            'filter' : `and(equals(userId,'${user.id}'),any(level,'${levelHashes.join("','")}'))`
+                        },
+                        success: function(gtrResponse) 
+                        {
+                            var levelRecords = [];
+                            console.log(gtrResponse);
+                            //Collect levels
+                            gtrResponse.data.forEach(pb => 
+                            {
+                                var recordId = pb.attributes.recordId;
+                                var recordData = gtrResponse.included.find(inc => (inc.id + "") === (recordId + ""));
+                                var levelData = zworpResponse.data.find(zr => zr.attributes.fileHash === pb.attributes.level);
+
+                                var lr = {};
+
+                                if(recordData != undefined && levelData != undefined)
+                                {
+                                    lr['date'] = recordData.attributes.dateUpdated;
+                                    lr['uid'] = recordData.attributes.level;
+                                    lr['splits'] = recordData.attributes.splits;
+                                    lr['time'] = recordData.attributes.time;
+                                    lr['name'] = levelData.attributes.name;
+                                    lr['creator'] = levelData.attributes.fileAuthor;
+                                    lr['image'] = levelData.attributes.imageUrl;
+                                    lr['workshopId'] = levelData.attributes.workshopId;
+                                    lr['player'] = user.name;
+                                    lr['recordId'] = recordId;
+
+                                }
+
+                                levelRecords.push(lr);
+                            });
+
+                            onLoadedCallback(levelRecords);
+                        },
+                        error: function(xhr, status, error) {
+                            console.error(status, error);
+                            onLoadedCallback([]);
+                        }
+                    });
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error(status, error);
+                onLoadedCallback([]);
+            }
+        });
+    };
 
     api.ZworpPlaylistRequest = function(playlist, onLoadedCallback)
     {
