@@ -7,41 +7,51 @@ var gist =
             {
                 "name" : "my corn dried up '^'",
                 "hash" : "F154859E514D27715E2E9DA272158FF758909C48",
-                "finishers" : [],
-                "creators" : [],
-                "description" : "",
+                "manualRecords" : [
+                    { "user" : "Test", "time" : 1000, "splits" : "1|2|3" },
+                    { "user" : "Test", "time" : 1001, "splits" : "1|2|3" },
+                    { "user" : "Test", "time" : 1002, "splits" : "1|2|3" },
+                    { "user" : "Test", "time" : 1003, "splits" : "1|2|3" },
+                    { "user" : "Test", "time" : 1004, "splits" : "1|2|3" },
+                    { "user" : "Test", "time" : 1005, "splits" : "1|2|3" },
+                    { "user" : "Test", "time" : 1006, "splits" : "1|2|3" },
+                    { "user" : "Test", "time" : 1007, "splits" : "1|2|3" },
+                    { "user" : "Test", "time" : 1008, "splits" : "1|2|3" }
+                ],
+                "manualCreators" : [],
+                "description" : "Some description...",
                 "tier" : "S"
             },
             {
                 "name" : "Jungle Jam 3",
                 "hash" : "CAA57574C2381FBF78DADC87CE7FBE7C4127C659",
-                "finishers" : [],
-                "creators" : [],
-                "description" : "",
+                "manualRecords" : [],
+                "manualCreators" : [],
+                "description" : "Some description...",
                 "tier" : "A"
             },
             {
                 "name" : "my corn thawed out -_-",
                 "hash" : "C1F3FAF5061DC76796D465AD1B885A39EDF267D0",
-                "finishers" : [],
-                "creators" : [],
-                "description" : "",
+                "manualRecords" : [],
+                "manualCreators" : [],
+                "description" : "Some description...",
                 "tier" : "B"
             },
             {
                 "name" : "Red Dread",
                 "hash" : "7065C9A24467A6F1E586B820E49D2C22B120A6CD",
-                "finishers" : [],
-                "creators" : [],
-                "description" : "",
+                "manualRecords" : [],
+                "manualCreators" : [],
+                "description" : "Some description...",
                 "tier" : "C"
             },
             {
                 "name" : "Trail Of The Original Dragon",
                 "hash" : "3D920C0A60ECCF3A6CC3CBE66F84AE4B8D9C8D26",
-                "finishers" : [],
-                "creators" : [],
-                "description" : "",
+                "manualRecords" : [],
+                "manualCreators" : ["justMaki", "The Maou", "Last"],
+                "description" : "Some description...",
                 "tier" : "D"
             }
         ],
@@ -49,41 +59,41 @@ var gist =
             {
                 "name": "Camembert",
                 "hash" : "1854DDF48DFD5A7796896C589AE551C91F1131AC",
-                "finishers" : [],
-                "creators" : [],
-                "description" : "",
+                "manualRecords" : [],
+                "manualCreators" : [],
+                "description" : "Some description...",
                 "tier" : "S"
             },
             {
                 "name": "Joining The Dark Side but Not Fully Committing",
                 "hash" : "404A3E243CCE8B2653BF4FB02087EDB8B4B66AE0",
-                "finishers" : [],
-                "creators" : [],
-                "description" : "",
+                "manualRecords" : [],
+                "manualCreators" : [],
+                "description" : "Some description...",
                 "tier" : "A"
             },
             {
                 "name": "done with dunes",
                 "hash" : "7627F6A23FFCB523D617944E4E65F66BD0521133",
-                "finishers" : [],
-                "creators" : [],
-                "description" : "",
+                "manualRecords" : [],
+                "manualCreators" : [],
+                "description" : "Some description...",
                 "tier" : "B"
             },
             {
                 "name": "Fresh Blue Fun",
                 "hash" : "402AEAED0375C99142FDEBD835A5CF651F87DBB1",
-                "finishers" : [],
-                "creators" : [],
-                "description" : "",
+                "manualRecords" : [],
+                "manualCreators" : [],
+                "description" : "Some description...",
                 "tier" : "C"
             },
             {
                 "name": "Bloody Frozen Nightmare",
                 "hash" : "EBC8200BF1E5F170BA80BC48D759681A7C7EFF26",
-                "finishers" : [],
-                "creators" : [],
-                "description" : "",
+                "manualRecords" : [],
+                "manualCreators" : [],
+                "description" : "Some description...",
                 "tier" : "D"
             }
         ]
@@ -101,8 +111,7 @@ $(document).ready(function()
         GetLevelRecordData(function(levelData)
         {
             console.log(levelData);
-
-            $('.standardPagePanel').html("<pre>" + JSON.stringify(levelData, null, 2) + "</pre>");
+            RenderZDLList('.standardPagePanel', levelData);
         });
     });
 })
@@ -130,7 +139,8 @@ function GetLevelRecordData(onLoadedCallback)
                     hash: rd.attributes.fileHash,
                     file: rd.attributes.fileUrl,
                     image: rd.attributes.imageUrl,
-                    workshopId: rd.attributes.workshopId
+                    workshopId: rd.attributes.workshopId,
+                    uid: rd.attributes.fileUid
                 };
 
                 //Get the data from the the metadata.
@@ -150,13 +160,32 @@ function GetLevelRecordData(onLoadedCallback)
                 if(gistLevelIndex != -1)
                 {
                     var gistLevel = gist.list.main[gistLevelIndex];
-                    level.rank = gistLevelIndex + 1;
-                    level.creators = gistLevel.creators;
-                    level.finishers = gistLevel.finishers;
-                    level.description = gistLevel.description;
-                    level.tier = gistLevel.tier;
+                    level.index = gistLevelIndex + 1;
+
+                    if(gistLevel.manualCreators.length > 0)
+                    {
+                        level.creator = gistLevel.manualCreators.join("<span class='ampersand'> & </span>");
+                    }
+
                     level.records = [];
 
+                    if(gistLevel.manualRecords.length > 0)
+                    {
+                        gistLevel.manualRecords.forEach(f => 
+                        {
+                            if(typeof f === 'object' && f !== null)
+                            {
+                                var record = {};
+                                record.user = f.hasOwnProperty('user') ? f.user : 'undefined';
+                                record.time = f.hasOwnProperty('time') ? f.time : -1;
+                                record.splits = f.hasOwnProperty('splits') ? f.splits : "";
+                                level.records.push(record);
+                            }
+                        });
+                    }
+
+                    level.description = gistLevel.description;
+                    level.tier = gistLevel.tier;
                     levelData.push(level);
                 }
                 else
@@ -167,7 +196,7 @@ function GetLevelRecordData(onLoadedCallback)
         });
 
         levelData.sort(function(a,b){
-            return a.rank - b.rank;
+            return a.index - b.index;
         });
 
         //Now that all the level data is collected, get all records for the levels.
@@ -218,4 +247,81 @@ function GetLevelRecordData(onLoadedCallback)
             onLoadedCallback(levelData);
         })
     })    
+}
+
+function RenderZDLList(containerID, levelData)
+{
+    var container = $(containerID);
+    container.empty();
+
+    levelData.forEach(level => 
+    {
+        var row = $('<div>').addClass('zdl-row');
+
+        var header = $('<div>').addClass('zdl-header');
+        var index = $('<div>').addClass('zdl-index').append("<span>").text("#" + level.index);
+        var name = $('<div>').addClass('zdl-name').text(level.name);
+        var by = $('<div>').addClass('zdl-by').text('by');
+        var creator = $('<div>').addClass('zdl-creator').html(level.creator);
+        header.append(index, name, by, creator);
+
+        var body = $('<div>').addClass('zdl-body');
+        var image = $('<img>').attr({src : level.image}).addClass('zdl-image');
+        
+        var info = $('<div>').addClass('zdl-info');
+        var infoHeader = $('<span>').addClass('zdl-info-header').text("Description:");
+        var infoDescription = $('<span>').addClass('zdl-info-description').text(level.description);
+        info.append(infoHeader, infoDescription);
+
+        var records = $('<div>').addClass('zdl-record-list');
+        var recordsHeader = $('<div>').addClass('zdl-record-list-header').text('Records:');
+        var recordsBody = $('<div>').addClass('zdl-record-list-body');
+
+        var recordsTable = $('<table>').addClass('zdl-record-table');
+
+        var recordCounter = 1;
+        var validationAdded = false;
+
+        function createValidationRow(time)
+        {
+            var row = $('<tr>').addClass('position1');
+            var place = $('<td>').css({width: '20%'}).append($('<img>').attr({src : '/medal_author.png'}).css({width: '15px', height: '15px'}));
+            var user = $('<td>').text("Author Time").css({width: '40%'});
+            var time = $('<td>').text(toolkist.util.ConvertSecondsToDisplayTime(time)).css({width: '40%'});
+            row.append(place,user,time);
+            recordsTable.append(row);
+        }
+
+        if(level.records.length == 0)
+        {
+            createValidationRow(level.authorTime);
+        }
+        else
+        {
+            level.records.forEach(r => 
+            {
+                if(r.time >= level.authorTime && !validationAdded)
+                {
+                    createValidationRow(level.authorTime);
+                    validationAdded = true;
+                }
+                var row = $('<tr>');
+                var place = $('<td>').text(recordCounter).css({width: '20%'});
+                var user = $('<td>').text(r.user).css({width: '40%'});
+                var time = $('<td>').text(toolkist.util.ConvertSecondsToDisplayTime(r.time)).css({width: '40%'});
+
+                row.append(place,user,time);
+                recordsTable.append(row);
+                recordCounter++;
+            });
+        }
+
+        recordsBody.append(recordsTable);
+
+        records.append(recordsHeader, recordsBody);
+
+        body.append(image, info, records);
+        row.append(header, body);
+        container.append(row);
+    });
 }
