@@ -6,126 +6,242 @@ title = 'ZDL'
 <style>
 .zdl-row
 {
-  display: flex;
-  align-items: center;
-  border-radius: 8px;
-  overflow: hidden;
-  background-color: rgb(34,34,34);
-  margin: 3px;
-  flex-direction: column;
-  color: rgb(251, 199, 25);
-  width: 100%;
-}
+    width: calc(100% - 18px);
+    height: 240px;
+    margin: 6px;
 
-.zdl-header
-{
-    width: 100%;
-    height: 40px;
+    background-color: rgb(34,34,34);
+    color: rgb(251, 199, 25);
+
     display: flex;
     flex-direction: row;
+    overflow: hidden;
+    border-radius: 12px;
+    border: 3px solid rgb(34,34,34);
+    box-sizing:border-box;
 }
 
-.zdl-index, .zdl-name, .zdl-creator, .zdl-by
+.zdl-rank
 {
+    width: 72px;
     height: 100%;
-    display: flex;
-    justify-content: center;
-    justify-content: center;
-    align-items: center;
-    padding-right: 20px;
+    position: relative;
+    border-right: 3px solid rgb(34,34,34);
 }
 
 .zdl-index
 {
-    width: 40px;
-    padding-right: 0px;
+    position: absolute;
+    height: 54px;
+    width: 66px;
+    top: 6px;
+    left: 6px;
+    text-align: center;
+    font-size: 48px;
+    line-height: 54px;
+    background-color: black;
+    border-radius: 6px 0 0 6px;
+    background-color: rgb(34,34,34,0.5);
+    user-select:none;
 }
 
-.zdl-index span
+.zdl-points
 {
+    position: absolute;
+    height: 90px;
+    width: 66px;
+    top: 66px;
+    left: 6px;
+    text-align: center;
     font-size: 24px;
+    line-height: 33px;
+    padding-top: 9px;
+    background-color: black;
+    border-radius: 6px 0 0 6px;
+    background-color: rgb(34,34,34, 0.5);
+    box-sizing: border-box;
+    user-select:none;
 }
 
-.zdl-name, .zdl-creator
+.zdl-steam
 {
-    color: rgb(239, 107, 35) !important;
+    position: absolute;
+    height: 66px;
+    width: 66px;
+    bottom: 6px;
+    left: 6px;
+    text-align: center;
+    font-size: 48px;
+    line-height: 54px;
+    background-color: black;
+    border-radius: 6px 0 0 6px;
+    background-color: rgb(34,34,34, 0.5);
+    background-image: url('/steamIconYellow.png');
+    background-size: 90%;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
-.zdl-body
+.zdl-steam:hover
 {
-    width: 100%;
-    flex: 1;
-    display: flex;
-    flex-direction: row;
+    background-color: rgb(255, 255, 255, 0.3);
+    cursor: pointer;
 }
 
 .zdl-image 
 {
-  flex-shrink: 0;
-  width: 250px;
-  height: 100%;
-  object-fit: cover;
-  margin-left: 10px;
-  margin-right: 10px;
-  margin-bottom: 10px;
+    width: 376px;
+    height: 240px;  
+    object-fit: cover;
+    border-right: 3px solid rgb(34,34,34);
 }
 
-.zdl-info
+.zdl-content
 {
+    height: 100%;
     flex: 1;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+    position: relative;
+    color: rgb(251, 199, 25);
 }
 
-.zdl-info-header
+.zdl-header
 {
-    color: rgb(239, 107, 35) !important;
+    position: absolute;
+    height: 54px;
+    top: 6px;
+    left: 0px;
+    right: 6px;
+    text-align: left;
+    font-size: 24px;
+    line-height: 54px;
+    background-color: black;
+    border-radius: 0 6px 6px 0;
+    background-color: rgb(34,34,34,0.5);
+    user-select:none;
+    padding-left: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    color: 
+}
+.zdl-header span
+{
+    margin-left: 6px;
+    margin-right: 6px;
 }
 
-.zdl-record-list
+.zdl-description
 {
-    flex: 2;
-    height: 100%;
-}
-
-.zdl-record-list-header
-{
-    color: rgb(239, 107, 35) !important;
-}
-
-.zdl-record-list-body
-{
-    max-height: 123px;
+    position: absolute;
+    width: 360px;
+    top: 114px;
+    left: 0px;
+    bottom: 6px;
+    text-align: left;
+    font-size: 18px;
+    background-color: black;
+    border-radius: 0 6px 6px 0;
+    background-color: rgb(34,34,34,0.5);
+    user-select:none;
+    box-sizing: border-box;
     overflow-y: auto;
 }
 
-.ampersand
+.zdl-authorTime
 {
-    color: rgb(251, 199, 25);
-    padding-left: 5px;
-    padding-right: 5px;
+    position: absolute;
+    width: 360px;
+    height: 42px;
+    top: 66px;
+    left: 0px;
+    text-align: left;
+    font-size: 18px;
+    background-color: black;
+    border-radius: 0 6px 6px 0;
+    background-color: rgb(34,34,34,0.5);
+    user-select:none;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.zdl-authorTime-medal
+{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 6px;
+    top: 6px;
+
+    background-image: url('/medal_author.png');
+    background-size: 95%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.zdl-authorTime span
+{
+    height: 30px;
+    line-height: 30px;
+    position: absolute;
+    top: 6px;
+    left: 42px;
+}
+
+.zdl-description
+{
+    padding: 6px;
+    box-sizing: border-box;
+}
+
+.zdl-records
+{
+    position: absolute;
+    top: 66px;
+    right: 6px;
+    bottom: 6px;
+    left: 366px;
+    text-align: left;
+    font-size: 32px;
+    line-height: 54px;
+    background-color: black;
+    border-radius: 6px;
+    background-color: rgb(34,34,34,0.5);
+    user-select:none;
+    padding: 6px;
+    overflow-y: auto;
+}
+
+.orangeText{
+    color: rgb(239, 107, 35) !important;
 }
 
 .zdl-record-table
 {
-    width: 80%;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 6px;
 }
 
 .zdl-record-table tr
 {
-    border: 1px solid rgb(251, 199, 25);
+    background-color: rgb(34,34,34,0.5);
+    height: 24px;
+    padding-bottom: 3px;
+    border-radius: 6px;
 }
 
-.zdl-record-table td
+.zdl-record-table tr td
 {
-    padding: 5px;
-    height: 20px;
+    height: 24px;
+    font-size: 18px;
+    line-height:24px;
+    padding-left: 6px;
+    overflow:hidden;
+    white-space: nowrap;
 }
-
 </style>
 <script type="module" src='/toolkist/zdl.pages.toolkist.js'></script>
 <div id="content" class='flex_content'>
-    <div class='standardPagePanel'>Loading...</div>
+    <div class='standardLeftPanel'></div>
+    <div class='standardPagePanel' id='zdlMainList'>Loading...</div>
 </div>
 {{</rawhtml>}}
