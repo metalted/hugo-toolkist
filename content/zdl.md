@@ -7,7 +7,7 @@ title = 'ZDL'
 .zdl-row
 {
     width: calc(100% - 18px);
-    height: 240px;
+    height: 180px;
     margin: 6px;
 
     background-color: rgb(34,34,34);
@@ -32,13 +32,13 @@ title = 'ZDL'
 .zdl-index
 {
     position: absolute;
-    height: 54px;
+    height: 36px;
     width: 66px;
     top: 6px;
     left: 6px;
     text-align: center;
-    font-size: 48px;
-    line-height: 54px;
+    font-size: 28px;
+    line-height: 36px;
     background-color: black;
     border-radius: 6px 0 0 6px;
     background-color: rgb(34,34,34,0.5);
@@ -48,14 +48,14 @@ title = 'ZDL'
 .zdl-points
 {
     position: absolute;
-    height: 90px;
+    height: 72px;
     width: 66px;
-    top: 66px;
+    top: 48px;
     left: 6px;
     text-align: center;
-    font-size: 24px;
+    font-size: 18px;
     line-height: 33px;
-    padding-top: 9px;
+    padding-top: 6px;
     background-color: black;
     border-radius: 6px 0 0 6px;
     background-color: rgb(34,34,34, 0.5);
@@ -66,18 +66,15 @@ title = 'ZDL'
 .zdl-steam
 {
     position: absolute;
-    height: 66px;
+    height: 42px;
     width: 66px;
     bottom: 6px;
     left: 6px;
-    text-align: center;
-    font-size: 48px;
-    line-height: 54px;
     background-color: black;
     border-radius: 6px 0 0 6px;
     background-color: rgb(34,34,34, 0.5);
     background-image: url('/steamIconYellow.png');
-    background-size: 90%;
+    background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -90,8 +87,8 @@ title = 'ZDL'
 
 .zdl-image 
 {
-    width: 376px;
-    height: 240px;  
+    width: 282px;
+    height: 180px;  
     object-fit: cover;
     border-right: 3px solid rgb(34,34,34);
 }
@@ -107,13 +104,13 @@ title = 'ZDL'
 .zdl-header
 {
     position: absolute;
-    height: 54px;
+    height: 36px;
     top: 6px;
     left: 0px;
     right: 6px;
     text-align: left;
-    font-size: 24px;
-    line-height: 54px;
+    font-size: 18px;
+    line-height: 36px;
     background-color: black;
     border-radius: 0 6px 6px 0;
     background-color: rgb(34,34,34,0.5);
@@ -121,7 +118,6 @@ title = 'ZDL'
     padding-left: 12px;
     white-space: nowrap;
     overflow: hidden;
-    color: 
 }
 .zdl-header span
 {
@@ -133,7 +129,7 @@ title = 'ZDL'
 {
     position: absolute;
     width: 360px;
-    top: 114px;
+    top: 96px;
     left: 0px;
     bottom: 6px;
     text-align: left;
@@ -144,6 +140,7 @@ title = 'ZDL'
     user-select:none;
     box-sizing: border-box;
     overflow-y: auto;
+    padding: 6px;
 }
 
 .zdl-authorTime
@@ -151,7 +148,7 @@ title = 'ZDL'
     position: absolute;
     width: 360px;
     height: 42px;
-    top: 66px;
+    top: 48px;
     left: 0px;
     text-align: left;
     font-size: 18px;
@@ -186,16 +183,10 @@ title = 'ZDL'
     left: 42px;
 }
 
-.zdl-description
-{
-    padding: 6px;
-    box-sizing: border-box;
-}
-
 .zdl-records
 {
     position: absolute;
-    top: 66px;
+    top: 48px;
     right: 6px;
     bottom: 6px;
     left: 366px;
@@ -238,10 +229,52 @@ title = 'ZDL'
     overflow:hidden;
     white-space: nowrap;
 }
+
+#zdlMainList, #zdlLegacyList, #zdlScoreboard
+{
+    display: none;
+}
+
+.standardButton
+{
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 6px;
+}
+
+.headerBlock{
+    margin-bottom: 6px;
+}
+
+#zdlLoadingPage
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-circle {
+  width: 100px; /* Adjust the size of the circle */
+  height: 100px; /* Adjust the size of the circle */
+  border-radius: 50%;
+  border: 12px solid rgb(251,199,25); /* Color of the circle border */
+  border-top-color: rgb(34,34,34); /* Color of the animated part of the circle */
+  animation: spin 1s linear infinite; /* Animation for spinning */
+}
+
 </style>
 <script type="module" src='/toolkist/zdl.pages.toolkist.js'></script>
 <div id="content" class='flex_content'>
     <div class='standardLeftPanel'></div>
-    <div class='standardPagePanel' id='zdlMainList'>Loading...</div>
+    <div class='standardPagePanel' id='zdlLoadingPage'><div class="loading-circle"></div></div>
+    <div class='standardPagePanel' id='zdlMainList'></div>
+    <div class='standardPagePanel' id='zdlLegacyList'></div>
+    <div class='standardPagePanel' id='zdlScoreboard'></div>
 </div>
 {{</rawhtml>}}

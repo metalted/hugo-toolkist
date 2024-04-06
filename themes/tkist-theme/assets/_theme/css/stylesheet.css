@@ -433,6 +433,7 @@ hr{
 .leaderboardTable tr
 {
     font-size: 18px;
+    color: rgb(207, 167, 35);
 }
 
 .leaderboardTable tr:nth-child(even)
@@ -451,24 +452,32 @@ hr{
     padding: 5px;
 }
 
+.leaderboardTable th{
+  padding: 5px;
+  background-color: rgb(207, 167, 35);
+  color: rgb(34,34,34);
+  text-shadow: -2px 2px 1px rgb(239, 107, 35);
+  text-align: left;
+}
+
 .position1
 {
-  color: rgb(133, 31, 217);
+  color: rgb(133, 31, 217) !important;
 }
 
 .position2
 {
-  color: rgb(207, 167, 35);
+  color: rgb(207, 167, 35) !important;
 }
 
 .position3
 {
-  color: rgb(112, 112, 112);
+  color: rgb(112, 112, 112) !important;
 }
 
 .position4
 {
-  color: rgb(148, 72, 13);
+  color: rgb(148, 72, 13) !important;
 }
 
 .tab-content input

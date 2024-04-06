@@ -990,6 +990,40 @@ export var api = (function($) {
         });
     }
 
+    api.GetZDLGist = function(onLoadedCallback, useDummyFlag = false)
+    {
+        if(useDummyFlag)
+        {
+            onLoadedCallback(null);
+        }
+        else
+        {
+            var linkGist = '37abb529a2be73ac6ba4ec45d7ccf7fd';
+            $.ajax({
+                url: `https://api.github.com/gists/${linkGist}`,
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) 
+                {   
+                    try{
+                        const fileContent = data.files['ZDLData.json'].content;
+                        var json = JSON.parse(fileContent);
+                        onLoadedCallback(json);
+                    }
+                    catch
+                    {
+                        onLoadedCallback(null);
+                    }                
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log(jqXHR);
+                    console.error('Error fetching Gist:', textStatus, errorThrown);
+                    onLoadedCallback(null)
+                }
+            });
+        }
+    }
+
     api.GetGistPlaylists = function(onLoadedCallback)
     {
         var linkGist = '5edf3fe1fffc25eeaa4b878b4ea2850f';

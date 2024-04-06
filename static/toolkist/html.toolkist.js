@@ -513,11 +513,24 @@ export var html = (function($) {
         tabContainer.find('.tab-button-top').first().trigger('click');
     };
 
-    html.RenderLeaderboard = function(data, headers, containerID)
+    html.RenderLeaderboard = function(data, headers, containerID, visualHeaders = [])
     {
         const container = $(containerID);
 
         var table = $('<table>').addClass('leaderboardTable');
+
+        if(visualHeaders.length > 0)
+        {
+            var tHeader = $('<thead>');
+            var tHeaderRow = $('<tr>');
+
+            visualHeaders.forEach(h => {
+                tHeaderRow.append($('<th>').text(h));
+            });
+            tHeader.append(tHeaderRow);
+            table.append(tHeader);
+        }
+        
         var tBody = $('<tbody>');
 
         data.forEach(d => {
