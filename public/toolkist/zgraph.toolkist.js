@@ -1,166 +1,61 @@
-import {html} from '/toolkist/html.toolkist.js';
+import {toolkist} from '/toolkist/toolkist.js';
 
 export var zgraph = (function($) {
-    var zgraph = {};
+    var zgraph = {};    
     zgraph.Editor = class 
-    {       
-        constructor(containerID) 
+    {
+        constructor(containerID)
         {
             this.history = [];
             this.historyIndex = -1;
 
-            // Initialize the container
-            this.container = $('#' + containerID);
-            this.container.width("100%");
-            //this.container.height("800px");
-            this.container.css({
-                backgroundColor: 'black',
-                position: 'absolute',
-            });
+            this.selectedId = null;
+            this.selectedColor = null;
 
-            //Create the menu bar
-            this.menubar = $('<div>');
-            this.container.append(this.menubar);
-            this.menubar.css({
-                backgroundColor: '#777777',
-                height: '60px',
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                zIndex : 990
-            });
+            this.InitButtons();
+            this.InitShapeButtons();
 
-            //Create the side bar
-            this.sidebar = $('<div>').addClass('editor_sidebar');
-            this.container.append(this.sidebar);
-            this.sidebar.css({
-                backgroundColor: '#555555',
-                width: '250px',
-                position: 'absolute',
-                bottom: 0,
-                left: 0,
-                top:60
-            })
-
-            //Add the paint selection
-            html.RenderPaintSelection('.editor_sidebar', this.paintSelected);
-
-            //Create the working area
-            this.worksheet = $('<div>');
-            this.container.append(this.worksheet);
-            this.worksheet.css({
-                backgroundColor: '#000000',
-                height: '740px',
-                width: 'calc(100% - 250px)',
-                position: 'absolute',
-                right: 0,
-                bottom: 0
-            })
-
-            //Initialize the canvas
-            this.canvas = $('<canvas>');
-            this.canvas.attr('id', 'fabric-canvas');
+            //Main layout
+            this.container = $(containerID);
+            this.menubar = $('<div>').addClass('zgraph-menubar');
+            this.sidebar = $('<div>').addClass('zgraph-sidebar');
+            this.worksheet = $('<div>').addClass('zgraph-worksheet');
+            this.canvas = $('<canvas>').addClass('zgraph-canvas').attr({id: 'zgraph-canvas'});
+            
             this.worksheet.append(this.canvas);
+            this.container.append(this.menubar, this.sidebar, this.worksheet);
 
-            this.canvas.attr('width', this.worksheet.width());
-            this.canvas.attr('height', this.worksheet.height());
-            
-            this.fabric = new fabric.Canvas('fabric-canvas', {
-                backgroundColor: 'rgb(0,0,0)',
-                selectionColor: 'rgba(1,1,1,0.1)',
-                selectionLineWidth: 2
-            });
+            toolkist.html.RenderPaintSelection('.zgraph-sidebar', this.PaintSelected);
 
-            //Save the first history with an empty worksheet.
-            this.change('initial');
-            
-            //Always remove skew from parts.
-            this.fabric.on('before:render', () =>
-            {
-                var objs = this.fabric.getObjects();
-                for(var i in objs)
-                {
-                    objs[i].set({skewX: 0, skewY: 0});
-                }
-            });
+            this.InitFabric();
+            this.InitControls();
 
-            this.fabric.on('mouse:wheel', (opt) => {
-                var delta = opt.e.deltaY;
-                var zoom = this.fabric.getZoom();
-                zoom *= 0.999 ** delta;
-                if (zoom > 20) zoom = 20;
-                if (zoom < 0.01) zoom = 0.01;
-                this.fabric.zoomToPoint({ x: opt.e.offsetX, y: opt.e.offsetY }, zoom);
-                opt.e.preventDefault();
-                opt.e.stopPropagation();
-            });        
+            this.AddMenubarButton(this.buttons.save);
+            this.AddMenubarButton(this.buttons.open);
+            this.AddMenubarButton(this.buttons.add);
+            this.AddMenubarButton(this.buttons.export);
+            this.AddMenubarButton(this.buttons.image);
+            this.AddMenubarButton(this.buttons.undo);
+            this.AddMenubarButton(this.buttons.redo);
+            this.AddMenubarButton(this.buttons.backward);
+            this.AddMenubarButton(this.buttons.forward);
+            this.AddMenubarButton(this.buttons.dropper);
+            this.AddMenubarButton(this.buttons.paint);
 
-            this.fabric.on('mouse:down', (opt) => {
-                var evt = opt.e;
-                if (evt.altKey === true) {
-                    this.isDragging = true;
-                    this.selection = false;
-                    this.lastPosX = evt.clientX;
-                    this.lastPosY = evt.clientY;
-                }
-            });
+            this.AddMenubarButton(this.shapes.circle);
+            this.AddMenubarButton(this.shapes.square);
+            this.AddMenubarButton(this.shapes.rightTriangle);
+            this.AddMenubarButton(this.shapes.quarterCircle);
+            this.AddMenubarButton(this.shapes.halfPipe);
 
-            this.fabric.on('mouse:move', (opt) => {
-                if (this.isDragging) {
-                    var e = opt.e;
-                    var vpt = this.fabric.viewportTransform;
-                    vpt[4] += e.clientX - this.lastPosX;
-                    vpt[5] += e.clientY - this.lastPosY;
-                    this.fabric.requestRenderAll();
-                    this.lastPosX = e.clientX;
-                    this.lastPosY = e.clientY;
-                }              
-            });
-            
-            this.fabric.on('mouse:up', (opt) => {
-                // on mouse up we want to recalculate new interaction
-                // for all objects, so we call setViewportTransform
-                this.fabric.setViewportTransform(this.fabric.viewportTransform);
-                this.isDragging = false;
-                this.selection = true;
-            });
+            this.Change('initial');
+        }
 
-            this.fabric.on('object:modified', (opt) => {
-                this.change('modified');
-            });
-
-            //Keyboard controls
-            document.addEventListener('keydown', (event) => {
-                if (event.key === 'Delete' || event.code === 'Delete') {
-                   this.fabric.remove(...this.fabric.getActiveObjects());
-                   this.change('delete');
-                }
-    
-                if ((event.ctrlKey || event.metaKey) && event.key === 'c') {
-                    this.copy();
-                }
-    
-                if ((event.ctrlKey || event.metaKey) && event.key === 'v') {
-                    this.paste();
-                }
-
-                
-                if ((event.ctrlKey || event.metaKey) && event.key === 'z') {
-                    // Ctrl+C (Cmd+C on Mac) was pressed
-                    this.undo();
-                }
-    
-                if ((event.ctrlKey || event.metaKey) && event.key === 'y') {
-                    // Ctrl+C (Cmd+C on Mac) was pressed
-                    this.redo();
-                }
-            });
-
-            //Action buttons
+        InitButtons()
+        {
             this.buttons = {
                 open : {
-                    icon: '<i style="width: 40px; height: 40px; margin: 5px; font-size: 32px; line-height: 40px; text-align:center" class="fa fa-folder-open" aria-hidden="true"></i>',
+                    icon: '<i class="zgraph-menubar-button-icon fa fa-folder-open" aria-hidden="true"></i>',
                     action: () => {
                         var input = $('<input type="file">');
                         input.click();
@@ -176,7 +71,7 @@ export var zgraph = (function($) {
                                     // You can further process or use 'jsonData' as needed
                                     this.history = [];
                                     this.historyIndex = -1;
-                                    this.change('initial');
+                                    this.Change('initial');
                                 } catch (error) {
                                     console.error('Error parsing JSON:', error);
                                     // Handle any errors during JSON parsing
@@ -192,15 +87,15 @@ export var zgraph = (function($) {
                     tooltipText: 'Open'
                 },
                 save : {
-                    icon: '<i style="width: 40px; height: 40px; margin: 5px; font-size: 32px; line-height: 40px; text-align:center" class="fa fa-floppy-disk" aria-hidden="true"></i>',
+                    icon: '<i class="zgraph-menubar-button-icon fa fa-floppy-disk" aria-hidden="true"></i>',
                     action: () => {
                         var worksheet = this.fabric.toJSON(['shapeType', 'blockID', 'paintID']);
-                        toolkist_fs.directDownload('worksheet.json', JSON.stringify(worksheet));
+                        toolkist.fs.DirectDownload('worksheet.json', JSON.stringify(worksheet));
                     },
                     tooltipText: 'Save'
                 },
                 add: {
-                    icon: '<i style="width: 40px; height: 40px; margin: 5px; font-size: 32px; line-height: 40px; text-align:center" class="fa fa-plus" aria-hidden="true"></i>',
+                    icon: '<i class="zgraph-menubar-button-icon fa fa-plus" aria-hidden="true"></i>',
                     action: () => {
                         var input = $('<input type="file">');
                         input.click();
@@ -212,38 +107,29 @@ export var zgraph = (function($) {
                                 try {
                                     this.fabric.discardActiveObject();
                                     var jsonData = JSON.parse(e.target.result);
-                                    var selection = [];
-                                    fabric.util.enlivenObjects(jsonData.objects, (objects) => {
-                                        objects.forEach((o)=> {
-                                          this.fabric.add(o);
-                                          selection.push(o);
+                                    var objects = jsonData.objects;
+                                    if (objects && objects.length > 0) {
+                                        var selection = [];
+                                        objects.forEach((objData) => {
+                                            fabric.util.enlivenObjects([objData], (enlivenedObjects) => {
+                                                var obj = enlivenedObjects[0];
+                                                if (obj) {
+                                                    this.fabric.add(obj);
+                                                    selection.push(obj);
+                                                }
+                                                if (selection.length === objects.length) {
+                                                    this.fabric.setActiveObject(new fabric.ActiveSelection(selection, {
+                                                        canvas: this.fabric
+                                                    }));
+                                                    this.fabric.renderAll();
+                                                }
+                                            });
                                         });
-                                    });
-
-                                    console.log(selection);
-
-                                    if(selection.length == 0)
-                                    {
-                                        return;
-                                    }
-                                    else if(selection.length == 1)
-                                    {
-                                        this.fabric.setActiveObject(selection[0]);
-                                    }
-                                    else
-                                    {
-                                        const group = new fabric.Group();
-                                        group.canvas = this.fabric;
-                                        selection.forEach((object) => {
-                                            group.addWithUpdate(object);
-                                        });
-                                        this.fabric.setActiveObject(group.setCoords()).renderAll();
                                     }
                                 } catch (error) {
                                     console.error('Error parsing JSON:', error);
                                     // Handle any errors during JSON parsing
-                                }
-                                finally{                                    
+                                } finally {
                                     input.remove();
                                 }
                             };
@@ -253,39 +139,40 @@ export var zgraph = (function($) {
                     },
                     tooltipText: 'Add'
                 },
+                                
                 undo : {
-                    icon: '<i style="width: 40px; height: 40px; margin: 5px; font-size: 40px; line-height: 40px; text-align:center" class="fa fa-rotate-left" aria-hidden="true"></i>',
+                    icon: '<i class="zgraph-menubar-button-icon fa fa-rotate-left" aria-hidden="true"></i>',
                     action: () => {
-                        this.undo();
+                        this.Undo();
                     },
                     tooltipText: 'Undo'
                 },
                 redo : {
-                    icon: '<i style="width: 40px; height: 40px; margin: 5px; font-size: 40px; line-height: 40px; text-align:center" class="fa fa-rotate-right" aria-hidden="true"></i>',
+                    icon: '<i class="zgraph-menubar-button-icon fa fa-rotate-right" aria-hidden="true"></i>',
                     action: () => {
-                        this.redo();
+                        this.Redo();
                     },
                     tooltipText: 'Redo'
                 },
                 backward : {
-                    icon: '<i style="width: 40px; height: 40px; margin: 5px; font-size: 40px; line-height: 40px; text-align:center" class="fa fa-backward-step" aria-hidden="true"></i>',
+                    icon: '<i class="zgraph-menubar-button-icon fa fa-backward-step" aria-hidden="true"></i>',
                     action: () =>{
-                        this.backward();
+                        this.Backward();
                     },
                     tooltipText: 'Backward'
                 },
                 forward : {
-                    icon: '<i style="width: 40px; height: 40px; margin: 5px; font-size: 40px; line-height: 40px; text-align:center" class="fa fa-forward-step" aria-hidden="true"></i>',
+                    icon: '<i class="zgraph-menubar-button-icon fa fa-forward-step" aria-hidden="true"></i>',
                     action: ()=>{
-                        this.forward();
+                        this.Forward();
                     },
                     tooltipText: 'Forward'
                 },
                 export : {
-                    icon: '<i style="width: 40px; height: 40px; margin: 5px; font-size: 32px; line-height: 40px; text-align:center" class="fa fa-file-export" aria-hidden="true"></i>',
+                    icon: '<i class="zgraph-menubar-button-icon fa fa-file-export" aria-hidden="true"></i>',
                     action: () => {
                         var worksheet = this.fabric.toJSON(['shapeType', 'blockID', 'paintID']);
-                        var blocks = [];
+                        var zeeplevel = new toolkist.game.Zeeplevel();
                     
                         for(const i in worksheet.objects)
                         {
@@ -299,7 +186,7 @@ export var zgraph = (function($) {
                             var rotatedCenterX = obj.left + Math.cos(radians) * (centerPosition.x - obj.left) - Math.sin(radians) * (centerPosition.y - obj.top);
                             var rotatedCenterY = obj.top + Math.sin(radians) * (centerPosition.x - obj.left) + Math.cos(radians) * (centerPosition.y - obj.top);
 
-                            var block = new toolkist.Block();
+                            var block = new toolkist.game.Block();
                             block.blockID = obj.blockID;
                             block.position.x = rotatedCenterX / 10;
                             block.position.y = i * 0.001 + shapeInfo.yShift;
@@ -310,18 +197,15 @@ export var zgraph = (function($) {
                             block.scale.z = obj.flipY ? -obj.scaleY: obj.scaleY;
                             block.options[0] = 1;
                             block.paints[0] = Number(obj.paintID);
-                            blocks.push(block);
+                            zeeplevel.AddBlock(block);
                         }
-
-
-                        var header = new toolkist.Header().generateHeader("Toolkist", blocks.length);
-                        var zeeplevel = new toolkist.Zeeplevel('Graphics_editor').setHeader(header).setBlocks(blocks);                     
-                        toolkist_fs.directDownload('graphic.zeeplevel', zeeplevel.toCSV());
+                                          
+                        toolkist.fs.DirectDownload('graphic.zeeplevel', zeeplevel.ToCSV());
                     },
                     tooltipText: 'Export'
                 },
                 dropper : {
-                    icon: '<i style="width: 40px; height: 40px; margin: 5px; font-size: 40px; line-height: 40px; text-align:center" class="fa fa-eye-dropper" aria-hidden="true"></i>',
+                    icon: '<i class="zgraph-menubar-button-icon fa fa-eye-dropper" aria-hidden="true"></i>',
                     action: () => {
                         var objs = this.fabric.getActiveObject();
                         var paintID = 0;
@@ -348,14 +232,14 @@ export var zgraph = (function($) {
                     tooltipText: 'Pick'
                 },
                 paint : {
-                    icon: '<i style="width: 40px; height: 40px; margin: 5px; font-size: 40px; line-height: 40px; text-align:center" class="fa fa-paint-roller" aria-hidden="true"></i>',
+                    icon: '<i class="zgraph-menubar-button-icon fa fa-paint-roller" aria-hidden="true"></i>',
                     action: () => {
-                        this.paint();
+                        this.Paint();
                     },
                     tooltipText: 'Paint'
                 },
                 image : {
-                    icon: '<i style="width: 40px; height: 40px; margin: 5px; font-size: 40px; line-height: 40px; text-align:center" class="fa fa-image" aria-hidden="true"></i>',
+                    icon: '<i class="zgraph-menubar-button-icon fa fa-image" aria-hidden="true"></i>',
                     action: () => {
                         var input = $('<input type="file">');
                         input.click();
@@ -389,12 +273,14 @@ export var zgraph = (function($) {
                     tooltipText: 'Image'
                 }
             }
+        }
 
-            //Shape buttons
+        InitShapeButtons()
+        {
             this.shapes = {
                 circle : {
-                    icon : '<svg width="50" height="50"><circle cx="25" cy="25" r="20" stroke="white" stroke-width="2" fill="white"/></svg>',
-                    action: () => this.createShape('circle'),
+                    icon : '<svg width="40" height="40"><circle cx="20" cy="20" r="19" stroke="black" stroke-width="2" fill="black"/></svg>',
+                    action: () => this.CreateShape('circle'),
                     create : function(){
                         return new fabric.Circle({
                             left: 0,
@@ -413,8 +299,8 @@ export var zgraph = (function($) {
                     yShift: -3.2
                 },
                 square : {
-                    icon: '<svg width="50" height="50"><rect x="5" y="5" width="40" height="40" fill="white" stroke="white" stroke-width="2"/></svg>',
-                    action: () => this.createShape('square'),
+                    icon: '<svg width="40" height="40"><rect x="0" y="0" width="40" height="40" fill="black" stroke="black" stroke-width="2"/></svg>',
+                    action: () => this.CreateShape('square'),
                     create : function(){
                         return new fabric.Rect({
                             fill: 'white',
@@ -433,8 +319,8 @@ export var zgraph = (function($) {
                     
                 },
                 rightTriangle : {
-                    icon: '<svg width="50" height="50"><path d="M5 5 L45 5 L5 45 L5 5" fill="white" stroke="white" stroke-width="2"/></svg>',
-                    action: () => this.createShape('rightTriangle'),
+                    icon: '<svg width="40" height="40"><path d="M0 0 L40 0 L0 40 L0 0" fill="black" stroke="black" stroke-width="2"/></svg>',
+                    action: () => this.CreateShape('rightTriangle'),
                     create : function(){
                         return new fabric.Path('M0 0 L160 0 L0 160 L0 0', {
                             fill: 'white',
@@ -452,8 +338,8 @@ export var zgraph = (function($) {
                     yShift: 0
                 },
                 quarterCircle : {
-                    icon: '<svg width="50" height="50"><path d="M5 45 L5 5 L45 5 A45 45 0 0 1 5 45" fill="white" stroke="white" stroke-width="2"/></svg>',
-                    action: () => this.createShape('quarterCircle'),
+                    icon: '<svg width="40" height="40"><path d="M0 40 L0 0 L40 0 A40 40 0 0 1 0 40" fill="black" stroke="black" stroke-width="2"/></svg>',
+                    action: () => this.CreateShape('quarterCircle'),
                     create : function(){
                         return new fabric.Path('M0 160 L0 0 L160 0 A160 160 0 0 1 0 160', {
                             fill: 'white',
@@ -471,8 +357,8 @@ export var zgraph = (function($) {
                     yShift: 0
                 },
                 halfPipe : {
-                    icon: '<svg width="50" height="50"><path d="M45 5 L45 45 L5 45 A45 45 0 0 0 45 5" fill="white" stroke="white" stroke-width="2"/></svg>',
-                    action: () => this.createShape('halfPipe'),
+                    icon: '<svg width="40" height="40"><path d="M40 0 L40 40 L0 40 A40 40 0 0 0 40 0" fill="black" stroke="black" stroke-width="2"/></svg>',
+                    action: () => this.CreateShape('halfPipe'),
                     create : function(){
                         return new fabric.Path('M160 0 L160 160 L0 160 A160 160 0 0 0 160 0', {
                             fill: 'white',
@@ -491,7 +377,7 @@ export var zgraph = (function($) {
                 },
                 triangle : {
                     icon: '<svg width="50" height="50"> <path d="M25 25 L45 45 L5 45 L25 25" fill="none" stroke="black" stroke-width="2"/></svg>',
-                    action: () => this.createShape('triangle'),
+                    action: () => this.CreateShape('triangle'),
                     create : function(){
                         return new fabric.Path('M80 80 L160 160 L0 160 L80 80', {
                             fill: 'white',
@@ -510,60 +396,114 @@ export var zgraph = (function($) {
                 },
                 
             }
-
-            this.addMenubarButton(this.buttons.save);
-            this.addMenubarButton(this.buttons.open);
-            this.addMenubarButton(this.buttons.add);
-            this.addMenubarButton(this.buttons.export);
-            this.addMenubarButton(this.buttons.image);
-            this.addMenubarButton(this.buttons.undo);
-            this.addMenubarButton(this.buttons.redo);
-            this.addMenubarButton(this.buttons.backward);
-            this.addMenubarButton(this.buttons.forward);
-            this.addMenubarButton(this.buttons.dropper);
-            this.addMenubarButton(this.buttons.paint);
-
-            this.addMenubarButton(this.shapes.circle);
-            this.addMenubarButton(this.shapes.square);
-            this.addMenubarButton(this.shapes.rightTriangle);
-            this.addMenubarButton(this.shapes.quarterCircle);
-            this.addMenubarButton(this.shapes.halfPipe);
-            //this.addMenubarButton(this.shapes.triangle);
         }
 
-        addMenubarButton(buttonInfo)
+        InitFabric()
         {
-            const buttonSize = 50;
-            const button = $('<div>');
-            button.css({
-                width: buttonSize + 'px',
-                height: buttonSize + 'px',
-                backgroundColor: '#999999',
-                marginLeft: '5px',
-                marginTop: '5px',
-                float: 'left',
-                position: 'relative', // Add relative positioning
-                cursor: 'pointer' // Change cursor to pointer on hover
+            this.fabric = new fabric.Canvas('zgraph-canvas', {
+                backgroundColor: 'rgb(0,0,0)',
+                selectionColor: 'rgba(1,1,1,0.1)',
+                selectionLineWidth: 2
             });
 
-            // Create and style the tooltip
-            const tooltip = $('<div>').addClass('tooltip').text(buttonInfo.tooltipText); // Add tooltip text here
-            tooltip.css({
-                position: 'absolute',
-                top: '30px',
-                left: '0', 
-                right: '0',  
-                bottom: '0',  
-                lineHeight: '20px',
-                textAlign: 'center',  
-                fontSize: '12px',      
-                background: 'rgba(0, 0, 0, 0.7)',
-                color: '#fff',
-                whiteSpace: 'nowrap',
-                display: 'none' // Initially hide the tooltip
+            this.OnResize();
+
+            //Always remove skew from parts.
+            this.fabric.on('before:render', () =>
+            {
+                var objs = this.fabric.getObjects();
+                for(var i in objs)
+                {
+                    objs[i].set({skewX: 0, skewY: 0});
+                }
             });
 
-            // Show tooltip on hover
+            //Zoom with mousewheel
+            this.fabric.on('mouse:wheel', (opt) => {
+                var delta = opt.e.deltaY;
+                var zoom = this.fabric.getZoom();
+                zoom *= 0.999 ** delta;
+                if (zoom > 20) zoom = 20;
+                if (zoom < 0.01) zoom = 0.01;
+                this.fabric.zoomToPoint({ x: opt.e.offsetX, y: opt.e.offsetY }, zoom);
+                opt.e.preventDefault();
+                opt.e.stopPropagation();
+            });        
+
+            //Selection and screen drag (+ alt)
+            this.fabric.on('mouse:down', (opt) => {
+                var evt = opt.e;
+                if (evt.altKey === true) {
+                    this.isDragging = true;
+                    this.selection = false;
+                    this.lastPosX = evt.clientX;
+                    this.lastPosY = evt.clientY;
+                }
+            });
+
+            this.fabric.on('mouse:move', (opt) => {
+                if (this.isDragging) {
+                    var e = opt.e;
+                    var vpt = this.fabric.viewportTransform;
+                    vpt[4] += e.clientX - this.lastPosX;
+                    vpt[5] += e.clientY - this.lastPosY;
+                    this.fabric.requestRenderAll();
+                    this.lastPosX = e.clientX;
+                    this.lastPosY = e.clientY;
+                }              
+            });
+            
+            this.fabric.on('mouse:up', (opt) => {
+                // on mouse up we want to recalculate new interaction
+                // for all objects, so we call setViewportTransform
+                this.fabric.setViewportTransform(this.fabric.viewportTransform);
+                this.isDragging = false;
+                this.selection = true;
+            });
+
+            this.fabric.on('object:modified', (opt) => {
+                this.Change('modified');
+            });
+        }
+
+        InitControls()
+        {
+            //Keyboard controls
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Delete' || event.code === 'Delete') {
+                   this.fabric.remove(...this.fabric.getActiveObjects());
+                   this.Change('delete');
+                }
+    
+                if ((event.ctrlKey || event.metaKey) && event.key === 'c') {
+                    this.Copy();
+                }
+    
+                if ((event.ctrlKey || event.metaKey) && event.key === 'v') {
+                    this.Paste();
+                }
+
+                
+                if ((event.ctrlKey || event.metaKey) && event.key === 'z') {
+                    // Ctrl+C (Cmd+C on Mac) was pressed
+                    this.Undo();
+                }
+    
+                if ((event.ctrlKey || event.metaKey) && event.key === 'y') {
+                    // Ctrl+C (Cmd+C on Mac) was pressed
+                    this.Redo();
+                }
+            });
+        }
+
+        AddMenubarButton(buttonInfo)
+        {
+            const button = $('<div>').addClass('zgraph-menubar-button');
+            const tooltip = $('<div>').addClass('zgraph-menubar-button-tooltip').text(buttonInfo.tooltipText);
+            button.html(buttonInfo.icon);
+            button.on('click', buttonInfo.action);
+            button.append(tooltip);
+
             button.hover(
                 function () {
                     tooltip.css('display', 'block');
@@ -573,40 +513,37 @@ export var zgraph = (function($) {
                 }
             );
 
-            button.html(buttonInfo.icon);
-            button.on('click', buttonInfo.action);
-            button.append(tooltip);
             this.menubar.append(button);
         }
 
-        createShape(shapeType)
+        CreateShape = (shapeType) =>
         {
             var shapeInfo = this.shapes[shapeType];
             var shape = shapeInfo.create();            
-            var center = this.getViewportCenter();
+            var center = this.GetViewportCenter();
             shape.left = center.x;
             shape.top = center.y;
-            shape.fill = zgraph.selectedColor;
-            shape.paintID = zgraph.selectedId;
+            shape.fill = this.selectedColor;
+            shape.paintID = this.selectedId;
             shape.opacity = 0.8;
             this.fabric.add(shape);
-            this.change('create');
+            this.Change('create');
         } 
-        
-        getViewportCenter(){
+
+        GetViewportCenter(){
             return {
                 x: fabric.util.invertTransform(this.fabric.viewportTransform)[4]+(this.fabric.width/this.fabric.getZoom())/2, 
                 y: fabric.util.invertTransform(this.fabric.viewportTransform)[5]+(this.fabric.height/this.fabric.getZoom())/2
             };
         }
 
-        copy() {
+        Copy() {
             this.fabric.getActiveObject().clone((cloned) => {
                 this.clipboard = cloned;
             }, ['shapeType', 'blockID', 'paintID']);
         }
 
-        paste() {
+        Paste() {
             // clone again, so you can do multiple copies.
             this.clipboard.clone((clonedObj) => {
                 this.fabric.discardActiveObject();
@@ -632,15 +569,16 @@ export var zgraph = (function($) {
                 this.fabric.requestRenderAll();
             }, ['shapeType', 'blockID', 'paintID']);
 
-            this.change('paste');
-        }        
-
-        paintSelected = (id, color) =>
+            this.Change('paste');
+        }  
+        
+        PaintSelected = (id, color) =>
         {
             this.selectedId = id;
             this.selectedColor = color;
+
             try{
-                var active = editor.fabric.getActiveObject();      
+                var active = this.fabric.getActiveObject();
                 if(active == null)
                 {
                     return;
@@ -657,7 +595,6 @@ export var zgraph = (function($) {
                     objs.push(active);
                 }
 
-               
                 if(objs.length == 0)
                 {
                     return;
@@ -665,17 +602,17 @@ export var zgraph = (function($) {
 
                 for(var i in objs)
                 {
-                    objs[i].set('fill', zgraph.selectedColor);
+                    objs[i].set('fill', this.selectedColor);
                     objs[i].set('paintID', id);
-                    editor.fabric.requestRenderAll();
+                    this.fabric.requestRenderAll();
                 }
 
-                editor.change('paint');                
+                this.Change('paint');      
             }
             catch{}
-        }   
-        
-        change(source)
+        }
+
+        Change(source)
         {
             console.log('change: ' + source);
             var canvasState = this.fabric.toJSON(['shapeType', 'blockID', 'paintID']);
@@ -693,7 +630,7 @@ export var zgraph = (function($) {
             }            
         }
 
-        undo(){
+        Undo(){
             if(this.historyIndex == 0)
             {
                 console.log('start of history');
@@ -702,11 +639,11 @@ export var zgraph = (function($) {
             else
             {
                 this.historyIndex--;
-                this.reloadHistory();
+                this.ReloadHistory();
             }
         }
 
-        redo()
+        Redo()
         {
             if(this.historyIndex == this.history.length - 1)
             {
@@ -716,18 +653,18 @@ export var zgraph = (function($) {
             else
             {
                 this.historyIndex++;
-                this.reloadHistory();
+                this.ReloadHistory();
             }
         }
 
-        reloadHistory()
+        ReloadHistory()
         {
             this.fabric.loadFromJSON(this.history[this.historyIndex]);
         }
 
-        forward()
+        Forward()
         {
-            var active = editor.fabric.getActiveObject();      
+            var active = this.fabric.getActiveObject();      
             if(active == null)
             {
                 return;
@@ -755,13 +692,13 @@ export var zgraph = (function($) {
                 this.fabric.bringForward(objs[i]);                
             }
 
-            editor.fabric.requestRenderAll();
-            editor.change('forward');    
+            this.fabric.requestRenderAll();
+            this.Change('forward');    
         }
 
-        backward()
+        Backward()
         {
-            var active = editor.fabric.getActiveObject();      
+            var active = this.fabric.getActiveObject();      
             if(active == null)
             {
                 return;
@@ -789,13 +726,13 @@ export var zgraph = (function($) {
                 this.fabric.sendBackwards(objs[i]);                
             }
 
-            editor.fabric.requestRenderAll();
-            editor.change('backward');    
+            this.fabric.requestRenderAll();
+            this.Change('backward');    
         }
 
-        paint()
+        Paint()
         {
-            var active = editor.fabric.getActiveObject();      
+            var active = this.fabric.getActiveObject();      
             if(active == null)
             {
                 return;
@@ -820,14 +757,19 @@ export var zgraph = (function($) {
 
             for(var i in objs)
             {
-                objs[i].set('fill', zgraph.selectedColor);
-                objs[i].set('paintID', zgraph.selectedId);           
+                objs[i].set('fill', this.selectedColor);
+                objs[i].set('paintID', this.selectedId);           
             }
 
-            editor.fabric.requestRenderAll();
-            editor.change('paint'); 
+            this.fabric.requestRenderAll();
+            this.Change('paint'); 
+        }
+
+        OnResize()
+        {
+            this.fabric.setWidth(this.worksheet.width());
+            this.fabric.setHeight(this.worksheet.height());
         }
     }
-
     return zgraph;
 })(jQuery);

@@ -47,7 +47,14 @@
       <link>http://localhost:1313/zdl/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/zdl/</guid>
-      <description>&#xD;Data Loading...&#xD;</description>
+      <description>&#xD;</description>
+    </item>
+    <item>
+      <title>ZGraph</title>
+      <link>http://localhost:1313/zgraph/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/zgraph/</guid>
+      <description>&#xD;</description>
     </item>
     <item>
       <title>Zoozle</title>

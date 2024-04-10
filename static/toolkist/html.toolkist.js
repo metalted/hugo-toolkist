@@ -633,7 +633,6 @@ export var html = (function($) {
 
         for(const id in game.painting.paints)
         {
-            console.log(id);
             var listItem = $('<div>').addClass('list-item').css({
                 'width': '250px',
                 'height': '30px',
@@ -660,7 +659,8 @@ export var html = (function($) {
 
             scrollableList.append(listItem);
 
-            listItem.click(function () {
+            listItem.on('click',function () 
+            {
                 $(".list-item").removeClass("selected");
                 $(this).addClass("selected");
     

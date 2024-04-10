@@ -91,8 +91,8 @@
             
             <link
                 rel="stylesheet"
-                href="/_theme/css/stylesheet.a3017590604579aad2670ac58935eb208214366962ac3cba028a975236c5c98c3a37b622bc3b2b67765db87c63599f720a7471bb3b9b496bceac253b3a6e1f95.css"
-                integrity="sha512-owF1kGBFearSZwrFiTXrIIIUNmlirDy6AoqXUjbFyYw6N7YivDsrZ3ZduHxjWZ9yCnRxuzubSWvOrCU7Om4flQ==" />
+                href="/_theme/css/stylesheet.e30279643b9339fd30fa7e3b0dc0680ae930a310c714e894359c8434658e351fb4af07b001369578ccbd8680b53a5c196c4c322b0a6365bb125e0d23e49a15a3.css"
+                integrity="sha512-4wJ5ZDuTOf0w&#43;n47DcBoCukwoxDHFOiUNZyENGWONR&#43;0rwewATaVeMy9hoC1OlwZbEwyKwpjZbsSXg0j5JoVow==" />
         
 
     
@@ -183,6 +183,14 @@
         
             
                 <li class="file">
+                    <a href="http://localhost:1313/zgraph/" title="./zgraph/">
+                        ZGraph
+                    </a>
+                </li>
+            
+        
+            
+                <li class="file">
                     <a href="http://localhost:1313/zoozle/" title="./zoozle/">
                         Zoozle
                     </a>
@@ -204,13 +212,278 @@
     
 
 <style>
-    .standardPagePanel{
-        color: yellow;
-    }
+.zdl-row
+{
+    width: calc(100% - 18px);
+    height: 180px;
+    margin: 6px;
+
+    background-color: rgb(34,34,34);
+    color: rgb(251, 199, 25);
+
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    border-radius: 12px;
+    border: 3px solid rgb(34,34,34);
+    box-sizing:border-box;
+}
+
+.zdl-rank
+{
+    width: 72px;
+    height: 100%;
+    position: relative;
+    border-right: 3px solid rgb(34,34,34);
+}
+
+.zdl-index
+{
+    position: absolute;
+    height: 36px;
+    width: 66px;
+    top: 6px;
+    left: 6px;
+    text-align: center;
+    font-size: 28px;
+    line-height: 36px;
+    background-color: black;
+    border-radius: 6px 0 0 6px;
+    background-color: rgb(34,34,34,0.5);
+    user-select:none;
+}
+
+.zdl-points
+{
+    position: absolute;
+    height: 72px;
+    width: 66px;
+    top: 48px;
+    left: 6px;
+    text-align: center;
+    font-size: 18px;
+    line-height: 33px;
+    padding-top: 6px;
+    background-color: black;
+    border-radius: 6px 0 0 6px;
+    background-color: rgb(34,34,34, 0.5);
+    box-sizing: border-box;
+    user-select:none;
+}
+
+.zdl-steam
+{
+    position: absolute;
+    height: 42px;
+    width: 66px;
+    bottom: 6px;
+    left: 6px;
+    background-color: black;
+    border-radius: 6px 0 0 6px;
+    background-color: rgb(34,34,34, 0.5);
+    background-image: url('/steamIconYellow.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.zdl-steam:hover
+{
+    background-color: rgb(255, 255, 255, 0.3);
+    cursor: pointer;
+}
+
+.zdl-image 
+{
+    width: 282px;
+    height: 180px;  
+    object-fit: cover;
+    border-right: 3px solid rgb(34,34,34);
+}
+
+.zdl-content
+{
+    height: 100%;
+    flex: 1;
+    position: relative;
+    color: rgb(251, 199, 25);
+}
+
+.zdl-header
+{
+    position: absolute;
+    height: 36px;
+    top: 6px;
+    left: 0px;
+    right: 6px;
+    text-align: left;
+    font-size: 18px;
+    line-height: 36px;
+    background-color: black;
+    border-radius: 0 6px 6px 0;
+    background-color: rgb(34,34,34,0.5);
+    user-select:none;
+    padding-left: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.zdl-header span
+{
+    margin-left: 6px;
+    margin-right: 6px;
+}
+
+.zdl-description
+{
+    position: absolute;
+    width: 360px;
+    top: 96px;
+    left: 0px;
+    bottom: 6px;
+    text-align: left;
+    font-size: 18px;
+    background-color: black;
+    border-radius: 0 6px 6px 0;
+    background-color: rgb(34,34,34,0.5);
+    user-select:none;
+    box-sizing: border-box;
+    overflow-y: auto;
+    padding: 6px;
+}
+
+.zdl-authorTime
+{
+    position: absolute;
+    width: 360px;
+    height: 42px;
+    top: 48px;
+    left: 0px;
+    text-align: left;
+    font-size: 18px;
+    background-color: black;
+    border-radius: 0 6px 6px 0;
+    background-color: rgb(34,34,34,0.5);
+    user-select:none;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.zdl-authorTime-medal
+{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 6px;
+    top: 6px;
+
+    background-image: url('/medal_author.png');
+    background-size: 95%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.zdl-authorTime span
+{
+    height: 30px;
+    line-height: 30px;
+    position: absolute;
+    top: 6px;
+    left: 42px;
+}
+
+.zdl-records
+{
+    position: absolute;
+    top: 48px;
+    right: 6px;
+    bottom: 6px;
+    left: 366px;
+    text-align: left;
+    font-size: 32px;
+    line-height: 54px;
+    background-color: black;
+    border-radius: 6px;
+    background-color: rgb(34,34,34,0.5);
+    user-select:none;
+    padding: 6px;
+    overflow-y: auto;
+}
+
+.orangeText{
+    color: rgb(239, 107, 35) !important;
+}
+
+.zdl-record-table
+{
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 6px;
+}
+
+.zdl-record-table tr
+{
+    background-color: rgb(34,34,34,0.5);
+    height: 24px;
+    padding-bottom: 3px;
+    border-radius: 6px;
+}
+
+.zdl-record-table tr td
+{
+    height: 24px;
+    font-size: 18px;
+    line-height:24px;
+    padding-left: 6px;
+    overflow:hidden;
+    white-space: nowrap;
+}
+
+#zdlMainList, #zdlLegacyList, #zdlScoreboard
+{
+    display: none;
+}
+
+.standardButton
+{
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 6px;
+}
+
+.headerBlock{
+    margin-bottom: 6px;
+}
+
+#zdlLoadingPage
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-circle {
+  width: 100px; /* Adjust the size of the circle */
+  height: 100px; /* Adjust the size of the circle */
+  border-radius: 50%;
+  border: 12px solid rgb(251,199,25); /* Color of the circle border */
+  border-top-color: rgb(34,34,34); /* Color of the animated part of the circle */
+  animation: spin 1s linear infinite; /* Animation for spinning */
+}
+
 </style>
 <script type="module" src='/toolkist/zdl.pages.toolkist.js'></script>
 <div id="content" class='flex_content'>
-    <div class='standardPagePanel'>Data Loading...</div>
+    <div class='standardLeftPanel'></div>
+    <div class='standardPagePanel' id='zdlLoadingPage'><div class="loading-circle"></div></div>
+    <div class='standardPagePanel' id='zdlMainList'></div>
+    <div class='standardPagePanel' id='zdlLegacyList'></div>
+    <div class='standardPagePanel' id='zdlScoreboard'></div>
 </div>
 
 

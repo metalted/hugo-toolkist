@@ -18,6 +18,10 @@
   </url><url>
     <loc>http://localhost:1313/</loc>
   </url><url>
+    <loc>http://localhost:1313/zdl/</loc>
+  </url><url>
+    <loc>http://localhost:1313/zgraph/</loc>
+  </url><url>
     <loc>http://localhost:1313/zoozle/</loc>
   </url>
 </urlset>
