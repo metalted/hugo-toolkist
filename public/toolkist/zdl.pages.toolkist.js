@@ -33,6 +33,7 @@ var gistDummy =
                 ],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "S"
             },
@@ -50,6 +51,10 @@ var gistDummy =
                 ],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {
+                    "validation" : "FNJ9dQXiO9c",
+                    "Sandals" : "FNJ9dQXiO9c"
+                },
                 "description": "...",
                 "tier": "S"
             },
@@ -64,6 +69,7 @@ var gistDummy =
                 ],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "A"
             },
@@ -81,6 +87,10 @@ var gistDummy =
                 ],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {
+                    "validation" : "ho3EEN5CMl0",
+                    "justMaki" : "ho3EEN5CMl0"
+                },
                 "description": "...",
                 "tier": "B"
             },
@@ -101,6 +111,7 @@ var gistDummy =
                 ],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "B"
             },
@@ -115,6 +126,7 @@ var gistDummy =
                 ],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "B"
             },
@@ -129,6 +141,7 @@ var gistDummy =
                 ],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "B"
             },
@@ -143,6 +156,7 @@ var gistDummy =
                 ],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "C"
             },
@@ -160,6 +174,7 @@ var gistDummy =
                 ],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "D"
             },
@@ -177,6 +192,7 @@ var gistDummy =
                 ],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "D"
             },
@@ -191,6 +207,7 @@ var gistDummy =
                 ],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "D"
             },
@@ -201,16 +218,20 @@ var gistDummy =
                 "manualRecords": [],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "D"
             },
             {
                 "name": "Fleshmouth",
                 "displayName": "",
-                "hash": "",
-                "manualRecords": [],
+                "hash": "5435550514ABFE463184130867F8FC34FF68C684",
+                "manualRecords": [
+                    { "user" : "justMaki" }
+                ],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "D"
             },
@@ -225,6 +246,7 @@ var gistDummy =
                 ],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "D"
             },
@@ -235,6 +257,7 @@ var gistDummy =
                 "manualRecords": [],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "D"
             },
@@ -249,6 +272,7 @@ var gistDummy =
                 ],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "E"
             },
@@ -266,6 +290,7 @@ var gistDummy =
                 ],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "E"
             },
@@ -280,6 +305,7 @@ var gistDummy =
                 ],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "E"
             },
@@ -294,6 +320,7 @@ var gistDummy =
                 ],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "E"
             },
@@ -304,6 +331,7 @@ var gistDummy =
                 "manualRecords": [],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "E"
             },
@@ -318,6 +346,7 @@ var gistDummy =
                 ],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "E"
             },
@@ -332,6 +361,7 @@ var gistDummy =
                 ],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "E"
             },
@@ -346,6 +376,7 @@ var gistDummy =
                 ],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "F"
             },
@@ -360,6 +391,7 @@ var gistDummy =
                 ],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "F"
             },
@@ -374,6 +406,7 @@ var gistDummy =
                 ],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "F"
             },
@@ -384,6 +417,7 @@ var gistDummy =
                 "manualRecords": [],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "F"
             },
@@ -404,6 +438,7 @@ var gistDummy =
                 ],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "F"
             },
@@ -427,6 +462,7 @@ var gistDummy =
                 ],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "F"
             },
@@ -444,6 +480,7 @@ var gistDummy =
                 ],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "F"
             },
@@ -458,6 +495,7 @@ var gistDummy =
                 ],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "F"
             },
@@ -468,6 +506,7 @@ var gistDummy =
                 "manualRecords": [],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "F"
             },
@@ -478,16 +517,22 @@ var gistDummy =
                 "manualRecords": [],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "F"
             },
             {
                 "name": "dried dogwater",
                 "displayName": "",
-                "hash": "",
-                "manualRecords": [],
+                "hash": "7F6C65C971212861B09FAA4B6902C40F4B4AF51C",
+                "manualRecords": [
+                    {"user" : "justMaki"},
+                    {"user" : "Last"},
+                    {"user" : "The Maou"}
+                ],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "G"
             },
@@ -498,6 +543,7 @@ var gistDummy =
                 "manualRecords": [],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "G"
             },
@@ -512,6 +558,7 @@ var gistDummy =
                 ],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "G"
             },
@@ -526,6 +573,7 @@ var gistDummy =
                 ],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "G"
             },
@@ -536,6 +584,7 @@ var gistDummy =
                 "manualRecords": [],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "G"
             },
@@ -546,6 +595,7 @@ var gistDummy =
                 "manualRecords": [],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "G"
             },
@@ -556,6 +606,7 @@ var gistDummy =
                 "manualRecords": [],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "G"
             },
@@ -573,6 +624,7 @@ var gistDummy =
                 ],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "G"
             },
@@ -587,6 +639,7 @@ var gistDummy =
                 ],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "H"
             },
@@ -601,6 +654,7 @@ var gistDummy =
                 ],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "I"
             },
@@ -615,6 +669,7 @@ var gistDummy =
                 ],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "I"
             },
@@ -625,6 +680,7 @@ var gistDummy =
                 "manualRecords": [],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "I"
             },
@@ -651,6 +707,7 @@ var gistDummy =
                 ],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "I"
             },
@@ -665,6 +722,7 @@ var gistDummy =
                 ],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "I"
             },
@@ -679,6 +737,7 @@ var gistDummy =
                 ],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "J"
             },
@@ -689,6 +748,7 @@ var gistDummy =
                 "manualRecords": [],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "J"
             },
@@ -699,6 +759,7 @@ var gistDummy =
                 "manualRecords": [],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "J"
             },
@@ -716,6 +777,7 @@ var gistDummy =
                 ],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "J"
             }
@@ -728,6 +790,7 @@ var gistDummy =
                 "manualRecords": [],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "X"
             },
@@ -738,6 +801,7 @@ var gistDummy =
                 "manualRecords": [],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "X"
             },
@@ -748,6 +812,7 @@ var gistDummy =
                 "manualRecords": [],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "X"
             },
@@ -758,6 +823,7 @@ var gistDummy =
                 "manualRecords": [],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "X"
             },
@@ -768,6 +834,7 @@ var gistDummy =
                 "manualRecords": [],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "X"
             },
@@ -778,6 +845,7 @@ var gistDummy =
                 "manualRecords": [],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "X"
             },
@@ -788,6 +856,7 @@ var gistDummy =
                 "manualRecords": [],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "X"
             },
@@ -798,6 +867,7 @@ var gistDummy =
                 "manualRecords": [],
                 "manualCreators": [],
                 "manualValidation": 0,
+                "youtubeUrls" : {},
                 "description": "...",
                 "tier": "X"
             }
@@ -964,6 +1034,7 @@ function GetLevelRecords(list, onLoadedCallback)
                     var listLevel = list[listLevelIndex];
                     level.index = listLevelIndex + 1;
                     level.score = GetScore(level.index);
+                    level.youtubeUrls = listLevel.youtubeUrls;
 
                     if(listLevel.manualCreators.length > 0)
                     {
@@ -1143,8 +1214,14 @@ function RenderZDLList(containerID, levelData, type)
             var creator = $('<span>').html(level.creator);
             header.append(name, by, creator);
 
-            var authorTimeText = level.authorTime == -1 ? "Unvalidated" : toolkist.util.ConvertSecondsToDisplayTime(level.authorTime);
-            var authorTime = $('<div>').addClass('zdl-authorTime').append($('<div>').addClass('zdl-authorTime-medal')).append($('<span>').text(authorTimeText));
+            var authorTimeText = level.authorTime == -1 ? "Unvalidated" : toolkist.util.ConvertSecondsToDisplayTime(level.authorTime);     
+            var authorTime = $('<div>').addClass('zdl-authorTime').append($('<div>').addClass('zdl-authorTime-medal')).append($('<span>').html(authorTimeText));
+
+            if(level.youtubeUrls.hasOwnProperty("validation"))
+            {
+                authorTime.append(`<i class='youtubeButtonValidation' onclick='window.open("http://youtube.com/watch?v=${level.youtubeUrls.validation}")'><i class="fa fa-play" aria-hidden="true"></i></i>`);
+            }
+
             var description = $('<div>').addClass('zdl-description').text(level.description);
             var records = $('<div>').addClass('zdl-records');     
             rowContent.append(header, authorTime, description, records);
@@ -1161,7 +1238,16 @@ function RenderZDLList(containerID, levelData, type)
                 var recrow = $('<tr>');
                 var place = $('<td>').text(recordCounter).css({width: '20%'});
                 var user = $('<td>').text(r.user).css({width: '40%'});
-                var time = $('<td>').text(r.time == -1 ? "" : toolkist.util.ConvertSecondsToDisplayTime(r.time)).css({width: '40%'});
+
+                var timeText = r.time == -1 ? "" : toolkist.util.ConvertSecondsToDisplayTime(r.time);
+
+                if(level.youtubeUrls.hasOwnProperty(r.user))
+                {
+                    timeText += `<span class='youtubeButtonRecord' onclick='window.open("http://youtube.com/watch?v=${level.youtubeUrls[r.user]}")'><i class="fa fa-play" aria-hidden="true"></i></span>`;
+                }
+
+                var time = $('<td>').css({width: '40%', position: 'relative'}).html(timeText);
+
                 recrow.append(place,user,time);
                 recordsTable.append(recrow);
                 recordCounter++;
