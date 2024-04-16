@@ -998,7 +998,8 @@ export var api = (function($) {
         }
         else
         {
-            var linkGist = '37abb529a2be73ac6ba4ec45d7ccf7fd';
+            //var linkGist = '37abb529a2be73ac6ba4ec45d7ccf7fd';
+            var linkGist = '95a475e2b24720e315e6586ff951b740';
             $.ajax({
                 url: `https://api.github.com/gists/${linkGist}`,
                 type: 'GET',
@@ -1006,7 +1007,8 @@ export var api = (function($) {
                 success: function(data) 
                 {   
                     try{
-                        const fileContent = data.files['ZDLData.json'].content;
+                        const fileContent = data.files['gistfile1.txt'].content;
+                        console.log(fileContent);
                         var json = JSON.parse(fileContent);
                         onLoadedCallback(json);
                     }
