@@ -10,7 +10,7 @@ title = 'ZGraph'
 <!-- Facebook Meta Tags -->
 <meta property="og:url" content="https://toolkist.netlify.app/zgraph">
 <meta property="og:type" content="website">
-<meta property="og:title" content="ZDL | ZGraph">
+<meta property="og:title" content="ZGraph | Toolkist">
 <meta property="og:description" content="A 2D Graphics Editor for Zeepkist">
 <meta property="og:image" content="/img/Zgraph_banner.png">
 <meta name="theme-color" content="#fbc719">
@@ -19,7 +19,7 @@ title = 'ZGraph'
 <meta name="twitter:card" content="summary_large_image">
 <meta property="twitter:domain" content="toolkist.netlify.app">
 <meta property="twitter:url" content="https://toolkist.netlify.app/zgraph">
-<meta name="twitter:title" content="ZDL | ZGraph">
+<meta name="twitter:title" content="ZGraph | Toolkist">
 <meta name="twitter:description" content="A 2D Graphics Editor for Zeepkist">
 <meta name="twitter:image" content="/img/ZGraph_banner.png">
 

@@ -10,7 +10,7 @@ title = 'Zoozle'
 <!-- Facebook Meta Tags -->
 <meta property="og:url" content="https://toolkist.netlify.app/zoozle">
 <meta property="og:type" content="website">
-<meta property="og:title" content="ZDL | Zoozle">
+<meta property="og:title" content="Zoozle | Toolkist">
 <meta property="og:description" content="A Zeepkist Search Engine">
 <meta property="og:image" content="/img/Zoozle_Banner.png">
 <meta name="theme-color" content="#fbc719">
@@ -19,7 +19,7 @@ title = 'Zoozle'
 <meta name="twitter:card" content="summary_large_image">
 <meta property="twitter:domain" content="toolkist.netlify.app">
 <meta property="twitter:url" content="https://toolkist.netlify.app/zoozle">
-<meta name="twitter:title" content="ZDL | Zoozle">
+<meta name="twitter:title" content="Zoozle | Toolkist">
 <meta name="twitter:description" content="A Zeepkist Search Engine">
 <meta name="twitter:image" content="/img/Zoozle_Banner.png">
 
