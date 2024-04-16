@@ -884,17 +884,25 @@ var useDummyData = false;
 
 $(document).ready(function()
 {
-    toolkist.api.GetZDLGist(function(gistData)
+    toolkist.api.GetZDLGist(function(gistData, errorType)
     {
         if(useDummyData)
         {
             gistData = gistDummy;
-            console.log("Using Dummy Data");
+            console.log("Skipping Gist request and using dummy data instead.");
         }
 
         if(gistData == null)
         {
-            console.log("ERROR");
+            switch(errorType)
+            {
+                case 'error':
+                    console.error("The website was unable to fetch the data from Gist. Make sure the ID and file name are correct.");
+                    break;
+                case 'parse':
+                    console.error('The website was able to retreive the data from Gist, but was not able to parse the JSON file. Please check the JSON you are trying to load using a JSON validator.');
+                    break;
+            }
         }
         else
         {
@@ -1232,6 +1240,7 @@ function RenderZDLList(containerID, levelData, type)
             records.append(recordsTable);
 
             var recordCounter = 1;
+            var playersCurrentlyInList = [];
 
             level.records.forEach(r => 
             {
@@ -1251,6 +1260,15 @@ function RenderZDLList(containerID, levelData, type)
                 recrow.append(place,user,time);
                 recordsTable.append(recrow);
                 recordCounter++;
+
+                if(!playersCurrentlyInList.includes(r.user))
+                {
+                    playersCurrentlyInList.push(r.user);
+                }
+                else
+                {
+                    console.warn("Player " + r.user + " appears multiple times in the record table of " + level.name + ".");
+                }                
             });       
 
             container.append(row);

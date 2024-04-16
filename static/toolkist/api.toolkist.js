@@ -994,7 +994,7 @@ export var api = (function($) {
     {
         if(useDummyFlag)
         {
-            onLoadedCallback(null);
+            onLoadedCallback(null, 'dummy');
         }
         else
         {
@@ -1008,19 +1008,19 @@ export var api = (function($) {
                 {   
                     try{
                         const fileContent = data.files['gistfile1.txt'].content;
-                        console.log(fileContent);
                         var json = JSON.parse(fileContent);
-                        onLoadedCallback(json);
+                        console.log('Fetched Gist Data:', json);
+                        onLoadedCallback(json, 'ok');
                     }
                     catch
                     {
-                        onLoadedCallback(null);
+                        onLoadedCallback(null, 'parse');
                     }                
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
-                    console.log(jqXHR);
-                    console.error('Error fetching Gist:', textStatus, errorThrown);
-                    onLoadedCallback(null)
+                    //console.log(jqXHR);
+                    //console.error('Error fetching Gist:', textStatus, errorThrown);
+                    onLoadedCallback(null, 'error')
                 }
             });
         }
