@@ -728,7 +728,8 @@ title = 'Zquence WIP'
                 reader.readAsText(file);
             }
 
-            exportToZeeplevel() {
+            exportCircleZeeplevel()
+            {
                 // Get the target speed (units per second)
                 let targetSpeed = parseFloat($('#targetspeed-input').val()) / 3.6;
 
@@ -794,9 +795,9 @@ title = 'Zquence WIP'
                 notesWithPositions.forEach((nwp) => {
                     let block = new toolkist.game.Block();
                     block.blockID = 2279;
-                    block.scale.x = 0.15;
+                    block.scale.x = radius / 32;
                     block.scale.y = 1;
-                    block.scale.z = 0.001;
+                    block.scale.z = 0.002;
                     block.position.x = nwp.position.x;
                     block.position.z = nwp.position.y;
                     block.position.y = 0;
@@ -863,7 +864,92 @@ title = 'Zquence WIP'
 
                 console.log(zeeplevel.ToCSV());      
                 
-                toolkist.fs.DirectDownload("zquence.zeeplevel", zeeplevel.ToCSV());
+                toolkist.fs.DirectDownload("zquence_circle.zeeplevel", zeeplevel.ToCSV());
+            }
+
+            exportLineZeeplevel()
+            {
+                // Get the target speed (units per second)
+                let targetSpeed = parseFloat($('#targetspeed-input').val()) / 3.6;
+
+                // Get the data from the bars
+                let trackData = this.exportData();
+
+                // Calculate the time per beat (seconds per beat)
+                let bpm = trackData.bpm;
+                let secondsPerBeat = 60 / bpm;
+
+                // Calculate the distance per beat (units per beat)
+                let distancePerBeat = targetSpeed * secondsPerBeat;
+
+                // Array to hold the notes with their positions and angles
+                let notesWithPositions = [];
+
+                // Iterate through the tracks and calculate positions for each note
+                trackData.tracks.forEach(track => {
+                    track.bars.forEach((bar, barIndex) => {
+                        for (let columnIndex = 0; columnIndex < 32; columnIndex += (32 / trackData.notesPerBar)) {
+                            const noteColumnIndex = columnIndex / (32 / trackData.notesPerBar);
+                            const column = bar[columnIndex];
+                            column.forEach(note => {
+                                console.log(track, barIndex, noteColumnIndex);
+                                let sectionIndex = barIndex * trackData.notesPerBar + noteColumnIndex;
+                                let x = sectionIndex * distancePerBeat;
+                                let y = 0; // All notes on the same line (y = 0)
+
+                                notesWithPositions.push({
+                                    instrument: track.instrument,
+                                    note: note,
+                                    position: { x: x, y: y },
+                                    sectionIndex: sectionIndex,
+                                    distanceFromStart: x
+                                });
+                            });
+                        }
+                    });
+                });
+
+                console.log(notesWithPositions);
+
+                let zeeplevel = new toolkist.game.Zeeplevel();
+                
+                notesWithPositions.forEach((nwp) => {
+                    let block = new toolkist.game.Block();
+                    block.blockID = 2279;
+                    block.scale.x = 1
+                    block.scale.y = 1;
+                    block.scale.z = 0.002;
+                    block.position.z = nwp.position.x;
+                    block.options[0] = 1;
+                    switch(nwp.instrument)
+                    {
+                        case "Piano":  block.options[6] = 0; break;
+                        case "Trumpet":  block.options[6] = 1; break;
+                        case "Flute":  block.options[6] = 2; break;
+                        case "Kazoo":  block.options[6] = 3; break;
+                        case "Blarghl":  block.options[6] = 4; break;
+                    }
+                   
+                    block.options[8] = nwp.note;
+                    zeeplevel.AddBlock(block);
+                });                
+
+                console.log(zeeplevel.ToCSV());    
+                
+                toolkist.fs.DirectDownload("zquence_line.zeeplevel", zeeplevel.ToCSV());
+            }
+
+            exportToZeeplevel() 
+            {
+                let exportType = $("#exportType").val();               
+
+                if(exportType == "circle"){
+                    this.exportCircleZeeplevel();
+                }
+                else
+                {
+                    this.exportLineZeeplevel();                    
+                }
             }
         }
 
