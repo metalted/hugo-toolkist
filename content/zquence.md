@@ -1,5 +1,5 @@
 +++
-title = 'Zquence WIP'
+title = 'Zquence'
 +++
 
 {{<rawhtml>}}
