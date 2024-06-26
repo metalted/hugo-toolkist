@@ -202,6 +202,7 @@ title = 'Zquence WIP'
             flex: 1;
         }
 
+        .sq_tracklist_entry_muteButton,
         .sq_tracklist_entry_closeButton
         {
             width: 30px;
@@ -214,9 +215,43 @@ title = 'Zquence WIP'
             text-align: center;
         }
 
+        .sq_tracklist_entry_muteButton:hover,
         .sq_tracklist_entry_closeButton:hover
         {
             background-color: orange;
+        }
+
+        .sq_tracklist_entry_muteButton img
+        {
+            width: 30px;
+            height: 30px;
+        }
+
+        .instrument-picker-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000; /* Make sure it appears on top */
+        }
+
+        .instrument-option {
+            background-color: #555; /* Darker background for instrument options */
+            color: #ddd; /* Light grey text */
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .instrument-option:hover {
+            background-color: #777; /* Lighter background on hover */
         }
 
 
@@ -298,6 +333,11 @@ title = 'Zquence WIP'
             right: 0px;
             top: 0;
             overflow-x: scroll;
+        }
+
+        .sq_tracklist_entry.active
+        {
+            background-color: rgb(251,199,25) !important;
         }
 
         /* Responsive adjustments */
@@ -387,20 +427,28 @@ title = 'Zquence WIP'
                 const trackIndex = this.tracks.length;
 
                 const listItem = $('<div>').addClass('sq_tracklist_entry').on('click', () => this.selectTrack(trackIndex));
-                const icon = $('<img>').addClass('sq_tracklist_entry_image').attr({src: "/" + instrumentType.toLowerCase() + ".png"});
+                const icon = $('<img>').addClass('sq_tracklist_entry_image').attr({src: "/" + instrumentType.toLowerCase() + ".png"}).on('click', (e) => {
+                    e.stopPropagation();
+                    this.showInstrumentPicker(trackIndex);
+                });
                 const name = $("<span>").addClass('sq_tracklist_entry_name').text(instrumentType.toUpperCase());
                 const remove = $("<div>").addClass('sq_tracklist_entry_closeButton').text("X").on('click', (e) => { 
                     e.stopPropagation(); 
                     this.removeTrack(trackIndex); 
                 });
-                listItem.append(icon, name, remove); 
+                const mute = $("<div>").addClass('sq_tracklist_entry_muteButton').html($('<img>').attr({src: '/volume.png'})).on('click', (e) => {
+                    e.stopPropagation();
+                    this.toggleMuteTrack(trackIndex);
+                });
+                listItem.append(icon, name, mute, remove);
 
                 $('#track-list').append(listItem);
 
                 const track = {
                     instrument: instrumentType,
                     element: listItem,
-                    bars: []
+                    bars: [],
+                    muted: false
                 };
 
                 for (let i = 0; i < this.bars; i++) {
@@ -409,6 +457,58 @@ title = 'Zquence WIP'
                 this.tracks.push(track);
 
                 this.selectTrack(trackIndex);
+            }
+
+            toggleMuteTrack(index) {
+                if (index >= 0 && index < this.tracks.length) 
+                {
+                    this.tracks[index].muted = !this.tracks[index].muted;
+                    if(!this.tracks[index].muted)
+                    {
+                        this.tracks[index].element.find('.sq_tracklist_entry_muteButton').html($('<img>').attr({src: '/volume.png'}));
+                    }
+                    else
+                    {
+                        this.tracks[index].element.find('.sq_tracklist_entry_muteButton').html($('<img>').attr({src: '/mute.png'}));
+                    }                   
+                }
+            }
+
+            showInstrumentPicker(trackIndex) {
+                // Create and show an overlay with instrument options
+                const overlay = $('<div>').addClass('instrument-picker-overlay');
+                const instrumentList = ['Piano', 'Trumpet', 'Flute', 'Kazoo', 'Blarghl']; // Add your instrument options here
+
+                instrumentList.forEach(instrument => {
+                    const instrumentOption = $('<div>').addClass('instrument-option').text(instrument).on('click', () => {
+                        this.changeInstrument(trackIndex, instrument);
+                        overlay.remove();
+                    });
+                    overlay.append(instrumentOption);
+                });
+
+                $('body').append(overlay);
+
+                // Close the overlay when clicking outside of it
+                overlay.on('click', (e) => {
+                    if (e.target === overlay[0]) {
+                        overlay.remove();
+                    }
+                });
+            }
+
+            changeInstrument(trackIndex, newInstrument) {
+                if (trackIndex >= 0 && trackIndex < this.tracks.length) {
+                    const track = this.tracks[trackIndex];
+                    track.instrument = newInstrument;
+                    track.element.find('.sq_tracklist_entry_image').attr({ src: "/" + newInstrument.toLowerCase() + ".png" });
+                    track.element.find('.sq_tracklist_entry_name').text(newInstrument.toUpperCase());
+
+                    // Check if the element has the 'active' class
+                    if (track.element.hasClass('active')) {
+                        this.selectTrack(trackIndex);
+                    }
+                }
             }
 
             removeTrack(index) {
@@ -656,9 +756,12 @@ title = 'Zquence WIP'
                 const columnIndex = (step % this.notesPerBar) * (32 / this.notesPerBar);
 
                 for (let track of this.tracks) {
-                    if (track.bars[barIndex] && track.bars[barIndex][columnIndex]) {
-                        for (let note of track.bars[barIndex][columnIndex]) {
-                            this.playSound(track.instrument, note + 1);
+                    if(!track.muted)
+                    {
+                        if (track.bars[barIndex] && track.bars[barIndex][columnIndex]) {
+                            for (let note of track.bars[barIndex][columnIndex]) {
+                                this.playSound(track.instrument, note + 1);
+                            }
                         }
                     }
                 }
