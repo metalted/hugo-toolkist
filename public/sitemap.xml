@@ -23,5 +23,7 @@
     <loc>http://localhost:1313/zgraph/</loc>
   </url><url>
     <loc>http://localhost:1313/zoozle/</loc>
+  </url><url>
+    <loc>http://localhost:1313/zquence/</loc>
   </url>
 </urlset>

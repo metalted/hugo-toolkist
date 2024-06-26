@@ -4,7 +4,7 @@
     <title>Toolkist</title>
     <link>http://localhost:1313/</link>
     <description>Recent content on Toolkist</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -62,6 +62,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/zoozle/</guid>
       <description>&#xD;Zoozle | Toolkist&#xD;</description>
+    </item>
+    <item>
+      <title>Zquence WIP</title>
+      <link>http://localhost:1313/zquence/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/zquence/</guid>
+      <description>&#xD;Zquence | Toolkist&#xD;Save&#xD;Load&#xD;+&#xD;+&#xD;+&#xD;+&#xD;+&#xD;BPM: Notes/Bar: 481632 Bar -&#xD;Bar +&#xD;Target Speed: Export Type: CircleLineRoad Export Name: Export&#xD;</description>
     </item>
   </channel>
 </rss>
