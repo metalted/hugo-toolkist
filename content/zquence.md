@@ -489,7 +489,10 @@ title = 'Zquence'
                     this.tracks = data.tracks.map((track, index) => {
 
                             const listItem = $('<div>').addClass('sq_tracklist_entry').on('click', () => this.selectTrack(index));
-                            const icon = $('<img>').addClass('sq_tracklist_entry_image').attr({src: "/" + track.instrument.toLowerCase() + ".png"});
+                            const icon = $('<img>').addClass('sq_tracklist_entry_image').attr({src: "/" + track.instrument.toLowerCase() + ".png"}).on('click', (e) => {
+                                e.stopPropagation();
+                                this.showInstrumentPicker(index);
+                            });
                             const name = $("<span>").addClass('sq_tracklist_entry_name').text(track.instrument.toUpperCase());
                             const remove = $("<div>").addClass('sq_tracklist_entry_closeButton').text("X").on('click', (e) => { 
                                 e.stopPropagation(); 
