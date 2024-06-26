@@ -23,338 +23,7 @@ title = 'Zquence WIP'
 <meta name="twitter:description" content="Zeepkist Music Sequencer">
 <meta name="twitter:image" content="/img/zquence_banner.png">
 
-<style>
-        #app-container {
-            background-color: #333333;
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-        }
 
-        #top-bar {
-            background-color: #333333;
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 60px;
-            box-sizing: border-box;
-            border-bottom: 4px solid #555555;
-            display:flex;
-            flex-direction:row;
-        }
-
-        .top-bar-section
-        {
-            display:flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            border-right: 4px solid #555555;
-            padding-right: 10px;
-            color: white;    
-        }
-
-        .top-bar-section label{
-            padding-left: 10px;
-        }
-
-        .sq_toolbar_menuButton
-        {
-            height: 40px;
-            box-sizing: border-box;
-            line-height: 40px;
-            font-size: 20px;
-            width: 100px;
-            background-color: #555555;
-            text-align: center;
-            color: white;
-            border-radius: 4px;
-            margin-left: 10px;
-            user-select: none;
-        }
-
-        .sq_toolbar_menuButton:hover
-        {
-            background-color: #777777;
-            cursor: pointer;
-        }
-
-        .sq_toolbar_instrumentButton
-        {
-            height: 40px;
-            width: 40px;
-            margin-left: 10px;
-            box-sizing: border-box;
-            background-color: #555555;
-            user-select: none;
-            position: relative;
-        }
-
-        .sq_toolbar_instrumentButton:hover
-        {
-            cursor:pointer;
-            background-color: #777777;
-        }
-
-        .sq_toolbar_instrumentButton_image
-        {
-            width: 36px;
-            height: 36px;
-            padding: 2px;
-        }
-
-        .sq_toolbar_instrumentButton_plus
-        {
-            position: absolute;
-            width: 24px;
-            height: 24px;
-            font-size: 32px;
-            line-height: 24px;
-            text-align:center;
-            font-weight: 600;
-            bottom: 0;
-            right: 0;
-            color: white;
-        }
-
-        .sq_toolbar_controlButton
-        {
-            height: 40px;
-            width: 40px;
-            margin-left: 10px;
-            box-sizing: border-box;
-            background-color: #555555;
-            user-select: none;
-            position: relative;
-            border-radius: 4px;
-            user-select: none;
-        }
-
-        .sq_toolbar_controlButton:hover
-        {
-            background-color: #777777;
-            cursor: pointer;
-        }
-
-        .sq_toolbar_controlButton_image
-        {
-            width: 36px;
-            height: 36px;
-            padding: 2px;
-        }
-
-        /* Main container to hold the track list and sequencer */
-        #main-container {
-            position: absolute;
-            top: 60px;
-            bottom: 0;
-            left: 0;
-            right: 0;
-        }
-
-        /* Track list on the left */
-        #track-list {
-            background-color: #333333;
-            position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            width: 20%;
-            box-sizing: border-box;
-            border-right: 4px solid #555555;
-            padding: 8px;
-        }
-
-        .sq_tracklist_entry
-        {
-            border-radius: 4px;
-            box-sizing: border-box;
-            background-color: #555555;
-            color: white;
-            padding: 8px;
-            user-select: none;
-            line-height: 30px;
-            display: flex;
-            flex-direction: row;
-            margin-bottom: 8px;
-        }
-
-        .sq_tracklist_entry:hover
-        {
-            background-color: #777777;
-            cursor: pointer;    
-        }
-
-        .sq_tracklist_entry_image
-        {
-            width: 30px;
-            height: 30px;
-        }
-
-        .sq_tracklist_entry_name
-        {
-            line-height: 30px;
-            font-size: 30px;
-            padding-left: 16px;
-            flex: 1;
-        }
-
-        .sq_tracklist_entry_muteButton,
-        .sq_tracklist_entry_closeButton
-        {
-            width: 30px;
-            height: 30px;
-            line-height: 30px;
-            background-color: red;
-            color: white;
-            font-size: 30px;
-            border-radius: 4px;
-            text-align: center;
-        }
-
-        .sq_tracklist_entry_muteButton:hover,
-        .sq_tracklist_entry_closeButton:hover
-        {
-            background-color: orange;
-        }
-
-        .sq_tracklist_entry_muteButton img
-        {
-            width: 30px;
-            height: 30px;
-        }
-
-        .instrument-picker-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000; /* Make sure it appears on top */
-        }
-
-        .instrument-option {
-            background-color: #555; /* Darker background for instrument options */
-            color: #ddd; /* Light grey text */
-            padding: 10px 20px;
-            margin: 5px;
-            border-radius: 5px;
-            cursor: pointer;
-            text-align: center;
-        }
-
-        .instrument-option:hover {
-            background-color: #777; /* Lighter background on hover */
-        }
-
-
-        /* Sequencer container on the right */
-        #sequencer {     
-            position: absolute;
-            top: 0px;
-            left: 20%;
-            right: 0px;
-            bottom: 0px;
-        }
-
-        /* Table styles */
-        table {
-            border-collapse: collapse; /* Remove space between cells */
-            table-layout: fixed; /* Enforce fixed size for cells */
-            width: max-content; /* Allow the table to expand naturally based on its content */
-        }
-
-        /* Table cells */
-        th, td {
-            width: 30px; /* Fixed width for each cell */
-            height: 30px; /* Fixed height for each cell */
-            border: 1px solid #444; /* Light grey grid lines */
-            text-align: center;
-            box-sizing: border-box; /* Include padding and border in the element's total width and height */
-            background-color: #3c3c3c; /* Darker background for cells */
-            transition: background-color 0.2s; /* Smooth transition for background changes */
-        }
-
-        td.active {
-            background-color: rgb(251,199,25); /* Green for active note cells */
-            /*border-radius: 10px; *//* Rounded corners for note cells */
-        }
-
-        /* Instrument list items */
-        .instrument-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 5px;
-            margin: 5px 0;
-            background-color: #444; /* Dark background for list items */
-            cursor: pointer;
-            border-radius: 5px; /* Rounded corners for track list items */
-            color: #ddd; /* Light grey text */
-        }
-
-        .instrument-item:hover {
-            background-color: #555; /* Lighter background on hover */
-        }
-
-        .instrument-item.active {
-            background-color: #666; /* Highlight the selected track */
-        }
-
-        .keyboard {
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-
-        .keyboardKey {
-            width: 60px;
-            height: 30px;
-            border: 1px solid grey;
-            box-sizing: border-box;
-        }
-
-        .keyboardKey:hover {
-            background-color: grey !important;
-            color: white !important;
-            cursor: pointer;
-        }
-
-        .trackView {
-            position: absolute;
-            left: 60px;
-            right: 0px;
-            top: 0;
-            overflow-x: scroll;
-        }
-
-        .sq_tracklist_entry.active
-        {
-            background-color: rgb(251,199,25) !important;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            #top-bar button,
-            #top-bar input,
-            #top-bar select {
-                padding: 3px;
-                font-size: 0.8rem;
-            }
-
-            th, td {
-                width: 30px;
-                height: 30px;
-            }
-        }
-    </style>
 
 <script type="module">
         import { Soundfont, getSoundfontNames } from "https://unpkg.com/smplr/dist/index.mjs"; // needs to be a url
@@ -826,7 +495,11 @@ title = 'Zquence WIP'
                                 e.stopPropagation(); 
                                 this.removeTrack(index); 
                             });
-                            listItem.append(icon, name, remove); 
+                            const mute = $("<div>").addClass('sq_tracklist_entry_muteButton').html($('<img>').attr({src: '/volume.png'})).on('click', (e) => {
+                                e.stopPropagation();
+                                this.toggleMuteTrack(index);
+                            });
+                            listItem.append(icon, name, mute, remove); 
 
                         $('#track-list').append(listItem);
                         
@@ -1160,31 +833,31 @@ title = 'Zquence WIP'
 
                 //Iterate through the tracks and calculate positions for each note
                 trackData.tracks.forEach(track => {
-                    //Go over the bars of this track
-                    track.bars.forEach((bar, barIndex) => {
-                        //Iterate over the amount of notes per bar.
-                        for(let npb = 0; npb < trackData.notesPerBar; npb++)
-                        {
-                            //We are only interested in every nth column, depending on how many notes per bar.
-                            let columnIndex = npb * (32 / trackData.notesPerBar);
-                            let column = bar[columnIndex];
-                            column.forEach(note => {
-                                
-                                //The index of the note on the circle.
-                                let noteIndex = barIndex * trackData.notesPerBar + npb;
+                        //Go over the bars of this track
+                        track.bars.forEach((bar, barIndex) => {
+                            //Iterate over the amount of notes per bar.
+                            for(let npb = 0; npb < trackData.notesPerBar; npb++)
+                            {
+                                //We are only interested in every nth column, depending on how many notes per bar.
+                                let columnIndex = npb * (32 / trackData.notesPerBar);
+                                let column = bar[columnIndex];
+                                column.forEach(note => {
+                                    
+                                    //The index of the note on the circle.
+                                    let noteIndex = barIndex * trackData.notesPerBar + npb;
 
-                                //Calculate the position of this note.
-                                let z = noteIndex * metersPerNote;
-                                
-                                //Store the info
-                                noteBlockInfo.push({
-                                    instrument : track.instrument,
-                                    note: note,
-                                    position: z + 0.5 * metersPerNote
+                                    //Calculate the position of this note.
+                                    let z = noteIndex * metersPerNote;
+                                    
+                                    //Store the info
+                                    noteBlockInfo.push({
+                                        instrument : track.instrument,
+                                        note: note,
+                                        position: z + 0.5 * metersPerNote
+                                    });
                                 });
-                            });
-                        }
-                    });
+                            }
+                        });
                 });
 
                 let zeeplevel = new toolkist.game.Zeeplevel();
@@ -1277,44 +950,427 @@ title = 'Zquence WIP'
         });
     </script>
 
+<style>
+    /*Layout*/
+    #app-container 
+    {
+        background-color: #333333;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        flex-direction: row;
+    }
+
+    #left-column-container
+    {
+        height: 100%;
+        width: 25%;  
+        display: flex;
+        flex-direction: column;
+    }
+
+    #track-list-container
+    {
+        flex: 1;
+        background-color: blue;
+
+        display: flex;
+        flex-direction: column;
+    }
+
+    #track-list-toolbar
+    {
+        height: 60px;
+        background-color: #333333;
+        display: flex;
+        flex-direction: row;
+        box-sizing: border-box;
+        border: 1px solid white;
+    }
+
+    .add-instrument-button
+    {
+        height: 52px;
+        width: 52px;
+        margin: 4px;
+        box-sizing: border-box;
+        background-color: #555555;
+        user-select: none;
+        position: relative;
+        border-radius: 4px;
+    }
+
+    .add-instrument-button:hover
+    {
+        cursor: pointer;
+        background-color: #777777;
+    }
+
+    .add-instrument-button img
+    {
+        width: 48px;
+        height: 48px;
+        padding: 2px;
+    }
+
+    .add-instrument-button span
+    {
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        font-size: 32px;
+        line-height: 24px;
+        text-align:center;
+        font-weight: 600;
+        bottom: 0;
+        right: 0;
+        color: white;
+    }
+
+    #track-list {
+        flex: 1;
+        background-color: #333333;
+        box-sizing: border-box;
+        border: 1px solid white;
+    }
+
+     .sq_tracklist_entry
+    {
+        border-radius: 4px;
+        box-sizing: border-box;
+        background-color: #555555;
+        color: white;
+        margin: 4px;
+        user-select: none;
+        line-height: 30px;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .sq_tracklist_entry:hover
+    {
+        background-color: #777777 !important;
+        cursor: pointer;    
+    }
+
+    .sq_tracklist_entry.active
+    {
+        background-color: rgb(251,199,25);
+        color: #111111;
+    }
+
+    .sq_tracklist_entry_image
+    {
+        margin: 4px;
+        width: 32px;
+        height: 32px;
+    }
+
+    .sq_tracklist_entry_name
+    {
+        line-height: 32px;
+        font-size: 24px;
+        margin: 4px;
+        flex: 1;
+    }
+
+    .sq_tracklist_entry_muteButton
+    {
+        width: 32px;
+        height: 32px;
+        background-color: #777777;
+        color: white;
+        border-radius: 4px;
+        margin: 4px;
+    }
+
+    .sq_tracklist_entry_closeButton
+    {
+        width: 32px;
+        height: 32px;
+        line-height: 32px;
+        background-color: #777777;
+        color: white;
+        border-radius: 4px;
+        margin: 4px;
+        font-size: 32px;
+        text-align: center;
+    }
+
+    .sq_tracklist_entry_muteButton:hover
+    {
+        background-color: #999999;
+    }
+
+    .sq_tracklist_entry_closeButton:hover
+    {
+        background-color: red;
+    }
+
+    .sq_tracklist_entry_muteButton img
+    {
+        width: 30px;
+        height: 30px;
+    }
+
+    #export-container
+    {
+        height: 300px;
+        background-color: #333333;
+        box-sizing: border-box;
+        border: 1px solid white;
+        color:white;
+    }
+
+    .control-button
+    {
+        height: 40px;
+        box-sizing: border-box;
+        line-height: 40px;
+        font-size: 20px;
+        margin: 4px;
+        
+        background-color: #555555;
+        text-align: center;
+        color: white;
+        border-radius: 4px;
+        user-select: none;
+    }
+
+    .control-button:hover
+    {
+        cursor:pointer;
+        background-color: #777777;
+    }
+
+    #export-container
+    {
+        color: white;
+    }
+
+    #export-container table
+    {
+        width: 100%;
+    }
+
+    #export-container table th, #export-container table td
+    {
+        padding-left: 8px;
+        margin: 0;
+        text-align: left;
+        height: 30px;
+        line-height: 30px;
+    }
+
+    #time-line-container
+    {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #time-line-toolbar
+    {
+        height: 60px;
+        background-color: #333333;
+        box-sizing: border-box;
+        border: 1px solid white;
+        display: flex;
+        flex-direction: row;
+        color: white;
+    }
+
+    .time-line-control-button
+    {
+        height: 52px;
+        width: 52px;
+        margin: 4px;
+        box-sizing: border-box;
+        background-color: #555555;
+        user-select: none;
+        border-radius: 4px;
+    }
+
+    .time-line-control-button:hover
+    {
+        cursor: pointer;
+        background-color: #777777;
+    }
+
+    .time-line-control-button img
+    {
+        width: 48px;
+        height: 48px;
+        padding: 2px;
+    }
+
+    #time-line-toolbar label
+    {
+        font-size: 26px;
+        margin: 4px;
+        height: 52px;
+        line-height: 52px;
+    }
+
+    #time-line-toolbar select, #time-line-toolbar input
+    {
+        height: 32px;
+        margin: 4px;
+        margin-top: 12px;
+    }
+
+    .time-line-menu-button
+    {
+        height: 52px;
+        box-sizing: border-box;
+        line-height: 52px;
+        font-size: 20px;
+        margin: 4px;
+        padding-left: 4px;
+        padding-right: 4px;
+        
+        background-color: #555555;
+        text-align: center;
+        color: white;
+        border-radius: 4px;
+        user-select: none;
+    }
+
+    
+    .time-line-menu-button:hover
+    {
+        background-color: #777777;
+        cursor: pointer;
+    }
+
+    .instrument-picker-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.8);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+    }
+
+    .instrument-option {
+        background-color: #555;
+        color: #ddd;
+        padding: 10px 20px;
+        margin: 5px;
+        border-radius: 5px;
+        cursor: pointer;
+        text-align: center;
+    }
+
+    .instrument-option:hover {
+        background-color: #777;
+    }
+
+    #sequencer
+    {
+        position: relative;
+        height: 100%;
+        width: 100%;
+    }
+
+    .keyboard 
+    {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .keyboardKey {
+        width: 60px;
+        height: 30px;
+        border: 1px solid grey;
+        box-sizing: border-box;
+    }
+
+    .keyboardKey:hover {
+        background-color: grey !important;
+        color: white !important;
+        cursor: pointer;
+    }
+
+    .trackView {
+        position: absolute;
+        left: 60px;
+        right: 0px;
+        top: 0;
+        overflow-x: scroll;
+    }
+
+    .trackView > table {
+        border-collapse: collapse;
+        table-layout: fixed;
+        width: max-content;
+    }
+
+    .trackView > table th,
+    .trackView > table td {
+        width: 30px;
+        height: 30px;
+        border: 1px solid #444;
+        text-align: center;
+        box-sizing: border-box;
+        background-color: #3c3c3c;
+    }
+
+    .trackView > table th:hover,
+    .trackView > table td:hover 
+    {
+        background-color: #777777;
+        cursor:pointer;
+    }
+
+    .trackView > table td.active {
+        background-color: rgb(251,199,25);
+    }
+</style>
+
 <div id="content" class='flex_content'>
     <div class='standardPagePanel'>
-        <div id="app-container">    
-            <div id="top-bar">
-                <div class="top-bar-section">
-                    <div class="sq_toolbar_menuButton" id="save-button">Save</div>
-                    <div class="sq_toolbar_menuButton" id="load-button">Load</div>
-                    <input type="file" id="load-file" style="display: none;">
+        <div id="app-container"> 
+            <div id="left-column-container">
+                <div id="track-list-container">
+                    <div id="track-list-toolbar">
+                        <div id="add-piano-button" class="add-instrument-button"><img src="/piano.png"></img><span>+</span></div>
+                        <div id="add-trumpet-button" class="add-instrument-button"><img src="/trumpet.png"></img><span>+</span></div>
+                        <div id="add-flute-button" class="add-instrument-button"><img src="/flute.png"></img><span>+</span></div>
+                        <div id="add-kazoo-button" class="add-instrument-button"><img src="/kazoo.png"></img><span>+</span></div>
+                        <div id="add-blarghl-button" class="add-instrument-button"><img src="/blarghl.png"></img><span>+</span></div></div>
+                    <div id="track-list"></div>
                 </div>
-
-                <div class="top-bar-section">
-                    <div id="add-piano-button" class="sq_toolbar_instrumentButton"><img class="sq_toolbar_instrumentButton_image" src="/piano.png"></img><span class="sq_toolbar_instrumentButton_plus">+</span></div>
-                    <div id="add-trumpet-button" class="sq_toolbar_instrumentButton"><img class="sq_toolbar_instrumentButton_image" src="/trumpet.png"></img><span class="sq_toolbar_instrumentButton_plus">+</span></div>
-                    <div id="add-flute-button" class="sq_toolbar_instrumentButton"><img class="sq_toolbar_instrumentButton_image" src="/flute.png"></img><span class="sq_toolbar_instrumentButton_plus">+</span></div>
-                    <div id="add-kazoo-button" class="sq_toolbar_instrumentButton"><img class="sq_toolbar_instrumentButton_image" src="/kazoo.png"></img><span class="sq_toolbar_instrumentButton_plus">+</span></div>
-                    <div id="add-blarghl-button" class="sq_toolbar_instrumentButton"><img class="sq_toolbar_instrumentButton_image" src="/blarghl.png"></img><span class="sq_toolbar_instrumentButton_plus">+</span></div>
+                <div id="export-container">
+                    <div class="control-button" id="save-button">Save Zquence JSON</div>
+                    <div class="control-button" id="load-button">Load Zquence JSON</div>
+                    <input type="file" id="load-file" style="display: none;">        
+                    <table>
+                        <tr><th>Target Speed:</th><td><input id="targetspeed-input" type="number" min="20" value="60" placeholder="TargetSpeed"></td></tr>
+                        <tr><th>Export Type:</th><td><select id="exportType"><option value="circle">Circle</option><option value="line">Line</option><option value="road">Road</option></select></td></tr>
+                        <tr><th>Filename:</th><td><input type="text" id="exportName" value="ToolkistZquence"></td></tr>
+                    </table>
+                    <div class="control-button" id="export-button">Export to Zeeplevel</div>
                 </div>
-
-                <div class="top-bar-section">
-                    <div class="sq_toolbar_controlButton" id="play-button"><img class="sq_toolbar_controlButton_image" src="/play.png"></img></div>
-                    <div class="sq_toolbar_controlButton" id="pause-button"><img class="sq_toolbar_controlButton_image" src="/stop.png"></div>
+            </div>
+             <div id="time-line-container">
+                <div id="time-line-toolbar">
+                    <div class="time-line-control-button" id="play-button"><img src="/play.png"></img></div>
+                    <div class="time-line-control-button" id="pause-button"><img src="/stop.png"></div>
                     <label for="bpm-input"> BPM: </label>
                     <input id="bpm-input" type="number" min="30" max="300" value="120" placeholder="BPM">
                     <label for="notesPerBarSelection"> Notes/Bar: </label><select id="notesPerBarSelection"><option value="4">4</option><option value="8">8</option><option value="16">16</option><option value="32">32</option></select>                
-                    <div id="remove-bar-button"class="sq_toolbar_menuButton">Bar -</div>
-                    <div id="add-bar-button" class="sq_toolbar_menuButton">Bar +</div>
-                </div>   
-                <div class="top-bar-section">
-                    <label for="targetspeed-input"> Target Speed: </label>
-                    <input id="targetspeed-input" type="number" min="20" value="60" placeholder="TargetSpeed">
-                    <label for="exportType"> Export Type: </label><select id="exportType"><option value="circle">Circle</option><option value="line">Line</option><option value="road">Road</option></select> 
-                    <label for="exportName"> Export Name: </label><input type="text" id="exportName" value="ToolkistZquence"></input>
-                    <div class="sq_toolbar_menuButton" id="export-button">Export</div>
+                    <div id="remove-bar-button"class="time-line-menu-button">Bar -</div>
+                    <div id="add-bar-button" class="time-line-menu-button">Bar +</div>        
                 </div>
-                
-            </div>
-            <div id="main-container">
-                <div id="track-list"></div>
                 <div id="sequencer"></div>
             </div>
         </div>
