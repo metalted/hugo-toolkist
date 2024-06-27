@@ -68,13 +68,6 @@
       <link>http://localhost:1313/zquence/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/zquence/</guid>
-      <description>&#xD;Zquence | Toolkist&#xD;</description>
-    </item>
-    <item>
-      <title>Zquence2</title>
-      <link>http://localhost:1313/zquence2/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/zquence2/</guid>
       <description>&#xD;Zquence | Toolkist&#xD;+&#xD;+&#xD;+&#xD;+&#xD;+&#xD;Save Zquence JSON&#xD;Load Zquence JSON&#xD;Import MIDI&#xD;Target Speed:&#xD;Export Type:CircleLineRoad&#xD;Filename:&#xD;Export to Zeeplevel&#xD;BPM: Notes/Bar: 481632 Bar -&#xD;Bar + </description>
     </item>
   </channel>
