@@ -113,7 +113,8 @@ title = 'ZST'
         width: 100%;
         text-align: center;
         font-size: 48px;
-        margin: 32px;
+        margin-top: 32px;
+        margin-bottom: 32px;
         color: #FD66C3;
         text-shadow: -4px 4px 1px #5d1073;
         user-select: none;     
@@ -131,7 +132,8 @@ title = 'ZST'
         width: 100%;
         text-align: center;
         font-size: 48px;
-        margin: 32px;
+        margin-top: 32px;
+        margin-bottom: 32px;
         color: #FD66C3;
         text-shadow: -4px 4px 1px #5d1073;
         user-select: none;     
