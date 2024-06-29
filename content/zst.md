@@ -14,7 +14,7 @@ title = 'ZST'
 <meta property="og:title" content="ZST | Toolkist">
 <meta property="og:description" content="Zeepkist Speedrunning Team">
 <meta property="og:image" content="/img/ZST_Banner.png">
-<meta name="theme-color" content="#9603ff">
+<meta name="theme-color" content="#FD66C3">
 
 <!-- Twitter Meta Tags -->
 <meta name="twitter:card" content="summary_large_image">
