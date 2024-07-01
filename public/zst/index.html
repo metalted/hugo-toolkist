@@ -387,7 +387,7 @@
         margin-top: 8px;
     }
 
-    .video-info .record-setter {
+    .video-info .record-track {
         font-weight: bold;
         color: #FD66C3;
     }
@@ -509,7 +509,213 @@
     .content-section {
         display: none; /* Hide sections by default */
     }
+
+    #rules-list
+    {
+        font-size: 24px;
+        width: 75%;
+        margin: auto auto;
+    }
+
+    .ruleID
+    {
+        color: #FD66C3;
+        width: 100px;
+    }
+
+    #rules-table td
+    {
+        padding: 8px;
+    }
+
+    #rules-table th
+    {
+        padding: 8px;
+    }
 </style>
+
+<script>
+
+    var zstData = {
+        users: {
+            "maraa" : {
+                displayName: "Mark"
+            },
+            "hydroblue" : {
+                displayName: "Hydro"
+            },
+            "kernkob" : {
+                displayName: "Kernkob"
+            },
+            "jakiecash" : {
+                displayName: "Jakie"
+            },
+        },
+        pageContent : {
+            home : {
+                whatWeDo : "ZST Zeepkist Speedrunning Team masters tracks, sets records, and innovates racing techniques. We focus on skill development and competitive excellence.",
+                recentRecords: [
+                    "official.A-01",
+                    "official.A-02",
+                    "official.A-03"
+                ]
+            },
+            rules: {
+                rules : [
+                    "Members must have 1 world record to stay a member.",
+                    "Honorary members can be made if you once held a WR. Honorary members can have ZST tag.",
+                    "Video recording or GTR must be required for ZST members (usually).",
+                    "Members must always post their WR's in the discord. Use the @ WR UPDATES when posting new WR. Don't use @ WR UPDATES on extra categories.",
+                    "No Hacks/Cheats.",
+                    "No being mean.",
+                    "No NSFW.",
+                    "Always say GG/gg at the end of a round.",
+                    "Members can also be part of another team, meaning they don't have to have ZST as the tag.",
+                    "Players cannot be accepted into ZST or Honorary ZST until one week has passed after a new adventure level has been created.",
+                    "Multiplayer cannot be used for adventure runs, only multiplayer adventure runs.",
+                    "Any% counts if you complete a track without hitting all CP's or all CP's (no CP maps are always any%)."
+                ]
+            }
+        },
+        records : 
+        {
+            "official":{
+                "A-01" : {
+                    user: "maraa",
+                    time: "1:23.456",
+                    gtrID: "",
+                    ytID: "2E1Z2qjm7bA"
+                },
+                "A-02" : {
+                    user: "hydroblue",
+                    time: "1:23.456",
+                    gtrID: "",
+                    ytID: "siH-FOxveAg"
+                },
+                "A-03" : {
+                    user: "kernkob",
+                    time: "1:23.456",
+                    gtrID: "",
+                    ytID: "vHiUD5-j7N0"
+                },
+                "A-04" : {},
+                "A-05" : {},
+                "A-06" : {},
+                "A-07" : {},
+                "A-08" : {},
+                "A-09" : {},
+                "A-10" : {},
+                "A-11" : {},
+                "A-12" : {},
+                "A-13" : {},
+                "A-14" : {},
+                "A-15" : {},
+                "A-16" : {},
+                "A-17" : {},
+                "A-18" : {},
+                "A-19" : {},
+                "A-20" : {},
+                "A-21" : {},
+                "A-22" : {},
+                "A-23" : {},
+                "A-24" : {},
+                "B-01" : {},
+                "B-02" : {},
+                "B-03" : {},
+                "B-04" : {},
+                "B-05" : {},
+                "B-06" : {},
+                "C-01" : {},
+                "C-02" : {},
+                "C-03" : {},
+                "C-04" : {},
+                "C-05" : {},
+                "C-06" : {},
+                "D-01" : {},
+                "D-01" : {},
+                "D-02" : {},
+                "D-03" : {},
+                "D-04" : {},
+                "D-05" : {},
+                "D-06" : {},
+                "D-07" : {},
+                "D-08" : {},
+                "D-09" : {},
+                "D-10" : {},
+                "D-11" : {},
+                "D-12" : {},
+                "E-01" : {},
+                "E-02" : {},
+                "E-03" : {},
+                "F-01" : {},
+                "F-02" : {},
+                "F-03" : {},
+                "F-04" : {},
+                "F-05" : {},
+                "F-06" : {},
+                "G-01" : {},
+                "G-02" : {},
+                "G-03" : {},
+                "G-04" : {},
+                "G-05" : {},
+                "G-06" : {},
+                "G-07" : {},
+                "G-08" : {},
+                "G-09" : {},
+                "H-01" : {},
+                "H-02" : {},
+                "H-03" : {},
+                "H-04" : {},
+                "H-05" : {},
+                "H-06" : {},
+                "I-01" : {},
+                "I-02" : {},
+                "I-03" : {},
+                "I-04" : {},
+                "I-05" : {},
+                "I-06" : {},
+                "I-07" : {},
+                "I-08" : {},
+                "X-01" : {},
+                "X-02" : {},
+                "X-03" : {},
+                "X-04" : {},
+                "X-05" : {},
+                "X-06" : {},
+                "Y-01" : {},
+                "Y-02" : {},
+                "Y-03" : {},
+                "CL-01" : {},
+                "CL-02" : {},
+                "CL-03" : {},
+                "CL-04" : {},
+                "CL-05" : {},
+                "CL-06" : {},
+                "EZ-01" : {},
+                "EZ-02" : {},
+                "EZ-03" : {},
+                "EZ-04" : {},
+                "EZ-05" : {},
+                "EZ-06" : {},
+                "FL-01" : {},
+                "FL-02" : {},
+                "FL-03" : {},
+                "FL-04" : {},
+                "OR-01" : {},
+                "OR-02" : {},
+                "OR-03" : {},
+                "OR-04" : {},
+                "XG-01" : {},
+                "XG-02" : {},
+                "XG-03" : {},
+                "XG-04" : {}
+            },
+            "nocheese":{},
+            "any":{},
+            "multiplayer":{}            
+        }
+    }
+</script>
 
 <div id="content" class='flex_content'>
     <div class='standardPagePanel'>
@@ -529,34 +735,31 @@
         </div>
         <div id='home' class='content-section hidden'>
             <div id='objective-title'>What We Do</div>
-            <div id='objective-content'>ZST Zeepkist Speedrunning Team masters tracks, sets records, and innovates racing techniques. We focus on skill development and competitive excellence.</div>
+            <div id='objective-content'></div>
             <div id='recent-world-records-title'>Recent Records</div>
             <div id='recent-world-record-videos'>
-                <div class='video-container'>
-                    <iframe src="https://www.youtube.com/embed/2E1Z2qjm7bA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <div class="video-info">
-                        <div class="record-setter">John Doe</div>
-                        <div>Track: Awesome Track</div>
-                        <div>Time: 1:23.456</div>
-                        <div>Date: 2023-06-01</div>
+                <div class='video-container' id="video-container1">
+                    <iframe src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="video-info">                        
+                        <div class="record-track"></div>
+                        <div class="record-user"></div>
+                        <div class="record-time"></div>
                     </div>
                 </div>
-                <div class='video-container'>
-                    <iframe src="https://www.youtube.com/embed/siH-FOxveAg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class='video-container' id="video-container2">
+                    <iframe src=""  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     <div class="video-info">
-                        <div class="record-setter">Jane Smith</div>
-                        <div>Track: Speedy Track</div>
-                        <div>Time: 1:22.789</div>
-                        <div>Date: 2023-06-15</div>
+                        <div class="record-track"></div>
+                        <div class="record-user"></div>
+                        <div class="record-time"></div>
                     </div>
                 </div>
-                <div class='video-container'>
-                    <iframe src="https://www.youtube.com/embed/vHiUD5-j7N0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class='video-container' id="video-container3">
+                    <iframe src=""  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     <div class="video-info">
-                        <div class="record-setter">Alex Brown</div>
-                        <div>Track: Lightning Track</div>
-                        <div>Time: 1:21.987</div>
-                        <div>Date: 2023-07-10</div>
+                        <div class="record-track"></div>
+                        <div class="record-user"></div>
+                        <div class="record-time"></div>
                     </div>
                 </div>                
             </div>
@@ -588,12 +791,59 @@
         <div id='rules' class='content-section hidden'>
             <!-- Content for Rules section -->
             <div id='objective-title'>Rules</div>
-            <div id='objective-content'>Details about rules will go here.</div>
+            <div id='rules-list'></div>
         </div>
     </div>
 </div>
 
 <script>
+
+    function SetRecentVideo(index, trackName, user, time, ytID)
+    {
+        $('#video-container' + index).find('.record-track').text(trackName);
+        $('#video-container' + index).find('.record-user').text(user);
+        $('#video-container' + index).find('.record-time').text(time);
+
+        if(ytID != "")
+        {
+             $('#video-container' + index).find('iframe').attr({src:"https://www.youtube.com/embed/" + ytID});
+        }
+    }
+
+    function LoadZSTData(data)
+    {
+        //Set the objective text
+        $('#objective-content').text(data.pageContent.home.whatWeDo);
+        
+        //Add the recent videos
+        data.pageContent.home.recentRecords.forEach((entry, index) => {
+            let parts = entry.split(".");
+            let category = parts[0];
+            let track = parts[1];
+            let recordInfo = data.records[category][track];
+            SetRecentVideo(index + 1, track, data.users[recordInfo.user].displayName, recordInfo.time, recordInfo.ytID);
+        });
+
+        //Add the rules to the page.
+        // Create the table
+        let rulesTable = $('<table>').addClass('rules-table');
+
+        // Loop through the rules and create table rows
+        data.pageContent.rules.rules.forEach((r, index) => {
+            let row = $('<tr>');
+            let ruleID = $('<th>').addClass('ruleID').text((index + 1) + ")");
+            let rule = $('<td>').text(r);
+            row.append(ruleID, rule);
+            rulesTable.append(row);
+        });
+
+        // Add the table to the page
+        $('#rules-list').html(rulesTable);
+    }
+
+    LoadZSTData(zstData);
+
+
     $('#toolbar-links').hide();
     $('#loader').hide();
 
@@ -615,7 +865,7 @@
         }
 
         // You can call this function whenever you are ready to load the home page
-        setTimeout(loadHomePage, 5000); // For example, after 2 seconds
+        setTimeout(loadHomePage, 5); // For example, after 2 seconds
 
         links.on('click', function(e) {
             e.preventDefault();
