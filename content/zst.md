@@ -257,11 +257,7 @@ title = 'ZST'
         z-index: 2;
         overflow-y: auto;
         user-select: none;     
-    }
-
-    .hidden {
-        display: none;
-    }
+    }    
 
     #loader
     {
@@ -283,7 +279,22 @@ title = 'ZST'
     }
 
     .content-section {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        overflow: hidden;
         display: none; /* Hide sections by default */
+        flex-direction: column;
+        padding-bottom: 32px;
+        padding-left: 32px;
+        padding-right: 32px;
+        box-sizing: border-box;
+    }
+
+    .content-section.visible {
+        display: flex; /* Show the section */
     }
 
     #rules-list
@@ -299,14 +310,49 @@ title = 'ZST'
         width: 100px;
     }
 
-    #rules-table td
+    .rules-table td
     {
         padding: 8px;
     }
 
-    #rules-table th
+    .rules-table th
     {
         padding: 8px;
+    }
+
+    select {
+        width: 200px;
+        height: 40px;
+        color: black;
+        background-color: #FD66C3;
+        border: 1px solid #5d1073;
+        border-radius: 5px;
+        font-size: 24px;
+        line-height: 24px;
+        padding: 5px;
+        font-family: 'Righteous';
+        font-weight: 300;
+    }
+
+    #records
+    {
+        padding-bottom: 32px;
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+
+    #record-table-container {
+        flex-grow: 1;
+        margin-top: 16px;
+        background-color: #555555;
+        border-radius: 16px;
+        padding: 16px;
+        box-sizing: border-box;
+        overflow: auto;
+    }
+
+    .hidden {
+        display: none;
     }
 </style>
 
@@ -555,9 +601,36 @@ title = 'ZST'
         <div id='records' class='content-section hidden'>
             <!-- Content for Records section -->
             <div id='objective-title'>Records</div>
-            <div id='objective-content'>Details about records will go here.</div>
-        </div>
+            <div id='record-table-container'>
+                <div id='record-table-toolbar'>
+                    <select id='record-type-selection'>
+                        <option value='official'>Official</option>
+                        <option value='nocheese'>No Cheese</option>
+                        <option value='any'>Any %</option>
+                        <option value='multiplayer'>Multiplayer</option>
+                    </select>
+                    <select id='record-level-group-selection'>
+                        <option>A Levels</option>
+                        <option>B Levels</option>
+                        <option>C Levels</option>
+                        <option>D Levels</option>
+                        <option>E Levels</option>
+                        <option>F Levels</option>
+                        <option>G Levels</option>
+                        <option>H Levels</option>
+                        <option>I Levels</option>
+                        <option>X Levels</option>
+                        <option>Y Levels</option>
+                        <option>CL Levels</option>
+                        <option>EZ Levels</option>
+                        <option>FL Levels</option>
+                        <option>OR Levels</option>
+                        <option>XG Levels</option>
+                    </select>
+                </div>
+            </div>
 
+        </div>
         <div id='team' class='content-section hidden'>
             <!-- Content for Team section -->
             <div id='objective-title'>Team</div>
@@ -635,13 +708,13 @@ title = 'ZST'
         // Function to trigger the transition from the loader to the home section
         function loadHomePage() {
             loader.fadeOut(500, function() {
-                homeSection.fadeIn(500);
-                 $('#toolbar-links').fadeIn(500);
+                homeSection.addClass('visible').fadeIn(500);
+                $('#toolbar-links').fadeIn(500);
             });
         }
 
         // You can call this function whenever you are ready to load the home page
-        setTimeout(loadHomePage, 5); // For example, after 2 seconds
+        setTimeout(loadHomePage, 500); // For example, after 0.5 seconds
 
         links.on('click', function(e) {
             e.preventDefault();
@@ -649,14 +722,17 @@ title = 'ZST'
             const targetSection = $('#' + targetId);
 
             sections.each(function() {
-                if ($(this).attr('id') !== targetId) {
-                    $(this).fadeOut(500, function() {
-                        setTimeout(function() {
-                            targetSection.fadeIn(500);
-                        }, 500); // 500ms delay
+                const section = $(this);
+                if (section.attr('id') !== targetId) {
+                    section.fadeOut(500, function() {
+                        section.removeClass('visible');
                     });
                 }
             });
+
+            setTimeout(function() {
+                targetSection.addClass('visible').fadeIn(500);
+            }, 500); // 500ms delay
         });
     });
 </script>
