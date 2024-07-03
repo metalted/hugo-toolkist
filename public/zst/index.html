@@ -248,519 +248,31 @@
 <meta name="twitter:description" content="Zeepkist Speedrunning Team">
 <meta name="twitter:image" content="/img/ZST_Banner.png">
 
-<style>
-    .standardPagePanel {
-        color: #CB6BE6;
-        position: relative;
-    }
+<link rel="stylesheet" href="/css/zst.toolkist.css">
 
-    #toolbar {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 60px;
-        background-color: #222222;
-        display: flex;
-        flex-direction: row;
-    }
-
-    #toolbar-logo {
-        width: 52px;
-        height: 52px;
-        margin: 4px;
-        margin-left: 16px;
-        margin-right: 16px;
-        background-image: url('/img/ZST Logo.png');
-        background-size: 100%; /* Scale up the background image */
-        background-position: center;
-        background-repeat: no-repeat; /* Ensure the image doesn't repeat */
-    }
-
-    #toolbar-title {
-        line-height: 52px;
-        margin: 4px;
-        height: 52px;
-        flex: 1;
-        text-align: left;
-        font-size: 32px;
-        user-select: none;     
-        text-shadow: -2px 2px 1px #5d1073;   
-    }
-
-    #toolbar-links {
-        margin: 4px;
-        height: 52px;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        user-select: none;
-    }
-
-    .toolbar-link {
-        margin-left: 16px;
-        margin-right: 32px;
-        font-size: 32px;
-        transition: transform 0.3s ease; /* Smooth transition */
-        color: #CB6BE6;
-         text-shadow: -2px 2px 1px #5d1073;
-    }
-
-    .toolbar-link:hover {
-        transform: scale(1.2); /* Grow by 10% */
-        color: #FD66C3;
-        cursor: pointer;
-    }
-
-    #main-page
-    {
-        position: absolute;
-        top: 60px;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: black;
-        overflow: hidden;
-        z-index: 1;
-    }
-
-    #objective-title {
-        width: 100%;
-        text-align: center;
-        font-size: 48px;
-        margin-top: 32px;
-        margin-bottom: 32px;
-        color: #FD66C3;
-        text-shadow: -4px 4px 1px #5d1073;
-        user-select: none;     
-    }
-
-    #objective-content {
-        width: 80%;
-        margin: auto auto;
-        text-align: center;
-        font-size: 24px;
-        user-select: none;     
-    }
-
-    #recent-world-records-title {
-        width: 100%;
-        text-align: center;
-        font-size: 48px;
-        margin-top: 32px;
-        margin-bottom: 32px;
-        color: #FD66C3;
-        text-shadow: -4px 4px 1px #5d1073;
-        user-select: none;     
-    }
-
-    #recent-world-record-videos {
-        width: 80%;
-        margin: auto;
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        border: 2px solid #CB6BE6;
-        padding: 16px;
-        border-radius: 8px;
-    }
-
-    .video-container {
-        width: 30%;
-        margin: 16px 0;
-        border: 2px solid #FD66C3;
-        border-radius: 8px;
-        padding: 8px;
-        background-color: #383838;
-    }
-
-    .video-container iframe {
-        width: 100%;
-        height: 200px;
-    }
-
-    .video-info {
-        text-align: center;
-        color: #CB6BE6;
-        font-size: 18px;
-        margin-top: 8px;
-    }
-
-    .video-info .record-track {
-        font-weight: bold;
-        color: #FD66C3;
-    }
-
-    @keyframes wave {
-        0% {
-            background-position: 0 0;
-        }
-        50% {
-            background-position: 100% 0;
-        }
-        100% {
-            background-position: 0 0;
-        }
-    }
-
-    #main-page::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(45deg, #ff66c3, #9603ff, #ff66c3);
-        background-size: 200% 200%;
-        animation: wave 4s ease infinite;
-        opacity: 0.1;
-        z-index: 1;
-    }
-
-    #discord-section {
-        width: 80%;
-        margin: 32px auto;
-        text-align: center;
-    }
-
-    #discord-section h2
-    {
-        color: #FD66C3;
-        text-shadow: -2px 2px 1px #5d1073;
-        font-size: 24px;
-    }
-
-    .discord-channel {
-        display: inline-block;
-        margin: 16px;
-        text-align: center;
-    }
-
-    .discord-channel svg {
-        width: 64px;
-        height: 64px;
-        transition: transform 0.3s ease;
-    }
-
-    .discord-channel svg:hover
-    {
-        cursor: pointer;
-        transform: scale(1.2);
-         
-    }
-
-    .discord-channel svg path
-    {
-        fill: #CB6BE6;
-        transition: fill 0.3s ease;
-    }
-
-    .discord-channel svg:hover path
-    {
-        
-        fill: #FD66C3;
-    }
-
-    .discord-channel span {
-        display: block;
-        margin-top: 8px;
-       color: #FD66C3;
-        text-shadow: -2px 2px 1px #5d1073;
-        font-size: 18px;
-    }    
-
-    .content-section
-    {
-        position: absolute;
-        top: 60px;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        overflow: hidden;
-        z-index: 2;
-        overflow-y: auto;
-        user-select: none;     
-    }    
-
-    #loader
-    {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .loader-image {
-        height: 50%;
-        width: auto;
-        border-radius: 50%;
-        animation: spin 2s linear infinite; /* Default spin speed */
-    }
-
-    @keyframes spin {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
-    }
-
-    .content-section {
-        position: absolute;
-        top: 60px;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        overflow: hidden;
-        display: none; /* Hide sections by default */
-        flex-direction: column;
-        padding-bottom: 32px;
-        padding-left: 32px;
-        padding-right: 32px;
-        box-sizing: border-box;
-    }
-
-    .content-section.visible {
-        display: flex; /* Show the section */
-    }
-
-    #rules-list
-    {
-        font-size: 24px;
-        width: 75%;
-        margin: auto auto;
-    }
-
-    .ruleID
-    {
-        color: #FD66C3;
-        width: 100px;
-    }
-
-    .rules-table td
-    {
-        padding: 8px;
-    }
-
-    .rules-table th
-    {
-        padding: 8px;
-    }
-
-    select {
-        width: 200px;
-        height: 40px;
-        color: black;
-        background-color: #FD66C3;
-        border: 1px solid #5d1073;
-        border-radius: 5px;
-        font-size: 24px;
-        line-height: 24px;
-        padding: 5px;
-        font-family: 'Righteous';
-        font-weight: 300;
-    }
-
-    #records
-    {
-        padding-bottom: 32px;
-        padding-left: 32px;
-        padding-right: 32px;
-    }
-
-    #record-table-container {
-        flex-grow: 1;
-        margin-top: 16px;
-        background-color: #555555;
-        border-radius: 16px;
-        padding: 16px;
-        box-sizing: border-box;
-        overflow: auto;
-    }
-
-    .hidden {
-        display: none;
-    }
-</style>
-
+<script src="/toolkist/zst.dummy.js"></script>
+<script src="/toolkist/zst.toolkist.js"></script> 
 <script>
+    $(document).ready(function() {        
+        zst.Initialize();       
+        zst.OpenPage('loader-panel');
+        zst.RetreiveData(function(){    
+            zst.SetWhatWeDo(zst.data.pageContent.home.whatWeDo);
+            zst.SetRules(zst.data.pageContent.rules.rules);
+            zst.GenerateRecordTable();           
+            
+            const latest = zst.GetLatestRecords(3);
 
-    var zstData = {
-        users: {
-            "maraa" : {
-                displayName: "Mark"
-            },
-            "hydroblue" : {
-                displayName: "Hydro"
-            },
-            "kernkob" : {
-                displayName: "Kernkob"
-            },
-            "jakiecash" : {
-                displayName: "Jakie"
-            },
-        },
-        pageContent : {
-            home : {
-                whatWeDo : "ZST Zeepkist Speedrunning Team masters tracks, sets records, and innovates racing techniques. We focus on skill development and competitive excellence.",
-                recentRecords: [
-                    "official.A-01",
-                    "official.A-02",
-                    "official.A-03"
-                ]
-            },
-            rules: {
-                rules : [
-                    "Members must have 1 world record to stay a member.",
-                    "Honorary members can be made if you once held a WR. Honorary members can have ZST tag.",
-                    "Video recording or GTR must be required for ZST members (usually).",
-                    "Members must always post their WR's in the discord. Use the @ WR UPDATES when posting new WR. Don't use @ WR UPDATES on extra categories.",
-                    "No Hacks/Cheats.",
-                    "No being mean.",
-                    "No NSFW.",
-                    "Always say GG/gg at the end of a round.",
-                    "Members can also be part of another team, meaning they don't have to have ZST as the tag.",
-                    "Players cannot be accepted into ZST or Honorary ZST until one week has passed after a new adventure level has been created.",
-                    "Multiplayer cannot be used for adventure runs, only multiplayer adventure runs.",
-                    "Any% counts if you complete a track without hitting all CP's or all CP's (no CP maps are always any%)."
-                ]
-            }
-        },
-        records : 
-        {
-            "official":{
-                "A-01" : {
-                    user: "maraa",
-                    time: "1:23.456",
-                    gtrID: "",
-                    ytID: "2E1Z2qjm7bA"
-                },
-                "A-02" : {
-                    user: "hydroblue",
-                    time: "1:23.456",
-                    gtrID: "",
-                    ytID: "siH-FOxveAg"
-                },
-                "A-03" : {
-                    user: "kernkob",
-                    time: "1:23.456",
-                    gtrID: "",
-                    ytID: "vHiUD5-j7N0"
-                },
-                "A-04" : {},
-                "A-05" : {},
-                "A-06" : {},
-                "A-07" : {},
-                "A-08" : {},
-                "A-09" : {},
-                "A-10" : {},
-                "A-11" : {},
-                "A-12" : {},
-                "A-13" : {},
-                "A-14" : {},
-                "A-15" : {},
-                "A-16" : {},
-                "A-17" : {},
-                "A-18" : {},
-                "A-19" : {},
-                "A-20" : {},
-                "A-21" : {},
-                "A-22" : {},
-                "A-23" : {},
-                "A-24" : {},
-                "B-01" : {},
-                "B-02" : {},
-                "B-03" : {},
-                "B-04" : {},
-                "B-05" : {},
-                "B-06" : {},
-                "C-01" : {},
-                "C-02" : {},
-                "C-03" : {},
-                "C-04" : {},
-                "C-05" : {},
-                "C-06" : {},
-                "D-01" : {},
-                "D-01" : {},
-                "D-02" : {},
-                "D-03" : {},
-                "D-04" : {},
-                "D-05" : {},
-                "D-06" : {},
-                "D-07" : {},
-                "D-08" : {},
-                "D-09" : {},
-                "D-10" : {},
-                "D-11" : {},
-                "D-12" : {},
-                "E-01" : {},
-                "E-02" : {},
-                "E-03" : {},
-                "F-01" : {},
-                "F-02" : {},
-                "F-03" : {},
-                "F-04" : {},
-                "F-05" : {},
-                "F-06" : {},
-                "G-01" : {},
-                "G-02" : {},
-                "G-03" : {},
-                "G-04" : {},
-                "G-05" : {},
-                "G-06" : {},
-                "G-07" : {},
-                "G-08" : {},
-                "G-09" : {},
-                "H-01" : {},
-                "H-02" : {},
-                "H-03" : {},
-                "H-04" : {},
-                "H-05" : {},
-                "H-06" : {},
-                "I-01" : {},
-                "I-02" : {},
-                "I-03" : {},
-                "I-04" : {},
-                "I-05" : {},
-                "I-06" : {},
-                "I-07" : {},
-                "I-08" : {},
-                "X-01" : {},
-                "X-02" : {},
-                "X-03" : {},
-                "X-04" : {},
-                "X-05" : {},
-                "X-06" : {},
-                "Y-01" : {},
-                "Y-02" : {},
-                "Y-03" : {},
-                "CL-01" : {},
-                "CL-02" : {},
-                "CL-03" : {},
-                "CL-04" : {},
-                "CL-05" : {},
-                "CL-06" : {},
-                "EZ-01" : {},
-                "EZ-02" : {},
-                "EZ-03" : {},
-                "EZ-04" : {},
-                "EZ-05" : {},
-                "EZ-06" : {},
-                "FL-01" : {},
-                "FL-02" : {},
-                "FL-03" : {},
-                "FL-04" : {},
-                "OR-01" : {},
-                "OR-02" : {},
-                "OR-03" : {},
-                "OR-04" : {},
-                "XG-01" : {},
-                "XG-02" : {},
-                "XG-03" : {},
-                "XG-04" : {}
-            },
-            "nocheese":{},
-            "any":{},
-            "multiplayer":{}            
-        }
-    }
+            latest.forEach((record, index) =>
+            {
+                console.log(record);
+                zst.SetRecentRecordVideo(index + 1, zst.GetCategoryName(record.cat) + " " + record.key, zst.GetUserName(record.user), record.time, record.ytID );
+            });
+
+            zst.SwitchToPage('home-panel'); 
+            zst.SetLinksState(true);
+        });
+    });
 </script>
 
 <div id="content" class='flex_content'>
@@ -768,18 +280,18 @@
         <div id='toolbar'>
             <div id='toolbar-logo'></div>
             <div id='toolbar-title'>Zeepkist Speedrunning Team</div>
-            <div id='toolbar-links'>
-                <div class='toolbar-link' id="home-link">Home</div>
-                <div class='toolbar-link' id="records-link">Records</div>
-                <div class='toolbar-link' id="team-link">Team</div>
-                <div class='toolbar-link' id="rules-link">Rules</div>
+            <div id='toolbar-links' class='hidden'>
+                <div class='toolbar-link' id="link|home-panel">Home</div>
+                <div class='toolbar-link' id="link|records-panel">Records</div>
+                <div class='toolbar-link' id="link|team-panel">Team</div>
+                <div class='toolbar-link' id="link|rules-panel">Rules</div>
             </div>
         </div>
-        <div id='main-page'></div>
-        <div id='loader' class='content-section'>
-            <img src="/img/zst_loader.png" alt="Loading" class="loader-image">
+        <div id='background-panel'></div>
+        <div id='loader-panel' class='content-panel hidden'>
+            <img src="/img/zst_loader.png" class="loader-image">
         </div>
-        <div id='home' class='content-section hidden'>
+        <div id='home-panel' class='content-panel hidden'>
             <div id='objective-title'>What We Do</div>
             <div id='objective-content'></div>
             <div id='recent-world-records-title'>Recent Records</div>
@@ -815,15 +327,14 @@
                     <svg width="800px" height="800px" viewBox="0 -28.5 256 256" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid">
                         <g>
                             <path d="M216.856339,16.5966031 C200.285002,8.84328665 182.566144,3.2084988 164.041564,0 C161.766523,4.11318106 159.108624,9.64549908 157.276099,14.0464379 C137.583995,11.0849896 118.072967,11.0849896 98.7430163,14.0464379 C96.9108417,9.64549908 94.1925838,4.11318106 91.8971895,0 C73.3526068,3.2084988 55.6133949,8.86399117 39.0420583,16.6376612 C5.61752293,67.146514 -3.4433191,116.400813 1.08711069,164.955721 C23.2560196,181.510915 44.7403634,191.567697 65.8621325,198.148576 C71.0772151,190.971126 75.7283628,183.341335 79.7352139,175.300261 C72.104019,172.400575 64.7949724,168.822202 57.8887866,164.667963 C59.7209612,163.310589 61.5131304,161.891452 63.2445898,160.431257 C105.36741,180.133187 151.134928,180.133187 192.754523,160.431257 C194.506336,161.891452 196.298154,163.310589 198.110326,164.667963 C191.183787,168.842556 183.854737,172.420929 176.223542,175.320965 C180.230393,183.341335 184.861538,190.991831 190.096624,198.16893 C211.238746,191.588051 232.743023,181.531619 254.911949,164.955721 C260.227747,108.668201 245.831087,59.8662432 216.856339,16.5966031 Z M85.4738752,135.09489 C72.8290281,135.09489 62.4592217,123.290155 62.4592217,108.914901 C62.4592217,94.5396472 72.607595,82.7145587 85.4738752,82.7145587 C98.3405064,82.7145587 108.709962,94.5189427 108.488529,108.914901 C108.508531,123.290155 98.3405064,135.09489 85.4738752,135.09489 Z M170.525237,135.09489 C157.88039,135.09489 147.510584,123.290155 147.510584,108.914901 C147.510584,94.5396472 157.658606,82.7145587 170.525237,82.7145587 C183.391518,82.7145587 193.761324,94.5189427 193.539891,108.914901 C193.539891,123.290155 183.391518,135.09489 170.525237,135.09489 Z" fill="#5865F2" fill-rule="nonzero">
-                    </path>
+                            </path>
                         </g>
                     </svg>
                     <span>ZST Discord</span>
                 </div>                
             </div>
         </div>
-        <div id='records' class='content-section hidden'>
-            <!-- Content for Records section -->
+        <div id='records-panel' class='content-panel hidden'>
             <div id='objective-title'>Records</div>
             <div id='record-table-container'>
                 <div id='record-table-toolbar'>
@@ -834,133 +345,38 @@
                         <option value='multiplayer'>Multiplayer</option>
                     </select>
                     <select id='record-level-group-selection'>
-                        <option>A Levels</option>
-                        <option>B Levels</option>
-                        <option>C Levels</option>
-                        <option>D Levels</option>
-                        <option>E Levels</option>
-                        <option>F Levels</option>
-                        <option>G Levels</option>
-                        <option>H Levels</option>
-                        <option>I Levels</option>
-                        <option>X Levels</option>
-                        <option>Y Levels</option>
-                        <option>CL Levels</option>
-                        <option>EZ Levels</option>
-                        <option>FL Levels</option>
-                        <option>OR Levels</option>
-                        <option>XG Levels</option>
+                        <option value="A">A Levels</option>
+                        <option value="B">B Levels</option>
+                        <option value="C">C Levels</option>
+                        <option value="D">D Levels</option>
+                        <option value="E">E Levels</option>
+                        <option value="F">F Levels</option>
+                        <option value="G">G Levels</option>
+                        <option value="H">H Levels</option>
+                        <option value="I">I Levels</option>
+                        <option value="X">X Levels</option>
+                        <option value="Y">Y Levels</option>
+                        <option value="CL">CL Levels</option>
+                        <option value="EZ">EZ Levels</option>
+                        <option value="FL">FL Levels</option>
+                        <option value="OR">OR Levels</option>
+                        <option value="XG">XG Levels</option>
                     </select>
                 </div>
+                <div id='record-table-content'></div>
             </div>
-
         </div>
-        <div id='team' class='content-section hidden'>
-            <!-- Content for Team section -->
+        <div id='team-panel' class='content-panel hidden'>
             <div id='objective-title'>Team</div>
             <div id='objective-content'>Details about the team will go here.</div>
         </div>
-
-        <div id='rules' class='content-section hidden'>
+        <div id='rules-panel' class='content-panel hidden'>
             <!-- Content for Rules section -->
             <div id='objective-title'>Rules</div>
             <div id='rules-list'></div>
         </div>
     </div>
 </div>
-
-<script>
-
-    function SetRecentVideo(index, trackName, user, time, ytID)
-    {
-        $('#video-container' + index).find('.record-track').text(trackName);
-        $('#video-container' + index).find('.record-user').text(user);
-        $('#video-container' + index).find('.record-time').text(time);
-
-        if(ytID != "")
-        {
-             $('#video-container' + index).find('iframe').attr({src:"https://www.youtube.com/embed/" + ytID});
-        }
-    }
-
-    function LoadZSTData(data)
-    {
-        //Set the objective text
-        $('#objective-content').text(data.pageContent.home.whatWeDo);
-        
-        //Add the recent videos
-        data.pageContent.home.recentRecords.forEach((entry, index) => {
-            let parts = entry.split(".");
-            let category = parts[0];
-            let track = parts[1];
-            let recordInfo = data.records[category][track];
-            SetRecentVideo(index + 1, track, data.users[recordInfo.user].displayName, recordInfo.time, recordInfo.ytID);
-        });
-
-        //Add the rules to the page.
-        // Create the table
-        let rulesTable = $('<table>').addClass('rules-table');
-
-        // Loop through the rules and create table rows
-        data.pageContent.rules.rules.forEach((r, index) => {
-            let row = $('<tr>');
-            let ruleID = $('<th>').addClass('ruleID').text((index + 1) + ")");
-            let rule = $('<td>').text(r);
-            row.append(ruleID, rule);
-            rulesTable.append(row);
-        });
-
-        // Add the table to the page
-        $('#rules-list').html(rulesTable);
-    }
-
-    LoadZSTData(zstData);
-
-
-    $('#toolbar-links').hide();
-    $('#loader').hide();
-
-    $(document).ready(function() {
-        const links = $('.toolbar-link');
-        const sections = $('.content-section');
-        const homeSection = $('#home');
-        const loader = $('#loader');
-
-        // Show loader initially
-        loader.fadeIn(500);
-
-        // Function to trigger the transition from the loader to the home section
-        function loadHomePage() {
-            loader.fadeOut(500, function() {
-                homeSection.addClass('visible').fadeIn(500);
-                $('#toolbar-links').fadeIn(500);
-            });
-        }
-
-        // You can call this function whenever you are ready to load the home page
-        setTimeout(loadHomePage, 500); // For example, after 0.5 seconds
-
-        links.on('click', function(e) {
-            e.preventDefault();
-            const targetId = $(this).attr('id').split('-')[0];
-            const targetSection = $('#' + targetId);
-
-            sections.each(function() {
-                const section = $(this);
-                if (section.attr('id') !== targetId) {
-                    section.fadeOut(500, function() {
-                        section.removeClass('visible');
-                    });
-                }
-            });
-
-            setTimeout(function() {
-                targetSection.addClass('visible').fadeIn(500);
-            }, 500); // 500ms delay
-        });
-    });
-</script>
-
 
 
 
