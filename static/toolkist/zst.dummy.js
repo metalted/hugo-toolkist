@@ -45,7 +45,7 @@ var zstDummy =
       "profilePicUrl": "https://cdn.discordapp.com/avatars/393485108293795840/2af2ff8e002cd88995dfa5f9af9c4858.webp?size=128"
     },
     "mrragdoll": {
-      "displayName": "MrRagdoll",
+      "displayName": "Sir Ragdollot",
       "profilePicUrl": "https://cdn.discordapp.com/avatars/500628416148537346/4635539f88ae0641a3efa86e27eb204d.webp?size=128"
     },
     "lexer": {
