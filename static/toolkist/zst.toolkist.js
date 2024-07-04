@@ -113,9 +113,7 @@ var zst = (function($)
         {
             $('#video-container' + index).find('iframe').attr({src:"https://www.youtube.com/embed/" + ytID});
         }
-    }
-
-    
+    }   
 
     zst.GetLatestRecords = function(amount)
     {
@@ -156,14 +154,61 @@ var zst = (function($)
         }
     }
 
-    zst.GetLevelImage = function()
+    zst.GetLevelImage = function(levelName)
     {
+        //return "/img/adventure/" + levelName + ".png";
         return "/img/adventure/A-01.png";
     }
 
-    zst.GetUserImage = function()
+    zst.GetUserImage = function(user)
     {
+        if(zst.data.users.hasOwnProperty(user))
+        {
+            if(zst.data.users[user].hasOwnProperty("profilePicUrl"))
+            {
+                return zst.data.users[user].profilePicUrl;
+            }
+        }
+
         return "/img/avatar.png";
+    }
+
+    zst.GetUserName = function(user)
+    {
+        if(zst.data.users.hasOwnProperty(user))
+        {
+            return zst.data.users[user].displayName;
+        }
+
+        return "-";
+    }
+
+    zst.CalculateDaysSince = function(dateString)
+    {
+         // Check if the dateString is in the correct format YYYYMMDD
+        if (!/^\d{8}$/.test(dateString)) {
+            return "-";
+        }
+
+        // Parse the dateString into a year, month, and day
+        const year = parseInt(dateString.substring(0, 4), 10);
+        const month = parseInt(dateString.substring(4, 6), 10) - 1; // Months are zero-based in JS Date
+        const day = parseInt(dateString.substring(6, 8), 10);
+        
+        // Validate the parsed date components
+        const date = new Date(year, month, day);
+        if (date.getFullYear() !== year || date.getMonth() !== month || date.getDate() !== day) {
+            return "-";
+        }
+
+        // Get the current date
+        const now = new Date();
+        
+        // Calculate the difference in time (milliseconds) and convert to days
+        const diffTime = now - date;
+        const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+        
+        return diffDays;
     }
 
     zst.GenerateRecordTable = function() {
@@ -198,27 +243,46 @@ var zst = (function($)
     zst.CreateRecordRow = function(record, key) {
         const $row = $('<tr>').addClass('record-row');
     
-        const $levelImage = $('<td>').addClass('level-image').css('background-image', `url("${zst.GetLevelImage()}")`);
+        const $levelImage = $('<td>').addClass('level-image').css('background-image', `url("${zst.GetLevelImage(key)}")`);
         const $levelName = $('<td>').addClass('record-level').text(key);
         const $recordTime = $('<td>').addClass('record-time').text(record.time || 'N/A');
-        const $profilePic = $('<td>').addClass('profile-pic').css('background-image', `url("${zst.GetUserImage()}")`);
-        const $recordUser = $('<td>').addClass('record-user').text(record.user || 'unknown');
-        const $recordDate = $('<td>').addClass('record-date').text(record.date || 'N/A');
     
-        const $links = $('<td>').addClass('record-links');
+        const $profilePicTd = $('<td>').addClass('profile-pic');
+        const $profilePicImg = $('<img>').attr('src', zst.GetUserImage(record.user)).addClass('profile-pic-img');
+        $profilePicTd.append($profilePicImg);
+    
+        const $recordUser = $('<td>').addClass('record-user').text(zst.GetUserName(record.user));
+        const $recordDate = $('<td>').addClass('record-date').text(zst.CalculateDaysSince(record.date) + " days");
+    
+        // YouTube link
+        const $ytTd = $('<td>').addClass('record-links');
+        const $ytIcon = $('<i>').addClass('fa fa-youtube-play').attr('aria-hidden', 'true');
         if (record.ytID) {
-            const $ytLink = $('<a>').attr('href', `https://www.youtube.com/watch?v=${record.ytID}`).attr('target', '_blank').text('YouTube');
-            $links.append($ytLink);
+            const $ytLink = $('<a>').attr('href', `https://www.youtube.com/watch?v=${record.ytID}`).attr('target', '_blank').css('color', 'red');
+            $ytLink.append($ytIcon);
+            $ytTd.append($ytLink);
+        } else {
+            $ytIcon.css('color', 'grey');
+            $ytTd.append($ytIcon);
         }
+    
+        // GTR link
+        const $gtrTd = $('<td>').addClass('record-links');
+        const $gtrIcon = $('<i>').addClass('fa fa-ghost').attr('aria-hidden', 'true');
         if (record.gtrID) {
-            const $gtrLink = $('<a>').attr('href', `https://www.gtrwebsite.com/${record.gtrID}`).attr('target', '_blank').text('GTR');
-            $links.append($gtrLink);
+            const $gtrLink = $('<a>').attr('href', `https://www.gtrwebsite.com/${record.gtrID}`).attr('target', '_blank').css('color', '#CB6BE6');
+            $gtrLink.append($gtrIcon);
+            $gtrTd.append($gtrLink);
+        } else {
+            $gtrIcon.css('color', 'grey');
+            $gtrTd.append($gtrIcon);
         }
     
-        $row.append($('<td>').append($levelImage), $levelName, $recordTime, $('<td>').append($profilePic), $recordUser, $recordDate, $links);
-    
+        $row.append($levelImage, $levelName, $recordTime, $profilePicTd, $recordUser, $recordDate, $ytTd, $gtrTd);
+        
         return $row;
     };
+    
 
     return zst;
 })(jQuery); 

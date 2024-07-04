@@ -25,6 +25,7 @@ title = 'ZST'
 <meta name="twitter:image" content="/img/ZST_Banner.png">
 
 <link rel="stylesheet" href="/css/zst.toolkist.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
 <script src="/toolkist/zst.dummy.js"></script>
 <script src="/toolkist/zst.toolkist.js"></script> 
@@ -41,7 +42,6 @@ title = 'ZST'
 
             latest.forEach((record, index) =>
             {
-                console.log(record);
                 zst.SetRecentRecordVideo(index + 1, zst.GetCategoryName(record.cat) + " " + record.key, zst.GetUserName(record.user), record.time, record.ytID );
             });
 

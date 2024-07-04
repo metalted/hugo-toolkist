@@ -1,7 +1,7 @@
 var zstDummy = {
     pageContent : {
         home : {
-            whatWeDo : "ZST Zeepkist Speedrunning Team masters tracks, sets records, and innovates racing techniques. We focus on skill development and competitive excellence.",
+            whatWeDo : "Zeepkist Speedrunning Team strives to get the fastest times on the official levels made by Yannic in Zeepkist. You can join by beating a world record.",
             recentRecords: [
                 "official.A-01",
                 "official.A-02",
@@ -27,520 +27,564 @@ var zstDummy = {
     },
     users: {
         "maraa" : {
-            displayName: "Mark"
+            displayName: "Mark",
+            profilePicUrl: "https://randomuser.me/api/portraits/men/1.jpg"
         },
         "hydroblue" : {
-            displayName: "Hydro"
+            displayName: "Hydro",
+            profilePicUrl: "https://randomuser.me/api/portraits/men/2.jpg"
         },
         "kernkob" : {
-            displayName: "Kernkob"
+            displayName: "Kernkob",
+            profilePicUrl: "https://randomuser.me/api/portraits/men/3.jpg"
         },
         "jakiecash" : {
-            displayName: "Jakie"
+            displayName: "Jakie",
+            profilePicUrl: "https://randomuser.me/api/portraits/men/4.jpg"
+        },
+        "mrragdoll" : {
+            displayName: "MrRagdoll",
+            profilePicUrl: "https://randomuser.me/api/portraits/men/5.jpg"
+        },
+        "lexer" : {
+            displayName: "Lexer",
+            profilePicUrl: "https://randomuser.me/api/portraits/men/6.jpg"
+        },
+        "sandals" : {
+            displayName: "Sandals",
+            profilePicUrl: "https://randomuser.me/api/portraits/men/7.jpg"
+        },
+        "pants" : {
+            displayName: "Pants",
+            profilePicUrl: "https://randomuser.me/api/portraits/men/8.jpg"
+        },
+        "polelord" : {
+            displayName: "PoleLord",
+            profilePicUrl: "https://randomuser.me/api/portraits/men/9.jpg"
+        },
+        "alexdacat" : {
+            displayName: "AlexDaCat",
+            profilePicUrl: "https://randomuser.me/api/portraits/men/10.jpg"
+        },
+        "shootingmoron" : {
+            displayName: "ShootingMoron",
+            profilePicUrl: "https://randomuser.me/api/portraits/men/11.jpg"
+        },
+        "zivecef" : {
+            displayName: "Zivecef",
+            profilePicUrl: "https://randomuser.me/api/portraits/men/12.jpg"
+        },
+        "thenameiwantedwastoolong" : {
+            displayName: "TheNameIWantedWasTooLong",
+            profilePicUrl: "https://randomuser.me/api/portraits/men/13.jpg"
+        },
+        "krebzonide" : {
+            displayName: "Krebzonide",
+            profilePicUrl: "https://randomuser.me/api/portraits/men/14.jpg"
         },
     },
     records:{    
         "official": {
             "A-01": {
                 "user": "jakiecash",
-                "time": "12:34:56",
-                "gtrID": "1234",
+                "time": "29.560",
+                "gtrID": "test",
                 "ytID": "hQX7Zub0ZdI",
                 "date": "20210203"
             },
             "A-02": {
                 "user": "hydroblue",
-                "time": "12:34:56",
-                "gtrID": "1234",
+                "time": "22.953",
+                "gtrID": "test",
                 "ytID": "euTyRhnqFtA",
                 "date": "20210204"
             },
             "A-03": {
-                "user": "maraa",
-                "time": "12:34:56",
-                "gtrID": "1234",
+                "user": "hydroblue",
+                "time": "57.564",
+                "gtrID": "test",
                 "ytID": "hEhEXQGVndw",
                 "date": "20210205"
             },
             "A-04": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
+                "user": "mrragdoll",
+                "time": "17.859",
+                "gtrID": "test",
+                "ytID": "iePBO-Hqilk",
+                "date": "20220101"
             },
             "A-05": {
-                "user": "",
-                "time": "",
+                "user": "lexer",
+                "time": "13.214",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "A-06": {
-                "user": "",
-                "time": "",
+                "user": "kernkob",
+                "time": "40.406",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "A-07": {
-                "user": "",
-                "time": "",
+                "user": "jakiecash",
+                "time": "53.491",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "A-08": {
-                "user": "",
-                "time": "",
+                "user": "sandals",
+                "time": "24.379",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "A-09": {
-                "user": "",
-                "time": "",
+                "user": "jakiecash",
+                "time": "39.827",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "A-10": {
-                "user": "",
-                "time": "",
+                "user": "jakiecash",
+                "time": "1:02.865",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "A-11": {
-                "user": "",
-                "time": "",
+                "user": "hydroblue",
+                "time": "20.614",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "A-12": {
-                "user": "",
-                "time": "",
+                "user": "jakiecash",
+                "time": "38.177",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "A-13": {
-                "user": "",
-                "time": "",
+                "user": "jakiecash",
+                "time": "12.400",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "A-14": {
-                "user": "",
-                "time": "",
+                "user": "jakiecash",
+                "time": "31.123",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "A-15": {
-                "user": "",
-                "time": "",
+                "user": "pants",
+                "time": "15.106",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "A-16": {
-                "user": "",
-                "time": "",
+                "user": "hydroblue",
+                "time": "30.020",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "A-17": {
-                "user": "",
-                "time": "",
+                "user": "maraa",
+                "time": "26.500",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "A-18": {
-                "user": "",
-                "time": "",
+                "user": "kernkob",
+                "time": "36.301",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "A-19": {
-                "user": "",
-                "time": "",
+                "user": "thenameiwantedwastoolong",
+                "time": "50.748",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "A-20": {
-                "user": "",
-                "time": "",
+                "user": "krebzonide",
+                "time": "25.382",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "A-21": {
-                "user": "",
-                "time": "",
+                "user": "maraa",
+                "time": "12.508",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "A-22": {
-                "user": "",
-                "time": "",
+                "user": "jakiecash",
+                "time": "1:02:448",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "A-23": {
-                "user": "",
-                "time": "",
+                "user": "kernkob",
+                "time": "58.170",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "A-24": {
-                "user": "",
-                "time": "",
+                "user": "jakiecash",
+                "time": "54.782",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "B-01": {
-                "user": "",
-                "time": "",
+                "user": "jakiecash",
+                "time": "37.816",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "B-02": {
-                "user": "",
-                "time": "",
+                "user": "hydroblue",
+                "time": "45.908",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "B-03": {
-                "user": "",
-                "time": "",
+                "user": "jakiecash",
+                "time": "54.977",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "B-04": {
-                "user": "",
-                "time": "",
+                "user": "jakiecash",
+                "time": "50.039",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "B-05": {
-                "user": "",
-                "time": "",
+                "user": "jakiecash",
+                "time": "49.528",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "B-06": {
-                "user": "",
-                "time": "",
+                "user": "jakiecash",
+                "time": "1:06.198",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "C-01": {
-                "user": "",
-                "time": "",
+                "user": "hydroblue",
+                "time": "17.788",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "C-02": {
-                "user": "",
-                "time": "",
+                "user": "hydroblue",
+                "time": "35.249",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "C-03": {
-                "user": "",
-                "time": "",
+                "user": "maraa",
+                "time": "46.150",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "C-04": {
-                "user": "",
-                "time": "",
+                "user": "jakiecash",
+                "time": "1:00.254",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "C-05": {
-                "user": "",
-                "time": "",
+                "user": "hydroblue",
+                "time": "46.502",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "C-06": {
-                "user": "",
-                "time": "",
+                "user": "hydroblue",
+                "time": "40.365",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "D-01": {
-                "user": "",
-                "time": "",
+                "user": "hydroblue",
+                "time": "43.922",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "D-02": {
-                "user": "",
-                "time": "",
+                "user": "hydroblue",
+                "time": "40.103",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "D-03": {
-                "user": "",
-                "time": "",
+                "user": "jakiecash",
+                "time": "29.635",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "D-04": {
-                "user": "",
-                "time": "",
+                "user": "hydroblue",
+                "time": "42.245",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "D-05": {
-                "user": "",
-                "time": "",
+                "user": "polelord",
+                "time": "31.241",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "D-06": {
-                "user": "",
-                "time": "",
+                "user": "maraa",
+                "time": "37.872",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "D-07": {
-                "user": "",
-                "time": "",
+                "user": "maraa",
+                "time": "42.803",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "D-08": {
-                "user": "",
-                "time": "",
+                "user": "jakiecash",
+                "time": "28.272",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "D-09": {
-                "user": "",
-                "time": "",
+                "user": "jakiecash",
+                "time": "34.389",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "D-10": {
-                "user": "",
-                "time": "",
+                "user": "alexdacat",
+                "time": "17.112",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "D-11": {
-                "user": "",
-                "time": "",
+                "user": "jakiecash",
+                "time": "35.852",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "D-12": {
-                "user": "",
-                "time": "",
+                "user": "jakiecash",
+                "time": "42.279",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "E-01": {
-                "user": "",
-                "time": "",
+                "user": "polelord",
+                "time": "30.737",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "E-02": {
-                "user": "",
-                "time": "",
+                "user": "polelord",
+                "time": "41.824",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "E-03": {
-                "user": "",
-                "time": "",
+                "user": "shootingmoron",
+                "time": "27.946",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "F-01": {
-                "user": "",
-                "time": "",
+                "user": "maraa",
+                "time": "43.067",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "F-02": {
-                "user": "",
-                "time": "",
+                "user": "zivecef",
+                "time": "42.349",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "F-03": {
-                "user": "",
-                "time": "",
+                "user": "zivecef",
+                "time": "43.374",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "F-04": {
-                "user": "",
-                "time": "",
+                "user": "zivecef",
+                "time": "49.136",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "F-05": {
-                "user": "",
-                "time": "",
+                "user": "jakiecash",
+                "time": "1:03.684",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "F-06": {
-                "user": "",
-                "time": "",
+                "user": "zivecef",
+                "time": "1:15.221",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "G-01": {
-                "user": "",
-                "time": "",
+                "user": "maraa",
+                "time": "42.469",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "G-02": {
-                "user": "",
-                "time": "",
+                "user": "polelord",
+                "time": "37.779",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "G-03": {
-                "user": "",
-                "time": "",
+                "user": "jakiecash",
+                "time": "57.238",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "G-04": {
-                "user": "",
-                "time": "",
+                "user": "jakiecash",
+                "time": "46.713",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "G-05": {
-                "user": "",
-                "time": "",
+                "user": "maraa",
+                "time": "37.271",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "G-06": {
-                "user": "",
-                "time": "",
+                "user": "jakiecash",
+                "time": "46.852",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "G-07": {
-                "user": "",
-                "time": "",
+                "user": "justmaki",
+                "time": "52.070",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "G-08": {
-                "user": "",
-                "time": "",
+                "user": "kernkob",
+                "time": "35.625",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "G-09": {
-                "user": "",
-                "time": "",
+                "user": "zivecef",
+                "time": "1:05.141",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "H-01": {
-                "user": "",
-                "time": "",
+                "user": "maraa",
+                "time": "53.173",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "H-02": {
-                "user": "",
-                "time": "",
+                "user": "jakiecash",
+                "time": "1:32.375",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "H-03": {
-                "user": "",
-                "time": "",
+                "user": "maraa",
+                "time": "53.044",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "H-04": {
-                "user": "",
-                "time": "",
+                "user": "maraa",
+                "time": "34.510",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "H-05": {
-                "user": "",
-                "time": "",
+                "user": "maraa",
+                "time": "44.971",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "H-06": {
-                "user": "",
-                "time": "",
+                "user": "maraa",
+                "time": "58.967",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
@@ -602,15 +646,15 @@ var zstDummy = {
                 "date": ""
             },
             "X-01": {
-                "user": "",
-                "time": "",
+                "user": "jakiecash",
+                "time": "49.391",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "X-02": {
-                "user": "",
-                "time": "",
+                "user": "maraa",
+                "time": "1.49:933",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
@@ -644,22 +688,22 @@ var zstDummy = {
                 "date": ""
             },
             "Y-01": {
-                "user": "",
-                "time": "",
+                "user": "odist",
+                "time": "44.702",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "Y-02": {
-                "user": "",
-                "time": "",
+                "user": "jakiecash",
+                "time": "23.819",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
             },
             "Y-03": {
-                "user": "",
-                "time": "",
+                "user": "jakiecash",
+                "time": "27.949",
                 "gtrID": "",
                 "ytID": "",
                 "date": ""
