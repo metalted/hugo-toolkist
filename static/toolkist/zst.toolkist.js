@@ -281,114 +281,151 @@ var zst = (function($)
         $row.append($levelImage, $levelName, $recordTime, $profilePicTd, $recordUser, $recordDate, $ytTd, $gtrTd);
         
         return $row;
+    };    
+
+    zst.FillTeamPage = function() {
+        const teamContainer = $('#team-table-container');
+        teamContainer.empty(); // Clear previous content
+    
+        const userTable = $('<table>').addClass('team-table');
+        const userTableBody = $('<tbody>');
+    
+        const headerRow = $('<tr>').addClass('team-header-row');
+        headerRow.append(
+            $('<th>').text(''),
+            $('<th>').text(''),
+            $('<th>').text('Official'),
+            $('<th>').text('No Cheese'),
+            $('<th>').text('Any %'),
+            $('<th>').text('Multiplayer'),
+            $('<th>').text('Score')
+        );
+        userTableBody.append(headerRow);
+    
+        zst.userpoint = {}; // Initialize user points
+        const userData = [];
+    
+        for (const userID in zst.data.users) {
+            const user = zst.data.users[userID];
+            const userRecords = {};
+            let totalScore = 0;
+    
+            const categories = ['official', 'nocheese', 'any', 'multiplayer'];
+            categories.forEach(category => {
+                const recordCount = Object.keys(zst.data.records[category] || {}).filter(record => zst.data.records[category][record].user === userID).length;
+                userRecords[category] = recordCount;
+                const categoryScore = category === 'official' ? recordCount * 100 : recordCount * 5;
+                totalScore += categoryScore;
+            });
+    
+            zst.userpoint[userID] = totalScore;
+            userData.push({ userID, user, userRecords, totalScore });
+        }
+    
+        // Sort users by score in descending order
+        userData.sort((a, b) => b.totalScore - a.totalScore);
+    
+        userData.forEach(({ userID, user, userRecords, totalScore }) => {
+            const userRow = $('<tr>').addClass('team-row').attr('data-user-id', userID);
+    
+            const userPic = $('<td>').addClass('team-pic').append(
+                $('<img>').attr('src', zst.GetUserImage(userID)).addClass('team-pic-img')
+            );
+    
+            const userName = $('<td>').addClass('team-name').text(zst.GetUserName(userID));
+    
+            userRow.append(
+                userPic,
+                userName,
+                $('<td>').addClass('team-record-info').text(userRecords.official),
+                $('<td>').addClass('team-record-info').text(userRecords.nocheese),
+                $('<td>').addClass('team-record-info').text(userRecords.any),
+                $('<td>').addClass('team-record-info').text(userRecords.multiplayer),
+                $('<td>').addClass('team-record-info').text(totalScore)
+            );
+    
+            const detailRow = $('<tr>').addClass('detail-row hidden').attr('data-user-id', userID);
+            const detailCell = $('<td>').attr('colspan', 7).append($('<div>').addClass('detail-container'));
+            detailRow.append(detailCell);
+    
+            userTableBody.append(userRow);
+            userTableBody.append(detailRow);
+    
+            userRow.on('click', function() {
+                const userID = $(this).attr('data-user-id');
+                const detailRow = $(`.detail-row[data-user-id="${userID}"]`);
+                const detailContainer = detailRow.find('.detail-container');
+    
+                if (detailRow.hasClass('hidden')) {
+                    if (detailContainer.is(':empty')) {
+                        zst.FillUserDetails(userID, detailContainer);
+                    }
+                    detailRow.removeClass('hidden');
+                } else {
+                    detailRow.addClass('hidden');
+                }
+            });
+        });
+    
+        userTable.append(userTableBody);
+        teamContainer.append(userTable);
     };
     
+    zst.FillUserDetails = function(userID, container) {
+        const user = zst.data.users[userID];
+        const categories = ['official', 'nocheese', 'any', 'multiplayer'];
+    
+        categories.forEach(category => {
+            const records = zst.data.records[category] || {};
+            const userRecords = Object.keys(records).filter(record => records[record].user === userID);
+    
+            if (userRecords.length > 0) {
+                const categoryTitle = $('<h3>').text(zst.GetCategoryName(category));
+                container.append(categoryTitle);
+    
+                const recordTable = $('<table>').addClass('record-table');
+                const recordTableBody = $('<tbody>');
+                
+                userRecords.forEach(recordKey => {
+                    const record = records[recordKey];
+                    const recordRow = $('<tr>').addClass('record-row');
+    
+                    const levelImage = $('<td>').addClass('level-image').css('background-image', `url("${zst.GetLevelImage(recordKey)}")`);
+                    const levelName = $('<td>').addClass('record-level').text(recordKey);
+                    const recordTime = $('<td>').addClass('record-time').text(record.time || 'N/A');
+                    const recordDate = $('<td>').addClass('record-date').text(zst.CalculateDaysSince(record.date) + " days");
+    
+                    const ytTd = $('<td>').addClass('record-links');
+                    const ytIcon = $('<i>').addClass('fa fa-youtube-play').attr('aria-hidden', 'true');
+                    if (record.ytID) {
+                        const ytLink = $('<a>').attr('href', `https://www.youtube.com/watch?v=${record.ytID}`).attr('target', '_blank').css('color', 'red');
+                        ytLink.append(ytIcon);
+                        ytTd.append(ytLink);
+                    } else {
+                        ytIcon.css('color', 'grey');
+                        ytTd.append(ytIcon);
+                    }
+    
+                    const gtrTd = $('<td>').addClass('record-links');
+                    const gtrIcon = $('<i>').addClass('fa fa-ghost').attr('aria-hidden', 'true');
+                    if (record.gtrID) {
+                        const gtrLink = $('<a>').attr('href', `https://www.gtrwebsite.com/${record.gtrID}`).attr('target', '_blank').css('color', '#CB6BE6');
+                        gtrLink.append(gtrIcon);
+                        gtrTd.append(gtrLink);
+                    } else {
+                        gtrIcon.css('color', 'grey');
+                        gtrTd.append(gtrIcon);
+                    }
+    
+                    recordRow.append(levelImage, levelName, recordTime, recordDate, ytTd, gtrTd);
+                    recordTableBody.append(recordRow);
+                });
+    
+                recordTable.append(recordTableBody);
+                container.append(recordTable);
+            }
+        });
+    };
 
     return zst;
 })(jQuery); 
-
-/*
-
-
-
-
-function UpdateRecordTable()
-{
-    const recordType = $('#record-type-selection').val();
-    const recordGroup = $('#record-level-group-selection').val();
-    
-
-    console.log(JSON.stringify(sortedRecords));
-
-    
-}    
-
-    function getLevelImage(level) {
-    // Placeholder function to get level image
-    return 'path/to/level-image.png';
-}
-
-function getProfilePicture(user) {
-    // Placeholder function to get user profile picture
-    return 'path/to/profile-pic.png';
-}
-
-function daysSince(date) {
-    const now = new Date();
-    const recordDate = new Date(date);
-    const diffTime = Math.abs(now - recordDate);
-    return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-}
-
-function createRecordDiv(record, key) {
-    const $container = $('<div>').addClass('record-container');
-
-    const $levelImage = $('<div>').addClass('level-image').css('background-image', `url("")`);//`url(${getLevelImage(key)})`);
-    const $profilePic = $('<div>').addClass('profile-pic').css('background-image', `url("")`);//${getProfilePicture(record.user)})`);
-
-    const $details = $('<div>').addClass('record-details');
-    const $levelName = $('<div>').addClass('record-level').text(key);
-    const $recordTime = $('<div>').addClass('record-time').text((record.time || "--:--:--"));
-    const $recordUser = $('<div>').addClass('record-user').text(record.user || "-");
-    const $recordDate = $('<div>').addClass('record-date').text(`${daysSince(record.date)} days ago` || "");
-
-    $details.append($levelName, $recordTime, $profilePic, $recordUser, $recordDate);
-
-    const $links = $('<div>').addClass('record-links');
-    if (record.ytID) {
-        const $ytLink = $('<a>').attr('href', `https://www.youtube.com/watch?v=${record.ytID}`).attr('target', '_blank').text('YouTube');
-        $links.append($ytLink);
-    }
-    if (record.gtrID) {
-        const $gtrLink = $('<a>').attr('href', `https://www.gtrwebsite.com/${record.gtrID}`).attr('target', '_blank').text('GTR');
-        $links.append($gtrLink);
-    }
-
-    $container.append($levelImage, $details, $links);
-    return $container;
-}
-
-
-
-$('#toolbar-links').hide();
-$('#loader').hide();
-
-$(document).ready(function() {
-    const links = $('.toolbar-link');
-    const sections = $('.content-section');
-    const homeSection = $('#home');
-    const loader = $('#loader');
-
-    // Show loader initially
-    loader.fadeIn(500);
-
-    // Function to trigger the transition from the loader to the home section
-    function loadHomePage() {
-        loader.fadeOut(500, function() {
-            homeSection.addClass('visible').fadeIn(500);
-            $('#toolbar-links').fadeIn(500);
-        });
-    }
-
-    // You can call this function whenever you are ready to load the home page
-    setTimeout(loadHomePage, 500); // For example, after 0.5 seconds
-
-    links.on('click', function(e) {
-        e.preventDefault();
-        const targetId = $(this).attr('id').split('-')[0];
-        const targetSection = $('#' + targetId);
-
-        sections.each(function() {
-            const section = $(this);
-            if (section.attr('id') !== targetId) {
-                section.fadeOut(500, function() {
-                    section.removeClass('visible');
-                });
-            }
-        });
-
-        setTimeout(function() {
-            targetSection.addClass('visible').fadeIn(500);
-        }, 500); // 500ms delay
-    });
-});*/

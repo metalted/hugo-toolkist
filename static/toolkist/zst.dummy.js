@@ -82,6 +82,10 @@ var zstDummy = {
             displayName: "Krebzonide",
             profilePicUrl: "https://randomuser.me/api/portraits/men/14.jpg"
         },
+        "justmaki" : {
+            displayName: "JustMaki",
+            profilePicUrl: "https://randomuser.me/api/portraits/men/15.jpg"
+        },
     },
     records:{    
         "official": {

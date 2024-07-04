@@ -36,7 +36,8 @@ title = 'ZST'
         zst.RetreiveData(function(){    
             zst.SetWhatWeDo(zst.data.pageContent.home.whatWeDo);
             zst.SetRules(zst.data.pageContent.rules.rules);
-            zst.GenerateRecordTable();           
+            zst.GenerateRecordTable();          
+            zst.FillTeamPage();
             
             const latest = zst.GetLatestRecords(3);
 
@@ -144,7 +145,7 @@ title = 'ZST'
         </div>
         <div id='team-panel' class='content-panel hidden'>
             <div id='objective-title'>Team</div>
-            <div id='objective-content'>Details about the team will go here.</div>
+            <div id='team-table-container'></div>
         </div>
         <div id='rules-panel' class='content-panel hidden'>
             <!-- Content for Rules section -->
