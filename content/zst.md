@@ -29,11 +29,25 @@ title = 'ZST'
 
 <script src="/toolkist/zst.dummy.js"></script>
 <script src="/toolkist/zst.toolkist.js"></script> 
-<script>
+<script type="module">
+    import {toolkist} from '/toolkist/toolkist.js';
+
     $(document).ready(function() {        
         zst.Initialize();       
         zst.OpenPage('loader-panel');
-        zst.RetreiveData(function(){    
+
+        toolkist.api.GetZSTGist(function(data)
+        {
+            if(data == null)
+            {
+                zst.data = zstDummy;
+                //window.alert('Using dummy data, gist unreachable!');
+            }
+            else
+            {
+                zst.data = data;
+            }
+
             zst.SetWhatWeDo(zst.data.pageContent.home.whatWeDo);
             zst.SetRules(zst.data.pageContent.rules.rules);
             zst.GenerateRecordTable();          
@@ -48,7 +62,7 @@ title = 'ZST'
 
             zst.SwitchToPage('home-panel'); 
             zst.SetLinksState(true);
-        });
+        }, true);
     });
 </script>
 

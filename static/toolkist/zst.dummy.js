@@ -1,3264 +1,5585 @@
-var zstDummy = {
-    pageContent : {
-        home : {
-            whatWeDo : "Zeepkist Speedrunning Team strives to get the fastest times on the official levels made by Yannic in Zeepkist. You can join by beating a world record.",
-            recentRecords: [
-                "official.A-01",
-                "official.A-02",
-                "official.A-03"
-            ]
-        },
-        rules: {
-            rules : [
-                "Members must have 1 world record to stay a member.",
-                "Honorary members can be made if you once held a WR. Honorary members can have ZST tag.",
-                "Video recording or GTR must be required for ZST members (usually).",
-                "Members must always post their WR's in the discord. Use the @ WR UPDATES when posting new WR. Don't use @ WR UPDATES on extra categories.",
-                "No Hacks/Cheats.",
-                "No being mean.",
-                "No NSFW.",
-                "Always say GG/gg at the end of a round.",
-                "Members can also be part of another team, meaning they don't have to have ZST as the tag.",
-                "Players cannot be accepted into ZST or Honorary ZST until one week has passed after a new adventure level has been created.",
-                "Multiplayer cannot be used for adventure runs, only multiplayer adventure runs.",
-                "Any% counts if you complete a track without hitting all CP's or all CP's (no CP maps are always any%)."
-            ]
-        }
+var zstDummy =
+{
+  "pointsPerCategory": {
+    "official": 100,
+    "nocheese": 5,
+    "any": 5,
+    "multiplayer": 5
+  },
+  "pageContent": {
+    "home": {
+      "whatWeDo": "Zeepkist Speedrunning Team strives to get the fastest times on the official levels made by Yannic in Zeepkist. You can join by beating a world record."
     },
-    users: {
-        "maraa" : {
-            displayName: "Mark",
-            profilePicUrl: "https://randomuser.me/api/portraits/men/1.jpg"
-        },
-        "hydroblue" : {
-            displayName: "Hydro",
-            profilePicUrl: "https://randomuser.me/api/portraits/men/2.jpg"
-        },
-        "kernkob" : {
-            displayName: "Kernkob",
-            profilePicUrl: "https://randomuser.me/api/portraits/men/3.jpg"
-        },
-        "jakiecash" : {
-            displayName: "Jakie",
-            profilePicUrl: "https://randomuser.me/api/portraits/men/4.jpg"
-        },
-        "mrragdoll" : {
-            displayName: "MrRagdoll",
-            profilePicUrl: "https://randomuser.me/api/portraits/men/5.jpg"
-        },
-        "lexer" : {
-            displayName: "Lexer",
-            profilePicUrl: "https://randomuser.me/api/portraits/men/6.jpg"
-        },
-        "sandals" : {
-            displayName: "Sandals",
-            profilePicUrl: "https://randomuser.me/api/portraits/men/7.jpg"
-        },
-        "pants" : {
-            displayName: "Pants",
-            profilePicUrl: "https://randomuser.me/api/portraits/men/8.jpg"
-        },
-        "polelord" : {
-            displayName: "PoleLord",
-            profilePicUrl: "https://randomuser.me/api/portraits/men/9.jpg"
-        },
-        "alexdacat" : {
-            displayName: "AlexDaCat",
-            profilePicUrl: "https://randomuser.me/api/portraits/men/10.jpg"
-        },
-        "shootingmoron" : {
-            displayName: "ShootingMoron",
-            profilePicUrl: "https://randomuser.me/api/portraits/men/11.jpg"
-        },
-        "zivecef" : {
-            displayName: "Zivecef",
-            profilePicUrl: "https://randomuser.me/api/portraits/men/12.jpg"
-        },
-        "thenameiwantedwastoolong" : {
-            displayName: "TheNameIWantedWasTooLong",
-            profilePicUrl: "https://randomuser.me/api/portraits/men/13.jpg"
-        },
-        "krebzonide" : {
-            displayName: "Krebzonide",
-            profilePicUrl: "https://randomuser.me/api/portraits/men/14.jpg"
-        },
-        "justmaki" : {
-            displayName: "JustMaki",
-            profilePicUrl: "https://randomuser.me/api/portraits/men/15.jpg"
-        },
-    },
-    records:{    
-        "official": {
-            "A-01": {
-                "user": "jakiecash",
-                "time": "29.560",
-                "gtrID": "test",
-                "ytID": "hQX7Zub0ZdI",
-                "date": "20210203"
-            },
-            "A-02": {
-                "user": "hydroblue",
-                "time": "22.953",
-                "gtrID": "test",
-                "ytID": "euTyRhnqFtA",
-                "date": "20210204"
-            },
-            "A-03": {
-                "user": "hydroblue",
-                "time": "57.564",
-                "gtrID": "test",
-                "ytID": "hEhEXQGVndw",
-                "date": "20210205"
-            },
-            "A-04": {
-                "user": "mrragdoll",
-                "time": "17.859",
-                "gtrID": "test",
-                "ytID": "iePBO-Hqilk",
-                "date": "20220101"
-            },
-            "A-05": {
-                "user": "lexer",
-                "time": "13.214",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-06": {
-                "user": "kernkob",
-                "time": "40.406",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-07": {
-                "user": "jakiecash",
-                "time": "53.491",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-08": {
-                "user": "sandals",
-                "time": "24.379",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-09": {
-                "user": "jakiecash",
-                "time": "39.827",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-10": {
-                "user": "jakiecash",
-                "time": "1:02.865",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-11": {
-                "user": "hydroblue",
-                "time": "20.614",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-12": {
-                "user": "jakiecash",
-                "time": "38.177",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-13": {
-                "user": "jakiecash",
-                "time": "12.400",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-14": {
-                "user": "jakiecash",
-                "time": "31.123",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-15": {
-                "user": "pants",
-                "time": "15.106",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-16": {
-                "user": "hydroblue",
-                "time": "30.020",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-17": {
-                "user": "maraa",
-                "time": "26.500",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-18": {
-                "user": "kernkob",
-                "time": "36.301",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-19": {
-                "user": "thenameiwantedwastoolong",
-                "time": "50.748",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-20": {
-                "user": "krebzonide",
-                "time": "25.382",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-21": {
-                "user": "maraa",
-                "time": "12.508",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-22": {
-                "user": "jakiecash",
-                "time": "1:02:448",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-23": {
-                "user": "kernkob",
-                "time": "58.170",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-24": {
-                "user": "jakiecash",
-                "time": "54.782",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "B-01": {
-                "user": "jakiecash",
-                "time": "37.816",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "B-02": {
-                "user": "hydroblue",
-                "time": "45.908",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "B-03": {
-                "user": "jakiecash",
-                "time": "54.977",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "B-04": {
-                "user": "jakiecash",
-                "time": "50.039",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "B-05": {
-                "user": "jakiecash",
-                "time": "49.528",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "B-06": {
-                "user": "jakiecash",
-                "time": "1:06.198",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "C-01": {
-                "user": "hydroblue",
-                "time": "17.788",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "C-02": {
-                "user": "hydroblue",
-                "time": "35.249",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "C-03": {
-                "user": "maraa",
-                "time": "46.150",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "C-04": {
-                "user": "jakiecash",
-                "time": "1:00.254",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "C-05": {
-                "user": "hydroblue",
-                "time": "46.502",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "C-06": {
-                "user": "hydroblue",
-                "time": "40.365",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "D-01": {
-                "user": "hydroblue",
-                "time": "43.922",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "D-02": {
-                "user": "hydroblue",
-                "time": "40.103",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "D-03": {
-                "user": "jakiecash",
-                "time": "29.635",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "D-04": {
-                "user": "hydroblue",
-                "time": "42.245",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "D-05": {
-                "user": "polelord",
-                "time": "31.241",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "D-06": {
-                "user": "maraa",
-                "time": "37.872",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "D-07": {
-                "user": "maraa",
-                "time": "42.803",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "D-08": {
-                "user": "jakiecash",
-                "time": "28.272",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "D-09": {
-                "user": "jakiecash",
-                "time": "34.389",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "D-10": {
-                "user": "alexdacat",
-                "time": "17.112",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "D-11": {
-                "user": "jakiecash",
-                "time": "35.852",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "D-12": {
-                "user": "jakiecash",
-                "time": "42.279",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "E-01": {
-                "user": "polelord",
-                "time": "30.737",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "E-02": {
-                "user": "polelord",
-                "time": "41.824",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "E-03": {
-                "user": "shootingmoron",
-                "time": "27.946",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "F-01": {
-                "user": "maraa",
-                "time": "43.067",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "F-02": {
-                "user": "zivecef",
-                "time": "42.349",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "F-03": {
-                "user": "zivecef",
-                "time": "43.374",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "F-04": {
-                "user": "zivecef",
-                "time": "49.136",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "F-05": {
-                "user": "jakiecash",
-                "time": "1:03.684",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "F-06": {
-                "user": "zivecef",
-                "time": "1:15.221",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "G-01": {
-                "user": "maraa",
-                "time": "42.469",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "G-02": {
-                "user": "polelord",
-                "time": "37.779",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "G-03": {
-                "user": "jakiecash",
-                "time": "57.238",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "G-04": {
-                "user": "jakiecash",
-                "time": "46.713",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "G-05": {
-                "user": "maraa",
-                "time": "37.271",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "G-06": {
-                "user": "jakiecash",
-                "time": "46.852",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "G-07": {
-                "user": "justmaki",
-                "time": "52.070",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "G-08": {
-                "user": "kernkob",
-                "time": "35.625",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "G-09": {
-                "user": "zivecef",
-                "time": "1:05.141",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "H-01": {
-                "user": "maraa",
-                "time": "53.173",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "H-02": {
-                "user": "jakiecash",
-                "time": "1:32.375",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "H-03": {
-                "user": "maraa",
-                "time": "53.044",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "H-04": {
-                "user": "maraa",
-                "time": "34.510",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "H-05": {
-                "user": "maraa",
-                "time": "44.971",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "H-06": {
-                "user": "maraa",
-                "time": "58.967",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "I-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "I-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "I-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "I-04": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "I-05": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "I-06": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "I-07": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "I-08": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "X-01": {
-                "user": "jakiecash",
-                "time": "49.391",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "X-02": {
-                "user": "maraa",
-                "time": "1.49:933",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "X-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "X-04": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "X-05": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "X-06": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "Y-01": {
-                "user": "odist",
-                "time": "44.702",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "Y-02": {
-                "user": "jakiecash",
-                "time": "23.819",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "Y-03": {
-                "user": "jakiecash",
-                "time": "27.949",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "CL-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "CL-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "CL-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "CL-04": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "CL-05": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "CL-06": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "EZ-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "EZ-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "EZ-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "EZ-04": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "EZ-05": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "EZ-06": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "FL-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "FL-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "FL-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "FL-04": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "OR-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "OR-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "OR-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "OR-04": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "XG-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "XG-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "XG-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "XG-04": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            }
-        },
-        "nocheese": {
-            "A-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-04": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-05": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-06": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-07": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-08": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-09": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-10": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-11": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-12": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-13": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-14": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-15": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-16": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-17": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-18": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-19": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-20": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-21": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-22": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-23": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-24": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "B-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "B-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "B-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "B-04": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "B-05": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "B-06": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "C-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "C-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "C-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "C-04": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "C-05": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "C-06": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "D-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "D-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "D-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "D-04": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "D-05": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "D-06": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "D-07": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "D-08": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "D-09": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "D-10": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "D-11": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "D-12": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "E-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "E-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "E-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "F-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "F-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "F-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "F-04": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "F-05": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "F-06": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "G-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "G-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "G-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "G-04": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "G-05": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "G-06": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "G-07": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "G-08": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "G-09": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "H-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "H-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "H-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "H-04": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "H-05": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "H-06": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "I-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "I-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "I-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "I-04": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "I-05": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "I-06": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "I-07": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "I-08": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "X-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "X-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "X-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "X-04": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "X-05": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "X-06": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "Y-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "Y-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "Y-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "CL-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "CL-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "CL-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "CL-04": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "CL-05": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "CL-06": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "EZ-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "EZ-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "EZ-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "EZ-04": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "EZ-05": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "EZ-06": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "FL-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "FL-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "FL-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "FL-04": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "OR-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "OR-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "OR-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "OR-04": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "XG-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "XG-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "XG-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "XG-04": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            }
-        },
-        "any": {
-            "A-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-04": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-05": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-06": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-07": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-08": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-09": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-10": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-11": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-12": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-13": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-14": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-15": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-16": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-17": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-18": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-19": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-20": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-21": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-22": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-23": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-24": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "B-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "B-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "B-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "B-04": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "B-05": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "B-06": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "C-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "C-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "C-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "C-04": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "C-05": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "C-06": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "D-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "D-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "D-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "D-04": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "D-05": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "D-06": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "D-07": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "D-08": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "D-09": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "D-10": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "D-11": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "D-12": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "E-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "E-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "E-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "F-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "F-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "F-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "F-04": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "F-05": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "F-06": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "G-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "G-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "G-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "G-04": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "G-05": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "G-06": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "G-07": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "G-08": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "G-09": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "H-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "H-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "H-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "H-04": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "H-05": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "H-06": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "I-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "I-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "I-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "I-04": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "I-05": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "I-06": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "I-07": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "I-08": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "X-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "X-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "X-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "X-04": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "X-05": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "X-06": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "Y-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "Y-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "Y-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "CL-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "CL-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "CL-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "CL-04": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "CL-05": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "CL-06": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "EZ-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "EZ-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "EZ-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "EZ-04": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "EZ-05": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "EZ-06": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "FL-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "FL-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "FL-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "FL-04": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "OR-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "OR-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "OR-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "OR-04": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "XG-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "XG-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "XG-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "XG-04": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            }
-        },
-        "multiplayer": {
-            "A-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-04": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-05": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-06": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-07": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-08": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-09": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-10": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-11": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-12": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-13": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-14": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-15": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-16": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-17": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-18": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-19": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-20": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-21": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-22": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-23": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "A-24": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "B-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "B-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "B-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "B-04": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "B-05": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "B-06": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "C-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "C-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "C-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "C-04": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "C-05": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "C-06": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "D-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "D-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "D-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "D-04": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "D-05": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "D-06": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "D-07": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "D-08": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "D-09": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "D-10": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "D-11": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "D-12": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "E-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "E-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "E-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "F-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "F-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "F-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "F-04": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "F-05": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "F-06": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "G-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "G-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "G-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "G-04": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "G-05": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "G-06": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "G-07": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "G-08": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "G-09": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "H-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "H-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "H-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "H-04": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "H-05": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "H-06": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "I-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "I-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "I-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "I-04": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "I-05": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "I-06": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "I-07": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "I-08": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "X-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "X-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "X-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "X-04": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "X-05": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "X-06": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "Y-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "Y-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "Y-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "CL-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "CL-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "CL-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "CL-04": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "CL-05": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "CL-06": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "EZ-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "EZ-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "EZ-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "EZ-04": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "EZ-05": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "EZ-06": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "FL-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "FL-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "FL-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "FL-04": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "OR-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "OR-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "OR-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "OR-04": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "XG-01": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "XG-02": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "XG-03": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            },
-            "XG-04": {
-                "user": "",
-                "time": "",
-                "gtrID": "",
-                "ytID": "",
-                "date": ""
-            }
-        }
+    "rules": {
+      "rules": [
+        "Members must have 1 world record to stay a member.",
+        "Honorary members can be made if you once held a WR. Honorary members can have ZST tag.",
+        "Video recording or GTR must be required for ZST members (usually).",
+        "Members must always post their WR's in the discord. Use the @ WR UPDATES when posting new WR. Don't use @ WR UPDATES on extra categories.",
+        "No Hacks/Cheats.",
+        "No being mean.",
+        "No NSFW.",
+        "Always say GG/gg at the end of a round.",
+        "Members can also be part of another team, meaning they don't have to have ZST as the tag.",
+        "Players cannot be accepted into ZST or Honorary ZST until one week has passed after a new adventure level has been created.",
+        "Multiplayer cannot be used for adventure runs, only multiplayer adventure runs.",
+        "Any% counts if you complete a track without hitting all CP's or all CP's (no CP maps are always any%)."
+      ]
     }
+  },
+  "users": {
+    "maraa": {
+      "displayName": "Mark",
+      "profilePicUrl": "https://cdn.discordapp.com/avatars/219917285563957249/9dca24821398cff901c3e1ae0883c17a.webp?size=128"
+    },
+    "hydroblue": {
+      "displayName": "Hydro",
+      "profilePicUrl": "https://cdn.discordapp.com/avatars/573169135295660050/62aaf2c1b86129ce2755dab5f5346aee.webp?size=128"
+    },
+    "kernkob": {
+      "displayName": "Kernkob",
+      "profilePicUrl": "https://cdn.discordapp.com/avatars/702633794024374403/6012f7f2a1d6f2193ae7a78210eaf771.webp?size=128"
+    },
+    "jakiecash": {
+      "displayName": "Jakie",
+      "profilePicUrl": "https://cdn.discordapp.com/avatars/393485108293795840/2af2ff8e002cd88995dfa5f9af9c4858.webp?size=128"
+    },
+    "mrragdoll": {
+      "displayName": "MrRagdoll",
+      "profilePicUrl": "https://cdn.discordapp.com/avatars/500628416148537346/4635539f88ae0641a3efa86e27eb204d.webp?size=128"
+    },
+    "lexer": {
+      "displayName": "Lexer",
+      "profilePicUrl": "https://randomuser.me/api/portraits/men/6.jpg"
+    },
+    "sandals": {
+      "displayName": "Sandals",
+      "profilePicUrl": "https://randomuser.me/api/portraits/men/7.jpg"
+    },
+    "pants": {
+      "displayName": "Pants",
+      "profilePicUrl": "https://randomuser.me/api/portraits/men/8.jpg"
+    },
+    "polelord": {
+      "displayName": "PoleLord",
+      "profilePicUrl": "https://randomuser.me/api/portraits/men/9.jpg"
+    },
+    "alexdacat": {
+      "displayName": "AlexDaCat",
+      "profilePicUrl": "https://randomuser.me/api/portraits/men/10.jpg"
+    },
+    "shootingmoron": {
+      "displayName": "ShootingMoron",
+      "profilePicUrl": "https://randomuser.me/api/portraits/men/11.jpg"
+    },
+    "zivecef": {
+      "displayName": "Zivecef",
+      "profilePicUrl": "https://randomuser.me/api/portraits/men/12.jpg"
+    },
+    "thenameiwantedwastoolong": {
+      "displayName": "TheNameIWantedWasTooLong",
+      "profilePicUrl": "https://randomuser.me/api/portraits/men/13.jpg"
+    },
+    "krebzonide": {
+      "displayName": "Krebzonide",
+      "profilePicUrl": "https://randomuser.me/api/portraits/men/14.jpg"
+    },
+    "justmaki": {
+      "displayName": "JustMaki",
+      "profilePicUrl": "https://randomuser.me/api/portraits/men/15.jpg"
+    },
+    "odist": {
+      "displayName": "Odist",
+      "profilePicUrl": "https://randomuser.me/api/portraits/men/16.jpg"
+    },
+    "thojmen": {
+      "displayName": "Thojmen",
+      "profilePicUrl": "https://randomuser.me/api/portraits/men/17.jpg"
+    },
+    "jakobecash15": {
+      "displayName": "JakobeCash15",
+      "profilePicUrl": "https://randomuser.me/api/portraits/men/18.jpg"
+    },
+    "makelvorhang": {
+      "displayName": "Makelvorhang",
+      "profilePicUrl": "https://randomuser.me/api/portraits/men/19.jpg"
+    },
+    "jukebox333": {
+      "displayName": "Jukebox333",
+      "profilePicUrl": "https://randomuser.me/api/portraits/men/20.jpg"
+    }
+  },
+  "records": {
+    "official": {
+      "A-01": {
+        "user": "jakiecash",
+        "time": "29.560",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-02": {
+        "user": "hydroblue",
+        "time": "22.953",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-03": {
+        "user": "hydroblue",
+        "time": "57.564",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-04": {
+        "user": "mrragdoll",
+        "time": "17.859",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-05": {
+        "user": "lexer",
+        "time": "13.214",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-06": {
+        "user": "kernkob",
+        "time": "40.406",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-07": {
+        "user": "jakiecash",
+        "time": "53.491",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-08": {
+        "user": "sandals",
+        "time": "24.379",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-09": {
+        "user": "jakiecash",
+        "time": "39.827",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-10": {
+        "user": "jakiecash",
+        "time": "1:02.865",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-11": {
+        "user": "hydroblue",
+        "time": "20.614",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-12": {
+        "user": "jakiecash",
+        "time": "38.177",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-13": {
+        "user": "jakiecash",
+        "time": "12.400",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-14": {
+        "user": "jakiecash",
+        "time": "31.123",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-15": {
+        "user": "pants",
+        "time": "15.106",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-16": {
+        "user": "hydroblue",
+        "time": "30.020",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-17": {
+        "user": "maraa",
+        "time": "26.500",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-18": {
+        "user": "kernkob",
+        "time": "36.301",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-19": {
+        "user": "thenameiwantedwastoolong",
+        "time": "50.748",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-20": {
+        "user": "krebzonide",
+        "time": "25.382",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-21": {
+        "user": "maraa",
+        "time": "12.508",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-22": {
+        "user": "jakiecash",
+        "time": "1:02:448",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-23": {
+        "user": "kernkob",
+        "time": "58.170",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-24": {
+        "user": "jakiecash",
+        "time": "54.782",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "B-01": {
+        "user": "jakiecash",
+        "time": "37.816",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "B-02": {
+        "user": "hydroblue",
+        "time": "45.908",
+        "gtrID": "",
+        "ytID": "FOvzUQplvEM",
+        "date": "20240215",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "B-03": {
+        "user": "jakiecash",
+        "time": "54.977",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "B-04": {
+        "user": "jakiecash",
+        "time": "50.039",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "B-05": {
+        "user": "jakiecash",
+        "time": "49.528",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "B-06": {
+        "user": "jakiecash",
+        "time": "1:06.198",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "C-01": {
+        "user": "hydroblue",
+        "time": "17.788",
+        "gtrID": "",
+        "ytID": "d1nZ1b-hngg",
+        "date": "20240106",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "C-02": {
+        "user": "hydroblue",
+        "time": "35.249",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "C-03": {
+        "user": "maraa",
+        "time": "46.150",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "C-04": {
+        "user": "jakiecash",
+        "time": "1:00.254",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "C-05": {
+        "user": "hydroblue",
+        "time": "46.502",
+        "gtrID": "",
+        "ytID": "bACOzirCWyE",
+        "date": "20231109",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "C-06": {
+        "user": "hydroblue",
+        "time": "40.365",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "D-01": {
+        "user": "hydroblue",
+        "time": "43.922",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "D-02": {
+        "user": "hydroblue",
+        "time": "40.103",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "D-03": {
+        "user": "jakiecash",
+        "time": "29.635",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "D-04": {
+        "user": "hydroblue",
+        "time": "42.245",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "D-05": {
+        "user": "polelord",
+        "time": "31.241",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "D-06": {
+        "user": "maraa",
+        "time": "37.872",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "D-07": {
+        "user": "maraa",
+        "time": "42.803",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "D-08": {
+        "user": "jakiecash",
+        "time": "28.272",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "D-09": {
+        "user": "jakiecash",
+        "time": "34.389",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "D-10": {
+        "user": "alexdacat",
+        "time": "17.112",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "D-11": {
+        "user": "jakiecash",
+        "time": "35.852",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "D-12": {
+        "user": "jakiecash",
+        "time": "42.279",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "E-01": {
+        "user": "polelord",
+        "time": "30.737",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "E-02": {
+        "user": "polelord",
+        "time": "41.824",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "E-03": {
+        "user": "shootingmoron",
+        "time": "27.946",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "F-01": {
+        "user": "maraa",
+        "time": "43.067",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "F-02": {
+        "user": "zivecef",
+        "time": "42.349",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "F-03": {
+        "user": "zivecef",
+        "time": "43.374",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "F-04": {
+        "user": "zivecef",
+        "time": "49.136",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "F-05": {
+        "user": "jakiecash",
+        "time": "1:03.684",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "F-06": {
+        "user": "zivecef",
+        "time": "1:15.221",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "G-01": {
+        "user": "maraa",
+        "time": "42.469",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "G-02": {
+        "user": "polelord",
+        "time": "37.779",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "G-03": {
+        "user": "jakiecash",
+        "time": "57.238",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "G-04": {
+        "user": "jakiecash",
+        "time": "46.713",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "G-05": {
+        "user": "maraa",
+        "time": "37.271",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "G-06": {
+        "user": "jakiecash",
+        "time": "46.852",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "G-07": {
+        "user": "justmaki",
+        "time": "52.070",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "G-08": {
+        "user": "kernkob",
+        "time": "35.625",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "G-09": {
+        "user": "zivecef",
+        "time": "1:05.141",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "H-01": {
+        "user": "maraa",
+        "time": "53.173",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "H-02": {
+        "user": "jakiecash",
+        "time": "1:32.375",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "H-03": {
+        "user": "maraa",
+        "time": "53.044",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "H-04": {
+        "user": "maraa",
+        "time": "34.510",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "H-05": {
+        "user": "maraa",
+        "time": "44.971",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "H-06": {
+        "user": "maraa",
+        "time": "58.967",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "I-01": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "I-02": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "I-03": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "I-04": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "I-05": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "I-06": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "I-07": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "I-08": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "X-01": {
+        "user": "jakiecash",
+        "time": "49.391",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "X-02": {
+        "user": "maraa",
+        "time": "1.49:933",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "X-03": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "X-04": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "X-05": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "X-06": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "Y-01": {
+        "user": "odist",
+        "time": "44.702",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "Y-02": {
+        "user": "jakiecash",
+        "time": "23.819",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "Y-03": {
+        "user": "jakiecash",
+        "time": "27.949",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "CL-01": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "CL-02": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "CL-03": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "CL-04": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "CL-05": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "CL-06": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "EZ-01": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "EZ-02": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "EZ-03": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "EZ-04": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "EZ-05": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "EZ-06": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "FL-01": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "FL-02": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "FL-03": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "FL-04": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "OR-01": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "OR-02": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "OR-03": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "OR-04": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "XG-01": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "XG-02": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "XG-03": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "XG-04": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      }
+    },
+    "nocheese": {
+      "A-01": {
+        "user": "jakiecash",
+        "time": "38.229",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-02": {
+        "user": "hydroblue",
+        "time": "22.953",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-03": {
+        "user": "jakiecash",
+        "time": "1:03.133",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-04": {
+        "user": "hydroblue",
+        "time": "55.508",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-05": {
+        "user": "jakiecash",
+        "time": "17.611",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-06": {
+        "user": "hydroblue",
+        "time": "43.501",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-07": {
+        "user": "justmaki",
+        "time": "57.152",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-08": {
+        "user": "jakiecash",
+        "time": "25.103",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-09": {
+        "user": "hydroblue",
+        "time": "46.405",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-10": {
+        "user": "justmaki",
+        "time": "1:06.643",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-11": {
+        "user": "hydroblue",
+        "time": "20.614",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-12": {
+        "user": "hydroblue",
+        "time": "43.755",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-13": {
+        "user": "hydroblue",
+        "time": "57.947",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-14": {
+        "user": "hydroblue",
+        "time": "39.890",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-15": {
+        "user": "hydroblue",
+        "time": "20.900",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-16": {
+        "user": "hydroblue",
+        "time": "36.014",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-17": {
+        "user": "hydroblue",
+        "time": "37.869",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-18": {
+        "user": "hydroblue",
+        "time": "41.874",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-19": {
+        "user": "jakiecash",
+        "time": "50.851",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-20": {
+        "user": "jakiecash",
+        "time": "2:05.839",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-21": {
+        "user": "maraa",
+        "time": "12.653",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-22": {
+        "user": "jakiecash",
+        "time": "1:02.797",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-23": {
+        "user": "jakiecash",
+        "time": "1:05.783",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-24": {
+        "user": "jakiecash",
+        "time": "58.920",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "B-01": {
+        "user": "hydroblue",
+        "time": "44.162",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "B-02": {
+        "user": "hydroblue",
+        "time": "54.726",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "B-03": {
+        "user": "hydroblue",
+        "time": "1:02.941",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "B-04": {
+        "user": "hydroblue",
+        "time": "55.043",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "B-05": {
+        "user": "jakiecash",
+        "time": "55.993",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "B-06": {
+        "user": "hydroblue",
+        "time": "1:20.273",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "C-01": {
+        "user": "hydroblue",
+        "time": "21.247",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "C-02": {
+        "user": "hydroblue",
+        "time": "39.568",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "C-03": {
+        "user": "jakiecash",
+        "time": "48.599",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "C-04": {
+        "user": "hydroblue",
+        "time": "1:00.906",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "C-05": {
+        "user": "hydroblue",
+        "time": "52.262",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "C-06": {
+        "user": "hydroblue",
+        "time": "55.219",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "D-01": {
+        "user": "hydroblue",
+        "time": "43.922",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "D-02": {
+        "user": "hydroblue",
+        "time": "40.103",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "D-03": {
+        "user": "jakiecash",
+        "time": "35.844",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "D-04": {
+        "user": "hydroblue",
+        "time": "42.245",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "D-05": {
+        "user": "hydroblue",
+        "time": "43.092",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "D-06": {
+        "user": "jakiecash",
+        "time": "38.743",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "D-07": {
+        "user": "justmaki",
+        "time": "45.031",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "D-08": {
+        "user": "hydroblue",
+        "time": "35.890",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "D-09": {
+        "user": "jakiecash",
+        "time": "34.389",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "D-10": {
+        "user": "jakiecash",
+        "time": "35.929",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "D-11": {
+        "user": "jakiecash",
+        "time": "49.253",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "D-12": {
+        "user": "jakiecash",
+        "time": "42.279",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "E-01": {
+        "user": "jakiecash",
+        "time": "32.203",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "E-02": {
+        "user": "hydroblue",
+        "time": "43.222",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "E-03": {
+        "user": "shootingmoron",
+        "time": "28.064",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "F-01": {
+        "user": "jakiecash",
+        "time": "56.927",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "F-02": {
+        "user": "jakiecash",
+        "time": "48.053",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "F-03": {
+        "user": "zivecef",
+        "time": "43.374",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "F-04": {
+        "user": "justmaki",
+        "time": "54.189",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "F-05": {
+        "user": "jakiecash",
+        "time": "1:03.684",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "F-06": {
+        "user": "jakiecash",
+        "time": "1:25.366",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "G-01": {
+        "user": "sandals",
+        "time": "44.351",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "G-02": {
+        "user": "hydroblue",
+        "time": "45.064",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "G-03": {
+        "user": "jakiecash",
+        "time": "59.963",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "G-04": {
+        "user": "jakiecash",
+        "time": "46.929",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "G-05": {
+        "user": "zivecef",
+        "time": "39.139",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "G-06": {
+        "user": "jakiecash",
+        "time": "47.533",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "G-07": {
+        "user": "justmaki",
+        "time": "52.070",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "G-08": {
+        "user": "jakiecash",
+        "time": "41.698",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "G-09": {
+        "user": "jakiecash",
+        "time": "1:14.873",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "H-01": {
+        "user": "lexer",
+        "time": "1:02.250",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "H-02": {
+        "user": "hydroblue",
+        "time": "1:42.453",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "H-03": {
+        "user": "hydroblue",
+        "time": "55.189",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "H-04": {
+        "user": "maraa",
+        "time": "34.510",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "H-05": {
+        "user": "maraa",
+        "time": "44.971",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "H-06": {
+        "user": "maraa",
+        "time": "58.967",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "I-01": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "I-02": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "I-03": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "I-04": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "I-05": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "I-06": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "I-07": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "I-08": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "X-01": {
+        "user": "jakiecash",
+        "time": "52.994",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "X-02": {
+        "user": "jakiecash",
+        "time": "1:53.607",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "X-03": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "X-04": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "X-05": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "X-06": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "Y-01": {
+        "user": "odist",
+        "time": "44.702",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "Y-02": {
+        "user": "jakiecash",
+        "time": "23.819",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "Y-03": {
+        "user": "jakiecash",
+        "time": "27.949",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "CL-01": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "CL-02": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "CL-03": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "CL-04": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "CL-05": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "CL-06": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "EZ-01": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "EZ-02": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "EZ-03": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "EZ-04": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "EZ-05": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "EZ-06": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "FL-01": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "FL-02": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "FL-03": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "FL-04": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "OR-01": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "OR-02": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "OR-03": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "OR-04": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "XG-01": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "XG-02": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "XG-03": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "XG-04": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      }
+    },
+    "any": {
+      "A-01": {
+        "user": "jakiecash",
+        "time": "29.560",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-02": {
+        "user": "hydroblue",
+        "time": "22.953",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-03": {
+        "user": "jakiecash",
+        "time": "44.851",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-04": {
+        "user": "mrragdoll",
+        "time": "17.859",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-05": {
+        "user": "lexer",
+        "time": "13.214",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-06": {
+        "user": "jakiecash",
+        "time": "27.003",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-07": {
+        "user": "jakiecash",
+        "time": "33.304",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-08": {
+        "user": "sandals",
+        "time": "24.379",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-09": {
+        "user": "jakiecash",
+        "time": "39.827",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-10": {
+        "user": "jakiecash",
+        "time": "1:02.865",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-11": {
+        "user": "jakiecash",
+        "time": "17.492",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-12": {
+        "user": "jakiecash",
+        "time": "34.549",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-13": {
+        "user": "jakiecash",
+        "time": "12.400",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-14": {
+        "user": "jakiecash",
+        "time": "31.123",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-15": {
+        "user": "pants",
+        "time": "15.106",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-16": {
+        "user": "jakiecash",
+        "time": "24.106",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-17": {
+        "user": "maraa",
+        "time": "26.500",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-18": {
+        "user": "zivecef",
+        "time": "26.246",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-19": {
+        "user": "jakiecash",
+        "time": "19.143",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-20": {
+        "user": "krebzonide",
+        "time": "25.382",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-21": {
+        "user": "maraa",
+        "time": "12.508",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-22": {
+        "user": "jakiecash",
+        "time": "44.121",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-23": {
+        "user": "kernkob",
+        "time": "58.788",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-24": {
+        "user": "jakiecash",
+        "time": "32.844",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "B-01": {
+        "user": "jakiecash",
+        "time": "37.816",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "B-02": {
+        "user": "hydroblue",
+        "time": "45.908",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "B-03": {
+        "user": "jakiecash",
+        "time": "24.702",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "B-04": {
+        "user": "jakiecash",
+        "time": "50.039",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "B-05": {
+        "user": "jakiecash",
+        "time": "33.767",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "B-06": {
+        "user": "jakiecash",
+        "time": "1:06.198",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "C-01": {
+        "user": "jakiecash",
+        "time": "17.388",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "C-02": {
+        "user": "jakiecash",
+        "time": "35.081",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "C-03": {
+        "user": "jakiecash",
+        "time": "34.486",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "C-04": {
+        "user": "jakiecash",
+        "time": "1:00.254",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "C-05": {
+        "user": "hydroblue",
+        "time": "46.502",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "C-06": {
+        "user": "hydroblue",
+        "time": "40.365",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "D-01": {
+        "user": "hydroblue",
+        "time": "43.922",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "D-02": {
+        "user": "jakiecash",
+        "time": "37.487",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "D-03": {
+        "user": "jakiecash",
+        "time": "29.635",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "D-04": {
+        "user": "zivecef",
+        "time": "30.210",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "D-05": {
+        "user": "zivecef",
+        "time": "20.090",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "D-06": {
+        "user": "maraa",
+        "time": "37.872",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "D-07": {
+        "user": "maraa",
+        "time": "42.803",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "D-08": {
+        "user": "jakiecash",
+        "time": "28.272",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "D-09": {
+        "user": "jakiecash",
+        "time": "34.389",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "D-10": {
+        "user": "alexdacat",
+        "time": "17.112",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "D-11": {
+        "user": "jakiecash",
+        "time": "35.852",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "D-12": {
+        "user": "jakiecash",
+        "time": "42.279",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "E-01": {
+        "user": "polelord",
+        "time": "30.737",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "E-02": {
+        "user": "polelord",
+        "time": "41.824",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "E-03": {
+        "user": "shootingmoron",
+        "time": "27.946",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "F-01": {
+        "user": "maraa",
+        "time": "43.067",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "F-02": {
+        "user": "jakiecash",
+        "time": "7.674",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "F-03": {
+        "user": "zivecef",
+        "time": "43.374",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "F-04": {
+        "user": "zivecef",
+        "time": "49.136",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "F-05": {
+        "user": "jakiecash",
+        "time": "1:03.684",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "F-06": {
+        "user": "zivecef",
+        "time": "1:15.221",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "G-01": {
+        "user": "maraa",
+        "time": "42.469",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "G-02": {
+        "user": "polelord",
+        "time": "37.779",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "G-03": {
+        "user": "zivecef",
+        "time": "27.381",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "G-04": {
+        "user": "jakiecash",
+        "time": "46.713",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "G-05": {
+        "user": "maraa",
+        "time": "37.271",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "G-06": {
+        "user": "jakiecash",
+        "time": "46.852",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "G-07": {
+        "user": "justmaki",
+        "time": "52.070",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "G-08": {
+        "user": "kernkob",
+        "time": "35.625",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "G-09": {
+        "user": "zivecef",
+        "time": "1:05.141",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "H-01": {
+        "user": "maraa",
+        "time": "53.173",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "H-02": {
+        "user": "jakiecash",
+        "time": "8.565",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "H-03": {
+        "user": "maraa",
+        "time": "53.044",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "H-04": {
+        "user": "maraa",
+        "time": "34.510",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "H-05": {
+        "user": "maraa",
+        "time": "44.971",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "H-06": {
+        "user": "maraa",
+        "time": "58.967",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "I-01": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "I-02": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "I-03": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "I-04": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "I-05": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "I-06": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "I-07": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "I-08": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "X-01": {
+        "user": "jakiecash",
+        "time": "49.391",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "X-02": {
+        "user": "maraa",
+        "time": "1:49.933",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "X-03": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "X-04": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "X-05": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "X-06": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "Y-01": {
+        "user": "odist",
+        "time": "44.702",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "Y-02": {
+        "user": "jakiecash",
+        "time": "23.819",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "Y-03": {
+        "user": "jakiecash",
+        "time": "27.949",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "CL-01": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "CL-02": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "CL-03": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "CL-04": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "CL-05": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "CL-06": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "EZ-01": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "EZ-02": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "EZ-03": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "EZ-04": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "EZ-05": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "EZ-06": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "FL-01": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "FL-02": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "FL-03": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "FL-04": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "OR-01": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "OR-02": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "OR-03": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "OR-04": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "XG-01": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "XG-02": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "XG-03": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "XG-04": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      }
+    },
+    "multiplayer": {
+      "A-01": {
+        "user": "thojmen",
+        "time": "43.222",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-02": {
+        "user": "jakiecash",
+        "time": "22.777",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-03": {
+        "user": "zivecef",
+        "time": "1:00.182",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-04": {
+        "user": [
+          "jakiecash",
+          "jakobecash15"
+        ],
+        "time": "17.597",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-05": {
+        "user": [
+          "jakiecash",
+          "makelvorhang"
+        ],
+        "time": "17.179",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-06": {
+        "user": [
+          "jakiecash",
+          "jukebox333"
+        ],
+        "time": "45.076",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-07": {
+        "user": [
+          "jakiecash",
+          "jakobecash15"
+        ],
+        "time": "58.885",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-08": {
+        "user": [
+          "jakiecash",
+          "jakobecash15"
+        ],
+        "time": "23.235",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-09": {
+        "user": [
+          "jakiecash",
+          "jakobecash15"
+        ],
+        "time": "50.469",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-10": {
+        "user": [
+          "jakiecash",
+          "jakobecash15"
+        ],
+        "time": "1:08.019",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-11": {
+        "user": "jakiecash",
+        "time": "25.694",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-12": {
+        "user": "jakiecash",
+        "time": "46.503",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-13": {
+        "user": [
+          "jakiecash",
+          "jakobecash15"
+        ],
+        "time": "27.838",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-14": {
+        "user": "jakiecash",
+        "time": "37.050",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-15": {
+        "user": "zivecef",
+        "time": "13.554",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-16": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-17": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-18": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-19": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-20": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-21": {
+        "user": [
+          "jakiecash",
+          "jakobecash15"
+        ],
+        "time": "12.677",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-22": {
+        "user": "jakiecash",
+        "time": "1:01.645",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-23": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "A-24": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "B-01": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "B-02": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "B-03": {
+        "user": [
+          "jakiecash",
+          "jakobecash15"
+        ],
+        "time": "1:03.224",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "B-04": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "B-05": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "B-06": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "C-01": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "C-02": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "C-03": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "C-04": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "C-05": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "C-06": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "D-01": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "D-02": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "D-03": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "D-04": {
+        "user": [
+          "jakiecash",
+          "jakobecash15"
+        ],
+        "time": "44.934",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "D-05": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "D-06": {
+        "user": [
+          "jakiecash",
+          "jakobecash15"
+        ],
+        "time": "41.084",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "D-07": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "D-08": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "D-09": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "D-10": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "D-11": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "D-12": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "E-01": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "E-02": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "E-03": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "F-01": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "F-02": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "F-03": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "F-04": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "F-05": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "F-06": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "G-01": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "G-02": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "G-03": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "G-04": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "G-05": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "G-06": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "G-07": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "G-08": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "G-09": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "H-01": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "H-02": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "H-03": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "H-04": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "H-05": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "H-06": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "I-01": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "I-02": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "I-03": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "I-04": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "I-05": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "I-06": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "I-07": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "I-08": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "X-01": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "X-02": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "X-03": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "X-04": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "X-05": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "X-06": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "Y-01": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "Y-02": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "Y-03": {
+        "user": [
+          "jakiecash",
+          "jakobecash15"
+        ],
+        "time": "29.551",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "CL-01": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "CL-02": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "CL-03": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "CL-04": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "CL-05": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "CL-06": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "EZ-01": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "EZ-02": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "EZ-03": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "EZ-04": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "EZ-05": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "EZ-06": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "FL-01": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "FL-02": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "FL-03": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "FL-04": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "OR-01": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "OR-02": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "OR-03": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "OR-04": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "XG-01": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "XG-02": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "XG-03": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      },
+      "XG-04": {
+        "user": "",
+        "time": "",
+        "gtrID": "",
+        "ytID": "",
+        "date": "",
+        "screenshotUrl": "",
+        "extraProperty2": "",
+        "extraProperty3": "",
+        "extraProperty4": "",
+        "extraProperty5": ""
+      }
+    }
+  }
 }

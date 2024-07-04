@@ -140,7 +140,7 @@ var zst = (function($)
         if (zst.data.users && zst.data.users[userID] && zst.data.users[userID].displayName) {
             return zst.data.users[userID].displayName;
         }
-        return "unknown";
+        return "-";
     }
 
     zst.GetCategoryName = function(category)
@@ -171,16 +171,6 @@ var zst = (function($)
         }
 
         return "/img/avatar.png";
-    }
-
-    zst.GetUserName = function(user)
-    {
-        if(zst.data.users.hasOwnProperty(user))
-        {
-            return zst.data.users[user].displayName;
-        }
-
-        return "-";
     }
 
     zst.CalculateDaysSince = function(dateString)
@@ -245,13 +235,22 @@ var zst = (function($)
     
         const $levelImage = $('<td>').addClass('level-image').css('background-image', `url("${zst.GetLevelImage(key)}")`);
         const $levelName = $('<td>').addClass('record-level').text(key);
-        const $recordTime = $('<td>').addClass('record-time').text(record.time || 'N/A');
+        const $recordTime = $('<td>').addClass('record-time').text(record.time || '-');
     
         const $profilePicTd = $('<td>').addClass('profile-pic');
-        const $profilePicImg = $('<img>').attr('src', zst.GetUserImage(record.user)).addClass('profile-pic-img');
-        $profilePicTd.append($profilePicImg);
+        const $recordUser = $('<td>').addClass('record-user');
+        if (Array.isArray(record.user)) {
+            record.user.forEach(user => {
+                const $profilePicImg = $('<img>').attr('src', zst.GetUserImage(user)).addClass('profile-pic-img');
+                $profilePicTd.append($profilePicImg);
+                $recordUser.append($('<div>').text(zst.GetUserName(user)));
+            });
+        } else {
+            const $profilePicImg = $('<img>').attr('src', zst.GetUserImage(record.user)).addClass('profile-pic-img');
+            $profilePicTd.append($profilePicImg);
+            $recordUser.append($('<div>').text(zst.GetUserName(record.user)));
+        }
     
-        const $recordUser = $('<td>').addClass('record-user').text(zst.GetUserName(record.user));
         const $recordDate = $('<td>').addClass('record-date').text(zst.CalculateDaysSince(record.date) + " days");
     
         // YouTube link
@@ -268,12 +267,20 @@ var zst = (function($)
     
         // GTR link
         const $gtrTd = $('<td>').addClass('record-links');
-        const $gtrIcon = $('<i>').addClass('fa fa-ghost').attr('aria-hidden', 'true');
+        const $gtrIcon = $('<i>').addClass('fa fa-picture-o').attr('aria-hidden', 'true');
         if (record.gtrID) {
             const $gtrLink = $('<a>').attr('href', `https://www.gtrwebsite.com/${record.gtrID}`).attr('target', '_blank').css('color', '#CB6BE6');
             $gtrLink.append($gtrIcon);
             $gtrTd.append($gtrLink);
-        } else {
+        } 
+        else if(record.screenshotUrl) 
+        {
+            const $gtrLink = $('<a>').attr('href', record.screenshotUrl).attr('target', '_blank').css('color', '#CB6BE6');
+            $gtrLink.append($gtrIcon);
+            $gtrTd.append($gtrLink);
+        }
+        else
+        {
             $gtrIcon.css('color', 'grey');
             $gtrTd.append($gtrIcon);
         }
@@ -312,10 +319,13 @@ var zst = (function($)
     
             const categories = ['official', 'nocheese', 'any', 'multiplayer'];
             categories.forEach(category => {
-                const recordCount = Object.keys(zst.data.records[category] || {}).filter(record => zst.data.records[category][record].user === userID).length;
+                const recordCount = Object.keys(zst.data.records[category] || {}).filter(record => {
+                    const recordData = zst.data.records[category][record];
+                    return Array.isArray(recordData.user) ? recordData.user.includes(userID) : recordData.user === userID;
+                }).length;
                 userRecords[category] = recordCount;
-                const categoryScore = category === 'official' ? recordCount * 100 : recordCount * 5;
-                totalScore += categoryScore;
+                const categoryScore = zst.data.pointsPerCategory[category] || 0;
+                totalScore += recordCount * categoryScore;
             });
     
             zst.userpoint[userID] = totalScore;
@@ -372,12 +382,14 @@ var zst = (function($)
     };
     
     zst.FillUserDetails = function(userID, container) {
-        const user = zst.data.users[userID];
         const categories = ['official', 'nocheese', 'any', 'multiplayer'];
     
         categories.forEach(category => {
             const records = zst.data.records[category] || {};
-            const userRecords = Object.keys(records).filter(record => records[record].user === userID);
+            const userRecords = Object.keys(records).filter(record => {
+                const recordData = records[record];
+                return Array.isArray(recordData.user) ? recordData.user.includes(userID) : recordData.user === userID;
+            });
     
             if (userRecords.length > 0) {
                 const categoryTitle = $('<h3>').text(zst.GetCategoryName(category));
@@ -407,17 +419,42 @@ var zst = (function($)
                     }
     
                     const gtrTd = $('<td>').addClass('record-links');
-                    const gtrIcon = $('<i>').addClass('fa fa-ghost').attr('aria-hidden', 'true');
+                    const gtrIcon = $('<i>').addClass('fa fa-picture-o').attr('aria-hidden', 'true');
                     if (record.gtrID) {
                         const gtrLink = $('<a>').attr('href', `https://www.gtrwebsite.com/${record.gtrID}`).attr('target', '_blank').css('color', '#CB6BE6');
                         gtrLink.append(gtrIcon);
                         gtrTd.append(gtrLink);
-                    } else {
+                    } else if(record.screenshotUrl) 
+                    {
+                        const $gtrLink = $('<a>').attr('href', record.screenshotUrl).attr('target', '_blank').css('color', '#CB6BE6');
+                        gtrLink.append(gtrIcon);
+                        gtrTd.append($gtrLink);
+                    }
+                    else
+                    {
                         gtrIcon.css('color', 'grey');
                         gtrTd.append(gtrIcon);
                     }
     
                     recordRow.append(levelImage, levelName, recordTime, recordDate, ytTd, gtrTd);
+    
+                    if (category === 'multiplayer') {
+                        const $profilePicTd = $('<td>').addClass('profile-pic');
+                        const $recordUser = $('<td>').addClass('record-user');
+                        if (Array.isArray(record.user)) {
+                            record.user.forEach(user => {
+                                const $profilePicImg = $('<img>').attr('src', zst.GetUserImage(user)).addClass('profile-pic-img');
+                                $profilePicTd.append($profilePicImg);
+                                $recordUser.append($('<div>').text(zst.GetUserName(user)));
+                            });
+                        } else {
+                            const $profilePicImg = $('<img>').attr('src', zst.GetUserImage(record.user)).addClass('profile-pic-img');
+                            $profilePicTd.append($profilePicImg);
+                            $recordUser.append($('<div>').text(zst.GetUserName(record.user)));
+                        }
+                        recordRow.append($profilePicTd, $recordUser);
+                    }
+    
                     recordTableBody.append(recordRow);
                 });
     

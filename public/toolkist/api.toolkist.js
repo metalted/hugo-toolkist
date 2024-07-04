@@ -1026,6 +1026,41 @@ export var api = (function($) {
         }
     }
 
+    api.GetZSTGist = function(onLoadedCallback, useDummyFlag = false)
+    {
+        if(useDummyFlag)
+        {
+            onLoadedCallback(null, 'dummy');
+        }
+        else
+        {
+            var linkGist = '4ec13c65cd193612f0dfdb5cdae73791';
+            $.ajax({
+                url: `https://api.github.com/gists/${linkGist}`,
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) 
+                {   
+                    try{
+                        const fileContent = data.files['zstData.json'].content;
+                        var json = JSON.parse(fileContent);
+                        console.log('Fetched Gist Data:', json);
+                        onLoadedCallback(json, 'ok');
+                    }
+                    catch
+                    {
+                        onLoadedCallback(null, 'parse');
+                    }                
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    //console.log(jqXHR);
+                    //console.error('Error fetching Gist:', textStatus, errorThrown);
+                    onLoadedCallback(null, 'error')
+                }
+            });
+        }
+    }
+
     api.GetGistPlaylists = function(onLoadedCallback)
     {
         var linkGist = '5edf3fe1fffc25eeaa4b878b4ea2850f';
