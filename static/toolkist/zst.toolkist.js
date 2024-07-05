@@ -168,8 +168,8 @@ var zst = (function($)
 
     zst.GetLevelImage = function(levelName)
     {
-        //return "/img/adventure/" + levelName + ".png";
-        return "/img/adventure/A-01.png";
+        return "/img/adventure/" + levelName + ".png";
+        //return "/img/adventure/A-01.png";
     }
 
     zst.GetUserImage = function(user)
