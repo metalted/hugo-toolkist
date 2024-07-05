@@ -115,24 +115,35 @@ var zst = (function($)
         }
     }   
 
-    zst.GetLatestRecords = function(amount)
-    {
+    zst.GetLatestRecords = function(amount) {
         const allRecords = [];
     
         // Flatten the records into a single array
         for (const category in zst.data.records) {
             for (const recordKey in zst.data.records[category]) {
                 const record = zst.data.records[category][recordKey];
-                allRecords.push({ ...record, key: recordKey, cat: category });
+                if (record.ytID != "") {
+                    allRecords.push({ ...record, key: recordKey, cat: category });
+                }
             }
         }
-        
+    
         // Filter out records with empty dates and sort by date in descending order
         const filteredAndSortedRecords = allRecords
             .filter(record => record.date)
             .sort((a, b) => b.date.localeCompare(a.date));
     
-        return filteredAndSortedRecords.slice(0, amount);
+        // Remove duplicate ytID records, keeping only the latest one
+        const uniqueRecordsMap = new Map();
+        for (const record of filteredAndSortedRecords) {
+            if (!uniqueRecordsMap.has(record.ytID)) {
+                uniqueRecordsMap.set(record.ytID, record);
+            }
+        }
+    
+        const uniqueRecords = Array.from(uniqueRecordsMap.values());
+    
+        return uniqueRecords.slice(0, amount);
     }
 
     zst.GetUserName = function(userID) 
@@ -150,6 +161,7 @@ var zst = (function($)
             case "any": return "Any %";
             case "nocheese": return "No Cheese";
             case "multiplayer": return "Multiplayer";
+            case "other": return "Other";
             default: return "Unknown";
         }
     }
@@ -201,33 +213,59 @@ var zst = (function($)
         return diffDays;
     }
 
-    zst.GenerateRecordTable = function() {
+    zst.GenerateRecordTable = function() 
+    {
         const category = $('#record-type-selection').val();
         const levelGroup = $('#record-level-group-selection').val();
+
+        if(category == "other")
+        {
+            $('#record-level-group-selection').hide();
+            const otherRecords = zst.data.records.other;
         
-        const recordsOfCategory = zst.data.records[category];
-        const recordsOfCategoryAndLevelGroup = Object.keys(recordsOfCategory).filter(key => key.startsWith(levelGroup + "-"));
-        const recordsOfCategoryAndLevelGroupSorted = recordsOfCategoryAndLevelGroup.sort();
+            const recordsContainer = $('#record-table-content');
+            recordsContainer.empty(); // Clear previous records
         
-        const resultingRecords = {};
-        recordsOfCategoryAndLevelGroupSorted.forEach(key => {
-            resultingRecords[key] = recordsOfCategory[key];
-        });
-    
-        const recordsContainer = $('#record-table-content');
-        recordsContainer.empty(); // Clear previous records
-    
-        // Create table
-        const $table = $('<table>').addClass('record-table');
-        const $tbody = $('<tbody>');
-    
-        for (const key in resultingRecords) {
-            const $recordRow = zst.CreateRecordRow(resultingRecords[key], key);
-            $tbody.append($recordRow);
+            // Create table
+            const $table = $('<table>').addClass('record-table');
+            const $tbody = $('<tbody>');
+        
+            for (const key in otherRecords) {
+                const $recordRow = zst.CreateRecordRow(otherRecords[key], key);
+                $tbody.append($recordRow);
+            }
+        
+            $table.append($tbody);
+            recordsContainer.append($table);
         }
-    
-        $table.append($tbody);
-        recordsContainer.append($table);
+        else
+        {   
+            $('#record-level-group-selection').show();
+
+            const recordsOfCategory = zst.data.records[category];
+            const recordsOfCategoryAndLevelGroup = Object.keys(recordsOfCategory).filter(key => key.startsWith(levelGroup + "-"));
+            const recordsOfCategoryAndLevelGroupSorted = recordsOfCategoryAndLevelGroup.sort();
+            
+            const resultingRecords = {};
+            recordsOfCategoryAndLevelGroupSorted.forEach(key => {
+                resultingRecords[key] = recordsOfCategory[key];
+            });
+        
+            const recordsContainer = $('#record-table-content');
+            recordsContainer.empty(); // Clear previous records
+        
+            // Create table
+            const $table = $('<table>').addClass('record-table');
+            const $tbody = $('<tbody>');
+        
+            for (const key in resultingRecords) {
+                const $recordRow = zst.CreateRecordRow(resultingRecords[key], key);
+                $tbody.append($recordRow);
+            }
+        
+            $table.append($tbody);
+            recordsContainer.append($table);
+        }
     };
     
     zst.CreateRecordRow = function(record, key) {
@@ -268,17 +306,17 @@ var zst = (function($)
         // GTR link
         const $gtrTd = $('<td>').addClass('record-links');
         const $gtrIcon = $('<i>').addClass('fa fa-picture-o').attr('aria-hidden', 'true');
-        if (record.gtrID) {
-            const $gtrLink = $('<a>').attr('href', `https://www.gtrwebsite.com/${record.gtrID}`).attr('target', '_blank').css('color', '#CB6BE6');
-            $gtrLink.append($gtrIcon);
-            $gtrTd.append($gtrLink);
-        } 
-        else if(record.screenshotUrl) 
+        if(record.screenshotUrl) 
         {
             const $gtrLink = $('<a>').attr('href', record.screenshotUrl).attr('target', '_blank').css('color', '#CB6BE6');
             $gtrLink.append($gtrIcon);
             $gtrTd.append($gtrLink);
         }
+        else if (record.gtrID) {
+            const $gtrLink = $('<a>').attr('href', `https://www.gtrwebsite.com/${record.gtrID}`).attr('target', '_blank').css('color', '#CB6BE6');
+            $gtrLink.append($gtrIcon);
+            $gtrTd.append($gtrLink);
+        } 
         else
         {
             $gtrIcon.css('color', 'grey');
@@ -305,6 +343,7 @@ var zst = (function($)
             $('<th>').text('No Cheese'),
             $('<th>').text('Any %'),
             $('<th>').text('Multiplayer'),
+            $('<th>').text('Other'),
             $('<th>').text('Score')
         );
         userTableBody.append(headerRow);
@@ -317,7 +356,7 @@ var zst = (function($)
             const userRecords = {};
             let totalScore = 0;
     
-            const categories = ['official', 'nocheese', 'any', 'multiplayer'];
+            const categories = ['official', 'nocheese', 'any', 'multiplayer', 'other'];
             categories.forEach(category => {
                 const recordCount = Object.keys(zst.data.records[category] || {}).filter(record => {
                     const recordData = zst.data.records[category][record];
@@ -351,6 +390,7 @@ var zst = (function($)
                 $('<td>').addClass('team-record-info').text(userRecords.nocheese),
                 $('<td>').addClass('team-record-info').text(userRecords.any),
                 $('<td>').addClass('team-record-info').text(userRecords.multiplayer),
+                $('<td>').addClass('team-record-info').text(userRecords.other),
                 $('<td>').addClass('team-record-info').text(totalScore)
             );
     
@@ -382,7 +422,7 @@ var zst = (function($)
     };
     
     zst.FillUserDetails = function(userID, container) {
-        const categories = ['official', 'nocheese', 'any', 'multiplayer'];
+        const categories = ['official', 'nocheese', 'any', 'multiplayer', 'other'];
     
         categories.forEach(category => {
             const records = zst.data.records[category] || {};
@@ -420,16 +460,19 @@ var zst = (function($)
     
                     const gtrTd = $('<td>').addClass('record-links');
                     const gtrIcon = $('<i>').addClass('fa fa-picture-o').attr('aria-hidden', 'true');
-                    if (record.gtrID) {
+                    
+                    if(record.screenshotUrl) 
+                    {
+                        const gtrLink = $('<a>').attr('href', record.screenshotUrl).attr('target', '_blank').css('color', '#CB6BE6');
+                        gtrLink.append(gtrIcon);
+                        gtrTd.append(gtrLink);
+                    }
+                    else if (record.gtrID) 
+                    {
                         const gtrLink = $('<a>').attr('href', `https://www.gtrwebsite.com/${record.gtrID}`).attr('target', '_blank').css('color', '#CB6BE6');
                         gtrLink.append(gtrIcon);
                         gtrTd.append(gtrLink);
-                    } else if(record.screenshotUrl) 
-                    {
-                        const $gtrLink = $('<a>').attr('href', record.screenshotUrl).attr('target', '_blank').css('color', '#CB6BE6');
-                        gtrLink.append(gtrIcon);
-                        gtrTd.append($gtrLink);
-                    }
+                    } 
                     else
                     {
                         gtrIcon.css('color', 'grey');

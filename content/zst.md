@@ -41,7 +41,7 @@ title = 'ZST'
             if(data == null)
             {
                 zst.data = zstDummy;
-                //window.alert('Using dummy data, gist unreachable!');
+                window.alert('Using dummy data, gist unreachable!');
             }
             else
             {
@@ -62,7 +62,7 @@ title = 'ZST'
 
             zst.SwitchToPage('home-panel'); 
             zst.SetLinksState(true);
-        }, true);
+        }, false);
     });
 </script>
 
@@ -134,6 +134,7 @@ title = 'ZST'
                         <option value='nocheese'>No Cheese</option>
                         <option value='any'>Any %</option>
                         <option value='multiplayer'>Multiplayer</option>
+                        <option value='other'>Other</option>
                     </select>
                     <select id='record-level-group-selection'>
                         <option value="A">A Levels</option>
