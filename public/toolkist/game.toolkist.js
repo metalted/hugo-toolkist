@@ -260,7 +260,8 @@ export var game = (function($) {
             this.ground = timingLine[5];
 
             for (let i = 3; i < lines.length; i++) {
-                this.blocks.push(new Block().FromCSV(lines[i]));
+                var block = new game.Block();
+                this.blocks.push(block.FromCSV(lines[i]));
             }
         }
 

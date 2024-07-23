@@ -43,6 +43,13 @@
       <description>&#xD;</description>
     </item>
     <item>
+      <title>Text Generator</title>
+      <link>http://localhost:1313/textgenerator/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/textgenerator/</guid>
+      <description>&#xD;Text Generator | Toolkist&#xD;</description>
+    </item>
+    <item>
       <title>ZDL</title>
       <link>http://localhost:1313/zdl/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -75,7 +82,7 @@
       <link>http://localhost:1313/zst/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/zst/</guid>
-      <description>&#xD;ZST | Zeepkist Speed Running Team&#xD;Zeepkist Speedrunning Team&#xD;Home&#xD;Records&#xD;Team&#xD;Rules&#xD;What We Do&#xD;Recent Records&#xD;Join Our Discord Channel&#xD;ZST Discord&#xD;Records&#xD;Official&#xD;No Cheese&#xD;Any %&#xD;Multiplayer&#xD;A Levels&#xD;B Levels&#xD;C Levels&#xD;D Levels&#xD;E Levels&#xD;F Levels&#xD;G Levels&#xD;H Levels&#xD;I Levels&#xD;X Levels&#xD;Y Levels&#xD;CL Levels&#xD;EZ Levels&#xD;FL Levels&#xD;OR Levels&#xD;XG Levels&#xD;Team&#xD;Rules&#xD;</description>
+      <description>&#xD;ZST | Zeepkist Speed Running Team&#xD;Zeepkist Speedrunning Team&#xD;Home&#xD;Records&#xD;Team&#xD;Rules&#xD;What We Do&#xD;Recent Records&#xD;Join Our Discord Channel&#xD;ZST Discord&#xD;Records&#xD;Official&#xD;No Cheese&#xD;Any %&#xD;Multiplayer&#xD;Other&#xD;A Levels&#xD;B Levels&#xD;C Levels&#xD;D Levels&#xD;E Levels&#xD;F Levels&#xD;G Levels&#xD;H Levels&#xD;I Levels&#xD;X Levels&#xD;Y Levels&#xD;CL Levels&#xD;EZ Levels&#xD;FL Levels&#xD;OR Levels&#xD;XG Levels&#xD;Team&#xD;Rules&#xD;</description>
     </item>
   </channel>
 </rss>

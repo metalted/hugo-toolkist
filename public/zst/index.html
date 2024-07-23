@@ -175,6 +175,14 @@
         
             
                 <li class="file">
+                    <a href="http://localhost:1313/textgenerator/" title="./textgenerator/">
+                        Text Generator
+                    </a>
+                </li>
+            
+        
+            
+                <li class="file">
                     <a href="http://localhost:1313/zdl/" title="./zdl/">
                         ZDL
                     </a>
@@ -265,7 +273,7 @@
             if(data == null)
             {
                 zst.data = zstDummy;
-                //window.alert('Using dummy data, gist unreachable!');
+                window.alert('Using dummy data, gist unreachable!');
             }
             else
             {
@@ -286,7 +294,7 @@
 
             zst.SwitchToPage('home-panel'); 
             zst.SetLinksState(true);
-        }, true);
+        }, false);
     });
 </script>
 
@@ -358,6 +366,7 @@
                         <option value='nocheese'>No Cheese</option>
                         <option value='any'>Any %</option>
                         <option value='multiplayer'>Multiplayer</option>
+                        <option value='other'>Other</option>
                     </select>
                     <select id='record-level-group-selection'>
                         <option value="A">A Levels</option>

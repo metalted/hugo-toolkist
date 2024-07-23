@@ -3,6 +3,27 @@ title = 'Text Generator'
 +++
 
 {{<rawhtml>}}
+<!-- HTML Meta Tags -->
+<title>Text Generator | Toolkist</title>
+<meta name="description" content="Convert Text to Letter Blocks">
+
+<!-- Facebook Meta Tags -->
+<meta property="og:url" content="https://toolkist.netlify.app/textgenerator">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Text Generator | Toolkist">
+<meta property="og:description" content="Convert Text to Letter Blocks">
+<meta property="og:image" content="/img/TextGenerator_banner.png">
+<meta name="theme-color" content="#DC4D45">
+
+<!-- Twitter Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta property="twitter:domain" content="toolkist.netlify.app">
+<meta property="twitter:url" content="https://toolkist.netlify.app/textgenerator">
+<meta name="twitter:title" content="Text Generator | Toolkist">
+<meta name="twitter:description" content="Convert Text To Letter Blocks">
+<meta name="twitter:image" content="/img/TextGenerator_banner.png">
+
+
 <script type="module">
 import {toolkist} from '/toolkist/toolkist.js';
 
@@ -259,22 +280,23 @@ $(document).ready(function() {
     
 
     // Render header blocks
-    toolkist.html.RenderHeaderBlock('.standardLeftPanel', 'Font');
+    toolkist.html.RenderHeaderBlock('.standardLeftPanel', 'Settings');
     
+    const fontStyleLabel = $('<div>', { text: 'Font:', class: 'inputLabel' });
     // Add font style selection list
     const fontStyleSelect = $('<select>')
         .append($('<option>', { value: 'Round', text: 'Round' }))
         .append($('<option>', { value: 'Block', text: 'Block' }))
         .append($('<option>', { value: 'OpenRound', text: 'OpenRound' }));
-    $('.standardLeftPanel').append(fontStyleSelect);
+    $('.standardLeftPanel').append(fontStyleLabel, fontStyleSelect);
 
     // Add letter spacing input
-    const letterSpacingLabel = $('<div>', { text: 'Letter Spacing:' });
+    const letterSpacingLabel = $('<div>', { text: 'Letter Spacing:', class: 'inputLabel' });
     const letterSpacingInput = $('<input>', { type: 'number', step: '0.1', value: '0', id: 'letterSpacingInput'  });
     $('.standardLeftPanel').append(letterSpacingLabel).append(letterSpacingInput);
 
     // Add line spacing input
-    const lineSpacingLabel = $('<div>', { text: 'Line Spacing:' });
+    const lineSpacingLabel = $('<div>', { text: 'Line Spacing:', class: 'inputLabel' });
     const lineSpacingInput = $('<input>', { type: 'number', step: '0.1', value: '0', id: 'lineSpacingInput' });
     $('.standardLeftPanel').append(lineSpacingLabel).append(lineSpacingInput);
 
@@ -282,10 +304,6 @@ $(document).ready(function() {
     toolkist.html.RenderHeaderBlock('.standardLeftPanel', 'Export');
      toolkist.html.RenderButton('.standardLeftPanel', 'copyToClipboardButton', 'Copy To Clipboard');
     toolkist.html.RenderButton('.standardLeftPanel', 'downloadToZeeplevelButton', 'Download');
-
-    // Add text area
-    const textArea = $('<textarea>', { rows: 10, cols: 30 });
-    $('.standardPagePanel').append(textArea);
 
     // Logging function
     function logCharacterInfo(char, font) {
@@ -309,7 +327,7 @@ $(document).ready(function() {
 
      $('#copyToClipboardButton').on('click', function()
     {
-        const text = textArea.val();
+        const text = $('#textAreaInput').val();
         const selectedFont = fontStyleSelect.val();
         const results = [];
         for (let char of text) {
@@ -330,7 +348,7 @@ $(document).ready(function() {
 
     $('#downloadToZeeplevelButton').on('click', function()
     {
-        const text = textArea.val();
+        const text = $('#textAreaInput').val();
         const selectedFont = fontStyleSelect.val();
         const results = [];
         for (let char of text) {
@@ -439,9 +457,23 @@ $(document).ready(function() {
     }
 });
 </script>
+<style>
+textarea{
+    width: 75%;
+    height: 75%;
+    margin: 16px;
+    box-sizing: border-box;
+    background-color: rgb(34,34,34);
+    color:rgb(251, 199, 25);
+    font-family: 'Righteous';
+    font-size: 18px;
+}
 
+</style>
 <div id='content' class='flex_content'>
     <div class='standardLeftPanel'></div>
-    <div class='standardPagePanel'></div>
+    <div class='standardPagePanel'>
+        <textarea id='textAreaInput' placeholder="Enter text here..."></textarea>
+    </div>
 </div>
 {{</rawhtml>}}
