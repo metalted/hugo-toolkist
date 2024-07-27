@@ -37,10 +37,14 @@ title = 'Zeeplevel Editor'
         background-color: #777777;
     }
 
+    .gridjs-tr td:active {
+        background-color: #999999;
+    }
+
     /* Specific styles for the first 10 columns */
     .gridjs-tr td:nth-child(n+2):nth-child(-n+10) {
-        max-width: 30px !important; /* Constrain the width */
-        width: 30px;
+        max-width: 60px !important; /* Constrain the width */
+        width: 60px;
         text-overflow: clip; /* Clip overflow text */
         padding-left: 2px;
         padding-right: 2px;
@@ -55,347 +59,214 @@ title = 'Zeeplevel Editor'
     }
 
     .form-group {
-        margin-bottom: 10px;
+        margin-bottom: 3px;
     }
 
     .form-group label {
-        margin-right: 5px;
+        width: 250px;
+        display: inline-block;
+    }
+
+    .form-group input {
+        width: 250px;
+        display: inline-block;
+        box-sizing: border-box;
+    }
+
+    .form-group select {
+        width: 250px;
+        display: inline-block;
+    }
+
+    .standardButton {
+        width: calc(100% - 12px);
+        margin-left: 6px;
+        margin-right: 6px;
+        margin-bottom: 6px;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    .formButton {
+        display: inline-block;
+        padding: 8px 12px;
+        background-color: rgb(251, 199, 25);
+        color: rgb(17, 17, 17);
+        border: none;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: background-color 0.1s ease-in-out;
+        font-family: 'Righteous';
+        font-weight: 300;
+        font-size: 18px;
+    }`
+
+    .formButton:hover
+    {
+        background-color: rgb(239, 107, 35) !important;
+        cursor: pointer;
+    }
+
+    .form{
+        background-color: #222222;
+        color: rgb(251,199,25);
+        padding: 6px;
+    }
+
+    h1{
+        font-size: 28px;
+        padding: 6px;
+        color: rgb(251, 199, 25);
+    }
+
+    #uuidInput, #authorInput{
+        width: 500px;
     }
 </style>
 <script src='https://unpkg.com/gridjs/dist/gridjs.umd.js'></script>
-<script type="module">
-    import { toolkist } from '/toolkist/toolkist.js';
-
-    var currentFileName = "";
-    var currentZeeplevel = null;
-    var headers = [];
-
-    function OnZeeplevelUploadedCallback(fileName, contents) {
-        currentFileName = fileName;
-        currentZeeplevel = new toolkist.game.Zeeplevel();
-        currentZeeplevel.FromCSV(contents);
-        console.log(currentZeeplevel);
-
-        // Render the currentZeeplevel.blocks array into a table
-        renderBlocksTable(currentZeeplevel.blocks);
-    }
-
-    function blocksToGridData(blocks) {
-        return blocks.map(block => {
-            return [
-                block.blockID,
-                block.position.x,
-                block.position.y,
-                block.position.z,
-                block.euler.x,
-                block.euler.y,
-                block.euler.z,
-                block.scale.x,
-                block.scale.y,
-                block.scale.z,
-                ...block.paints, // Include each paint as a separate column
-                ...block.options // Include each option as a separate column
-            ];
-        });
-    }
-
-    function onCellClickHandler(content, rowData, columnData) {
-        let cellContent = content;
-        let column = columnData.id;
-
-        console.log(column + "," + cellContent);
-    }
-
-    let grid; // Variable to store the grid instance
-
-function renderBlocksTable(blocks) {
-    const headers = [
-        { 
-            id: 'id',
-            name: gridjs.html('ID'),
-            width: '50px',
-            attributes: (cell, row, column) => ({
-                'data-cell-content': cell,
-                'onclick': () => onCellClickHandler(cell, row, column)
-            })
-        },
-        { 
-            id: 'posX', 
-            name: gridjs.html('P<sub>x</sub>'),
-            attributes: (cell, row, column) => ({
-                'data-cell-content': cell,
-                'onclick': () => onCellClickHandler(cell, row, column)
-            })
-        },
-        { 
-            id: 'posY', 
-            name: gridjs.html('P<sub>y</sub>'),
-            attributes: (cell, row, column) => ({
-                'data-cell-content': cell,
-                'onclick': () => onCellClickHandler(cell, row, column)
-            })
-        },
-        { 
-            id: 'posZ', 
-            name: gridjs.html('P<sub>z</sub>'),
-            attributes: (cell, row, column) => ({
-                'data-cell-content': cell,
-                'onclick': () => onCellClickHandler(cell, row, column)
-            })
-        },
-        { 
-            id: 'eulerX', 
-            name: gridjs.html('R<sub>x</sub>'),
-            attributes: (cell, row, column) => ({
-                'data-cell-content': cell,
-                'onclick': () => onCellClickHandler(cell, row, column)
-            })
-        },
-        { 
-            id: 'eulerY', 
-            name: gridjs.html('R<sub>y</sub>'),
-            attributes: (cell, row, column) => ({
-                'data-cell-content': cell,
-                'onclick': () => onCellClickHandler(cell, row, column)
-            })
-        },
-        { 
-            id: 'eulerZ', 
-            name: gridjs.html('R<sub>z</sub>'),
-            attributes: (cell, row, column) => ({
-                'data-cell-content': cell,
-                'onclick': () => onCellClickHandler(cell, row, column)
-            })
-        },
-        { 
-            id: 'scaleX', 
-            name: gridjs.html('S<sub>x</sub>'),
-            attributes: (cell, row, column) => ({
-                'data-cell-content': cell,
-                'onclick': () => onCellClickHandler(cell, row, column)
-            })
-        },
-        { 
-            id: 'scaleY', 
-            name: gridjs.html('S<sub>y</sub>'),
-            attributes: (cell, row, column) => ({
-                'data-cell-content': cell,
-                'onclick': () => onCellClickHandler(cell, row, column)
-            })
-        },
-        { 
-            id: 'scaleZ', 
-            name: gridjs.html('S<sub>z</sub>'),
-            attributes: (cell, row, column) => ({
-                'data-cell-content': cell,
-                'onclick': () => onCellClickHandler(cell, row, column)
-            })
-        },
-        ...Array.from({ length: blocks[0].paints.length }, (_, i) => ({
-            id: `paint${i + 1}`,
-            name: gridjs.html(`P<sub>${i + 1}</sub>`),
-            attributes: (cell, row, column) => ({
-                'data-cell-content': cell,
-                'onclick': () => onCellClickHandler(cell, row, column)
-            })
-        })),
-        ...Array.from({ length: blocks[0].options.length }, (_, i) => ({
-            id: `option${i + 1}`,
-            name: gridjs.html(`O<sub>${i + 1}</sub>`),
-            attributes: (cell, row, column) => ({
-                'data-cell-content': cell,
-                'onclick': () => onCellClickHandler(cell, row, column)
-            })
-        }))
-    ];
-
-    const data = blocksToGridData(blocks);
-
-    if (grid) {
-        // If grid already exists, update its configuration and re-render
-        grid.updateConfig({
-            columns: headers,
-            data: data,
-        }).forceRender();
-    } else {
-        // Initial rendering of the grid
-        grid = new gridjs.Grid({
-            columns: headers,
-            data: data,
-            pagination: {
-                limit: 25
-            },
-            search: false,
-            sort: false,
-        }).render(document.getElementById('table-container'));
-    }
-}
-    function updateZeeplevelData(searchColumn, searchValue, updateColumn, updateValue) {
-    if (!currentZeeplevel || !currentZeeplevel.blocks) return;
-
-    for (let i = 0; i < currentZeeplevel.blocks.length; i++) {
-        let block = currentZeeplevel.blocks[i];
-        let match = false;
-
-        // Determine the value to check for a match
-        let valueToCheck;
-        switch (searchColumn) {
-            case 'id':
-                valueToCheck = block.blockID;
-                break;
-            case 'position.x':
-                valueToCheck = block.position.x;
-                break;
-            case 'position.y':
-                valueToCheck = block.position.y;
-                break;
-            case 'position.z':
-                valueToCheck = block.position.z;
-                break;
-            case 'euler.x':
-                valueToCheck = block.euler.x;
-                break;
-            case 'euler.y':
-                valueToCheck = block.euler.y;
-                break;
-            case 'euler.z':
-                valueToCheck = block.euler.z;
-                break;
-            case 'scale.x':
-                valueToCheck = block.scale.x;
-                break;
-            case 'scale.y':
-                valueToCheck = block.scale.y;
-                break;
-            case 'scale.z':
-                valueToCheck = block.scale.z;
-                break;
-            // Add more cases as needed
-            default:
-                console.error(`Unknown search column: ${searchColumn}`);
-                return;
-        }
-
-        // Check if the value matches
-        if (String(valueToCheck) === searchValue) {
-            match = true;
-        }
-
-        // If a match is found, update the corresponding value
-        if (match) {
-            switch (updateColumn) {
-                case 'id':
-                    currentZeeplevel.blocks[i].blockID = updateValue;
-                    break;
-                case 'position.x':
-                    currentZeeplevel.blocks[i].position.x = parseFloat(updateValue);
-                    break;
-                case 'position.y':
-                    currentZeeplevel.blocks[i].position.y = parseFloat(updateValue);
-                    break;
-                case 'position.z':
-                    currentZeeplevel.blocks[i].position.z = parseFloat(updateValue);
-                    break;
-                case 'euler.x':
-                    currentZeeplevel.blocks[i].euler.x = parseFloat(updateValue);
-                    break;
-                case 'euler.y':
-                    currentZeeplevel.blocks[i].euler.y = parseFloat(updateValue);
-                    break;
-                case 'euler.z':
-                    currentZeeplevel.blocks[i].euler.z = parseFloat(updateValue);
-                    break;
-                case 'scale.x':
-                    currentZeeplevel.blocks[i].scale.x = parseFloat(updateValue);
-                    break;
-                case 'scale.y':
-                    currentZeeplevel.blocks[i].scale.y = parseFloat(updateValue);
-                    break;
-                case 'scale.z':
-                    currentZeeplevel.blocks[i].scale.z = parseFloat(updateValue);
-                    break;
-                // Add more cases as needed
-                default:
-                    console.error(`Unknown update column: ${updateColumn}`);
-                    return;
-            }
-        }
-    }
-
-    // Update the grid with the new data
-    renderBlocksTable(currentZeeplevel.blocks);
-}
-
-    $(document).ready(function() {
-        const uploadFileButton = toolkist.html.CreateTextFileInput('uploadZeepfileButton', "Upload Zeeplevel", '', OnZeeplevelUploadedCallback);
-        $('.standardLeftPanel').append(uploadFileButton);
-
-        $('#copyToClipboardButton').on('click', function() {
-            toolkist.fs.CopyToClipboard(zeeplevelToExport.ToCSV());
-        });
-
-        $('#downloadToZeeplevelButton').on('click', function() {
-            toolkist.fs.DirectDownload(toolkistImage.name + ".zeeplevel", zeeplevelToExport.ToCSV());
-        });
-
-        $('#editForm').on('submit', function(event) {
-            event.preventDefault();
-            const searchColumn = $('#searchColumn').val();
-            const searchValue = $('#searchValue').val();
-            const updateColumn = $('#updateColumn').val();
-            const updateValue = $('#updateValue').val();
-
-            updateZeeplevelData(searchColumn, searchValue, updateColumn, updateValue);
-        });
-    });
-</script>
+<script type="module" src='/toolkist/zeepleveleditor.pages.toolkist.js'></script>
 
 <div id='content' class='flex_content'>
     <div class='standardLeftPanel'></div>
     <div class='standardPagePanel'>
-        <form id="editForm">
+        <h1>Header</h1>
+        <div id="headerContainer" class='form'>
+            <div class="form-group">
+                <label for="authorInput">Author(s)</label>
+                <input type='text' id='authorInput'></input>
+                <button id='trySetAuthorButton'>Set</button>
+            </div>
+            <div class="form-group">
+                <label for="uuidInput">UUID</label>
+                <input type='text' id='uuidInput' readonly></input>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="authorTimeInput">Author Time (s)</label>
+                <input type='number' id='authorTimeInput'></input>
+                <button id='trySetAuthorTimeButton'>Set</button>
+            </div>
+            <div class="form-group">
+                <label for="goldTimeInput">Gold Time</label>
+                <input type='text' id='goldTimeInput' readonly></input>
+            </div>
+            <div class="form-group">
+                <label for="silverTimeInput">Silver Time</label>
+                <input type='text' id='silverTimeInput' readonly></input>
+            </div>
+            <div class="form-group">
+                <label for="bronzeTimeInput">Bronze Time</label>
+                <input type='text' id='bronzeTimeInput' readonly></input>
+            </div>            
+        </div>
+        <h1>Blocks</h1>
+        <form id="editForm" class='form'>
             <div class="form-group">
                 <label for="searchColumn">Select Column to Search:</label>
                 <select id="searchColumn" required>
                     <option value="id">ID</option>
-                    <option value="position.x">P<sub>x</sub></option>
-                    <option value="position.y">P<sub>y</sub></option>
-                    <option value="position.z">P<sub>z</sub></option>
-                    <option value="euler.x">R<sub>x</sub></option>
-                    <option value="euler.y">R<sub>y</sub></option>
-                    <option value="euler.z">R<sub>z</sub></option>
-                    <option value="scale.x">S<sub>x</sub></option>
-                    <option value="scale.y">S<sub>y</sub></option>
-                    <option value="scale.z">S<sub>z</sub></option>
-                    <!-- Add more options as needed -->
+                    <option value="position.x">Px</option>
+                    <option value="position.y">Py</option>
+                    <option value="position.z">Pz</option>
+                    <option value="euler.x">Rx</option>
+                    <option value="euler.y">Ry</option>
+                    <option value="euler.z">Rz</option>
+                    <option value="scale.x">Sx</option>
+                    <option value="scale.y">Sy</option>
+                    <option value="scale.z">Sz</option>
+                    <option value="paints.0">M1</option>
+                    <option value="paints.1">M2</option>
+                    <option value="paints.2">M3</option>
+                    <option value="paints.3">M4</option>
+                    <option value="paints.4">M5</option>
+                    <option value="paints.5">M6</option>
+                    <option value="paints.6">M7</option>
+                    <option value="paints.7">M8</option>
+                    <option value="paints.8">M9</option>
+                    <option value="paints.9">M10</option>
+                    <option value="paints.10">M11</option>
+                    <option value="paints.11">M12</option>
+                    <option value="paints.12">M13</option>
+                    <option value="paints.13">M14</option>
+                    <option value="paints.14">M15</option>
+                    <option value="paints.15">M16</option>
+                    <option value="paints.16">M17</option>
+                    <option value="options.0">O1</option>
+                    <option value="options.1">O2</option>
+                    <option value="options.2">O3</option>
+                    <option value="options.3">O4</option>
+                    <option value="options.4">O5</option>
+                    <option value="options.5">O6</option>
+                    <option value="options.6">O7</option>
+                    <option value="options.7">O8</option>
+                    <option value="options.8">O9</option>
+                    <option value="options.9">O10</option>
+                    <option value="options.10">O11</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="searchValue">Search Value:</label>
-                <input type="text" id="searchValue" required>
+                <input type="number" id="searchValue" placeholder="All">
             </div>
+            <br>
             <div class="form-group">
                 <label for="updateColumn">Select Column to Update:</label>
                 <select id="updateColumn" required>
                     <option value="id">ID</option>
-                    <option value="position.x">P<sub>x</sub></option>
-                    <option value="position.y">P<sub>y</sub></option>
-                    <option value="position.z">P<sub>z</sub></option>
-                    <option value="euler.x">R<sub>x</sub></option>
-                    <option value="euler.y">R<sub>y</sub></option>
-                    <option value="euler.z">R<sub>z</sub></option>
-                    <option value="scale.x">S<sub>x</sub></option>
-                    <option value="scale.y">S<sub>y</sub></option>
-                    <option value="scale.z">S<sub>z</sub></option>
-                    <!-- Add more options as needed -->
+                    <option value="position.x">Px</option>
+                    <option value="position.y">Py</option>
+                    <option value="position.z">Pz</option>
+                    <option value="euler.x">Rx</option>
+                    <option value="euler.y">Ry</option>
+                    <option value="euler.z">Rz</option>
+                    <option value="scale.x">Sx</option>
+                    <option value="scale.y">Sy</option>
+                    <option value="scale.z">Sz</option>
+                    <option value="paints.0">M1</option>
+                    <option value="paints.1">M2</option>
+                    <option value="paints.2">M3</option>
+                    <option value="paints.3">M4</option>
+                    <option value="paints.4">M5</option>
+                    <option value="paints.5">M6</option>
+                    <option value="paints.6">M7</option>
+                    <option value="paints.7">M8</option>
+                    <option value="paints.8">M9</option>
+                    <option value="paints.9">M10</option>
+                    <option value="paints.10">M11</option>
+                    <option value="paints.11">M12</option>
+                    <option value="paints.12">M13</option>
+                    <option value="paints.13">M14</option>
+                    <option value="paints.14">M15</option>
+                    <option value="paints.15">M16</option>
+                    <option value="paints.16">M17</option>
+                    <option value="options.0">O1</option>
+                    <option value="options.1">O2</option>
+                    <option value="options.2">O3</option>
+                    <option value="options.3">O4</option>
+                    <option value="options.4">O5</option>
+                    <option value="options.5">O6</option>
+                    <option value="options.6">O7</option>
+                    <option value="options.7">O8</option>
+                    <option value="options.8">O9</option>
+                    <option value="options.9">O10</option>
+                    <option value="options.10">O11</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="updateValue">Update Value:</label>
-                <input type="text" id="updateValue" required>
+                <input type="number" id="updateValue" required>
             </div>
-            <button type="submit">Go</button>
+            <br>
+            <div class="form-group">
+                <label for="updateOperation">Operation:</label>
+                <select id="updateOperation" required>
+                    <option value="set">Set</option>  
+                    <option value="add">Add</option>                                      
+                </select>
+            </div>
+            <button class='formButton' type="submit">Apply</button>
         </form>
+        <br>
         <div id='table-container'></div>
     </div>
 </div>
