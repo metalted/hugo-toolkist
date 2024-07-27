@@ -3,6 +3,26 @@ title = 'Zeeplevel Editor'
 +++
 
 {{<rawhtml>}}
+<!-- HTML Meta Tags -->
+<title>Zeeplevel Editor | Toolkist</title>
+<meta name="description" content="Set player names, author time and set or add values to block properties based on a criteria.">
+
+<!-- Facebook Meta Tags -->
+<meta property="og:url" content="https://toolkist.netlify.app/zeepleveleditor">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Zeeplevel Editor | Toolkist">
+<meta property="og:description" content="Set player names, author time and set or add values to block properties based on a criteria.">
+<meta property="og:image" content="/img/zeepleveleditor_banner.png">
+<meta name="theme-color" content="#FBC719">
+
+<!-- Twitter Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta property="twitter:domain" content="toolkist.netlify.app">
+<meta property="twitter:url" content="https://toolkist.netlify.app/zeepleveleditor">
+<meta name="twitter:title" content="Zeeplevel Editor | Toolkist">
+<meta name="twitter:description" content="Set player names, author time and set or add values to block properties based on a criteria.">
+<meta name="twitter:image" content="/img/zeepleveleditor_banner.png">
+
 <style>
     /* Ensure table and cells use the full width available */
     .gridjs-table {

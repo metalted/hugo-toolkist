@@ -266,7 +266,7 @@ export var game = (function($) {
         }
 
         ToCSV() {
-            this.ClearHeader();
+            this.uniqueID = this.GenerateUniqueID(this.playerName, this.blocks.length);
             const headerCSV = `${this.sceneName},${this.playerName},${this.uniqueID}\n${this.cameraXPos},${this.cameraYPos},${this.cameraZPos},${this.cameraXEuler},${this.cameraYEuler},${this.cameraZEuler},${this.cameraXRot},${this.cameraYRot}\n${this.validationTime},${this.goldTime},${this.silverTime},${this.bronzeTime},${this.skybox},${this.ground}`;
             const blocksCSV = this.blocks.map((block) => block.ToCSV()).join('\n');
             return `${headerCSV}\n${blocksCSV}`;
