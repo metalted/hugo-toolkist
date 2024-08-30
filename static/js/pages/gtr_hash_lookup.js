@@ -51,7 +51,16 @@ function updatePageResults()
 
     paginationContainer.pageData.forEach(result => 
     {
-        $resultDiv = toolkist.ui.CreateLevelResult(result);
+        const level = result.levelItemsByIdLevel.nodes[0];
+        const $resultDiv = $("<div>").addClass("level-item");
+        const $imageDiv = $("<div>").addClass("result-image").append($("<img>").attr("src", level.imageUrl));
+        const $infoDiv = $("<div>").addClass("result-info");
+        const $levelName = $("<h3>").text(level.name);
+        const $author = $("<p>").text("Author: " + level.fileAuthor);
+        const $workshopId = $("<p>").text("Workshop ID: " + level.workshopId);
+        const $hash = $("<p>").text("Hash: " + result.hash);
+        $infoDiv.append($levelName, $author, $workshopId, $hash);
+        $resultDiv.append($imageDiv, $infoDiv);
         paginationContainer.add($resultDiv);
     });
 }

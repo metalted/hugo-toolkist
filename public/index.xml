@@ -43,6 +43,13 @@
       <description></description>
     </item>
     <item>
+      <title>Testing Page</title>
+      <link>http://localhost:1313/test/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/test/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Text Generator</title>
       <link>http://localhost:1313/textgenerator/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

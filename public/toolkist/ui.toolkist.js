@@ -401,6 +401,7 @@ export var ui = (function($) {
 
     ui.CreateLevelResult = function(data)
     {
+        console.log(data);
         const level = data.levelByIdLevel.levelItemsByIdLevel.nodes[0];
         const $resultDiv = $("<div>").addClass("level-item");
         const $imageDiv = $("<div>").addClass("result-image").append($("<img>").attr("src", level.imageUrl));
@@ -409,11 +410,10 @@ export var ui = (function($) {
         const $author = $("<p>").text("Author: " + level.fileAuthor);
         const $workshopId = $("<p>").text("Workshop ID: " + level.workshopId);
         const $time = $("<p>").text("Time: " + data.recordByIdRecord.time + " seconds");
-        const $dateCreated = $("<p>").text("Date Created: " + new Date(date.dateCreated).toLocaleString());
-        const $dateUpdated = $("<p>").text("Last Updated: " + new Date(date.dateUpdated).toLocaleString());
+        const $dateCreated = $("<p>").text("Date Created: " + new Date(data.dateCreated).toLocaleString());
+        const $dateUpdated = $("<p>").text("Last Updated: " + new Date(data.dateUpdated).toLocaleString());
         $infoDiv.append($levelName, $author, $workshopId, $time, $dateCreated, $dateUpdated);
         $resultDiv.append($imageDiv, $infoDiv);
-
         return $resultDiv;
     }
 

@@ -50,7 +50,7 @@ function updatePageResults()
     paginationContainer.clear();
     paginationContainer.pageData.forEach(result => 
     {
-        $resultDiv = toolkist.ui.CreateLevelResult(result);
+        let $resultDiv = toolkist.ui.CreateLevelResult(result);
         paginationContainer.add($resultDiv);
     });
 }
