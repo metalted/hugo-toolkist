@@ -53,6 +53,30 @@ export var fs = (function($) {
         // If no period is found, return the original filename
         return fileName;
     };
+
+    fs.readImageFromFile = function(file, callback)
+    {
+        var reader = new FileReader();
+        reader.onload = function(){
+            var img = new Image();
+            img.onload = function()
+            {
+                callback(file.name, img);
+            }
+            img.src = reader.result;
+        }
+        reader.readAsDataURL(file);
+    };
+
+    fs.readTextFromFile = function(file, callback)
+    {
+        var reader = new FileReader();
+        reader.onload = function(){
+            let contents = reader.result;
+            callback(file.name, contents);
+        }
+        reader.readAsText(file);
+    };
     
     return fs;
 })(jQuery);

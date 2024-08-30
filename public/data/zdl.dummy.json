@@ -1,0 +1,874 @@
+{
+    "tiers": {
+        "S": "#9603ff",
+        "A": "#d103ff",
+        "B": "#ff0364",
+        "C": "#ff0303",
+        "D": "#ff3e03",
+        "E": "#ff9203",
+        "F": "#ffd103",
+        "G": "#e2ff03",
+        "H": "#46ff03",
+        "I": "#03ff96",
+        "J": "#03e6ff",
+        "K": "#0381ff",
+        "X": "#ffd103"
+    },
+    "lists": {
+        "main": [
+            {
+                "name": "my corn dried up '^'",
+                "displayName": "",
+                "hash": "5E583B520D80AD8381C277F3548BA2A1FDC4AD8C",
+                "manualRecords": [
+                    {
+                        "user": "Kernkob",
+                        "time": 100
+                    },
+                    {
+                        "user": "RoundNzt"
+                    }
+                ],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "S"
+            },
+            {
+                "name": "Jungle Jam 3",
+                "displayName": "",
+                "hash": "E1D29BCE738A25EA69671927610EC9439BBBD0C8",
+                "manualRecords": [
+                    {
+                        "user": "Sandals"
+                    },
+                    {
+                        "user": "RoundNzt"
+                    }
+                ],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {
+                    "validation" : "FNJ9dQXiO9c",
+                    "Sandals" : "FNJ9dQXiO9c"
+                },
+                "description": "...",
+                "tier": "S"
+            },
+            {
+                "name": "my corn thawed out -_-",
+                "displayName": "",
+                "hash": "7E7C6F4D0BA4DF1D8AA44493D99AF40A629CF690",
+                "manualRecords": [
+                    {
+                        "user": "Kernkob"
+                    }
+                ],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "A"
+            },
+            {
+                "name": "Red Dread",
+                "displayName": "",
+                "hash": "1F14893D1E6837D3603CD5ECAAA77DE492341956",
+                "manualRecords": [
+                    {
+                        "user": "justMaki"
+                    },
+                    {
+                        "user": "Kernkob"
+                    }
+                ],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {
+                    "validation" : "ho3EEN5CMl0",
+                    "justMaki" : "ho3EEN5CMl0"
+                },
+                "description": "...",
+                "tier": "B"
+            },
+            {
+                "name": "Trial Of The Original Dragon",
+                "displayName": "",
+                "hash": "B977AF06BE0A5D123055673A7B7EC0079AEE6872",
+                "manualRecords": [
+                    {
+                        "user": "justMaki"
+                    },
+                    {
+                        "user": "flying_pancake12"
+                    },
+                    {
+                        "user": "Sandals"
+                    }
+                ],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "B"
+            },
+            {
+                "name": "my corn froze over `,(",
+                "displayName": "",
+                "hash": "8DC2C35B3393FC78E82FAB9B16274647530CDFE0",
+                "manualRecords": [
+                    {
+                        "user": "Kernkob"
+                    }
+                ],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "B"
+            },
+            {
+                "name": "Cosmic Bobcheck",
+                "displayName": "",
+                "hash": "D75637DBEE91FBA5FFE29676F4DBEC9CF11B78CB",
+                "manualRecords": [
+                    {
+                        "user": "readfreak7"
+                    }
+                ],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "B"
+            },
+            {
+                "name": "Idolize",
+                "displayName": "",
+                "hash": "780C6A8E70C34424D8847D0C53E9EC6D811ED0B8",
+                "manualRecords": [
+                    {
+                        "user": "Kernkob"
+                    }
+                ],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "C"
+            },
+            {
+                "name": "The Long Awaited Moment",
+                "displayName": "",
+                "hash": "233E8D4B032C3AE44BEE80555644D92D1D40448B",
+                "manualRecords": [
+                    {
+                        "user": "Sandals"
+                    },
+                    {
+                        "user": "justMaki"
+                    }
+                ],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "D"
+            },
+            {
+                "name": "Jungle Jam 2",
+                "displayName": "",
+                "hash": "482960AAEB203C6B2F5CADFC263F7932FA2359A7",
+                "manualRecords": [
+                    {
+                        "user": "Sandals"
+                    },
+                    {
+                        "user": "[CTR] LupensCruor"
+                    }
+                ],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "D"
+            },
+            {
+                "name": "Brake-Tech",
+                "displayName": "",
+                "hash": "A58F433072FF6EF86A453BC8462F3F37244DABB3",
+                "manualRecords": [
+                    {
+                        "user": "Kernkob"
+                    }
+                ],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "D"
+            },
+            {
+                "name": "Extremely Critical Heat",
+                "displayName": "",
+                "hash": "70133201A5EEC95F9C696AB8B1FAE58E718CA562",
+                "manualRecords": [],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "D"
+            },
+            {
+                "name": "Fleshmouth",
+                "displayName": "",
+                "hash": "70133201A5EEC95F9C696AB8B1FAE58E718CA562",
+                "manualRecords": [
+                    { "user" : "justMaki" }
+                ],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "D"
+            },
+            {
+                "name": "Because we were inspired by HONR we would like to carry on their legacy",
+                "displayName": "",
+                "hash": "7243F64E55253C7EBF92F79C975AB77D5E9741AC",
+                "manualRecords": [
+                    {
+                        "user": "Kernkob"
+                    }
+                ],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "D"
+            },
+            {
+                "name": "my corn got wet ;-;",
+                "displayName": "",
+                "hash": "69C1AA630791A0B5FFD863ADEBA20EAB00BD82F8",
+                "manualRecords": [],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "D"
+            },
+            {
+                "name": "Early Autumn",
+                "displayName": "",
+                "hash": "EEF99A080D9B7B9577C5FC6EB726E28E6D3D1A0B",
+                "manualRecords": [
+                    {
+                        "user": "Kernkob"
+                    }
+                ],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "E"
+            },
+            {
+                "name": "pruina impetum",
+                "displayName": "",
+                "hash": "D5260DD3E7DE1B80FCDF2DBBCF81018F593D13EF",
+                "manualRecords": [
+                    {
+                        "user": "Kernkob"
+                    },
+                    {
+                        "user": "Sandals"
+                    }
+                ],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "E"
+            },
+            {
+                "name": "dork detection & denial service",
+                "displayName": "",
+                "hash": "DFF15CFB3A5795D48666D1199B947A5CF7670A50",
+                "manualRecords": [
+                    {
+                        "user": "Kernkob"
+                    }
+                ],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "E"
+            },
+            {
+                "name": "Arctic Mammoth",
+                "displayName": "",
+                "hash": "A9B199653A177568D551B599DAD49A064213EDBC",
+                "manualRecords": [
+                    {
+                        "user": "[CTR]Cbad Cruiser"
+                    }
+                ],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "E"
+            },
+            {
+                "name": "antrum desideratum",
+                "displayName": "",
+                "hash": "151A0FBD1677F593032B17FEB6AE6BA626FD4099",
+                "manualRecords": [],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "E"
+            },
+            {
+                "name": "Paradise Island",
+                "displayName": "",
+                "hash": "8DA2DF4F4DE7EEE90EF8BC020C8F0BB29C6B731B",
+                "manualRecords": [
+                    {
+                        "user": "Sandals"
+                    }
+                ],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "E"
+            },
+            {
+                "name": "ZeepStep",
+                "displayName": "",
+                "hash": "9C848B25426BC851468994552DD5255CD03FDAF3",
+                "manualRecords": [
+                    {
+                        "user": "Last"
+                    }
+                ],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "E"
+            },
+            {
+                "name": "Enigma",
+                "displayName": "",
+                "hash": "454B0D852766BC7EC395E3B3647A4D15AE81E53D",
+                "manualRecords": [
+                    {
+                        "user": "Kernkob"
+                    }
+                ],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "F"
+            },
+            {
+                "name": "Nasty Suprise",
+                "displayName": "",
+                "hash": "66B74D1BDA53DA893D79F33B9BB5EBB74C4856D5",
+                "manualRecords": [
+                    {
+                        "user": "thespyeye"
+                    }
+                ],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "F"
+            },
+            {
+                "name": "Chilled Quarry",
+                "displayName": "",
+                "hash": "8BFF80307419C5556EE27AABBC8DD422D3AD36E2",
+                "manualRecords": [
+                    {
+                        "user": "Hydro"
+                    }
+                ],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "F"
+            },
+            {
+                "name": "EdgeCheck",
+                "displayName": "",
+                "hash": "82448D7F184CE07F100269A97B44F0A1393A2676",
+                "manualRecords": [],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "F"
+            },
+            {
+                "name": "Grand Reunion",
+                "displayName": "",
+                "hash": "9BCF347141E1F6B51A430BAFA1F84162D46E4BB5",
+                "manualRecords": [
+                    {
+                        "user": "Kernkob"
+                    },
+                    {
+                        "user": "justMaki"
+                    },
+                    {
+                        "user": "Last"
+                    }
+                ],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "F"
+            },
+            {
+                "name": "Prismatic Sojourn, Ascension of the Geometric Symphony",
+                "displayName": "",
+                "hash": "682A2C1B8B52B9191524BADE70D8C3EE19A8294D",
+                "manualRecords": [
+                    {
+                        "user": "Jakie"
+                    },
+                    {
+                        "user": "PoleLord"
+                    },
+                    {
+                        "user": "Sandals"
+                    },
+                    {
+                        "user": "Kernkob"
+                    }
+                ],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "F"
+            },
+            {
+                "name": "Ice to Meat You",
+                "displayName": "",
+                "hash": "B626FA4AFDC800B3FE2D6C1252FB761315AE4F07",
+                "manualRecords": [
+                    {
+                        "user": "Lexer"
+                    },
+                    {
+                        "user": "Sandals"
+                    }
+                ],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "F"
+            },
+            {
+                "name": "Welcome to your worst nightmare",
+                "displayName": "",
+                "hash": "4BED38B1AA93B88D071E778710EF1D88A025DF95",
+                "manualRecords": [
+                    {
+                        "user": "Hydro"
+                    }
+                ],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "F"
+            },
+            {
+                "name": "Fading Memory",
+                "displayName": "",
+                "hash": "44D24D91FB1F3D12B2C395897E771A2FD586AE8A",
+                "manualRecords": [],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "F"
+            },
+            {
+                "name": "Slipcheck",
+                "displayName": "",
+                "hash": "2339F682029BFF2EF6E30E9563ACB2B6B077664A",
+                "manualRecords": [],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "F"
+            },
+            {
+                "name": "dried dogwater",
+                "displayName": "",
+                "hash": "2339F682029BFF2EF6E30E9563ACB2B6B077664A",
+                "manualRecords": [
+                    {"user" : "justMaki"},
+                    {"user" : "Last"},
+                    {"user" : "The Maou"}
+                ],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "G"
+            },
+            {
+                "name": "bloody puddles",
+                "displayName": "",
+                "hash": "F2F06C1EFDBDDAC1B5ED07455F9DC006BCC219A2",
+                "manualRecords": [],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "G"
+            },
+            {
+                "name": "roader's desert ,,",
+                "displayName": "",
+                "hash": "EE313D6A1406D5F645AA0E43015645C0AD298098",
+                "manualRecords": [
+                    {
+                        "user": "justMaki"
+                    }
+                ],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "G"
+            },
+            {
+                "name": "Jungle Jam Tilted",
+                "displayName": "",
+                "hash": "760582108053F24B96678CA107505C9AC5357029",
+                "manualRecords": [
+                    {
+                        "user": "Sandals"
+                    }
+                ],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "G"
+            },
+            {
+                "name": "Jungle Jam",
+                "displayName": "",
+                "hash": "9C4CD16A40B26C34C5F2C5E23BCFD08E75F8DE85",
+                "manualRecords": [],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "G"
+            },
+            {
+                "name": "I Didn't Listen To Kernkob",
+                "displayName": "",
+                "hash": "7FCDF466446317FF3B7DC825DFEDAFE88093981E",
+                "manualRecords": [],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "G"
+            },
+            {
+                "name": "Collect All Pets",
+                "displayName": "",
+                "hash": "112A6169CE9588C8FB8D536F4831F7FBE782B11C",
+                "manualRecords": [],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "G"
+            },
+            {
+                "name": "Ice to meet you (ft Maki)",
+                "displayName": "",
+                "hash": "2ED3A28300A49BD7A7C8E6AD0D3D06C2D9E3B966",
+                "manualRecords": [
+                    {
+                        "user": "[CTR] L3it3R"
+                    },
+                    {
+                        "user": "justMaki"
+                    }
+                ],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "G"
+            },
+            {
+                "name": "lucifid",
+                "displayName": "",
+                "hash": "8B8D01833C91A910B20F21B48EF8321618E249A3",
+                "manualRecords": [
+                    {
+                        "user": "Kernkob"
+                    }
+                ],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "H"
+            },
+            {
+                "name": "BobCheck",
+                "displayName": "",
+                "hash": "8AA8F512A054675BC200BB7D8DEE6876ACC634B5",
+                "manualRecords": [
+                    {
+                        "user": "Partheniki"
+                    }
+                ],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "I"
+            },
+            {
+                "name": "Soap Hell",
+                "displayName": "",
+                "hash": "125E0E85668A516717ED53D96C0712EBBB754909",
+                "manualRecords": [
+                    {
+                        "user": "Odist"
+                    }
+                ],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "I"
+            },
+            {
+                "name": "gelida smaragdi reliquiae",
+                "displayName": "",
+                "hash": "11E88352CEBAE993781789FDFAD856BB51D70895",
+                "manualRecords": [],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "I"
+            },
+            {
+                "name": "Mount Pain",
+                "displayName": "",
+                "hash": "EE9D2266EDA816DABEE38DA355CB9959076A5401",
+                "manualRecords": [
+                    {
+                        "user": "Greil"
+                    },
+                    {
+                        "user": "PoleLord"
+                    },
+                    {
+                        "user": "Jakie"
+                    },
+                    {
+                        "user": "GrimServers"
+                    },
+                    {
+                        "user": "BearChills"
+                    }
+                ],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "I"
+            },
+            {
+                "name": "Ronans_Tears_v3",
+                "displayName": "",
+                "hash": "31218346B2968975D3F3B222D2B7E3AC3FC89823",
+                "manualRecords": [
+                    {
+                        "user": "justMaki"
+                    }
+                ],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "I"
+            },
+            {
+                "name": "Childs Play Thing",
+                "displayName": "",
+                "hash": "E36C523F6FE5DA185CFFC534B59A3373596C68CB",
+                "manualRecords": [
+                    {
+                        "user": "[CTR] L3it3R"
+                    }
+                ],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "J"
+            },
+            {
+                "name": "Frozen Landscape",
+                "displayName": "",
+                "hash": "4CA6F4ABCA829DC40B7C26BD9B5A03E54AC747F5",
+                "manualRecords": [],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "J"
+            },
+            {
+                "name": "LMAOU_TECH",
+                "displayName": "",
+                "hash": "0A0255E4AEFDEA85DE6E130F0F46D4DE9D2B9869",
+                "manualRecords": [],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "J"
+            },
+            {
+                "name": "roader's desert ,",
+                "displayName": "",
+                "hash": "997897C8DB907467D56F9AE90F5CEA8BB95BA1E5",
+                "manualRecords": [
+                    {
+                        "user": "justMaki"
+                    },
+                    {
+                        "user": "Kernkob"
+                    }
+                ],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "J"
+            }
+        ],
+        "legacy": [
+            {
+                "name": "Camembert",
+                "displayName": "",
+                "hash": "D1C500CB1CC53E2A387053A6A1521463F6836747",
+                "manualRecords": [],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "X"
+            },
+            {
+                "name": "Joining the Dark Side But Not Fully Committing",
+                "displayName": "",
+                "hash": "4494A482C8485C90DD2C086E36349C1E12BA3C05",
+                "manualRecords": [],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "X"
+            },
+            {
+                "name": "done with dunes",
+                "displayName": "",
+                "hash": "FF1E172B3D72E8E5D4D39241808753D062CAA4C3",
+                "manualRecords": [],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "X"
+            },
+            {
+                "name": "Fresh Blue Fun",
+                "displayName": "",
+                "hash": "668F718614ABB81FD76BC0E0873B4560C540813A",
+                "manualRecords": [],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "X"
+            },
+            {
+                "name": "L'maoukiberge - Bloody Frozen Nightmare",
+                "displayName": "",
+                "hash": "0FAD2D20B0486BF502F4485B19A35C3EEBF6BA9D",
+                "manualRecords": [],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "X"
+            },
+            {
+                "name": "Janksitions",
+                "displayName": "",
+                "hash": "AEB9D66DE070B64B342392436AB54848C63A4EA8",
+                "manualRecords": [],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "X"
+            },
+            {
+                "name": "Looped - High Hell",
+                "displayName": "",
+                "hash": "C550D90C14F60B34AADFC4E86D4472B03908746C",
+                "manualRecords": [],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "X"
+            },
+            {
+                "name": "Neon Hell",
+                "displayName": "",
+                "hash": "8B3C1090614CF38C1DECDD1B645C8446C0820517",
+                "manualRecords": [],
+                "manualCreators": [],
+                "manualValidation": 0,
+                "youtubeUrls" : {},
+                "description": "...",
+                "tier": "X"
+            }
+        ]
+    }
+}

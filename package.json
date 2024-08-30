@@ -1,0 +1,24 @@
+{
+  "name": "hugo-toolkist",
+  "version": "1.0.0",
+  "description": "Toolkist website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/metalted/hugo-toolkist.git"
+  },
+  "author": "Metalted",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/metalted/hugo-toolkist/issues"
+  },
+  "homepage": "https://github.com/metalted/hugo-toolkist#readme",
+  "devDependencies": {
+    "@eslint/js": "^9.9.1",
+    "eslint": "^9.9.1",
+    "globals": "^15.9.0"
+  }
+}

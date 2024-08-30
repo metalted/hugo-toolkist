@@ -4,6 +4,8 @@
   <url>
     <loc>http://localhost:1313/categories/</loc>
   </url><url>
+    <loc>http://localhost:1313/gtrhashlookup/</loc>
+  </url><url>
     <loc>http://localhost:1313/gtrrecordsearch/</loc>
   </url><url>
     <loc>http://localhost:1313/gtrstats/</loc>
@@ -12,8 +14,6 @@
   </url><url>
     <loc>http://localhost:1313/playlist_editor/</loc>
   </url><url>
-    <loc>http://localhost:1313/playlists/</loc>
-  </url><url>
     <loc>http://localhost:1313/tags/</loc>
   </url><url>
     <loc>http://localhost:1313/textgenerator/</loc>
@@ -21,6 +21,8 @@
     <loc>http://localhost:1313/</loc>
   </url><url>
     <loc>http://localhost:1313/zdl/</loc>
+  </url><url>
+    <loc>http://localhost:1313/zeepleveleditor/</loc>
   </url><url>
     <loc>http://localhost:1313/zgraph/</loc>
   </url><url>

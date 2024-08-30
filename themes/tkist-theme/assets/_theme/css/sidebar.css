@@ -1,0 +1,108 @@
+/* General Sidebar Styles */
+.sidebar_header {
+	width: 100%;
+	height: 50px;
+	position: relative;
+	background-color: var(--primary-color);
+	margin-bottom: 6px;
+}
+
+.sidebar_header h2 {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	margin: 0;
+	white-space: nowrap;
+	font-size: 24px;
+	color: var(--text-color);
+	text-shadow: -2px 2px 1px var(--secondary-color);
+	font-weight: bold;
+}
+
+/* Label Styling for All Except Checkbox and Radio */
+.sidebar_label {
+	display: block;
+	/* Ensures the label is on its own line */
+	margin: 0px 0px 0px 10px;
+	/* Margin below the label to separate it from the input */
+	font-weight: bold;
+	color: var(--primary-color);
+}
+
+/* Specific Styling for Labels of Checkbox and Radio */
+.sidebar_inline_label {
+	display: inline-block;
+	/* Display label beside the input */
+	margin-left: 5px;
+	/* Add some space between the input and the label */
+	font-weight: normal;
+	/* Adjust font weight if needed */
+	color: var(--primary-color);
+}
+
+/* Ensure Checkbox and Radio Inputs with Labels Are on a Separate Line */
+.sidebar_checkbox_wrapper,
+.sidebar_radio_wrapper {
+	display: flex;
+	/* Flexbox to align items horizontally */
+	align-items: center;
+	/* Center items vertically */
+}
+
+/* Input Styling */
+.sidebar_text,
+.sidebar_number,
+.sidebar_textarea,
+.sidebar_select,
+.sidebar_date,
+.sidebar_button {
+	width: calc(100% - 20px);
+	/* 100% width minus 20px for side margins */
+	margin: 0 10px 5px 10px;
+	/* Margin on sides and bottom, 15px bottom margin between inputs */
+	box-sizing: border-box;
+	/* Ensures padding and border are included in width calculation */
+	border: 1px solid #ccc;
+}
+
+/* Textarea Specific Styling */
+.sidebar_textarea {
+	resize: vertical;
+	/* Allow vertical resizing */
+}
+
+/* Checkbox and Radio Specific Styling */
+.sidebar_checkbox,
+.sidebar_radio {
+	width: auto;
+	/* Checkbox and radio buttons shouldn't take up full width */
+	margin-right: 5px;
+	/* Margin to the right of checkbox and radio buttons */
+	margin-left: 10px;
+}
+
+/* Button Styling */
+.sidebar_button {
+	display: inline-block;
+	padding: 8px 12px;
+	background-color: var(--primary-color);
+	color: var(--text-color);
+	border: none;
+	cursor: pointer;
+	border-radius: 4px;
+	transition: background-color 0.1s ease-in-out;
+	font-family: 'Righteous';
+	font-weight: 300;
+	font-size: 18px;
+	width: calc(100% - 12px);
+	margin-left: 6px;
+	margin-right: 6px;
+	margin-bottom: 6px;
+	box-sizing: border-box;
+    text-align: center;
+}
+
+.sidebar_button:hover {
+	background-color: var(--secondary-color);
+}

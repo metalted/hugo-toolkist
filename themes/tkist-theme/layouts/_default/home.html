@@ -1,2 +1,33 @@
 {{ define "content" }}
+<div id="pageIcons">
+    {{ $pages := .Site.RegularPages }}
+    {{ $categories := slice }}
+
+    {{ range $pages }}
+        {{ if not (eq .Params.hidden "true") }}
+            {{ $category := cond (not .Params.category) "Other" .Params.category }}
+            {{ $categories = $categories | append $category }}
+        {{ end }}
+    {{ end }}
+
+    {{ $categories = $categories | uniq | sort }}
+
+    {{ range $category := $categories }}
+        <h2 class="category-header">{{ $category }}</h2>
+        <div class="category-section">
+            {{ range $pages }}
+                {{ $currentCategory := cond (not .Params.category) "Other" .Params.category }}
+                {{ if and (eq $currentCategory $category) (not (eq .Params.hidden "true")) }}                
+                    <a class="pageTile" href="{{ .Permalink }}">
+                        <h3 class="pageTitle">{{ .Title }}</h3>
+                        {{ if .Params.banner }}
+                        <img src="/img/banners/{{ .Params.banner | relURL }}.png" alt="{{ .Title }}">
+                        {{ end }}
+                        <p class="pageDescription">{{ .Params.description }}</p>
+                    </a>               
+                {{ end }}
+            {{ end }}
+        </div>
+    {{ end }}
+</div>
 {{ end }}

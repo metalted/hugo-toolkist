@@ -1,0 +1,157 @@
+.standardPagePanel
+{
+    position: relative;
+}
+
+.zgraph-menubar
+{
+    background-color: var(--primary-color);
+    height: 60px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 990;
+    display: flex;
+    flex-direction: row;
+}
+
+.zgraph-sidebar
+{
+    background-color: var(--panel-color);
+    width: 250px;
+    position: absolute;
+    bottom: 0;
+    left:0;
+    top: 60px;
+}
+
+.zgraph-worksheet
+{
+    position: absolute;
+    top: 60px;
+    left: 250px;
+    bottom: 0;
+    right: 0;
+    background-color: #00000077;
+}
+
+.zgraph-menubar-button
+{
+    width: 60px;
+    height: 60px;
+    color: var(--text-color);
+    background-color: var(--primary-color);
+    padding: 10px;
+    box-sizing: border-box;
+    border-right: 1px solid black;
+    position: relative;
+}
+
+.zgraph-menubar-button svg circle,
+.zgraph-menubar-button svg rect,
+.zgraph-menubar-button svg path
+{
+    fill: var(--text-color);
+    stroke: var(--text-color);
+}
+
+.zgraph-menubar-button
+{
+    width: 60px;
+    height: 60px;
+    color: var(--text-color);
+    background-color: var(--primary-color);
+    padding: 10px;
+    box-sizing: border-box;
+    border-right: 1px solid black;
+    position: relative;
+}
+
+.zgraph-menubar-button:hover
+{
+    background-color: var(--secondary-color);
+    cursor: pointer;
+}
+
+
+.zgraph-menubar-button-icon
+{
+    width: 40px;
+    height: 40px;
+    font-size: 40px;
+    line-height: 40px;
+    text-align: center;
+}
+
+.zgraph-menubar-button-tooltip
+{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 20px;
+    line-height: 20px;
+    font-size: 12px;
+    display: none;
+    white-space: nowrap;
+    background: #00000077;
+    text-align: center;
+    color: white;
+}
+
+.selection-box
+{
+    color: var(--panel-color);
+    background-color: var(--primary-color);
+    margin-top: 10px;
+    line-height: 30px;
+}
+
+.list-item
+{
+    color: var(--primary-color);
+    line-height: 30px;
+}
+
+.list-item:hover
+{
+    background-color: var(--secondary-color);
+}
+
+.selected
+{
+    background-color: var(--primary-color);
+    color: rgb(34,34,34);        
+}
+
+#controlsButton
+{
+    position:absolute;
+    right: 10px;
+    top: 10px;
+    text-align: right;
+    height: 40px;
+    line-height: 40px;
+    font-size: 28px;
+    flex: 1;
+    color: var(--text-color);
+    text-shadow: -2px 2px 1px var(--secondary-color);
+}
+
+#controlsTable
+{
+    position: absolute;
+    top: 60px;
+    right: 0;
+    z-index: 999;
+    background-color: var(--panel-color);
+    color: var(--primary-color);
+    width: 300px;
+    border: 1px solid var(--secondary-color);
+}
+
+.selection-box-preview{
+    border: 1px solid black;
+    box-sizing: border-box;
+}

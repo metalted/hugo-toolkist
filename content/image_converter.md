@@ -1,12 +1,9 @@
 +++
 title = 'Image Converter'
+description = 'Convert images into pixel blocks'
+banner = 'image_converter_banner'
+color = '#5C6D55'
+config = 'image_converter'
+localcss = 'image_converter'
+category = '1) Tools'
 +++
-
-{{<rawhtml>}}
-<script src='/toolkist/imageconverter.pages.toolkist.js' type='module'></script>
-
-<div id='content' class='flex_content'>
-    <div class='standardLeftPanel'></div>
-    <div class='standardPagePanel'></div>
-</div>
-{{</rawhtml>}}

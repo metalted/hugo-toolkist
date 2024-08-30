@@ -4,8 +4,11 @@ import {game} from '/toolkist/game.toolkist.js';
 import {html} from '/toolkist/html.toolkist.js';
 import {util} from '/toolkist/util.toolkist.js';
 import {graphics} from '/toolkist/graphics.toolkist.js';
+import {ui} from '/toolkist/ui.toolkist.js';
+import {gtr} from '/toolkist/gtr.toolkist.js';
+import {gist} from '/toolkist/gist.toolkist.js';
 
-export var toolkist = (function($) {
+export var toolkist = (function() {
     var toolkist = {};  
     toolkist.api = api;
     toolkist.fs = fs;
@@ -13,5 +16,8 @@ export var toolkist = (function($) {
     toolkist.html = html;
     toolkist.util = util;
     toolkist.graphics = graphics;
+    toolkist.ui = ui;
+    toolkist.gtr = gtr;
+    toolkist.gist = gist;
     return toolkist;
 })(jQuery);

@@ -6,9 +6,18 @@
             <div id="headerWrapper">
                 {{ partial "header.html" . }}
             </div>
+
             <div id="contentWrapper">
                 {{ block "content" . }}{{ end }}
             </div>
+
+            <!-- Include the Page Loader Script if 'config' is defined -->
+            {{ if isset .Params "config" }}
+                <script>
+                    window.pageConfig = "{{ .Params.config }}";
+                </script>
+                <script src="/js/pageloader.js" type="module"></script>
+            {{ end }}
         </div>
     </body>
 </html>

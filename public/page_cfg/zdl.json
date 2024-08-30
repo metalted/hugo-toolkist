@@ -1,0 +1,53 @@
+{
+    "pageType": "flex",
+    "sidebar": {
+    "sections": [       
+        {
+            "header": "Pages",
+            "controls": [
+                {
+                    "type": "button",
+                    "id": "mainLevelsButton",
+                    "text": "Main Levels",
+                    "click": "onMainLevelsButton"
+                },
+                {
+                    "type": "button",
+                    "id": "legacyLevelsButton",
+                    "text": "Legacy Levels",
+                    "click": "onLegacyLevelsButton"
+                },
+                {
+                    "type": "button",
+                    "id": "scoreboardButton",
+                    "text": "Scoreboard",
+                    "click": "onScoreboardButton"
+                }
+            ]
+        },
+        {
+            "header": "Playlists",
+            "controls": [
+                {
+                    "type": "button",
+                    "id": "downloadMainButton",
+                    "text": "Download Main",
+                    "click": "onDownloadMainButton"
+                },
+                {
+                    "type": "button",
+                    "id": "downloadLegacyButton",
+                    "text": "Download Legacy",
+                    "click": "onDownloadLegacyButton"
+                }
+            ]
+        }
+    ]
+},
+    "panels": [
+        {
+            "type" : "flex"
+        }
+    ],    
+    "javascriptFile": "/js/pages/zdl.js"
+}

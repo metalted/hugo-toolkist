@@ -8,11 +8,18 @@
     <language>en-us</language>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>GTR Hash Lookup</title>
+      <link>http://localhost:1313/gtrhashlookup/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/gtrhashlookup/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>GTR Record Search</title>
       <link>http://localhost:1313/gtrrecordsearch/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/gtrrecordsearch/</guid>
-      <description>&#xD;</description>
+      <description></description>
     </item>
     <item>
       <title>GTR Stats</title>
@@ -26,49 +33,42 @@
       <link>http://localhost:1313/image_converter/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/image_converter/</guid>
-      <description>&#xD;</description>
+      <description></description>
     </item>
     <item>
       <title>Playlist Editor</title>
       <link>http://localhost:1313/playlist_editor/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/playlist_editor/</guid>
-      <description>&#xD;</description>
-    </item>
-    <item>
-      <title>Playlists</title>
-      <link>http://localhost:1313/playlists/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/playlists/</guid>
-      <description>&#xD;</description>
+      <description></description>
     </item>
     <item>
       <title>Text Generator</title>
       <link>http://localhost:1313/textgenerator/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/textgenerator/</guid>
-      <description>&#xD;Text Generator | Toolkist&#xD;</description>
+      <description></description>
     </item>
     <item>
       <title>ZDL</title>
       <link>http://localhost:1313/zdl/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/zdl/</guid>
-      <description>&#xD;ZDL | Toolkist&#xD;</description>
+      <description></description>
     </item>
     <item>
       <title>Zeeplevel Editor</title>
       <link>http://localhost:1313/zeepleveleditor/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/zeepleveleditor/</guid>
-      <description>&#xD;Select Column to Search:&#xD;ID&#xD;Px&#xD;Py&#xD;Pz&#xD;Rx&#xD;Ry&#xD;Rz&#xD;Sx&#xD;Sy&#xD;Sz&#xD;Search Value:&#xD;Select Column to Update:&#xD;ID&#xD;Px&#xD;Py&#xD;Pz&#xD;Rx&#xD;Ry&#xD;Rz&#xD;Sx&#xD;Sy&#xD;Sz&#xD;Update Value:&#xD;Go&#xD;</description>
+      <description></description>
     </item>
     <item>
       <title>ZGraph</title>
       <link>http://localhost:1313/zgraph/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/zgraph/</guid>
-      <description>&#xD;ZGraph | Toolkist&#xD;</description>
+      <description></description>
     </item>
     <item>
       <title>Zoozle</title>
@@ -82,14 +82,14 @@
       <link>http://localhost:1313/zquence/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/zquence/</guid>
-      <description>&#xD;Zquence | Toolkist&#xD;+&#xD;+&#xD;+&#xD;+&#xD;+&#xD;Save Zquence JSON&#xD;Load Zquence JSON&#xD;Import MIDI&#xD;Target Speed:&#xD;Export Type:CircleLineRoad&#xD;Filename:&#xD;Export to Zeeplevel&#xD;BPM: Notes/Bar: 481632 Bar -&#xD;Bar + </description>
+      <description></description>
     </item>
     <item>
       <title>ZST</title>
       <link>http://localhost:1313/zst/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/zst/</guid>
-      <description>&#xD;ZST | Zeepkist Speed Running Team&#xD;Zeepkist Speedrunning Team&#xD;Home&#xD;Records&#xD;Team&#xD;Rules&#xD;What We Do&#xD;Recent Records&#xD;Join Our Discord Channel&#xD;ZST Discord&#xD;Records&#xD;Official&#xD;No Cheese&#xD;Any %&#xD;Multiplayer&#xD;Other&#xD;A Levels&#xD;B Levels&#xD;C Levels&#xD;D Levels&#xD;E Levels&#xD;F Levels&#xD;G Levels&#xD;H Levels&#xD;I Levels&#xD;X Levels&#xD;Y Levels&#xD;CL Levels&#xD;EZ Levels&#xD;FL Levels&#xD;OR Levels&#xD;XG Levels&#xD;Team&#xD;Rules&#xD;</description>
+      <description></description>
     </item>
   </channel>
 </rss>

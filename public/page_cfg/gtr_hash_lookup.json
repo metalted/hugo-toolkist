@@ -1,0 +1,48 @@
+{
+    "pageType": "flex",
+    "sidebar": {
+        "sections": [   
+            {
+                "header": "Search",
+                "controls": [
+                    {
+                        "label": "Trackname",
+                        "type": "radio",
+                        "id": "trackNameRadio",
+                        "name": "searchSelect",
+                        "value": "track",
+                        "checked": true,
+                        "change": "onSearchSelectChange"
+                    },
+                    {
+                        "label": "WorkshopID",
+                        "type": "radio",
+                        "id": "workshopRadio",
+                        "name": "searchSelect",
+                        "value": "workshop",
+                        "change": "onSearchSelectChange"
+                    },
+                    {
+                        "label": "Search",
+                        "type": "text",
+                        "id": "searchInput",
+                        "value": "",
+                        "change": "onSearchInputChange"
+                    },
+                    {
+                        "type": "button",
+                        "id": "searchButton",
+                        "text": "Search",
+                        "click": "onSearchButton"
+                    }                    
+                ]
+            }    
+        ]
+    },
+    "panels": [
+        {
+            "type" : "flex"
+        }
+    ],    
+    "javascriptFile": "/js/pages/gtr_hash_lookup.js"
+}

@@ -2,12 +2,15 @@
 {{ $currentPage := .currentPage }}
 
 {{ with $context }}
-    {{ $page_children := where ( union .Sections .Pages ) "Kind" "page" }}
-    {{ $section_children := where ( union .Sections .Pages ) "Kind" "!=" "page" }}
+    {{ $allPages := union .Sections .Pages }}
 
-    {{/* show page child first than section child */}}
+    {{ $filteredPages := where $allPages "Params.hidden" "ne" "true" }}
+
+    {{ $page_children := where $filteredPages "Kind" "page" }}
+    {{ $section_children := where $filteredPages "Kind" "!=" "page" }}
+
+    {{/* show page child first then section child */}}
     {{ $children := $section_children | append $page_children }}
-
 
     <ul class="section-tree">
         {{ range $children }}
@@ -24,7 +27,7 @@
                 </li>
             {{ else }}
                 <li class="file">
-                    <a href="{{ .Permalink }}" title=".{{ .RelPermalink }}">
+                    <a href="{{ .Permalink }}" title="{{ .RelPermalink }}">
                         {{ .Title }}
                     </a>
                 </li>

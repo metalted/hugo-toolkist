@@ -171,6 +171,7 @@ export var html = (function($) {
         });
     }
 
+    /*
     html.RenderPlaylist = function(playlist, containerID)
     {
         const container = $(containerID);
@@ -211,8 +212,9 @@ export var html = (function($) {
 
         table.append(tHead, tBody);
         container.append(table);
-    };
+    };*/
 
+    /*
     html.RenderPlaylistProperties = function(containerID, onPlaylistUploadedCallback)
     {
         const container = $(containerID);
@@ -240,8 +242,9 @@ export var html = (function($) {
 
         // Append elements to container
         container.append(table);
-    };
+    };*/
 
+    /*
     html.GetPlaylistProperties = function()
     {
         return {
@@ -249,8 +252,9 @@ export var html = (function($) {
             shuffle : $('#playlist_shuffle').is(':checked'),
             roundLength : Number($('#playlist_roundtime').val())
         }
-    }
+    }*/
 
+    /*
     html.CreateTextFileInput = function(elementID, labelText, accepts, onLoadCallback)
     {
         const container = $(`<div>`);
@@ -314,7 +318,7 @@ export var html = (function($) {
 
         container.append(fileInput, label);
         return container;        
-    }
+    }*/
 
     html.RenderIndexedSelect = function(containerID, options, onChangeCallback)
     {
@@ -340,6 +344,7 @@ export var html = (function($) {
         $(containerID).append(select);
     };
 
+    /*
     html.RenderHeaderBlock = function(containerID, text)
     {
         $(containerID).append($('<div>').addClass('headerBlock').append($('<h2>').text(text)));
@@ -391,7 +396,7 @@ export var html = (function($) {
         $pageControls.append($prevPageButton, $pageNumberHolder, $nextPageButton);
 
         $(containerID).append($pageControls);
-    }
+    }*/
 
     html.CreateCanvas = function(elementId) {
 
@@ -567,6 +572,7 @@ export var html = (function($) {
         container.html(table);
     };
 
+    /*
     html.RenderUserSelection = function(containerID, userList, onSelectCallback)
     {
         var container = $(containerID);
@@ -589,7 +595,7 @@ export var html = (function($) {
         });
 
         container.append($input, $datalist);
-    }
+    }*/
 
     html.RenderPaintSelection = function(containerID, onSelectCallback)
     {

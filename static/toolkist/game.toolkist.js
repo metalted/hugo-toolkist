@@ -225,7 +225,7 @@ export var game = (function($) {
 
         GenerateUniqueID(playerName, objectCount)
         {
-            return `${new Date().toISOString().replace(/[-:.]/g, "").replace("T", "-").substring(0, 17)}-${playerName}-${this.Generate12DigitRandomNumber()}-${objectCount}`;
+            return `${new Date().toISOString().replace(/[-:.]/g, "").replace("T", "-").substring(0, 17)}-${playerName.replace(/[^a-zA-Z0-9]/g, '')}-${this.Generate12DigitRandomNumber()}-${objectCount}`;
         }
 
         FromCSV(csvFile)
@@ -260,6 +260,11 @@ export var game = (function($) {
             this.ground = timingLine[5];
 
             for (let i = 3; i < lines.length; i++) {
+                if(lines[i].trim() == "")
+                {
+                    continue;
+                }
+
                 var block = new game.Block();
                 this.blocks.push(block.FromCSV(lines[i]));
             }

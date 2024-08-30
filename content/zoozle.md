@@ -1,5 +1,12 @@
 +++
 title = 'Zoozle'
+description = 'A Zeepkist search engine'
+banner = 'zoozle_banner'
+color = '#FB6100'
+config = 'zoozle'
+localcss = 'zoozle'
+category = '2) GTR'
+hidden = 'true'
 +++
 
 {{<rawhtml>}}

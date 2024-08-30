@@ -1,5 +1,12 @@
 +++
 title = 'GTR Stats'
+description = 'GTR player statistics and leaderboard'
+banner = 'gtr_stats_banner'
+color = '#90B0A9'
+config = 'gtr_stats'
+localcss = 'gtr_stats'
+category = '2) GTR'
+hidden = 'true'
 +++
 
 {{<rawhtml>}}

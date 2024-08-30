@@ -1,0 +1,129 @@
+/* Ensure table and cells use the full width available */
+.gridjs-table {
+    width: 100% !important;
+    background-color: rgb(34, 34, 34);
+    color: rgb(251, 199, 25);
+}
+
+/* Style the headers to support subscript properly */
+.gridjs-th {
+    white-space: nowrap; /* Prevent text from wrapping */
+    text-align: center;  /* Center align header text */
+    min-width: 0px !important;
+}
+
+/* Style for subscript elements */
+.gridjs-th sub {
+    font-size: 0.8em; /* Smaller font size for subscript */
+    vertical-align: sub; /* Position subscript correctly */
+}
+
+/* Style for table cells */
+.gridjs-tr td {
+    border: 1px solid #555555;
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide overflowing content */
+    min-width: 0px !important;
+}
+
+.gridjs-tr td:hover {
+    cursor: pointer;
+    background-color: #777777;
+}
+
+.gridjs-tr td:active {
+    background-color: #999999;
+}
+
+/* Specific styles for the first 10 columns */
+.gridjs-tr td:nth-child(n+2):nth-child(-n+10) {
+    max-width: 60px !important; /* Constrain the width */
+    width: 60px;
+    text-overflow: clip; /* Clip overflow text */
+    padding-left: 2px;
+    padding-right: 2px;
+    font-size: 12px;
+}
+
+/* Center align text for columns starting from the 11th */
+.gridjs-tr td:nth-child(1), .gridjs-tr td:nth-child(n+11) {
+    text-align: center;
+    padding-left: 1px;
+    padding-right: 1px;
+}
+
+.gridjs-summary
+{
+    color: rgb(251, 199, 25);
+    background-color: rgb(34, 34, 34);
+}
+
+.form_container_holder
+{
+    background-color: rgb(34,34,34);
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    overflow:auto;
+    margin-bottom: 10px;
+}
+
+.form_container
+{        
+    float:left;
+    width:50%;
+    box-sizing: border-box;
+}
+
+.form_container h2
+{
+    color: rgb(239, 107, 35);
+    margin: 0px;
+    margin-bottom: 5px;
+}
+
+.form_container label
+{
+    display: inline-block;
+    color: rgb(251, 199, 25);
+    width: 250px !important;
+}
+
+.form_container input{
+    width: 250px;
+    box-sizing: border-box;
+}
+
+.form_container select
+{
+    width: 250px;
+    box-sizing: border-box;
+}
+
+.form_container button,
+.gridjs-pages button {
+    display: inline-block;
+    padding: 4px 12px;
+    background-color: rgb(251, 199, 25);
+    color: rgb(17, 17, 17);
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.1s ease-in-out;
+    font-family: 'Righteous';
+    font-weight: 300;
+    font-size: 18px;
+    margin: 4px;
+}
+
+.gridjs-pages button
+{
+    width: 100px;
+}
+
+.form_container button:hover,
+.gridjs-pages button:hover
+{
+    background-color: rgb(239, 107, 35) !important;
+    cursor: pointer;
+}

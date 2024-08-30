@@ -1,14 +1,8 @@
 +++
 title = 'Playlist Editor'
+description = 'Combine and manage playlists'
+banner = 'playlist_editor_banner'
+color = '#789791'
+config = 'playlist_editor'
+category = '1) Tools'
 +++
-
-{{<rawhtml>}}
-<script src="/toolkist/playlisteditor.pages.toolkist.js" type="module"></script>
-
-<div id='content' class='flex_content'>
-    <div class='standardPagePanel'>
-        <div id='playlist-properties'></div>   
-        <div id='playlist_editor'></div>
-    </div>    
-</div>
-{{</rawhtml>}}

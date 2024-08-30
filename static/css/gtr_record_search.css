@@ -1,0 +1,27 @@
+.result-item {
+
+}
+
+.result-image img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-right: 15px;
+}
+
+.result-info {
+    flex: 1;
+}
+
+.result-info h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.result-info p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #666;
+}

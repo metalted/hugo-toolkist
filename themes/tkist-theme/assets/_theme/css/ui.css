@@ -1,0 +1,180 @@
+/*PAGINATION CONTAINER*/
+.flex_panel_pagination_header
+{
+    width: 100%;
+	height: 50px;
+	position: relative;
+	background-color: var(--primary-color);
+	margin-bottom: 6px;
+}
+
+.flex_panel_pagination_header h2 {
+	position: absolute;
+    top: 50%;
+    left: 95px;
+	transform: translate(-50%, -50%);
+	margin: 0;
+	white-space: nowrap;
+	font-size: 24px;
+	color: var(--text-color);
+	text-shadow: -2px 2px 1px var(--secondary-color);
+	font-weight: bold;
+}
+
+.flex_panel_pagination_header .previous_page_button,
+.flex_panel_pagination_header .next_page_button
+{
+    position: absolute;
+    top: 50%;
+	transform: translate(-50%, -50%);
+    background-color: var(--text-color);
+    color: var(--primary-color);
+	margin: 0;
+	white-space: nowrap;
+	font-size: 24px;
+	font-weight: bold;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    user-select: none;
+}
+
+.flex_panel_pagination_header .previous_page_button:hover,
+.flex_panel_pagination_header .next_page_button:hover
+{
+    background-color: var(--secondary-color);
+    cursor: pointer;
+}
+
+.flex_panel_pagination_header .previous_page_button {
+    left: 210px;
+}
+
+.flex_panel_pagination_header .next_page_button {
+    left: 360px;
+}
+
+.flex_panel_pagination_header .page_indicator {
+	position: absolute;
+	top: 50%;
+	left: 285px;
+    width: 110px;
+    text-align: center;
+	transform: translate(-50%, -50%);
+	margin: 0;
+	white-space: nowrap;
+	font-size: 24px;
+	color: var(--text-color);
+	text-shadow: -2px 2px 1px var(--secondary-color);
+	font-weight: bold;
+}
+
+.flex_panel_pagination_result_container
+{
+    display: flex;
+    flex-direction: column;
+    gap: 1%;
+}
+
+.flex_panel_pagination_result_container .level-item
+{
+	box-sizing: border-box;
+	display: flex;
+    background-color: #222;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	margin-bottom: 10px;
+}
+
+.flex_panel_pagination_result_container .level-item h3
+{
+	color: var(--secondary-color);
+}
+
+.flex_panel_pagination_result_container .level-item p
+{
+	color: var(--primary-color);
+}
+
+/*LOADING CIRCLE*/
+.flex_panel_loading_circle_container
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	padding: 100px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.flex_panel_loading_circle_container .circle 
+{
+  width: 100px; /* Adjust the size of the circle */
+  height: 100px; /* Adjust the size of the circle */
+  border-radius: 50%;
+  border: 12px solid var(--primary-color); /* Color of the circle border */
+  border-top-color: var(--panel-color); /* Color of the animated part of the circle */
+  animation: spin 1s linear infinite; /* Animation for spinning */
+}
+
+/*DRAGGABLE PLAYLIST*/
+.draggable_playlist
+{
+    background-color: var(--panel-color);
+    color: var(--primary-color);
+}
+
+.draggable_playlist .playlistTable
+{
+    width: 100%;
+}
+
+.draggable_playlist .playlistTable thead{
+    color: var(--secondary-color);
+}
+
+.draggable_playlist .playlistTable tr{
+    border: 1px solid var(--primary-color);
+}
+
+.draggable_playlist .playlistTable td{
+    border-bottom: 1px solid var(--primary-color);
+}
+
+.ui-sortable td
+{
+    cursor: grab;
+}
+
+.ui-sortable td:active
+{
+    cursor: grabbing;
+}
+
+.draggable_playlist .playlistTable td .remove-button
+{
+    display: inline-block;
+    background-color: rgb(251, 59, 25);
+    color: white !important;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.1s ease-in-out;
+    font-family: 'Righteous';
+    font-weight: 300;
+    width: 100%;
+}
+
+.draggable_playlist .playlistTable td .remove-button:hover
+{
+    color: rgb(251, 59, 25) !important;
+    background-color: white !important;
+}

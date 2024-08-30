@@ -1,0 +1,114 @@
+{
+    "pageType": "flex",
+    "sidebar": {
+        "sections": [
+            {
+                "header": "User Information",
+                "controls": [
+                    {
+                        "label": "Username",
+                        "type": "text",
+                        "id": "username",
+                        "value": "defaultUser",
+                        "change": "onUsernameChange"
+                    },
+                    {
+                        "label": "Age",
+                        "type": "number",
+                        "id": "age",
+                        "min": 18,
+                        "max": 99,
+                        "change": "onAgeChange"
+                    },
+                    {
+                        "label": "Subscribe",
+                        "type": "checkbox",
+                        "id": "subscribe",
+                        "checked": true,
+                        "change": "onSubscribeChange"
+                    },
+                    {
+                        "label": "Comments",
+                        "type": "textarea",
+                        "id": "comments",
+                        "rows": 5,
+                        "cols": 40,
+                        "value": "Enter your comments here...",
+                        "change": "onCommentsChange"
+                    },
+                    {
+                        "label": "Country",
+                        "type": "select",
+                        "id": "country",
+                        "options": [
+                            { "value": "us", "label": "United States" },
+                            { "value": "ca", "label": "Canada", "selected": true },
+                            { "value": "uk", "label": "United Kingdom" }
+                        ],
+                        "change": "onCountryChange"
+                    },
+                    {
+                        "label": "Birthday",
+                        "type": "date",
+                        "id": "birthday",
+                        "value": "1990-01-01",
+                        "change": "onBirthdayChange"
+                    },
+                    {
+                        "label": "Save",
+                        "type": "button",
+                        "id": "saveButton",
+                        "text": "Save Information",
+                        "click": "onSaveButtonClick"
+                    },
+                    {
+                        "label": "Upload Profile Picture",
+                        "type": "file",
+                        "id": "profilePicture",
+                        "accepts": "image/*",
+                        "onLoad": "onProfilePictureLoad"
+                    }
+                ]
+            },
+            {
+                "header": "Gender",
+                "controls": [
+                    {
+                        "label": "Male",
+                        "type": "radio",
+                        "id": "genderMale",
+                        "name": "gender",
+                        "value": "male",
+                        "checked": true,
+                        "change": "onGenderChange"
+                    },
+                    {
+                        "label": "Female",
+                        "type": "radio",
+                        "id": "genderFemale",
+                        "name": "gender",
+                        "value": "female",
+                        "change": "onGenderChange"
+                    },
+                    {
+                        "label": "Rather not say",
+                        "type": "radio",
+                        "id": "genderOther",
+                        "name": "gender",
+                        "value": "other",
+                        "change": "onGenderChange"
+                    }
+                ]
+            }
+        ]
+    },
+    "panels": [
+        {
+            "type": "flex"
+        },
+        {
+            "type": "flex"
+        }
+    ],    
+    "javascriptFile": "/pages/test.js"
+}

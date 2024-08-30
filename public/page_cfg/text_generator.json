@@ -1,0 +1,60 @@
+{
+    "pageType": "flex",
+    "sidebar": {
+        "sections": [       
+            {
+                "header": "Settings",
+                "controls": [
+                    {
+                        "label": "Font",
+                        "type": "select",
+                        "id": "fontSelect",
+                        "options": [
+                            { "value": "Round", "label": "Round", "selected": true },
+                            { "value": "Block", "label": "Block" },
+                            { "value": "OpenRound", "label": "OpenRound" }
+                        ],
+                        "change": "onFontSelected"
+                    },
+                    {
+                        "label": "Letter Spacing",
+                        "type": "number",
+                        "id": "letterSpacingNumber",
+                        "step": 0.1,
+                        "change": "onLetterSpacingChange"
+                    },
+                    {
+                        "label": "Line Spacing",
+                        "type": "number",
+                        "id": "lineSpacingNumber",
+                        "step": 0.1,
+                        "change": "onLineSpacingChange"
+                    }
+                ]
+            },
+            {
+                "header": "Export",
+                "controls": [
+                    {
+                        "type": "button",
+                        "id": "copyToClipboardButton",
+                        "text": "Copy To Clipboard",
+                        "click": "onCopyToClipboardButton"
+                    },
+                    {
+                        "type": "button",
+                        "id": "downloadZeeplevelButton",
+                        "text": "Download .zeeplevel",
+                        "click": "onDownloadZeeplevelButton"
+                    }
+                ]
+            }
+        ]
+    },
+    "panels": [
+        {
+            "type": "flex"
+        }
+    ],    
+    "javascriptFile": "/js/pages/text_generator.js"
+}

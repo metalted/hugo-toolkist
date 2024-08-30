@@ -8,8 +8,11 @@
     "parserOptions": {
         "ecmaVersion": "latest"
     },
-
     "ignorePatterns": ["node_modules/", "public/", "resources/"],
+    "globals": {
+        "jQuery": "readonly",
+        "$": "readonly"
+    },
     "rules": {
         "no-trailing-spaces": "error",
         "comma-dangle": [

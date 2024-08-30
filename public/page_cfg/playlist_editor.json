@@ -1,0 +1,63 @@
+{
+    "pageType": "flex",
+    "sidebar": {
+        "sections": [
+            {
+                "header": "Properties",
+                "controls": [
+                    {
+                        "label": "Name",
+                        "type": "text",
+                        "value": "Toolkist Playlist",
+                        "id": "playlistName"
+                    },
+                    {
+                        "label": "Shuffle",
+                        "type": "checkbox",
+                        "id": "playlistShuffle",
+                        "checked": false
+                    },
+                    {
+                        "label": "Round Length",
+                        "type": "number",
+                        "id": "playlistRoundTime",
+                        "min": 30,
+                        "value": 30,
+                        "step" : 30,
+                        "change": "onRoundLengthChange"
+                    },
+                    {
+                        "label": "Add Playlist",
+                        "type": "file",
+                        "id": "uploadZeeplistFile",
+                        "accepts": "zeeplist",
+                        "onLoad": "onZeeplistUploaded"
+                    }                   
+                ]
+            },
+            {
+                "header": "Export",
+                "controls": [
+                    {
+                        "type": "button",
+                        "id": "copyToClipboardButton",
+                        "text": "Copy To Clipboard",
+                        "click": "onCopyToClipboardButton"
+                    },
+                    {
+                        "type": "button",
+                        "id": "downloadZeeplistButton",
+                        "text": "Download .zeeplist",
+                        "click": "onDownloadZeeplistButton"
+                    }
+                ]
+            }
+        ]
+    },
+    "panels": [
+        {
+            "type": "flex"
+        }
+    ],    
+    "javascriptFile": "/js/pages/playlist_editor.js"
+}

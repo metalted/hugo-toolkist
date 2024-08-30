@@ -1,0 +1,42 @@
+{
+    "pageType": "flex",
+    "sidebar": {
+        "sections": [       
+            {
+                "header": "Import",
+                "controls": [
+                    {
+                        "label": "Upload Zeeplevel",
+                        "type": "file",
+                        "id": "uploadZeeplevelFile",
+                        "accepts": "zeeplevel",
+                        "onLoad": "onZeeplevelUploaded"
+                    }
+                ]
+            },
+            {
+                "header": "Export",
+                "controls": [
+                    {
+                        "type": "button",
+                        "id": "copyToClipboardButton",
+                        "text": "Copy To Clipboard",
+                        "click": "onCopyToClipboardButton"
+                    },
+                    {
+                        "type": "button",
+                        "id": "downloadZeeplevelButton",
+                        "text": "Download .zeeplevel",
+                        "click": "onDownloadZeeplevelButton"
+                    }
+                ]
+            }
+        ]
+    },
+    "panels": [
+        {
+            "type": "flex"
+        }
+    ],    
+    "javascriptFile": "/js/pages/zeeplevel_editor.js"
+}

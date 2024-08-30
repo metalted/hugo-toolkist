@@ -225,7 +225,7 @@ export var game = (function($) {
 
         GenerateUniqueID(playerName, objectCount)
         {
-            return `${new Date().toISOString().replace(/[-:.]/g, "").replace("T", "-").substring(0, 17)}-${playerName}-${this.Generate12DigitRandomNumber()}-${objectCount}`;
+            return `${new Date().toISOString().replace(/[-:.]/g, "").replace("T", "-").substring(0, 17)}-${playerName.replace(/[^a-zA-Z0-9]/g, '')}-${this.Generate12DigitRandomNumber()}-${objectCount}`;
         }
 
         FromCSV(csvFile)
@@ -260,13 +260,18 @@ export var game = (function($) {
             this.ground = timingLine[5];
 
             for (let i = 3; i < lines.length; i++) {
+                if(lines[i].trim() == "")
+                {
+                    continue;
+                }
+
                 var block = new game.Block();
                 this.blocks.push(block.FromCSV(lines[i]));
             }
         }
 
         ToCSV() {
-            this.ClearHeader();
+            this.uniqueID = this.GenerateUniqueID(this.playerName, this.blocks.length);
             const headerCSV = `${this.sceneName},${this.playerName},${this.uniqueID}\n${this.cameraXPos},${this.cameraYPos},${this.cameraZPos},${this.cameraXEuler},${this.cameraYEuler},${this.cameraZEuler},${this.cameraXRot},${this.cameraYRot}\n${this.validationTime},${this.goldTime},${this.silverTime},${this.bronzeTime},${this.skybox},${this.ground}`;
             const blocksCSV = this.blocks.map((block) => block.ToCSV()).join('\n');
             return `${headerCSV}\n${blocksCSV}`;

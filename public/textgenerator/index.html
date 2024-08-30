@@ -10,103 +10,67 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Chivo+Mono:wght@300&family=Righteous&display=swap" rel="stylesheet">
+
     
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <meta name="generator" content="Hugo 0.127.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
     
+    <script src='https://unpkg.com/gridjs/dist/gridjs.umd.js'></script>
 
     
+    <script src='/libs/fabric.min.js'></script>
 
     
-        
-            <meta
-                name="description"
-                content="A site with different tools made for the game Zeepkist" />
-        
-
-        
-            <meta
-                name="keywords"
-                content="Zeepkist,Toolkist" />
-        
-
-        
-            <meta
-                name="author"
-                content="Metalted" />
-        
-
-    
-
-
-    <title>
-        
-            Text Generator |
-            Toolkist
-        
-    </title>
-
-    
-
+    <title>Text Generator | Toolkist</title>
 
     
     
-
-    
-    
-
-
-    
+        <meta name="description" content="Convert text to letter blocks">
     
 
-
+    
+    <meta property="og:url" content="http://localhost:1313/textgenerator/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Text Generator | Toolkist">
+    
+        <meta property="og:description" content="Convert text to letter blocks">
     
     
+        <meta property="og:image" content="/img/banners/textgenerator_banner.png">
+    
+    
+        <meta name="theme-color" content="#DC4D45">
+    
 
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:domain" content="http://localhost:1313/">
+    <meta property="twitter:url" content="http://localhost:1313/textgenerator/">
+    <meta name="twitter:title" content="Text Generator | Toolkist">
+    
+        <meta name="twitter:description" content="Convert text to letter blocks">
+    
+    
+        <meta name="twitter:image" content="/img/banners/textgenerator_banner.png">
+    
 
     
     
 
     
-
+    
+    
+    
+    <link rel="stylesheet" href="/css/theme-styles.min.2fb346370e3b72d4d7abcc6a6454bc397ccd1c344cffb6d782a70e34977ef574.css">
 
     
     
-
-    
-
-    
-
-        
-            
-            <link
-                rel="stylesheet"
-                href="/reset.min_6851612176967065231.3662e40c85350bf0bcf308b7db81c173e4b690b862d3c3cde460de5155550bf055b7ff48cddb1cf5255e55f0355196d8dec1d49434b2457842cc77ebea198f3f.css"
-                integrity="sha512-NmLkDIU1C/C88wi324HBc&#43;S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw==" />
-        
-            
-            <link
-                rel="stylesheet"
-                href="/_theme/css/stylesheet.51ac45dbc6884a0468cb9a01161d82ca77d1ccb2b08e8b6ece04f8cbf005a6efa097b541369594d4b41dd454b432071eea9b91e61185b55e9d80f53f56ebc3f9.css"
-                integrity="sha512-UaxF28aISgRoy5oBFh2CynfRzLKwjotuzgT4y/AFpu&#43;gl7VBNpWU1LQd1FS0Mgce6puR5hGFtV6dgPU/VuvD&#43;Q==" />
-        
-
-    
-
-
-    
-    
-
-    
-
-    
-
-    
-
+        <link rel="stylesheet" href="/css/text_generator.css">
     
 </head>
 
@@ -125,17 +89,28 @@
 
 
     
+
     
 
     
     
 
+    
+    
 
     <ul class="section-tree">
         
             
                 <li class="file">
-                    <a href="http://localhost:1313/gtrrecordsearch/" title="./gtrrecordsearch/">
+                    <a href="http://localhost:1313/gtrhashlookup/" title="/gtrhashlookup/">
+                        GTR Hash Lookup
+                    </a>
+                </li>
+            
+        
+            
+                <li class="file">
+                    <a href="http://localhost:1313/gtrrecordsearch/" title="/gtrrecordsearch/">
                         GTR Record Search
                     </a>
                 </li>
@@ -143,15 +118,7 @@
         
             
                 <li class="file">
-                    <a href="http://localhost:1313/gtrstats/" title="./gtrstats/">
-                        GTR Stats
-                    </a>
-                </li>
-            
-        
-            
-                <li class="file">
-                    <a href="http://localhost:1313/image_converter/" title="./image_converter/">
+                    <a href="http://localhost:1313/image_converter/" title="/image_converter/">
                         Image Converter
                     </a>
                 </li>
@@ -159,7 +126,7 @@
         
             
                 <li class="file">
-                    <a href="http://localhost:1313/playlist_editor/" title="./playlist_editor/">
+                    <a href="http://localhost:1313/playlist_editor/" title="/playlist_editor/">
                         Playlist Editor
                     </a>
                 </li>
@@ -167,15 +134,7 @@
         
             
                 <li class="file">
-                    <a href="http://localhost:1313/playlists/" title="./playlists/">
-                        Playlists
-                    </a>
-                </li>
-            
-        
-            
-                <li class="file">
-                    <a href="http://localhost:1313/textgenerator/" title="./textgenerator/">
+                    <a href="http://localhost:1313/textgenerator/" title="/textgenerator/">
                         Text Generator
                     </a>
                 </li>
@@ -183,7 +142,7 @@
         
             
                 <li class="file">
-                    <a href="http://localhost:1313/zdl/" title="./zdl/">
+                    <a href="http://localhost:1313/zdl/" title="/zdl/">
                         ZDL
                     </a>
                 </li>
@@ -191,7 +150,7 @@
         
             
                 <li class="file">
-                    <a href="http://localhost:1313/zeepleveleditor/" title="./zeepleveleditor/">
+                    <a href="http://localhost:1313/zeepleveleditor/" title="/zeepleveleditor/">
                         Zeeplevel Editor
                     </a>
                 </li>
@@ -199,7 +158,7 @@
         
             
                 <li class="file">
-                    <a href="http://localhost:1313/zgraph/" title="./zgraph/">
+                    <a href="http://localhost:1313/zgraph/" title="/zgraph/">
                         ZGraph
                     </a>
                 </li>
@@ -207,15 +166,7 @@
         
             
                 <li class="file">
-                    <a href="http://localhost:1313/zoozle/" title="./zoozle/">
-                        Zoozle
-                    </a>
-                </li>
-            
-        
-            
-                <li class="file">
-                    <a href="http://localhost:1313/zquence/" title="./zquence/">
+                    <a href="http://localhost:1313/zquence/" title="/zquence/">
                         Zquence
                     </a>
                 </li>
@@ -223,7 +174,7 @@
         
             
                 <li class="file">
-                    <a href="http://localhost:1313/zst/" title="./zst/">
+                    <a href="http://localhost:1313/zst/" title="/zst/">
                         ZST
                     </a>
                 </li>
@@ -239,487 +190,20 @@
     </div>    
 </div>
             </div>
+
             <div id="contentWrapper">
                 
     
 
-<!-- HTML Meta Tags -->
-<title>Text Generator | Toolkist</title>
-<meta name="description" content="Convert Text to Letter Blocks">
-
-<!-- Facebook Meta Tags -->
-<meta property="og:url" content="https://toolkist.netlify.app/textgenerator">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Text Generator | Toolkist">
-<meta property="og:description" content="Convert Text to Letter Blocks">
-<meta property="og:image" content="/img/TextGenerator_banner.png">
-<meta name="theme-color" content="#DC4D45">
-
-<!-- Twitter Meta Tags -->
-<meta name="twitter:card" content="summary_large_image">
-<meta property="twitter:domain" content="toolkist.netlify.app">
-<meta property="twitter:url" content="https://toolkist.netlify.app/textgenerator">
-<meta name="twitter:title" content="Text Generator | Toolkist">
-<meta name="twitter:description" content="Convert Text To Letter Blocks">
-<meta name="twitter:image" content="/img/TextGenerator_banner.png">
-
-
-<script type="module">
-import {toolkist} from '/toolkist/toolkist.js';
-
-var characterCodes = {
-    "A": {
-        "Round": 1747,
-        "Block": 1786,
-        "OpenRound": 1835
-    },
-    "B": {
-        "Round": 1748,
-        "Block": 1787,
-        "OpenRound": 1836
-    },
-    "C": {
-        "Round": 1749,
-        "Block": 1788,
-        "OpenRound": 1837
-    },
-    "D": {
-        "Round": 1750,
-        "Block": 1789,
-        "OpenRound": 1838
-    },
-    "E": {
-        "Round": 1751,
-        "Block": 1790,
-        "OpenRound": 1839
-    },
-    "F": {
-        "Round": 1752,
-        "Block": 1791,
-        "OpenRound": 1840
-    },
-    "G": {
-        "Round": 1753,
-        "Block": 1792,
-        "OpenRound": 1841
-    },
-    "H": {
-        "Round": 1754,
-        "Block": 1793,
-        "OpenRound": 1842
-    },
-    "I": {
-        "Round": 1755,
-        "Block": 1794,
-        "OpenRound": 1843
-    },
-    "J": {
-        "Round": 1756,
-        "Block": 1795,
-        "OpenRound": 1844
-    },
-    "K": {
-        "Round": 1757,
-        "Block": 1796,
-        "OpenRound": 1845
-    },
-    "L": {
-        "Round": 1758,
-        "Block": 1797,
-        "OpenRound": 1846
-    },
-    "M": {
-        "Round": 1759,
-        "Block": 1798,
-        "OpenRound": 1847
-    },
-    "N": {
-        "Round": 1760,
-        "Block": 1799,
-        "OpenRound": 1848
-    },
-    "O": {
-        "Round": 1761,
-        "Block": 1800,
-        "OpenRound": 1849
-    },
-    "P": {
-        "Round": 1762,
-        "Block": 1801,
-        "OpenRound": 1850
-    },
-    "Q": {
-        "Round": 1763,
-        "Block": 1802,
-        "OpenRound": 1851
-    },
-    "R": {
-        "Round": 1764,
-        "Block": 1803,
-        "OpenRound": 1852
-    },
-    "S": {
-        "Round": 1765,
-        "Block": 1804,
-        "OpenRound": 1853
-    },
-    "T": {
-        "Round": 1766,
-        "Block": 1805,
-        "OpenRound": 1854
-    },
-    "U": {
-        "Round": 1767,
-        "Block": 1806,
-        "OpenRound": 1855
-    },
-    "V": {
-        "Round": 1768,
-        "Block": 1807,
-        "OpenRound": 1856
-    },
-    "W": {
-        "Round": 1769,
-        "Block": 1808,
-        "OpenRound": 1857
-    },
-    "X": {
-        "Round": 1770,
-        "Block": 1809,
-        "OpenRound": 1858
-    },
-    "Y": {
-        "Round": 1771,
-        "Block": 1810,
-        "OpenRound": 1859
-    },
-    "Z": {
-        "Round": 1772,
-        "Block": 1811,
-        "OpenRound": 1860
-    },
-    "0": {
-        "Round": 1346,
-        "Block": 1812,
-        "OpenRound": 1861
-    },
-    "1": {
-        "Round": 1347,
-        "Block": 1813,
-        "OpenRound": 1862
-    },
-    "2": {
-        "Round": 1348,
-        "Block": 1814,
-        "OpenRound": 1863
-    },
-    "3": {
-        "Round": 1349,
-        "Block": 1815,
-        "OpenRound": 1864
-    },
-    "4": {
-        "Round": 1350,
-        "Block": 1816,
-        "OpenRound": 1865
-    },
-    "5": {
-        "Round": 1351,
-        "Block": 1817,
-        "OpenRound": 1866
-    },
-    "6": {
-        "Round": 1352,
-        "Block": 1818,
-        "OpenRound": 1867
-    },
-    "7": {
-        "Round": 1353,
-        "Block": 1819,
-        "OpenRound": 1868
-    },
-    "8": {
-        "Round": 1354,
-        "Block": 1820,
-        "OpenRound": 1869
-    },
-    "9": {
-        "Round": 1355,
-        "Block": 1821,
-        "OpenRound": 1870
-    },
-    "!": {
-        "Round": 1773,
-        "Block": 1822,
-        "OpenRound": 1871
-    },
-    "?": {
-        "Round": 1774,
-        "Block": 1823,
-        "OpenRound": 1872
-    },
-    "&": {
-        "Round": 1775,
-        "Block": 1824,
-        "OpenRound": 1873
-    },
-    "%": {
-        "Round": 1776,
-        "Block": 1825,
-        "OpenRound": 1874
-    },
-    "#": {
-        "Round": 1777,
-        "Block": 1826,
-        "OpenRound": 1875
-    },
-    "@": {
-        "Round": 1778,
-        "Block": 1827,
-        "OpenRound": 1876
-    },
-    ".": {
-        "Round": 1779,
-        "Block": 1828,
-        "OpenRound": 1877
-    },
-    ",": {
-        "Round": 1780,
-        "Block": 1829,
-        "OpenRound": 1878
-    },
-    ":": {
-        "Round": 1781,
-        "Block": 1830,
-        "OpenRound": 1879
-    },
-    "-": {
-        "Round": 1782,
-        "Block": 1831,
-        "OpenRound": 1880
-    },
-    "=": {
-        "Round": 1783,
-        "Block": 1832,
-        "OpenRound": 1881
-    },
-    "+": {
-        "Round": 1784,
-        "Block": 1833,
-        "OpenRound": 1882
-    },
-    "_": {
-        "Round": 1785,
-        "Block": 1834,
-        "OpenRound": 1883
-    }
-};
-
-$(document).ready(function() {
-
-    
-
-    // Render header blocks
-    toolkist.html.RenderHeaderBlock('.standardLeftPanel', 'Settings');
-    
-    const fontStyleLabel = $('<div>', { text: 'Font:', class: 'inputLabel' });
-    // Add font style selection list
-    const fontStyleSelect = $('<select>')
-        .append($('<option>', { value: 'Round', text: 'Round' }))
-        .append($('<option>', { value: 'Block', text: 'Block' }))
-        .append($('<option>', { value: 'OpenRound', text: 'OpenRound' }));
-    $('.standardLeftPanel').append(fontStyleLabel, fontStyleSelect);
-
-    // Add letter spacing input
-    const letterSpacingLabel = $('<div>', { text: 'Letter Spacing:', class: 'inputLabel' });
-    const letterSpacingInput = $('<input>', { type: 'number', step: '0.1', value: '0', id: 'letterSpacingInput'  });
-    $('.standardLeftPanel').append(letterSpacingLabel).append(letterSpacingInput);
-
-    // Add line spacing input
-    const lineSpacingLabel = $('<div>', { text: 'Line Spacing:', class: 'inputLabel' });
-    const lineSpacingInput = $('<input>', { type: 'number', step: '0.1', value: '0', id: 'lineSpacingInput' });
-    $('.standardLeftPanel').append(lineSpacingLabel).append(lineSpacingInput);
-
-    // Render export button
-    toolkist.html.RenderHeaderBlock('.standardLeftPanel', 'Export');
-     toolkist.html.RenderButton('.standardLeftPanel', 'copyToClipboardButton', 'Copy To Clipboard');
-    toolkist.html.RenderButton('.standardLeftPanel', 'downloadToZeeplevelButton', 'Download');
-
-    // Logging function
-    function logCharacterInfo(char, font) {
-        const upperChar = char.toUpperCase();
-        let originalCase;
-        if (char === upperChar && /[A-Z]/.test(char)) {
-            originalCase = 'Upper';
-        } else if (char !== upperChar && /[a-z]/.test(char)) {
-            originalCase = 'Lower';
-        } else {
-            originalCase = 'Neither';
-        }
-        const charCode = characterCodes[upperChar] ? characterCodes[upperChar][font] : 'N/A';
-        return {
-            character: upperChar,
-            original: char,
-            case: originalCase,
-            id: charCode
-        };
-    }
-
-     $('#copyToClipboardButton').on('click', function()
-    {
-        const text = $('#textAreaInput').val();
-        const selectedFont = fontStyleSelect.val();
-        const results = [];
-        for (let char of text) {
-            if (char === ' ') {
-                results.push(logSpace());
-            } else if (char === '\n') {
-                results.push(logLineBreak());
-            } else {
-                results.push(logCharacterInfo(char, selectedFont));
-            }
-        }
-
-        let zeeplevelToExport = ExportToZeeplevel(results);
-        toolkist.fs.CopyToClipboard(zeeplevelToExport.ToCSV()); 
-        console.log(zeeplevelToExport.ToCSV());
-        window.alert("Copied to clipboard");
-    });
-
-    $('#downloadToZeeplevelButton').on('click', function()
-    {
-        const text = $('#textAreaInput').val();
-        const selectedFont = fontStyleSelect.val();
-        const results = [];
-        for (let char of text) {
-            if (char === ' ') {
-                results.push(logSpace());
-            } else if (char === '\n') {
-                results.push(logLineBreak());
-            } else {
-                results.push(logCharacterInfo(char, selectedFont));
-            }
-        }
-        
-        let zeeplevelToExport = ExportToZeeplevel(results);
-        toolkist.fs.CopyToClipboard(zeeplevelToExport.ToCSV()); 
-
-        const firstSixAlphanumerics = textArea.val().replace(/[^a-zA-Z0-9]/g, '').substring(0, 6);
-        toolkist.fs.DirectDownload("Text_" + firstSixAlphanumerics + ".zeeplevel", zeeplevelToExport.ToCSV()); 
-        console.log(zeeplevelToExport.ToCSV());
-    });
-
-    function logSpace() {
-        return {
-            type: 'Space'
-        };
-    }
-
-    function logLineBreak() {
-        return {
-            type: 'Line break'
-        };
-    }
-
-    function isSymbol(char) {
-        return /[!@#\$%\^\&*\)\(+=._-]+/.test(char);
-    }
-
-    function getLetterSpacingValue() {
-        const value = parseFloat($('#letterSpacingInput').val());
-        return isNaN(value) ? 0 : value;
-    }
-
-    function getLineSpacingValue() {
-        const value = parseFloat($('#lineSpacingInput').val());
-        return isNaN(value) ? 0 : value;
-    }
-
-    function ExportToZeeplevel(result)
-    {
-        var zeeplevel = new toolkist.game.Zeeplevel();
-        var currentLine = 0;
-        var currentPosition = 0;
-        var letterStep = 16 + getLetterSpacingValue();
-        var lineStep = 16 + getLineSpacingValue();
-
-        result.forEach((r) => {
-
-            if(r.type == "Space")
-            {
-                currentPosition++;
-            }
-            else if(r.type == "Line break")
-            {
-                currentPosition = 0;
-                currentLine++;
-            }
-            else if(r.id)
-            {
-                if(r.id == "N/A")
-                {
-                    currentPosition++;
-                }
-                else
-                {
-                    var block = new toolkist.game.Block();
-                    block.blockID = r.id;
-                    
-                    var letterPosition = currentPosition * letterStep;
-                    var linePosition = currentLine * -lineStep;
-
-                    block.position.x = letterPosition;
-                    block.position.y = linePosition;
-                    block.scale.x = 1;
-                    block.scale.y = 1;
-                    block.scale.z = 1;
-
-                    if(r.case == "Upper")
-                    {
-                        block.options[0] = 1;
-                    }
-                    else if(r.case == "Lower")
-                    {
-                        block.options[1] = 1;
-                    }            
-
-                    block.paints[0] = 285;
-                    block.paints[1] = 285;        
-                    
-                    zeeplevel.AddBlock(block);
-
-                    currentPosition++;
-                }
-            }
-        });
-
-        return zeeplevel;
-    }
-});
-</script>
-<style>
-textarea{
-    width: 75%;
-    height: 75%;
-    margin: 16px;
-    box-sizing: border-box;
-    background-color: rgb(34,34,34);
-    color:rgb(251, 199, 25);
-    font-family: 'Righteous';
-    font-size: 18px;
-}
-
-</style>
-<div id='content' class='flex_content'>
-    <div class='standardLeftPanel'></div>
-    <div class='standardPagePanel'>
-        <textarea id='textAreaInput' placeholder="Enter text here..."></textarea>
-    </div>
-</div>
-
-
-
             </div>
+
+            
+            
+                <script>
+                    window.pageConfig = "text_generator";
+                </script>
+                <script src="/js/pageloader.js" type="module"></script>
+            
         </div>
     </body>
 </html>

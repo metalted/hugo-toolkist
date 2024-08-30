@@ -1,0 +1,11 @@
+textarea
+{
+    width: 75%;
+    height: 75%;
+    margin: 16px;
+    box-sizing: border-box;
+    background-color: var(--panel-color);
+    color:var(--primary-color);
+    font-family: 'Righteous';
+    font-size: 18px;
+}

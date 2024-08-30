@@ -1,0 +1,9 @@
+{
+    "pageType": "flex",
+    "panels": [
+        {
+            "type" : "flex"
+        }
+    ],    
+    "javascriptFile": "/js/pages/zgraph.js"
+}
