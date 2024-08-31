@@ -2,100 +2,100 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Toolkist</title>
-    <link>http://localhost:1313/</link>
+    <link>https://toolkist.netlify.app/</link>
     <description>Recent content on Toolkist</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://toolkist.netlify.app/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>GTR Hash Lookup</title>
-      <link>http://localhost:1313/gtrhashlookup/</link>
+      <link>https://toolkist.netlify.app/gtrhashlookup/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/gtrhashlookup/</guid>
+      <guid>https://toolkist.netlify.app/gtrhashlookup/</guid>
       <description></description>
     </item>
     <item>
       <title>GTR Record Search</title>
-      <link>http://localhost:1313/gtrrecordsearch/</link>
+      <link>https://toolkist.netlify.app/gtrrecordsearch/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/gtrrecordsearch/</guid>
+      <guid>https://toolkist.netlify.app/gtrrecordsearch/</guid>
       <description></description>
     </item>
     <item>
       <title>GTR Stats</title>
-      <link>http://localhost:1313/gtrstats/</link>
+      <link>https://toolkist.netlify.app/gtrstats/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/gtrstats/</guid>
-      <description>&#xD;GTR Stats | Toolkist&#xD;</description>
+      <guid>https://toolkist.netlify.app/gtrstats/</guid>
+      <description>GTR Stats | Toolkist</description>
     </item>
     <item>
       <title>Image Converter</title>
-      <link>http://localhost:1313/image_converter/</link>
+      <link>https://toolkist.netlify.app/image_converter/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/image_converter/</guid>
+      <guid>https://toolkist.netlify.app/image_converter/</guid>
       <description></description>
     </item>
     <item>
       <title>Playlist Editor</title>
-      <link>http://localhost:1313/playlist_editor/</link>
+      <link>https://toolkist.netlify.app/playlist_editor/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/playlist_editor/</guid>
+      <guid>https://toolkist.netlify.app/playlist_editor/</guid>
       <description></description>
     </item>
     <item>
       <title>Testing Page</title>
-      <link>http://localhost:1313/test/</link>
+      <link>https://toolkist.netlify.app/test/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/test/</guid>
+      <guid>https://toolkist.netlify.app/test/</guid>
       <description></description>
     </item>
     <item>
       <title>Text Generator</title>
-      <link>http://localhost:1313/textgenerator/</link>
+      <link>https://toolkist.netlify.app/textgenerator/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/textgenerator/</guid>
+      <guid>https://toolkist.netlify.app/textgenerator/</guid>
       <description></description>
     </item>
     <item>
       <title>ZDL</title>
-      <link>http://localhost:1313/zdl/</link>
+      <link>https://toolkist.netlify.app/zdl/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/zdl/</guid>
+      <guid>https://toolkist.netlify.app/zdl/</guid>
       <description></description>
     </item>
     <item>
       <title>Zeeplevel Editor</title>
-      <link>http://localhost:1313/zeepleveleditor/</link>
+      <link>https://toolkist.netlify.app/zeepleveleditor/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/zeepleveleditor/</guid>
+      <guid>https://toolkist.netlify.app/zeepleveleditor/</guid>
       <description></description>
     </item>
     <item>
       <title>ZGraph</title>
-      <link>http://localhost:1313/zgraph/</link>
+      <link>https://toolkist.netlify.app/zgraph/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/zgraph/</guid>
+      <guid>https://toolkist.netlify.app/zgraph/</guid>
       <description></description>
     </item>
     <item>
       <title>Zoozle</title>
-      <link>http://localhost:1313/zoozle/</link>
+      <link>https://toolkist.netlify.app/zoozle/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/zoozle/</guid>
-      <description>&#xD;Zoozle | Toolkist&#xD;</description>
+      <guid>https://toolkist.netlify.app/zoozle/</guid>
+      <description>Zoozle | Toolkist</description>
     </item>
     <item>
       <title>Zquence</title>
-      <link>http://localhost:1313/zquence/</link>
+      <link>https://toolkist.netlify.app/zquence/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/zquence/</guid>
+      <guid>https://toolkist.netlify.app/zquence/</guid>
       <description></description>
     </item>
     <item>
       <title>ZST</title>
-      <link>http://localhost:1313/zst/</link>
+      <link>https://toolkist.netlify.app/zst/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/zst/</guid>
+      <guid>https://toolkist.netlify.app/zst/</guid>
       <description></description>
     </item>
   </channel>

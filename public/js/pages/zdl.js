@@ -198,9 +198,39 @@ function constructScoreboardPage(containerID, levelData)
     for(var i = 0; i < playersArray.length; i++)
     {
         playersArray[i].position = i + 1;
+        //playersArray[i].symbols = createCompletionSymbols(playersArray[i].completed);
+        
     }
 
+    //toolkist.html.RenderLeaderboard(playersArray, ['position','user','completed','symbols','score'], containerID, ["#", "Player", "Completed","", "Score"]);
     toolkist.html.RenderLeaderboard(playersArray, ['position','user','completed','score'], containerID, ["#", "Player", "Completed", "Score"]);
+}
+
+function createCompletionSymbols(completed) {
+    const trophy = '🏆';  // 10 levels
+    const badge = '🎖️';  // 5 levels
+    const star = '⭐';    // 1 level
+
+    let symbols = '';
+
+    // Calculate the number of trophies (10 levels each)
+    const numTrophies = Math.floor(completed / 10);
+    symbols += trophy.repeat(numTrophies);
+
+    // Calculate the remainder after accounting for trophies
+    const remainderAfterTrophies = completed % 10;
+
+    // Calculate the number of badges (5 levels each)
+    const numBadges = Math.floor(remainderAfterTrophies / 5);
+    symbols += badge.repeat(numBadges);
+
+    // Calculate the remainder after accounting for badges
+    const remainderAfterBadges = remainderAfterTrophies % 5;
+
+    // Add the remaining stars (1 level each)
+    symbols += star.repeat(remainderAfterBadges);
+
+    return symbols;
 }
 
 function constructLevelPage(containerID, levelData, type)

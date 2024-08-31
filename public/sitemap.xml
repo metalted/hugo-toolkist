@@ -2,36 +2,36 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://toolkist.netlify.app/categories/</loc>
   </url><url>
-    <loc>http://localhost:1313/gtrhashlookup/</loc>
+    <loc>https://toolkist.netlify.app/gtrhashlookup/</loc>
   </url><url>
-    <loc>http://localhost:1313/gtrrecordsearch/</loc>
+    <loc>https://toolkist.netlify.app/gtrrecordsearch/</loc>
   </url><url>
-    <loc>http://localhost:1313/gtrstats/</loc>
+    <loc>https://toolkist.netlify.app/gtrstats/</loc>
   </url><url>
-    <loc>http://localhost:1313/image_converter/</loc>
+    <loc>https://toolkist.netlify.app/image_converter/</loc>
   </url><url>
-    <loc>http://localhost:1313/playlist_editor/</loc>
+    <loc>https://toolkist.netlify.app/playlist_editor/</loc>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://toolkist.netlify.app/tags/</loc>
   </url><url>
-    <loc>http://localhost:1313/test/</loc>
+    <loc>https://toolkist.netlify.app/test/</loc>
   </url><url>
-    <loc>http://localhost:1313/textgenerator/</loc>
+    <loc>https://toolkist.netlify.app/textgenerator/</loc>
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://toolkist.netlify.app/</loc>
   </url><url>
-    <loc>http://localhost:1313/zdl/</loc>
+    <loc>https://toolkist.netlify.app/zdl/</loc>
   </url><url>
-    <loc>http://localhost:1313/zeepleveleditor/</loc>
+    <loc>https://toolkist.netlify.app/zeepleveleditor/</loc>
   </url><url>
-    <loc>http://localhost:1313/zgraph/</loc>
+    <loc>https://toolkist.netlify.app/zgraph/</loc>
   </url><url>
-    <loc>http://localhost:1313/zoozle/</loc>
+    <loc>https://toolkist.netlify.app/zoozle/</loc>
   </url><url>
-    <loc>http://localhost:1313/zquence/</loc>
+    <loc>https://toolkist.netlify.app/zquence/</loc>
   </url><url>
-    <loc>http://localhost:1313/zst/</loc>
+    <loc>https://toolkist.netlify.app/zst/</loc>
   </url>
 </urlset>
