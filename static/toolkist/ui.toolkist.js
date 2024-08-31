@@ -1,3 +1,5 @@
+import {toolkist} from '/toolkist/toolkist.js';
+
 export var ui = (function($) {
     var ui = {};   
     ui.greenCheckmark = '<i class="fa fa-check" aria-hidden="true" style="color: green"></i>';
@@ -399,21 +401,133 @@ export var ui = (function($) {
         container.append(table);
     };
 
-    ui.CreateLevelResult = function(data)
+    ui.CreateLevelDataObject = function(){
+        return {
+            name : null,
+            fileAuthor : null,
+            fileUid : null,
+            imageUrl : null,
+            validationTimeAuthor : null,
+            validationTimeBronze : null,
+            validationTimeGold : null,
+            validationTimeSilver : null,
+            authorId : null,
+            workshopId : null,
+            amountBlocks : null,
+            amountCheckpoints : null,
+            amountFinishes : null,
+            typeGround : null,
+            typeSkybox : null,
+            recordUser : null,
+            recordTime : null,
+            recordDate : null,
+            hash : null
+        }
+    };
+
+    ui.CreateLevelResult = function(levelData)
     {
-        console.log(data);
-        const level = data.levelByIdLevel.levelItemsByIdLevel.nodes[0];
-        const $resultDiv = $("<div>").addClass("level-item");
-        const $imageDiv = $("<div>").addClass("result-image").append($("<img>").attr("src", level.imageUrl));
-        const $infoDiv = $("<div>").addClass("result-info");
-        const $levelName = $("<h3>").text(level.name);
-        const $author = $("<p>").text("Author: " + level.fileAuthor);
-        const $workshopId = $("<p>").text("Workshop ID: " + level.workshopId);
-        const $time = $("<p>").text("Time: " + data.recordByIdRecord.time + " seconds");
-        const $dateCreated = $("<p>").text("Date Created: " + new Date(data.dateCreated).toLocaleString());
-        const $dateUpdated = $("<p>").text("Last Updated: " + new Date(data.dateUpdated).toLocaleString());
-        $infoDiv.append($levelName, $author, $workshopId, $time, $dateCreated, $dateUpdated);
-        $resultDiv.append($imageDiv, $infoDiv);
+        const $resultDiv = $("<div>").addClass("level_result_item");        
+
+        if(levelData.imageUrl != null)
+        {
+            const $imageDiv = $("<div>").addClass("level_result_item_image").append($("<img>").attr("src", levelData.imageUrl));
+            $resultDiv.append($imageDiv);
+        }
+
+        const $resultContainer = $("<div>").addClass("level_result_container");      
+        $resultDiv.append($resultContainer);  
+
+        if(levelData.name != null)
+        {
+            const $nameDiv = $("<div>").addClass("level_result_item_name").append($("<h3>").text(levelData.name));
+            $resultContainer.append($nameDiv);
+        }
+
+        const $contentDiv = $("<div>").addClass("level_result_content");
+        $resultContainer.append($contentDiv);
+
+        if(levelData.fileAuthor != null || levelData.fileUid != null || levelData.validationTimeAuthor != null || levelData.hash != null)
+        {
+            const $primaryInfoDiv = $("<div>").addClass("level_result_primary_info");
+            
+            if(levelData.fileAuthor != null)
+            {
+                $primaryInfoDiv.append($("<p>").html("<span class='secondary_colored'>Author: </span>" + levelData.fileAuthor));
+            }
+
+            if(levelData.fileUid != null)
+            {                
+                $primaryInfoDiv.append($("<p>").html("<span class='secondary_colored'>UID: </span>" + levelData.fileUid));
+            }
+
+            if(levelData.validationTimeAuthor != null)
+            {
+                $primaryInfoDiv.append($("<p>").html("<span class='secondary_colored'>Author Time: </span>" + levelData.validationTimeAuthor));
+            }
+
+            if(levelData.hash != null)
+            {
+                $primaryInfoDiv.append($("<p>").html("<span class='secondary_colored'>Hash: </span>" + levelData.hash));
+            }
+
+            $contentDiv.append($primaryInfoDiv);
+        }
+
+        if(levelData.recordUser != null || levelData.recordTime != null || levelData.recordDate != null)
+        {
+            const $recordDiv = $("<div>").addClass("level_result_record_info");
+
+            if(levelData.recordUser != null)
+            {
+                $recordDiv.append($("<p>").html("<span class='secondary_colored'>Record by: </span>" + levelData.recordUser));
+            }
+
+            if(levelData.recordTime != null)
+            {
+                $recordDiv.append($("<p>").html("<span class='secondary_colored'>Time: </span>" + toolkist.util.ConvertSecondsToDisplayTime(levelData.recordTime)));
+            }
+
+            if(levelData.recordDate != null)
+            {
+                $recordDiv.append($("<p>").html("<span class='secondary_colored'>Date: </span>" + new Date(levelData.recordDate).toLocaleString()));
+            }
+
+            $contentDiv.append($recordDiv);
+        }
+
+        if(levelData.amountBlocks != null || levelData.amountCheckpoints != null || levelData.amountFinishes != null || levelData.typeGround != null || levelData.typeSkybox != null)
+        {
+            const $levelDiv = $("<div>").addClass("level_result_level_info");
+
+            if(levelData.amountBlocks != null)
+            {
+                $levelDiv.append($("<p>").html("<span class='secondary_colored'>Blocks: </span>" + levelData.amountBlocks));
+            }
+
+            if(levelData.amountCheckpoints != null)
+            {
+                $levelDiv.append($("<p>").html("<span class='secondary_colored'>Checkpoints: </span>" + levelData.amountCheckpoints));
+            }
+
+            if(levelData.amountFinishes != null)
+            {
+                $levelDiv.append($("<p>").html("<span class='secondary_colored'>Finishes: </span>" + levelData.amountFinishes));
+            }
+
+            if(levelData.typeGround != null)
+            {
+                $levelDiv.append($("<p>").html("<span class='secondary_colored'>Ground: </span>" + levelData.typeGround));
+            }  
+            
+            if(levelData.typeSkybox != null)
+            {
+                $levelDiv.append($("<p>").html("<span class='secondary_colored'>Skybox: </span>" + levelData.typeSkybox));
+            }
+
+            $contentDiv.append($levelDiv);
+        }
+
         return $resultDiv;
     }
 

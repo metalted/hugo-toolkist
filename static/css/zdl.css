@@ -67,7 +67,7 @@
     background-color: black;
     border-radius: 6px 0 0 6px;
     background-color: rgb(34,34,34, 0.5);
-    background-image: url('/steamIconYellow.png');
+    background-image: url('/img/steamIconYellow.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -162,7 +162,7 @@
     left: 6px;
     top: 6px;
 
-    background-image: url('/medal_author.png');
+    background-image: url('/img/medal_author.png');
     background-size: 95%;
     background-repeat: no-repeat;
     background-position: center;

@@ -16,7 +16,7 @@ export function init()
     toolkist.gtr.getAllUsers().then(u => {
         users = u;
         toolkist.ui.attachDatalist('#userInput', users.map(user => user.steamName).sort(), 'userDataList');
-    });    
+    });
 }
 
 function onSearchButton() 
@@ -50,7 +50,24 @@ function updatePageResults()
     paginationContainer.clear();
     paginationContainer.pageData.forEach(result => 
     {
-        let $resultDiv = toolkist.ui.CreateLevelResult(result);
+        let levelObject = toolkist.ui.CreateLevelDataObject();
+        levelObject.name = result.levelByIdLevel.levelItemsByIdLevel.nodes[0].name;
+        //levelObject.fileUid = result.levelByIdLevel.levelItemsByIdLevel.nodes[0].fileUid;
+        levelObject.imageUrl = result.levelByIdLevel.levelItemsByIdLevel.nodes[0].imageUrl;
+        //levelObject.fileAuthor = result.levelByIdLevel.levelItemsByIdLevel.nodes[0].fileAuthor;
+        //levelObject.workshopId = result.levelByIdLevel.levelItemsByIdLevel.nodes[0].workshopId;
+        levelObject.recordTime = result.recordByIdRecord.time;
+        
+        if(result.dateUpdated != null)
+        {
+            levelObject.recordDate = result.dateUpdated;
+        }
+        else
+        {
+            levelObject.recordDate = result.dateCreated;
+        }
+
+        let $resultDiv = toolkist.ui.CreateLevelResult(levelObject);
         paginationContainer.add($resultDiv);
     });
 }
